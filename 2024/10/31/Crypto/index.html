@@ -27,7 +27,7 @@
 <meta property="og:description" content="Crypto一、ECC题目 12345678910111213141516171819from Crypto.Util.number import *from flag import flagassert flag.startswith(b&#x27;SHCTF&#123;&#x27;)m &#x3D; next_prime(bytes_to_long(flag))p &#x3D; getPrime(512)a,b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-31T07:57:53.000Z">
-<meta property="article:modified_time" content="2024-11-01T16:02:54.893Z">
+<meta property="article:modified_time" content="2024-11-02T11:09:59.977Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          319 字
+          575 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          3 分钟
+          5 分钟
         
       </span>
     
@@ -314,6 +314,29 @@
 
 <p>最后得出flag</p>
 <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">b&#x27;SHCTF&#123;fo1und_adm1n_1st112&#125;&#x27;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二、Worde"><a href="#二、Worde" class="headerlink" title="二、Worde"></a>二、Worde</h2><p><strong>题目</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> enc <span class="hljs-keyword">import</span> flag<br><br>m = bytes_to_long(flag)<br>p = getPrime(<span class="hljs-number">512</span>)<br>q = getPrime(<span class="hljs-number">512</span>)<br>n = p*q<br>e = getPrime(<span class="hljs-number">200</span>)<br>d = gmpy2.invert(e,(p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>))<br>dp = d % (p-<span class="hljs-number">1</span>)<br>c = <span class="hljs-built_in">pow</span>(m,e,n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;n = <span class="hljs-subst">&#123;n&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;c = <span class="hljs-subst">&#123;c&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;e = <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;dp = <span class="hljs-subst">&#123;dp&#125;</span>&quot;</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 109107602100083925434534585854846831236367603422316141347264137431302883470878923089749415207692012162155876778433717629342677316345731989945596067366116672567736273807718413809647914537764235761542424897238828392953295052578070312924153469401927457894377311164918422725712644346523111884028669119193975313887</span><br><span class="hljs-string">c = 12365023456688645580386013142401018678669277172751038338862050435558830037797597611468398293100628165715843800273910908523113026689604063358765532741066964819435916168186673401044725950148852461706560086575130200892491873160148840462376185674368155136548141795152470696307075032455110914362528191482417145054</span><br><span class="hljs-string">e = 1110502004037199148392049197465263263258201603154804199229233</span><br><span class="hljs-string">dp = 3275908895382252717938319219921393159589684865527587914026986407331495145759978971843598067552610402795251010991143945338216738101191449912695396060306987</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>分析</strong></p>
+<p>$d_p&#x3D;d mod(p-1)$</p>
+<p>$ed&#x3D;1 mod(p-1)(q-1)$</p>
+<p>$m^{ed_p} modn&#x3D;m^{ed mod(p-1)}modn&#x3D;m^{edmod(p-1)}modp$</p>
+<p>所以$ m^{ed_p}modn&#x3D;m^{1+k(p-1)}modp$</p>
+<p>由费马小定理得</p>
+<p>$m^{1+k(p-1)}&#x3D;mmodp$</p>
+<p>$m^{ed_p}modn&#x3D;mmodp$</p>
+<p>即$m^{ed_p}modn-m&#x3D;0modp$</p>
+<p>又因为    $n&#x3D;p*q$</p>
+<p>所以，</p>
+<p>$p&#x3D;gcd(m^{ed_p}modn-m,n)$</p>
+<p>$q&#x3D;n&#x2F;p$</p>
+<p>由于$p，q$的值不会随$m$的值的变化而变化，因此先取一个简单的$m值算出p，q$</p>
+<p>这里取$m&#x3D;3$,具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br><br>n = <span class="hljs-number">109107602100083925434534585854846831236367603422316141347264137431302883470878923089749415207692012162155876778433717629342677316345731989945596067366116672567736273807718413809647914537764235761542424897238828392953295052578070312924153469401927457894377311164918422725712644346523111884028669119193975313887</span><br>c = <span class="hljs-number">12365023456688645580386013142401018678669277172751038338862050435558830037797597611468398293100628165715843800273910908523113026689604063358765532741066964819435916168186673401044725950148852461706560086575130200892491873160148840462376185674368155136548141795152470696307075032455110914362528191482417145054</span><br>e = <span class="hljs-number">1110502004037199148392049197465263263258201603154804199229233</span><br>dp = <span class="hljs-number">3275908895382252717938319219921393159589684865527587914026986407331495145759978971843598067552610402795251010991143945338216738101191449912695396060306987</span><br><br>p=gmpy2.gcd(<span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>,e*dp,n)-<span class="hljs-number">3</span>,n)<br>q=n // p<br>phi=(p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d=gmpy2.invert(e,phi)<br><br>m=<span class="hljs-built_in">pow</span>(c,d,n)<br><span class="hljs-built_in">print</span>(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
+
+<p>得出flag：</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">SHCTF</span><span class="hljs-template-variable">&#123;W0RD_E_You_Dian_d4_39ac80&#125;</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
