@@ -16,14 +16,14 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
     <meta name="description" content="Unity Cardboard XR应用部署（以华为手机为例）1、创建项目我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。  接下来创建3D项目. 2、导入Unity SDK  在 Unity 中，前往 Window（窗口）&gt;Package Manager。  点击 **+**，然后选择 Add package from git URL。  将 https:&#x2F;&#x2F;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity">
 <meta property="og:url" content="http://ramoor.github.io/2024/12/04/Unity3D/index.html">
-<meta property="og:site_name" content="Artoria">
+<meta property="og:site_name" content="Ramoor">
 <meta property="og:description" content="Unity Cardboard XR应用部署（以华为手机为例）1、创建项目我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。  接下来创建3D项目. 2、导入Unity SDK  在 Unity 中，前往 Window（窗口）&gt;Package Manager。  点击 **+**，然后选择 Add package from git URL。  将 https:&#x2F;&#x2F;g">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ramoor.github.io/2024/12/04/Unity3D/1.png">
@@ -37,14 +37,14 @@
 <meta property="og:image" content="http://ramoor.github.io/2024/12/04/Unity3D/9.png">
 <meta property="article:published_time" content="2024-12-04T13:16:00.000Z">
 <meta property="article:modified_time" content="2024-12-09T12:27:56.051Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://ramoor.github.io/2024/12/04/Unity3D/1.png">
   
   
   
-  <title>Unity - Artoria</title>
+  <title>Unity - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -438,7 +438,7 @@
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>John Doe</div>
+          <div>Ramoor</div>
         </div>
       
       
@@ -496,27 +496,24 @@
   
     <article id="comments" lazyload>
       
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://ramoor.github.io/2024/12/04/Unity3D/';
+          this.page.identifier = '/2024/12/04/Unity3D/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
 
 
     </article>
