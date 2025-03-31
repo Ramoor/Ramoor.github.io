@@ -1,0 +1,945 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/blogger.png">
+  <link rel="icon" href="/img/blogger.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ramoor">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Crypto： 一、模运算  二项式定理：   \[ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n \]   针对RSA：\(N&#x3D;p*q\) \(x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n\)   二、AES Python中的简单实现：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="假期CTF学习记录">
+<meta property="og:url" content="http://ramoor.github.io/2025/01/15/%E5%81%87%E6%9C%9FCTF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Ramoor">
+<meta property="og:description" content="Crypto： 一、模运算  二项式定理：   \[ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n \]   针对RSA：\(N&#x3D;p*q\) \(x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n\)   二、AES Python中的简单实现：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-15T13:50:32.000Z">
+<meta property="article:modified_time" content="2025-03-31T11:41:31.146Z">
+<meta property="article:author" content="Ramoor">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>假期CTF学习记录 - Ramoor</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ramoor</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="假期CTF学习记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-15 21:50" pubdate>
+          2025年1月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">假期CTF学习记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="crypto">Crypto：</h1>
+<h3 id="一模运算">一、模运算</h3>
+<ul>
+<li><strong>二项式定理</strong>：</li>
+</ul>
+<blockquote>
+<p><span class="math display">\[
+(x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>针对<strong>RSA</strong>：<span class="math inline">\(N=p*q\)</span></p>
+<p><span class="math inline">\(x=(ap+bq)^n=(ap)^n+(bq)^n \mod
+n\)</span></p>
+</blockquote>
+<h3 id="section"></h3>
+<h3 id="二aes">二、AES</h3>
+<p><strong>Python中的简单实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#实现AES</span><br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad, unpad<br><br><br>key        = <span class="hljs-string">b&#x27;\xc3,\\\xa6\xb5\x80^\x0c\xdb\x8d\xa5z*\xb6\xfe\\&#x27;</span><br>ciphertext =<span class="hljs-number">0x61646d696e3d54727565303030303030</span><span class="hljs-comment">#b&#x27;\xd1O\x14j\xa4+O\xb6\xa1\xc4\x08B)\x8f\x12\xdd&#x27;</span><br>iv=<span class="hljs-number">0x8b14b5d74ac2c280b443bbbed84ea8c2</span><br><span class="hljs-comment">#填充</span><br><span class="hljs-comment">#padded_data = pad(data, AES.block_size)</span><br><br><br>decipher=AES.new(key,AES.MODE_CBC,iv)<br>plaintext=decipher.decrypt(ciphertext)<br><br><span class="hljs-built_in">print</span>(plaintext)<br><br><span class="hljs-string">&quot;&quot;&quot; # 解密需要使用相同的密钥和初始化向量 (IV)</span><br><span class="hljs-string">iv = cipher.iv  # 加密时生成的IV</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 创建解密器</span><br><span class="hljs-string">decipher = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 解密</span><br><span class="hljs-string">decrypted_data = unpad(decipher.decrypt(ciphertext), AES.block_size) &quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="三工作模式cbcecbofbcfbctr">三、工作模式（CBC,ECB,OFB,CFB,CTR）</h3>
+<ul>
+<li><p>ECB不需要IV，需要短块处理</p></li>
+<li><p>CBC需要短块处理</p></li>
+<li><p>OFB，CFB，CTR是把明文转成密钥流与明文异或进行加密，因此没有短块问题</p></li>
+</ul>
+<h1 id="misc">MISC:</h1>
+<h3 id="一图片题">一、图片题</h3>
+<ul>
+<li><strong>LSB</strong>隐写</li>
+</ul>
+<blockquote>
+<p>1、 利用Stegsolve低位通道解决</p>
+</blockquote>
+<blockquote>
+<p>2、
+<strong>带密码的LSB隐写：</strong>在kali中使用<strong>cloacked-pixel</strong>中分离出隐藏信息，命令如下：</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python2 lsb<span class="hljs-selector-class">.py</span> extract xxx<span class="hljs-selector-class">.png</span> <span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> <span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>隐含<strong>文件</strong>，利用<strong>binwalk</strong>查看是否存在隐含文件，再利用<strong>dd</strong>指令或<strong>forecast</strong>指令来分离出隐藏的文件</p></li>
+<li><p>另一种图片隐含<strong>文件</strong>，利用<strong>steghide</strong>分离隐藏的文件</p></li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>steghide extract -sf xx.jpg<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>exif</strong>隐写，在kali中使用<strong>exiftool</strong>工具提取隐藏信息</p></li>
+<li><p><strong>F5</strong>隐写，kali环境中使用F5-steganography-master</p></li>
+<li><p><strong>CRC</strong>校验（有可能出现zlib），在010Editor中找到CRC，使用脚本计算正确的<strong>宽度</strong>和<strong>高度</strong></p></li>
+<li><p><strong>gif</strong>动图：</p></li>
+</ul>
+<blockquote>
+<p>一、47 49 46 38开头</p>
+<p>二、放进Stegsolve中提取每帧动画</p>
+</blockquote>
+<h3 id="二流量分析">二、流量分析</h3>
+<ul>
+<li>利用<strong>WireShark</strong>分析流量包，再对详细数据进行过滤</li>
+</ul>
+<blockquote>
+<p>http POST/GET 等</p>
+</blockquote>
+<ul>
+<li><p>分析关于<strong>TCP</strong>的流量包，使用<strong>WireShark</strong>中的TCP流量追踪</p></li>
+<li><p>寻找<strong>用户密码</strong>，需要找到<strong>.dmp</strong>文件名</p></li>
+</ul>
+<blockquote>
+<p>（*dmp文件是windows系统中的错误转储文件，当Windows发生错误蓝屏的时候，系统将当前内存【含虚拟内存】中的数据直接写到文件中去，方便定位故障原因。）</p>
+</blockquote>
+<blockquote>
+<p>（*里面包含主机用户密码信息）</p>
+</blockquote>
+<ul>
+<li>对于<strong>USB</strong>流量包，使用<strong>UsbKeyboardDataHacker</strong>脚本提取内容</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> UsbKeyboardDataHacker.<span class="hljs-keyword">py</span> --<span class="hljs-built_in">input</span> xxx.pcap<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>宽带数据泄露</strong>，使用<strong>RoutePassView</strong>查找用户名或密码</li>
+</ul>
+<h3 id="三压缩文件">三、压缩文件</h3>
+<ul>
+<li>密码<strong>爆破</strong></li>
+</ul>
+<blockquote>
+<p><strong>Kali</strong>中：使用<strong>fcrackzip</strong>工具（ZIP压缩文件）</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">fcrackzip</span> -b -c <span class="hljs-number">1</span> -l <span class="hljs-number">4</span>-<span class="hljs-number">5</span> -u xxx.png  <br></code></pre></td></tr></table></figure>
+<p><strong>Windows</strong>中：使用<strong>ARCHPR</strong>工具（ZIP，RAR等压缩文件）</p>
+</blockquote>
+<ul>
+<li><strong>CRC</strong>爆破：</li>
+</ul>
+<blockquote>
+<p>使用py脚本爆破</p>
+</blockquote>
+<ul>
+<li>伪加密（ZIP）：</li>
+</ul>
+<p><strong>a.压缩源文件数据区：</strong></p>
+<blockquote>
+<p>50 4B 03 04：这是头文件标记（0x04034b50） 14 00：解压文件所需 pkware
+版本 09 00：全局方式位标记 （<strong>有无加密</strong>） 08 00：压缩方式
+50 A3：最后修改文件时间 A5 4A：最后修改文件日期 21 38 76
+64：CRC-32校验（1480B516） 19 00 00 00：压缩后尺寸（25） 17 00 00
+00：未压缩尺寸（23） 08 00：文件名长度 00 00：扩展记录长度</p>
+</blockquote>
+<p><strong>b.压缩源文件目录区:</strong></p>
+<blockquote>
+<p>50 4B 01 02：目录中文件文件头标记(0x02014b50) 1F 00：压缩使用的
+pkware 版本 14 00：解压文件所需 pkware 版本 09
+00：全局方式位标记（<strong>是否是加密</strong>） 08 00：压缩方式 50
+A3：最后修改文件时间 A5 4A：最后修改文件日期 21 38 76
+65：CRC-32校验（1480B516） 19 00 00 00：压缩后尺寸（25） 17 00 00
+00：未压缩尺寸（23） 08 00：文件名长度 24 00：扩展字段长度 00
+00：文件注释长度 00 00：磁盘开始号 00 00：内部文件属性 20 00 00
+00：外部文件属性 00 00 00 00：局部头部偏移量</p>
+</blockquote>
+<p><strong>c.压缩源文件目录结束标志:</strong></p>
+<blockquote>
+<p>50 4B 05 06：目录结束标记 00 00：当前磁盘编号 00
+00：目录区开始磁盘编号 01 00：本磁盘上纪录总数 01 00：目录区中纪录总数
+5A 00 00 00：目录区尺寸大小 3F 00 00 00：目录区对第一张磁盘的偏移量 00
+00 00：ZIP 文件注释长度</p>
+</blockquote>
+<ul>
+<li>伪加密（RAR）</li>
+</ul>
+<blockquote>
+<p>结构如下 RAR 5.0签名由8个字节组成: 0x52 0x61 0x72 0x21 0x1A 0x07 0x01
+0x00 比较一下 RAR 4.x 签名由7字节组成: 0x52 0x61 0x72 0x21 0x1A 0x07
+0x00</p>
+</blockquote>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs tap">D5<span class="hljs-number"> 56 </span>：HEAD_CRC，2字节，也就是文件头部分的crc校验值<br>74 ：HEAD_TYPE，1字节，块类型，74表示块类型是文件头<br>20<span class="hljs-number"> 90 </span>：HEAD_FLAGS，2字节，位标记，这块在资料上没找到对应的数值，不知道20 90代表什么意思。<br>2D<span class="hljs-number"> 00 </span>：HEAD_SIZE，2字节，文件头的全部大小（包含文件名和注释）<br>10<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：PACK_SIZE，4字节，已压缩文件大小<br>10<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：UNP_SIZE，4字节，未压缩文件大小<br>02：HOST_OS，1字节，保存压缩文件使用的操作系统，02代表windows<br>C7<span class="hljs-number"> 88 </span>67 36：FILE_CRC，4字节，文件的CRC值<br>6D BB 4E 4B ：FTIME，4字节，MS DOS 标准格式的日期和时间<br>1D：UNP_VER，1字节，解压文件所需要的最低RAR版本<br>30：METHOD，1字节，压缩方式，这里是存储压缩<br>08<span class="hljs-number"> 00 </span>：NAME_SIZE，2字节，表示文件名大小，这里文件名大小是8字节（flag.txt）<br>20<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：ATTR，4字节，表示文件属性这里是txt文件<br>66 6C<span class="hljs-number"> 61 </span>67 2E<span class="hljs-number"> 74 </span>78 74：FILE_NAME（文件名） ，NAME_SIZE字节大小，这里NAME_SIZE大小为8<br>再往后是txt文件内容，一直到第六行<span class="hljs-number"> 65 </span>结束，下面是另一个文件块的开始<br><br>这个块中存在两个crc值，一个是文件头块中从块类型到文件名这38个字节的校验，后一个则是压缩包中所包含文件的crc校验，解压时，会计算解压后生成文件的crc值，如果等于这里的crc，则解压完成，如果不同，则报错中断。<br></code></pre></td></tr></table></figure>
+<blockquote>
+<ol type="1">
+<li><p>找到第24个字节，该字节尾数为4表</p></li>
+<li><p>示加密，0表示无加密，将尾数改为0即可破解伪加密.</p></li>
+</ol>
+</blockquote>
+<h3 id="四音频题">四、音频题</h3>
+<ul>
+<li><p>将<strong>MAV</strong>等音频文件放入<strong>Audacity</strong>中分析，如摩斯电码</p></li>
+<li><p>将<strong>MAV</strong>等音频文件放入<strong>dtmf2num</strong>中分析（<strong>电话数字号码</strong>），代码如下：</p></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./dtmf2num.exe girlfriend.wav<br></code></pre></td></tr></table></figure>
+<h3 id="五文档题">五、文档题</h3>
+<ul>
+<li>Txt文档<strong>ntfs隐写</strong>：</li>
+</ul>
+<p>1】在隐写文档的目录下打开cmd命令行，输入：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">notepad</span> <span class="hljs-number">1</span>.txt:flag.txt<br></code></pre></td></tr></table></figure>
+<p>2】在<strong>ntfsstreamseditor</strong>中扫描，尽量使用<strong>Winrar解压</strong></p>
+<blockquote>
+<p>出现<strong>pyc</strong>文件的话：使用<strong>uncompyle</strong>反汇编</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">uncompyle6 xxx<span class="hljs-selector-class">.pyc</span> &gt; <span class="hljs-selector-tag">main</span>.py<br></code></pre></td></tr></table></figure>
+<p><strong>或</strong></p>
+<p>在线工具反编译</p>
+</blockquote>
+<ul>
+<li>Docx文档隐写：在文件-&gt;选项-&gt;显示-&gt;选中显示隐藏文字</li>
+</ul>
+<h3 id="六视频题">六、视频题</h3>
+<ul>
+<li>使用<strong>Kinovea</strong>打开视频文件（要求视频文件的路径上没有中文），进行每帧分析</li>
+</ul>
+<h3 id="七镜像文件">七、镜像文件</h3>
+<ul>
+<li>在<strong>Kali</strong>中用<strong>Foremost</strong>分离</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>很可惜，寒假里总是有种种不可避免的事，因此学到的内容有限，但我也有很多收获，只能说，2025继续努力！！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>假期CTF学习记录</div>
+      <div>http://ramoor.github.io/2025/01/15/假期CTF学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" title="CTFHub学习日记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CTFHub学习日记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/04/Unity3D/" title="Unity3D">
+                        <span class="hidden-mobile">Unity3D</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
