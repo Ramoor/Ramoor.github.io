@@ -19,12 +19,12 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MISC 一、流量分析 1、数据库类流量 1）MySQL流量 题目： 一份名位mysql.pcap的文件 个人思路： 使用Wireshark打开，发现多种类型的流量如SSH，TCP，ARP，MySQL，联系题目，对MySQL流量进行追踪，发现不能很快出结果。 然后对字符串进行搜索，尝试搜索&quot;flag&quot;,&quot;ctf&quot;等字符串，发现找到flag。  研究学习： 参考网上的一张关于M">
+    <meta name="description" content="MISC  一、流量分析  1、数据库类流量  1）MySQL流量 题目： 一份名位mysql.pcap的文件 个人思路： 使用Wireshark打开，发现多种类型的流量如SSH，TCP，ARP，MySQL，联系题目，对MySQL流量进行追踪，发现不能很快出结果。 然后对字符串进行搜索，尝试搜索&quot;flag&quot;,&quot;ctf&quot;等字符串，发现找到flag。  研究学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTFHub学习日记">
 <meta property="og:url" content="http://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="MISC 一、流量分析 1、数据库类流量 1）MySQL流量 题目： 一份名位mysql.pcap的文件 个人思路： 使用Wireshark打开，发现多种类型的流量如SSH，TCP，ARP，MySQL，联系题目，对MySQL流量进行追踪，发现不能很快出结果。 然后对字符串进行搜索，尝试搜索&quot;flag&quot;,&quot;ctf&quot;等字符串，发现找到flag。  研究学习： 参考网上的一张关于M">
+<meta property="og:description" content="MISC  一、流量分析  1、数据库类流量  1）MySQL流量 题目： 一份名位mysql.pcap的文件 个人思路： 使用Wireshark打开，发现多种类型的流量如SSH，TCP，ARP，MySQL，联系题目，对MySQL流量进行追踪，发现不能很快出结果。 然后对字符串进行搜索，尝试搜索&quot;flag&quot;,&quot;ctf&quot;等字符串，发现找到flag。  研究学">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/1.png">
 <meta property="og:image" content="http://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/2.png">
@@ -116,7 +116,7 @@
 
   
 <!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.16.10/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
@@ -332,65 +332,64 @@
             
               <div class="markdown-body">
                 
-                <h1 id="misc">MISC</h1>
-<h2 id="一流量分析">一、流量分析</h2>
-<h3 id="数据库类流量">1、数据库类流量</h3>
-<h4 id="mysql流量">1）MySQL流量</h4>
+                <h1 id="misc"><a class="markdownIt-Anchor" href="#misc"></a> MISC</h1>
+<h2 id="一-流量分析"><a class="markdownIt-Anchor" href="#一-流量分析"></a> 一、流量分析</h2>
+<h3 id="1-数据库类流量"><a class="markdownIt-Anchor" href="#1-数据库类流量"></a> 1、数据库类流量</h3>
+<h4 id="1mysql流量"><a class="markdownIt-Anchor" href="#1mysql流量"></a> 1）MySQL流量</h4>
 <p><strong>题目：</strong></p>
 <p>一份名位mysql.pcap的文件</p>
 <p><strong>个人思路：</strong></p>
 <p>使用Wireshark打开，发现多种类型的流量如SSH，TCP，ARP，MySQL，联系题目，对MySQL流量进行追踪，发现不能很快出结果。</p>
-<p>然后对字符串进行搜索，尝试搜索"flag","ctf"等字符串，发现找到flag。</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后对字符串进行搜索，尝试搜索&quot;flag&quot;,&quot;ctf&quot;等字符串，发现找到flag。</p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/1.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>研究学习：</strong></p>
 <p>参考网上的一张关于MySQL的图</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/2.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>也就是说Mysql建立连接的过程包括<strong>登录</strong>和<strong>查询</strong>阶段。对MySQL协议流量进行过滤之后，得到</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/3.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>现在分析可以知道，前半部分是登录阶段，进行了三次登录尝试，前两次失败，最后一次成功；接着进行对关于user的version、database、table进行了查询，最后查询到之后对数据进行了删除。</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/4.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>最后对flag所在位置的思考，从网上了解到，这个flag的设立位置通常是登录IP，在这里也就是攻击者的IP地址。</p>
-<h4 id="redis流量">2）Redis流量</h4>
+<h4 id="2redis流量"><a class="markdownIt-Anchor" href="#2redis流量"></a> 2）Redis流量</h4>
 <p><strong>题目：</strong></p>
 <p>一个名为redis.pcap的流量包</p>
 <p><strong>个人思路：</strong></p>
 <p>通解方法，Wireshark打开之后，直接搜索”ctfhub“、”flag“等关键词，发现搜到像是flag的东西，但是不完整，看到flag2之后想到应该是拼接flag。</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/5.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/6.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>直接就得到了完整flag</p>
 <p><strong>研究学习：</strong></p>
 <p>使用NoSQL（非关系型数据库）进行存储，</p>
 <blockquote>
-<p>SQL（关系型数据库）：
-基于表格（Table）和关系（Relationship）模型，数据存储在行（Row）和列（Column）中。
-强调数据的结构化和一致性，通过关系表之间的外键（Foreign
-Key）来实现数据关联。 示例：MySQL、PostgreSQL、Oracle。</p>
+<p>SQL（关系型数据库）：<br>
+基于表格（Table）和关系（Relationship）模型，数据存储在行（Row）和列（Column）中。<br>
+强调数据的结构化和一致性，通过关系表之间的外键（Foreign Key）来实现数据关联。<br>
+示例：MySQL、PostgreSQL、Oracle。</p>
 </blockquote>
 <blockquote>
-<p>NoSQL（非关系型数据库）：
-数据模型多样，常见的有键值存储（Key-Value）、文档存储（Document）、列存储（Column）、图存储（Graph）等。
-不依赖固定的表格结构，数据存储形式更加灵活。
+<p>NoSQL（非关系型数据库）：<br>
+数据模型多样，常见的有键值存储（Key-Value）、文档存储（Document）、列存储（Column）、图存储（Graph）等。<br>
+不依赖固定的表格结构，数据存储形式更加灵活。<br>
 示例：MongoDB（文档存储）、Redis（键值存储）、Cassandra（列存储）、Neo4j（图存储）。</p>
 </blockquote>
-<h4 id="mongodb流量">3）MongoDB流量</h4>
+<h4 id="3mongodb流量"><a class="markdownIt-Anchor" href="#3mongodb流量"></a> 3）MongoDB流量</h4>
 <p><strong>题目：</strong></p>
 <p>一个名为mongodb.pcap的文件</p>
 <p><strong>个人思路：</strong></p>
 <p>仍然是用Wireshark打开之后，过滤MongoDB流量，直接搜索“ctfhub”，一个一个审计便能找到flag</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/7.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>研究学习：</strong></p>
 <p>使用NoSQL进行文档存储，MongoDB使用类似于JSON的查询语法。</p>
-<h4 id="section"></h4>
-<h4 id="dataicmp">4）Data（ICMP）</h4>
+<h4 id><a class="markdownIt-Anchor" href="#"></a> </h4>
+<h4 id="4dataicmp"><a class="markdownIt-Anchor" href="#4dataicmp"></a> 4）Data（ICMP）</h4>
 <p><strong>题目：</strong></p>
 <p>ping 也可以携带数据 ？一个名为icmp_data.pcap的流量包</p>
 <p><strong>个人思路：</strong></p>
 <p>使用Wireshark打开，过滤ICMP流量，查看字符串，发现结尾有很多WWW……，搜索常见字符串无果，在翻动时发现每条流量的字符串中都有A<em>WWWW……的结构（只有</em>代表的字符改变），从头开始看，发现每条“reply”的字符构成“ctfhub{……}”，一个一个记录下来，得到flag。</p>
-<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png"><img src="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png" srcset="/img/loading.gif" lazyload></a></p>
+<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png"><img src="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png" srcset="/img/loading.gif" lazyload alt></a></p>
 <p><strong>研究学习：</strong></p>
 <ul>
-<li><strong>ICMP</strong>（Internet Control Message
-Protocol，互联网控制消息协议）是一种网络层协议，主要用于在IP网络中传递控制和错误信息。它常用于网络设备之间的通信，帮助进行网络故障排除、错误报告和网络管理。</li>
+<li><strong>ICMP</strong>（Internet Control Message Protocol，互联网控制消息协议）是一种网络层协议，主要用于在IP网络中传递控制和错误信息。它常用于网络设备之间的通信，帮助进行网络故障排除、错误报告和网络管理。</li>
 </ul>
 <blockquote>
 <ul>
@@ -398,111 +397,172 @@ Protocol，互联网控制消息协议）是一种网络层协议，主要用于
 </ul>
 <p><strong>一、发起方发送 ICMP Echo Request</strong></p>
 <p>当用户执行 <code>ping</code> 命令时（例如 <code>ping &lt;IP地址&gt;</code>），发起方（通常是本地主机）会执行以下操作：</p>
-<ol type="1">
-<li><p><strong>构造 ICMP 数据包</strong>：</p>
+<ol>
+<li>
+<p><strong>构造 ICMP 数据包</strong>：</p>
 <ul>
-<li><p><strong>类型（Type）</strong>：设置为 <code>8</code>，表示 ICMP
-Echo Request。</p></li>
-<li><p><strong>代码（Code）</strong>：设置为 <code>0</code>。</p></li>
-<li><p><strong>校验和（Checksum）</strong>：计算 ICMP
-数据包的校验和，用于数据完整性验证。</p></li>
-<li><p><strong>标识符（Identifier）</strong>：通常是一个随机值，用于区分不同的 <code>ping</code> 请求。</p></li>
-<li><p><strong>序列号（Sequence
-Number）</strong>：从 <code>0</code> 开始，每次发送递增，用于跟踪请求和响应的对应关系。</p></li>
-<li><p><strong>数据部分</strong>：通常包含一些填充数据，如时间戳或随机字节，用于测量往返时间（RTT）。</p></li>
-</ul></li>
-<li><p><strong>封装到 IP 数据包</strong>：</p>
+<li>
+<p><strong>类型（Type）</strong>：设置为 <code>8</code>，表示 ICMP Echo Request。</p>
+</li>
+<li>
+<p><strong>代码（Code）</strong>：设置为 <code>0</code>。</p>
+</li>
+<li>
+<p><strong>校验和（Checksum）</strong>：计算 ICMP 数据包的校验和，用于数据完整性验证。</p>
+</li>
+<li>
+<p><strong>标识符（Identifier）</strong>：通常是一个随机值，用于区分不同的 <code>ping</code> 请求。</p>
+</li>
+<li>
+<p><strong>序列号（Sequence Number）</strong>：从 <code>0</code> 开始，每次发送递增，用于跟踪请求和响应的对应关系。</p>
+</li>
+<li>
+<p><strong>数据部分</strong>：通常包含一些填充数据，如时间戳或随机字节，用于测量往返时间（RTT）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>封装到 IP 数据包</strong>：</p>
 <ul>
-<li><p>ICMP 数据包被封装到 IP 数据包中，目标地址是用户指定的 IP
-地址。</p></li>
-<li><p>IP 头部包含源 IP 地址（发起方的 IP）和目标 IP
-地址（被 <code>ping</code> 的 IP）。</p></li>
-</ul></li>
-<li><p><strong>发送数据包</strong>：</p>
+<li>
+<p>ICMP 数据包被封装到 IP 数据包中，目标地址是用户指定的 IP 地址。</p>
+</li>
+<li>
+<p>IP 头部包含源 IP 地址（发起方的 IP）和目标 IP 地址（被 <code>ping</code> 的 IP）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>发送数据包</strong>：</p>
 <ul>
 <li>发起方通过网络接口将封装好的 IP 数据包发送到目标主机。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
 </blockquote>
 <blockquote>
 <p><strong>二、目标主机接收 ICMP Echo Request</strong></p>
 <p>目标主机收到 ICMP Echo Request 数据包后，会执行以下操作：</p>
-<ol type="1">
-<li><p><strong>解析 ICMP 数据包</strong>：</p>
+<ol>
+<li>
+<p><strong>解析 ICMP 数据包</strong>：</p>
 <ul>
-<li><p>检查 ICMP 类型是否为 <code>8</code>（Echo Request）。</p></li>
-<li><p>验证校验和是否正确，以确保数据完整性。</p></li>
-</ul></li>
-<li><p><strong>构造 ICMP Echo Reply</strong>：</p>
+<li>
+<p>检查 ICMP 类型是否为 <code>8</code>（Echo Request）。</p>
+</li>
+<li>
+<p>验证校验和是否正确，以确保数据完整性。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>构造 ICMP Echo Reply</strong>：</p>
 <ul>
-<li><p><strong>类型（Type）</strong>：设置为 <code>0</code>，表示 ICMP
-Echo Reply。</p></li>
-<li><p><strong>代码（Code）</strong>：设置为 <code>0</code>。</p></li>
-<li><p><strong>校验和（Checksum）</strong>：重新计算校验和。</p></li>
-<li><p><strong>标识符（Identifier）</strong>：保持与收到的 Echo Request
-相同。</p></li>
-<li><p><strong>序列号（Sequence Number）</strong>：保持与收到的 Echo
-Request 相同。</p></li>
-<li><p><strong>数据部分</strong>：保持与收到的 Echo Request
-的数据部分一致。</p></li>
-</ul></li>
-<li><p><strong>封装到 IP 数据包</strong>：</p>
+<li>
+<p><strong>类型（Type）</strong>：设置为 <code>0</code>，表示 ICMP Echo Reply。</p>
+</li>
+<li>
+<p><strong>代码（Code）</strong>：设置为 <code>0</code>。</p>
+</li>
+<li>
+<p><strong>校验和（Checksum）</strong>：重新计算校验和。</p>
+</li>
+<li>
+<p><strong>标识符（Identifier）</strong>：保持与收到的 Echo Request 相同。</p>
+</li>
+<li>
+<p><strong>序列号（Sequence Number）</strong>：保持与收到的 Echo Request 相同。</p>
+</li>
+<li>
+<p><strong>数据部分</strong>：保持与收到的 Echo Request 的数据部分一致。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>封装到 IP 数据包</strong>：</p>
 <ul>
-<li>将 ICMP Echo Reply 数据包封装到 IP 数据包中，目标地址是发起方的 IP
-地址。</li>
-</ul></li>
-<li><p><strong>发送数据包</strong>：</p>
+<li>将 ICMP Echo Reply 数据包封装到 IP 数据包中，目标地址是发起方的 IP 地址。</li>
+</ul>
+</li>
+<li>
+<p><strong>发送数据包</strong>：</p>
 <ul>
 <li>目标主机将封装好的 IP 数据包发送回发起方</li>
-</ul></li>
+</ul>
+</li>
 </ol>
 </blockquote>
 <blockquote>
 <p><strong>三、发起方接收 ICMP Echo Reply</strong></p>
 <p>发起方收到 ICMP Echo Reply 数据包后，会执行以下操作：</p>
-<ol type="1">
-<li><p><strong>解析 ICMP 数据包</strong>：</p>
+<ol>
+<li>
+<p><strong>解析 ICMP 数据包</strong>：</p>
 <ul>
-<li><p>检查 ICMP 类型是否为 <code>0</code>（Echo Reply）。</p></li>
-<li><p>验证校验和是否正确。</p></li>
-<li><p>检查标识符和序列号是否与之前发送的 Echo Request 匹配。</p></li>
-</ul></li>
-<li><p><strong>计算往返时间（RTT）</strong>：</p>
+<li>
+<p>检查 ICMP 类型是否为 <code>0</code>（Echo Reply）。</p>
+</li>
+<li>
+<p>验证校验和是否正确。</p>
+</li>
+<li>
+<p>检查标识符和序列号是否与之前发送的 Echo Request 匹配。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>计算往返时间（RTT）</strong>：</p>
 <ul>
 <li>通过比较发送时间和接收时间，计算出数据包的往返时间（RTT），并显示在 <code>ping</code> 命令的输出中。</li>
-</ul></li>
-<li><p><strong>输出结果</strong>：</p>
+</ul>
+</li>
+<li>
+<p><strong>输出结果</strong>：</p>
 <ul>
-<li><p>如果成功收到 Echo
-Reply，<code>ping</code> 命令会输出类似以下内容：</p>
-<p><code>Reply from &lt;目标IP&gt;: bytes=32 time=10ms TTL=64</code></p></li>
-<li><p>如果在超时时间内未收到响应，会输出：</p>
-<p><code>Request timed out.</code></p></li>
-</ul></li>
+<li>
+<p>如果成功收到 Echo Reply，<code>ping</code> 命令会输出类似以下内容：</p>
+<p><code>Reply from &lt;目标IP&gt;: bytes=32 time=10ms TTL=64</code></p>
+</li>
+<li>
+<p>如果在超时时间内未收到响应，会输出：</p>
+<p><code>Request timed out.</code></p>
+</li>
+</ul>
+</li>
 </ol>
 </blockquote>
 <blockquote>
 <p><strong>四、异常情况</strong></p>
-<p>在某些情况下，<code>ping</code> 命令可能会收到其他类型的 ICMP
-消息，例如：</p>
-<ol type="1">
-<li><p><strong>目标不可达（Destination Unreachable）</strong>：</p>
+<p>在某些情况下，<code>ping</code> 命令可能会收到其他类型的 ICMP 消息，例如：</p>
+<ol>
+<li>
+<p><strong>目标不可达（Destination Unreachable）</strong>：</p>
 <ul>
-<li><p>如果目标主机不可达，中间路由器可能会发送 ICMP
-类型 <code>3</code>（Destination Unreachable）消息，代码可能为：</p>
+<li>
+<p>如果目标主机不可达，中间路由器可能会发送 ICMP 类型 <code>3</code>（Destination Unreachable）消息，代码可能为：</p>
 <ul>
-<li><p><code>0</code>：网络不可达。</p></li>
-<li><p><code>1</code>：主机不可达。</p></li>
-<li><p><code>6</code>：目的网络未知。</p></li>
-<li><p><code>7</code>：目的主机未知。</p></li>
-</ul></li>
-</ul></li>
-<li><p><strong>超时（Time Exceeded）</strong>：</p>
+<li>
+<p><code>0</code>：网络不可达。</p>
+</li>
+<li>
+<p><code>1</code>：主机不可达。</p>
+</li>
+<li>
+<p><code>6</code>：目的网络未知。</p>
+</li>
+<li>
+<p><code>7</code>：目的主机未知。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>超时（Time Exceeded）</strong>：</p>
 <ul>
-<li>如果数据包的 TTL（生存时间）耗尽，中间路由器会发送 ICMP
-类型 <code>11</code>（Time Exceeded）消息，代码为 <code>0</code>（TTL
-超时）。</li>
-</ul></li>
+<li>如果数据包的 TTL（生存时间）耗尽，中间路由器会发送 ICMP 类型 <code>11</code>（Time Exceeded）消息，代码为 <code>0</code>（TTL 超时）。</li>
+</ul>
+</li>
 </ol>
 </blockquote>
 <blockquote>
@@ -512,19 +572,19 @@ Reply，<code>ping</code> 命令会输出类似以下内容：</p>
 <p>ICMP 数据包的结构如下：</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">0                   1                   2                   3<br><span class="hljs-section">0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="hljs-section">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="hljs-section">|     类型     |     代码      |          校验和           |</span><br><span class="hljs-section">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="hljs-section">|        标识符        |       序列号        |</span><br><span class="hljs-section">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="hljs-section">|                      数据部分 ...</span><br><span class="hljs-section">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><br></code></pre></td></tr></table></figure>
 </blockquote>
-<h4 id="length-icmp">5) Length (ICMP)</h4>
+<h4 id="5-length-icmp"><a class="markdownIt-Anchor" href="#5-length-icmp"></a> 5) Length (ICMP)</h4>
 <p><strong>题目：</strong></p>
 <p>一个icmp_len.pcap文件</p>
 <p><strong>个人思路：</strong></p>
 <p>使用Wireshark打开，过滤ICMP流量，搜索常见字符串无果，再逐个审计，发现并没有直接的字符存在。联系题目<strong>lenth</strong>，发现每个Data的字符串长度都不一样，记录每个字符</p>
-<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png"><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png" srcset="/img/loading.gif" lazyload></a></p>
+<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png"><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png" srcset="/img/loading.gif" lazyload alt></a></p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">99</span> <span class="hljs-number">116</span> <span class="hljs-number">102</span> <span class="hljs-number">104</span> <span class="hljs-number">117</span> <span class="hljs-number">98</span> <span class="hljs-number">123</span> <span class="hljs-number">97</span> <span class="hljs-number">99</span> <span class="hljs-number">98</span> <span class="hljs-number">54</span> <span class="hljs-number">53</span> <span class="hljs-number">57</span> <span class="hljs-number">102</span> <span class="hljs-number">48</span> <span class="hljs-number">50</span> <span class="hljs-number">51</span> <span class="hljs-number">125</span><br></code></pre></td></tr></table></figure>
 <p>转换为ASCII字符,得到flag</p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">ctfhub&#123;acb<span class="hljs-number">659f023</span>&#125;<br></code></pre></td></tr></table></figure>
 <p><strong>研究学习：</strong></p>
 <p>分析Data部分的长度可变，因而能够隐藏信息</p>
-<h4 id="section-1"></h4>
-<h4 id="lengthbinary-icmp">6）LengthBinary (ICMP)</h4>
+<h4 id="-2"><a class="markdownIt-Anchor" href="#-2"></a> </h4>
+<h4 id="6lengthbinary-icmp"><a class="markdownIt-Anchor" href="#6lengthbinary-icmp"></a> 6）LengthBinary (ICMP)</h4>
 <p><strong>题目：</strong></p>
 <p>ping 包的大小有些奇怪</p>
 <p><strong>个人思路：</strong></p>
