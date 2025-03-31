@@ -19,12 +19,12 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Crypto：  一、模运算  二项式定理：   (x+y)n&#x3D;(0n)xny0+(1n)xn−1y1+...+(n−1n)x1yn−1+(nn)x0yn(x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n  (x+y)n&#x3D;(0n​)xny0+(1n​)xn−1y1+...+(n−1n​)x1yn−">
+    <meta name="description" content="Crypto： 一、模运算  二项式定理：   \[ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n \]   针对RSA：\(N&#x3D;p*q\) \(x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n\)   二、AES Python中的简单实现：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="假期CTF学习记录">
 <meta property="og:url" content="http://ramoor.github.io/2025/01/15/%E5%81%87%E6%9C%9FCTF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Crypto：  一、模运算  二项式定理：   (x+y)n&#x3D;(0n)xny0+(1n)xn−1y1+...+(n−1n)x1yn−1+(nn)x0yn(x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n  (x+y)n&#x3D;(0n​)xny0+(1n​)xn−1y1+...+(n−1n​)x1yn−">
+<meta property="og:description" content="Crypto： 一、模运算  二项式定理：   \[ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n \]   针对RSA：\(N&#x3D;p*q\) \(x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n\)   二、AES Python中的简单实现：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-15T13:50:32.000Z">
 <meta property="article:modified_time" content="2025-03-31T11:41:31.146Z">
@@ -322,37 +322,33 @@
             
               <div class="markdown-body">
                 
-                <h1 id="crypto"><a class="markdownIt-Anchor" href="#crypto"></a> Crypto：</h1>
-<h3 id="一-模运算"><a class="markdownIt-Anchor" href="#一-模运算"></a> 一、模运算</h3>
+                <h1 id="crypto">Crypto：</h1>
+<h3 id="一模运算">一、模运算</h3>
 <ul>
 <li><strong>二项式定理</strong>：</li>
 </ul>
 <blockquote>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><msubsup><mo stretchy="false">(</mo><mn>0</mn><mi>n</mi></msubsup><mo stretchy="false">)</mo><msup><mi>x</mi><mi>n</mi></msup><msup><mi>y</mi><mn>0</mn></msup><mo>+</mo><msubsup><mo stretchy="false">(</mo><mn>1</mn><mi>n</mi></msubsup><mo stretchy="false">)</mo><msup><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>y</mi><mn>1</mn></msup><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msubsup><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">)</mo><msup><mi>x</mi><mn>1</mn></msup><msup><mi>y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msubsup><mo stretchy="false">(</mo><mi>n</mi><mi>n</mi></msubsup><mo stretchy="false">)</mo><msup><mi>x</mi><mn>0</mn></msup><msup><mi>y</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1694390000000001em;vertical-align:-0.305331em;"></span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="math display">\[
+(x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n
+\]</span></p>
 </blockquote>
 <blockquote>
-<p>针对<strong>RSA</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>p</mi><mo>∗</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">N=p*q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.6597200000000001em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mi>p</mi><mo>+</mo><mi>b</mi><mi>q</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mi>p</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mo>+</mo><mo stretchy="false">(</mo><mi>b</mi><mi>q</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mspace></mspace><mspace width="0.6666666666666666em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mi>n</mi></mspace></mrow><annotation encoding="application/x-tex">x=(ap+bq)^n=(ap)^n+(bq)^n \mod n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mord mathnormal">p</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.6666666666666666em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span></span></span></span></p>
+<p>针对<strong>RSA</strong>：<span class="math inline">\(N=p*q\)</span></p>
+<p><span class="math inline">\(x=(ap+bq)^n=(ap)^n+(bq)^n \mod
+n\)</span></p>
 </blockquote>
-<h3 id><a class="markdownIt-Anchor" href="#"></a> </h3>
-<h3 id="二-aes"><a class="markdownIt-Anchor" href="#二-aes"></a> 二、AES</h3>
+<h3 id="section"></h3>
+<h3 id="二aes">二、AES</h3>
 <p><strong>Python中的简单实现：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#实现AES</span><br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad, unpad<br><br><br>key        = <span class="hljs-string">b&#x27;\xc3,\\\xa6\xb5\x80^\x0c\xdb\x8d\xa5z*\xb6\xfe\\&#x27;</span><br>ciphertext =<span class="hljs-number">0x61646d696e3d54727565303030303030</span><span class="hljs-comment">#b&#x27;\xd1O\x14j\xa4+O\xb6\xa1\xc4\x08B)\x8f\x12\xdd&#x27;</span><br>iv=<span class="hljs-number">0x8b14b5d74ac2c280b443bbbed84ea8c2</span><br><span class="hljs-comment">#填充</span><br><span class="hljs-comment">#padded_data = pad(data, AES.block_size)</span><br><br><br>decipher=AES.new(key,AES.MODE_CBC,iv)<br>plaintext=decipher.decrypt(ciphertext)<br><br><span class="hljs-built_in">print</span>(plaintext)<br><br><span class="hljs-string">&quot;&quot;&quot; # 解密需要使用相同的密钥和初始化向量 (IV)</span><br><span class="hljs-string">iv = cipher.iv  # 加密时生成的IV</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 创建解密器</span><br><span class="hljs-string">decipher = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 解密</span><br><span class="hljs-string">decrypted_data = unpad(decipher.decrypt(ciphertext), AES.block_size) &quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
-<h3 id="三-工作模式cbcecbofbcfbctr"><a class="markdownIt-Anchor" href="#三-工作模式cbcecbofbcfbctr"></a> 三、工作模式（CBC,ECB,OFB,CFB,CTR）</h3>
+<h3 id="三工作模式cbcecbofbcfbctr">三、工作模式（CBC,ECB,OFB,CFB,CTR）</h3>
 <ul>
-<li>
-<p>ECB不需要IV，需要短块处理</p>
-</li>
-<li>
-<p>CBC需要短块处理</p>
-</li>
-<li>
-<p>OFB，CFB，CTR是把明文转成密钥流与明文异或进行加密，因此没有短块问题</p>
-</li>
+<li><p>ECB不需要IV，需要短块处理</p></li>
+<li><p>CBC需要短块处理</p></li>
+<li><p>OFB，CFB，CTR是把明文转成密钥流与明文异或进行加密，因此没有短块问题</p></li>
 </ul>
-<h1 id="misc"><a class="markdownIt-Anchor" href="#misc"></a> MISC:</h1>
-<h3 id="一-图片题"><a class="markdownIt-Anchor" href="#一-图片题"></a> 一、图片题</h3>
+<h1 id="misc">MISC:</h1>
+<h3 id="一图片题">一、图片题</h3>
 <ul>
 <li><strong>LSB</strong>隐写</li>
 </ul>
@@ -360,37 +356,26 @@
 <p>1、 利用Stegsolve低位通道解决</p>
 </blockquote>
 <blockquote>
-<p>2、 <strong>带密码的LSB隐写：<strong>在kali中使用</strong>cloacked-pixel</strong>中分离出隐藏信息，命令如下：</p>
+<p>2、
+<strong>带密码的LSB隐写：</strong>在kali中使用<strong>cloacked-pixel</strong>中分离出隐藏信息，命令如下：</p>
 </blockquote>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python2 lsb<span class="hljs-selector-class">.py</span> extract xxx<span class="hljs-selector-class">.png</span> <span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> <span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li>
-<p>隐含<strong>文件</strong>，利用<strong>binwalk</strong>查看是否存在隐含文件，再利用<strong>dd</strong>指令或<strong>forecast</strong>指令来分离出隐藏的文件</p>
-</li>
-<li>
-<p>另一种图片隐含<strong>文件</strong>，利用<strong>steghide</strong>分离隐藏的文件</p>
-</li>
+<li><p>隐含<strong>文件</strong>，利用<strong>binwalk</strong>查看是否存在隐含文件，再利用<strong>dd</strong>指令或<strong>forecast</strong>指令来分离出隐藏的文件</p></li>
+<li><p>另一种图片隐含<strong>文件</strong>，利用<strong>steghide</strong>分离隐藏的文件</p></li>
 </ul>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>steghide extract -sf xx.jpg<br></code></pre></td></tr></table></figure>
 <ul>
-<li>
-<p><strong>exif</strong>隐写，在kali中使用<strong>exiftool</strong>工具提取隐藏信息</p>
-</li>
-<li>
-<p><strong>F5</strong>隐写，kali环境中使用F5-steganography-master</p>
-</li>
-<li>
-<p><strong>CRC</strong>校验（有可能出现zlib），在010Editor中找到CRC，使用脚本计算正确的<strong>宽度</strong>和<strong>高度</strong></p>
-</li>
-<li>
-<p><strong>gif</strong>动图：</p>
-</li>
+<li><p><strong>exif</strong>隐写，在kali中使用<strong>exiftool</strong>工具提取隐藏信息</p></li>
+<li><p><strong>F5</strong>隐写，kali环境中使用F5-steganography-master</p></li>
+<li><p><strong>CRC</strong>校验（有可能出现zlib），在010Editor中找到CRC，使用脚本计算正确的<strong>宽度</strong>和<strong>高度</strong></p></li>
+<li><p><strong>gif</strong>动图：</p></li>
 </ul>
 <blockquote>
 <p>一、47 49 46 38开头</p>
 <p>二、放进Stegsolve中提取每帧动画</p>
 </blockquote>
-<h3 id="二-流量分析"><a class="markdownIt-Anchor" href="#二-流量分析"></a> 二、流量分析</h3>
+<h3 id="二流量分析">二、流量分析</h3>
 <ul>
 <li>利用<strong>WireShark</strong>分析流量包，再对详细数据进行过滤</li>
 </ul>
@@ -398,12 +383,8 @@
 <p>http POST/GET 等</p>
 </blockquote>
 <ul>
-<li>
-<p>分析关于<strong>TCP</strong>的流量包，使用<strong>WireShark</strong>中的TCP流量追踪</p>
-</li>
-<li>
-<p>寻找<strong>用户密码</strong>，需要找到**.dmp**文件名</p>
-</li>
+<li><p>分析关于<strong>TCP</strong>的流量包，使用<strong>WireShark</strong>中的TCP流量追踪</p></li>
+<li><p>寻找<strong>用户密码</strong>，需要找到<strong>.dmp</strong>文件名</p></li>
 </ul>
 <blockquote>
 <p>（*dmp文件是windows系统中的错误转储文件，当Windows发生错误蓝屏的时候，系统将当前内存【含虚拟内存】中的数据直接写到文件中去，方便定位故障原因。）</p>
@@ -418,7 +399,7 @@
 <ul>
 <li><strong>宽带数据泄露</strong>，使用<strong>RoutePassView</strong>查找用户名或密码</li>
 </ul>
-<h3 id="三-压缩文件"><a class="markdownIt-Anchor" href="#三-压缩文件"></a> 三、压缩文件</h3>
+<h3 id="三压缩文件">三、压缩文件</h3>
 <ul>
 <li>密码<strong>爆破</strong></li>
 </ul>
@@ -438,82 +419,52 @@
 </ul>
 <p><strong>a.压缩源文件数据区：</strong></p>
 <blockquote>
-<p>50 4B 03 04：这是头文件标记（0x04034b50）<br>
-14 00：解压文件所需 pkware 版本<br>
-09 00：全局方式位标记 （<strong>有无加密</strong>）<br>
-08 00：压缩方式<br>
-50 A3：最后修改文件时间<br>
-A5 4A：最后修改文件日期<br>
-21 38 76 64：CRC-32校验（1480B516）<br>
-19 00 00 00：压缩后尺寸（25）<br>
-17 00 00 00：未压缩尺寸（23）<br>
-08 00：文件名长度<br>
-00 00：扩展记录长度</p>
+<p>50 4B 03 04：这是头文件标记（0x04034b50） 14 00：解压文件所需 pkware
+版本 09 00：全局方式位标记 （<strong>有无加密</strong>） 08 00：压缩方式
+50 A3：最后修改文件时间 A5 4A：最后修改文件日期 21 38 76
+64：CRC-32校验（1480B516） 19 00 00 00：压缩后尺寸（25） 17 00 00
+00：未压缩尺寸（23） 08 00：文件名长度 00 00：扩展记录长度</p>
 </blockquote>
 <p><strong>b.压缩源文件目录区:</strong></p>
 <blockquote>
-<p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>
-1F 00：压缩使用的 pkware 版本<br>
-14 00：解压文件所需 pkware 版本<br>
-09 00：全局方式位标记（<strong>是否是加密</strong>）<br>
-08 00：压缩方式<br>
-50 A3：最后修改文件时间<br>
-A5 4A：最后修改文件日期<br>
-21 38 76 65：CRC-32校验（1480B516）<br>
-19 00 00 00：压缩后尺寸（25）<br>
-17 00 00 00：未压缩尺寸（23）<br>
-08 00：文件名长度<br>
-24 00：扩展字段长度<br>
-00 00：文件注释长度<br>
-00 00：磁盘开始号<br>
-00 00：内部文件属性<br>
-20 00 00 00：外部文件属性<br>
-00 00 00 00：局部头部偏移量</p>
+<p>50 4B 01 02：目录中文件文件头标记(0x02014b50) 1F 00：压缩使用的
+pkware 版本 14 00：解压文件所需 pkware 版本 09
+00：全局方式位标记（<strong>是否是加密</strong>） 08 00：压缩方式 50
+A3：最后修改文件时间 A5 4A：最后修改文件日期 21 38 76
+65：CRC-32校验（1480B516） 19 00 00 00：压缩后尺寸（25） 17 00 00
+00：未压缩尺寸（23） 08 00：文件名长度 24 00：扩展字段长度 00
+00：文件注释长度 00 00：磁盘开始号 00 00：内部文件属性 20 00 00
+00：外部文件属性 00 00 00 00：局部头部偏移量</p>
 </blockquote>
 <p><strong>c.压缩源文件目录结束标志:</strong></p>
 <blockquote>
-<p>50 4B 05 06：目录结束标记<br>
-00 00：当前磁盘编号<br>
-00 00：目录区开始磁盘编号<br>
-01 00：本磁盘上纪录总数<br>
-01 00：目录区中纪录总数<br>
-5A 00 00 00：目录区尺寸大小<br>
-3F 00 00 00：目录区对第一张磁盘的偏移量<br>
-00 00 00：ZIP 文件注释长度</p>
+<p>50 4B 05 06：目录结束标记 00 00：当前磁盘编号 00
+00：目录区开始磁盘编号 01 00：本磁盘上纪录总数 01 00：目录区中纪录总数
+5A 00 00 00：目录区尺寸大小 3F 00 00 00：目录区对第一张磁盘的偏移量 00
+00 00：ZIP 文件注释长度</p>
 </blockquote>
 <ul>
 <li>伪加密（RAR）</li>
 </ul>
 <blockquote>
-<p>结构如下<br>
-RAR 5.0签名由8个字节组成:<br>
-0x52 0x61 0x72 0x21 0x1A 0x07 0x01 0x00<br>
-比较一下<br>
-RAR 4.x 签名由7字节组成:<br>
-0x52 0x61 0x72 0x21 0x1A 0x07 0x00</p>
+<p>结构如下 RAR 5.0签名由8个字节组成: 0x52 0x61 0x72 0x21 0x1A 0x07 0x01
+0x00 比较一下 RAR 4.x 签名由7字节组成: 0x52 0x61 0x72 0x21 0x1A 0x07
+0x00</p>
 </blockquote>
 <figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs tap">D5<span class="hljs-number"> 56 </span>：HEAD_CRC，2字节，也就是文件头部分的crc校验值<br>74 ：HEAD_TYPE，1字节，块类型，74表示块类型是文件头<br>20<span class="hljs-number"> 90 </span>：HEAD_FLAGS，2字节，位标记，这块在资料上没找到对应的数值，不知道20 90代表什么意思。<br>2D<span class="hljs-number"> 00 </span>：HEAD_SIZE，2字节，文件头的全部大小（包含文件名和注释）<br>10<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：PACK_SIZE，4字节，已压缩文件大小<br>10<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：UNP_SIZE，4字节，未压缩文件大小<br>02：HOST_OS，1字节，保存压缩文件使用的操作系统，02代表windows<br>C7<span class="hljs-number"> 88 </span>67 36：FILE_CRC，4字节，文件的CRC值<br>6D BB 4E 4B ：FTIME，4字节，MS DOS 标准格式的日期和时间<br>1D：UNP_VER，1字节，解压文件所需要的最低RAR版本<br>30：METHOD，1字节，压缩方式，这里是存储压缩<br>08<span class="hljs-number"> 00 </span>：NAME_SIZE，2字节，表示文件名大小，这里文件名大小是8字节（flag.txt）<br>20<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：ATTR，4字节，表示文件属性这里是txt文件<br>66 6C<span class="hljs-number"> 61 </span>67 2E<span class="hljs-number"> 74 </span>78 74：FILE_NAME（文件名） ，NAME_SIZE字节大小，这里NAME_SIZE大小为8<br>再往后是txt文件内容，一直到第六行<span class="hljs-number"> 65 </span>结束，下面是另一个文件块的开始<br><br>这个块中存在两个crc值，一个是文件头块中从块类型到文件名这38个字节的校验，后一个则是压缩包中所包含文件的crc校验，解压时，会计算解压后生成文件的crc值，如果等于这里的crc，则解压完成，如果不同，则报错中断。<br></code></pre></td></tr></table></figure>
 <blockquote>
-<ol>
-<li>
-<p>找到第24个字节，该字节尾数为4表</p>
-</li>
-<li>
-<p>示加密，0表示无加密，将尾数改为0即可破解伪加密.</p>
-</li>
+<ol type="1">
+<li><p>找到第24个字节，该字节尾数为4表</p></li>
+<li><p>示加密，0表示无加密，将尾数改为0即可破解伪加密.</p></li>
 </ol>
 </blockquote>
-<h3 id="四-音频题"><a class="markdownIt-Anchor" href="#四-音频题"></a> 四、音频题</h3>
+<h3 id="四音频题">四、音频题</h3>
 <ul>
-<li>
-<p>将<strong>MAV</strong>等音频文件放入<strong>Audacity</strong>中分析，如摩斯电码</p>
-</li>
-<li>
-<p>将<strong>MAV</strong>等音频文件放入<strong>dtmf2num</strong>中分析（<strong>电话数字号码</strong>），代码如下：</p>
-</li>
+<li><p>将<strong>MAV</strong>等音频文件放入<strong>Audacity</strong>中分析，如摩斯电码</p></li>
+<li><p>将<strong>MAV</strong>等音频文件放入<strong>dtmf2num</strong>中分析（<strong>电话数字号码</strong>），代码如下：</p></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./dtmf2num.exe girlfriend.wav<br></code></pre></td></tr></table></figure>
-<h3 id="五-文档题"><a class="markdownIt-Anchor" href="#五-文档题"></a> 五、文档题</h3>
+<h3 id="五文档题">五、文档题</h3>
 <ul>
 <li>Txt文档<strong>ntfs隐写</strong>：</li>
 </ul>
@@ -529,15 +480,15 @@ RAR 4.x 签名由7字节组成:<br>
 <ul>
 <li>Docx文档隐写：在文件-&gt;选项-&gt;显示-&gt;选中显示隐藏文字</li>
 </ul>
-<h3 id="六-视频题"><a class="markdownIt-Anchor" href="#六-视频题"></a> 六、视频题</h3>
+<h3 id="六视频题">六、视频题</h3>
 <ul>
 <li>使用<strong>Kinovea</strong>打开视频文件（要求视频文件的路径上没有中文），进行每帧分析</li>
 </ul>
-<h3 id="七-镜像文件"><a class="markdownIt-Anchor" href="#七-镜像文件"></a> 七、镜像文件</h3>
+<h3 id="七镜像文件">七、镜像文件</h3>
 <ul>
 <li>在<strong>Kali</strong>中用<strong>Foremost</strong>分离</li>
 </ul>
-<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
+<h1 id="总结">总结</h1>
 <p>很可惜，寒假里总是有种种不可避免的事，因此学到的内容有限，但我也有很多收获，只能说，2025继续努力！！</p>
 
                 
