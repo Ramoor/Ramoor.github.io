@@ -19,12 +19,12 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Unity Cardboard XR应用部署（以华为手机为例）  1、创建项目 我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。  接下来创建3D项目.  2、导入Unity SDK    在 Unity 中，前往 Window（窗口）&gt;Package Manager。   点击 +，然后选择 Add package from git URL。   将 http">
+    <meta name="description" content="Unity Cardboard XR应用部署（以华为手机为例） 1、创建项目 我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。  接下来创建3D项目. 2、导入Unity SDK   在 Unity 中，前往 Window（窗口）&gt;Package Manager。 点击 +，然后选择 Add package from git URL。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity3D">
 <meta property="og:url" content="http://ramoor.github.io/2024/12/04/Unity3D/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Unity Cardboard XR应用部署（以华为手机为例）  1、创建项目 我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。  接下来创建3D项目.  2、导入Unity SDK    在 Unity 中，前往 Window（窗口）&gt;Package Manager。   点击 +，然后选择 Add package from git URL。   将 http">
+<meta property="og:description" content="Unity Cardboard XR应用部署（以华为手机为例） 1、创建项目 我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。  接下来创建3D项目. 2、导入Unity SDK   在 Unity 中，前往 Window（窗口）&gt;Package Manager。 点击 +，然后选择 Add package from git URL。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ramoor.github.io/2024/12/04/Unity3D/1.png">
 <meta property="og:image" content="http://ramoor.github.io/2024/12/04/Unity3D/2.png">
@@ -332,61 +332,54 @@
             
               <div class="markdown-body">
                 
-                <h1 id="unity-cardboard-xr应用部署以华为手机为例"><a class="markdownIt-Anchor" href="#unity-cardboard-xr应用部署以华为手机为例"></a> Unity Cardboard XR应用部署（以华为手机为例）</h1>
-<h2 id="1-创建项目"><a class="markdownIt-Anchor" href="#1-创建项目"></a> 1、创建项目</h2>
+                <h1 id="unity-cardboard-xr应用部署以华为手机为例">Unity Cardboard
+XR应用部署（以华为手机为例）</h1>
+<h2 id="创建项目">1、创建项目</h2>
 <p>我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。</p>
-<p><img src="/2024/12/04/Unity3D/1.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/1.png" srcset="/img/loading.gif" lazyload></p>
 <p>接下来创建3D项目.</p>
-<h2 id="2-导入unity-sdk"><a class="markdownIt-Anchor" href="#2-导入unity-sdk"></a> 2、导入Unity SDK</h2>
+<h2 id="导入unity-sdk">2、导入Unity SDK</h2>
 <blockquote>
 <ul>
-<li>
-<p>在 Unity 中，前往 <strong>Window</strong>（窗口）&gt;<strong>Package Manager</strong>。</p>
-</li>
-<li>
-<p>点击 <strong>+</strong>，然后选择 <strong>Add package from git URL</strong>。</p>
-</li>
-<li>
-<p>将 <code>https://github.com/googlevr/cardboard-xr-plugin.git</code> 粘贴到文本中 输入字段。</p>
-</li>
+<li><p>在 Unity
+中，前往 <strong>Window</strong>（窗口）&gt;<strong>Package
+Manager</strong>。</p></li>
+<li><p>点击 <strong>+</strong>，然后选择 <strong>Add package from git
+URL</strong>。</p></li>
+<li><p>将 <code>https://github.com/googlevr/cardboard-xr-plugin.git</code> 粘贴到文本中
+输入字段。</p></li>
 </ul>
 </blockquote>
 <ul>
-<li>
-<p>导入之前准备好的素材（直接拖入Unity的Project中即可）</p>
-</li>
-<li>
-<p>若出现导入白模情况，解决方法如下</p>
-</li>
+<li><p>导入之前准备好的素材（直接拖入Unity的Project中即可）</p></li>
+<li><p>若出现导入白模情况，解决方法如下</p></li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/2.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/2.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>对<strong>Main camera</strong>添加<strong>Tracked Pose Driver</strong>组件。并在组件中的<strong>Tracking Type</strong>改为<strong>Rotation Only</strong>。</li>
+<li>对<strong>Main camera</strong>添加<strong>Tracked Pose
+Driver</strong>组件。并在组件中的<strong>Tracking
+Type</strong>改为<strong>Rotation Only</strong>。</li>
 </ul>
-<h2 id="3-配置android项目"><a class="markdownIt-Anchor" href="#3-配置android项目"></a> 3、配置Android项目</h2>
+<h2 id="配置android项目">3、配置Android项目</h2>
 <ul>
-<li>在<strong>file</strong> -&gt; <strong>Build Settings</strong> 中选择Android -&gt; <strong>Switch Platform</strong>切换到Android平台</li>
+<li>在<strong>file</strong> -&gt; <strong>Build Settings</strong>
+中选择Android -&gt; <strong>Switch
+Platform</strong>切换到Android平台</li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/3.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/3.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>
-<p>选择 <strong>Add Open Scenes</strong>，导入你的素材所在的场景。</p>
-</li>
-<li>
-<p>接着配置<strong>Player Settings</strong></p>
-</li>
+<li><p>选择 <strong>Add Open
+Scenes</strong>，导入你的素材所在的场景。</p></li>
+<li><p>接着配置<strong>Player Settings</strong></p></li>
 </ul>
 <blockquote>
 <p>分辨率和呈现方式</p>
 <ul>
-<li>
-<p>前往 <strong>Project Settings</strong> &gt;<strong>玩家</strong> &gt;<strong>分辨率和呈现方式</strong>。</p>
-</li>
-<li>
-<p>将<strong>默认方向</strong>设置为<strong>横向向右</strong>。</p>
-</li>
+<li><p>前往 <strong>Project
+Settings</strong> &gt;<strong>玩家</strong> &gt;<strong>分辨率和呈现方式</strong>。</p></li>
+<li><p>将<strong>默认方向</strong>设置为<strong>横向向右</strong>。</p></li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/4.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/4.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>停用<strong>Optimized Frame Pacing</strong>。(提高流畅度)</li>
 </ul>
@@ -394,36 +387,44 @@
 <ul>
 <li>设置API版本</li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/5.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>设置Graphics  APIs</li>
+<li>设置Graphics APIs</li>
 </ul>
-<p>取消勾选<strong>Auto Graphics API</strong>,然后选择<strong>OpenGLES2</strong>，接着将<strong>Color Space</strong>中选择<strong>Gamma</strong>，在<strong>Lightmap Encoding</strong>和<strong>HDR Cubemap Encoding</strong>中均改成<strong>Low Quality</strong>。如下图所示。</p>
-<p><img src="/2024/12/04/Unity3D/6.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>取消勾选<strong>Auto Graphics
+API</strong>,然后选择<strong>OpenGLES2</strong>，接着将<strong>Color
+Space</strong>中选择<strong>Gamma</strong>，在<strong>Lightmap
+Encoding</strong>和<strong>HDR Cubemap
+Encoding</strong>中均改成<strong>Low Quality</strong>。如下图所示。</p>
+<p><img src="/2024/12/04/Unity3D/6.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><strong>在gradle中添加依赖项</strong></li>
 </ul>
-<p>前往 <strong>Project Settings</strong> &gt;<strong>玩家</strong> &gt;<strong>发布设置</strong>。</p>
-<ol>
+<p>前往 <strong>Project
+Settings</strong> &gt;<strong>玩家</strong> &gt;<strong>发布设置</strong>。</p>
+<ol type="1">
 <li>在 <strong>Build</strong> 部分中，选择 <code>Custom Main Gradle Template</code> 和 <code>Custom Gradle Properties Template</code>。</li>
 <li>将以下代码行添加到 <code>Assets/Plugins/Android/mainTemplate.gradle</code>：</li>
 </ol>
 <blockquote>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache">  <span class="hljs-attribute">implementation</span> &#x27;androidx.appcompat:appcompat:<span class="hljs-number">1</span>.<span class="hljs-number">6</span>.<span class="hljs-number">1</span>&#x27;  <br>  <span class="hljs-attribute">implementation</span> &#x27;com.google.android.gms:play-services-vision:<span class="hljs-number">20</span>.<span class="hljs-number">1</span>.<span class="hljs-number">3</span>&#x27;  <br>  <span class="hljs-attribute">implementation</span> &#x27;com.google.android.material:material:<span class="hljs-number">1</span>.<span class="hljs-number">6</span>.<span class="hljs-number">1</span>&#x27;  <br>  <span class="hljs-attribute">implementation</span> &#x27;com.google.protobuf:protobuf-javalite:<span class="hljs-number">3</span>.<span class="hljs-number">19</span>.<span class="hljs-number">4</span>&#x27;<br></code></pre></td></tr></table></figure>
 </blockquote>
-<p><img src="/2024/12/04/Unity3D/7.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/7.png" srcset="/img/loading.gif" lazyload></p>
 <p>3.将以下代码行添加到 <code>Assets/Plugins/Android/gradleTemplate.properties</code></p>
 <blockquote>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini">  <span class="hljs-attr">android.enableJetifier</span>=<span class="hljs-literal">true</span>  <br>  <span class="hljs-attr">android.useAndroidX</span>=<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 </blockquote>
-<p><img src="/2024/12/04/Unity3D/8.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/8.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>前往 <strong>Project Settings</strong> &gt;<strong>XR 插件管理</strong>,选择 <strong>Plug-in Providers</strong>（插件提供程序）下的 <code>Cardboard XR Plugin</code>。</li>
+<li>前往 <strong>Project Settings</strong> &gt;<strong>XR
+插件管理</strong>,选择 <strong>Plug-in
+Providers</strong>（插件提供程序）下的 <code>Cardboard XR Plugin</code>。</li>
 </ul>
 </blockquote>
-<h2 id="4-部署到安卓手机"><a class="markdownIt-Anchor" href="#4-部署到安卓手机"></a> 4、部署到安卓手机</h2>
-<p>在<strong>Build Settings</strong>中选择<strong>build</strong>生成apk并安装到手机查看效果，效果如下。</p>
-<p><img src="/2024/12/04/Unity3D/9.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="部署到安卓手机">4、部署到安卓手机</h2>
+<p>在<strong>Build
+Settings</strong>中选择<strong>build</strong>生成apk并安装到手机查看效果，效果如下。</p>
+<p><img src="/2024/12/04/Unity3D/9.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
