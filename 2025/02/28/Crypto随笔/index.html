@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.png">
-  <link rel="icon" href="/img/2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -27,7 +27,7 @@
 <meta property="og:description" content="Crypto随笔ECDLP（椭圆曲线上的离散对数问题） 概念： 给定素数 p 和椭圆曲线 E，对于 Q&#x3D;k*P，在已知 P,Q 的情况下求出小于 p 的正整数 k。可以证明由 k 和 P 计算 Q 比较容易，而由 Q 和 P 计算 k 则比较困难。 方法：（类似DL问题）  暴力搜索（Brute Force）：适用于小规模，k比较小  Pollard’s Rho 算法：适用于群的阶较大。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-28T06:11:21.000Z">
-<meta property="article:modified_time" content="2025-04-01T14:31:53.564Z">
+<meta property="article:modified_time" content="2025-04-01T14:43:08.835Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -335,7 +335,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br>p = <br>a = <br>b = <br>E = EllipticCurve(GF(p),[a,b]) <span class="hljs-comment">#Weierstrasss形式（椭圆曲线标准形式）</span><br>P = E(, ) <br>Q = E(, ) <br>k = discrete_log(Q, P, operation=<span class="hljs-string">&#x27;+&#x27;</span>) <br><span class="hljs-comment">#或 discrete_log_rho(a,base,ord,operation)</span><br><span class="hljs-comment">#或 bsgs(base,a,bounds,operation)</span><br><span class="hljs-comment">#或 k = Q.log(P)</span><br><br><span class="hljs-built_in">print</span>(k)<br></code></pre></td></tr></table></figure></blockquote>
 <h2 id="TH曲线-Twisted-Hessian-Curves"><a href="#TH曲线-Twisted-Hessian-Curves" class="headerlink" title="TH曲线 (Twisted Hessian Curves)"></a>TH曲线 (Twisted Hessian Curves)</h2><blockquote>
 <p><strong>一般方程：</strong></p>
-<p>ax^3+y^3+1&#x3D;dxy</p>
+<p>$ax^3+y^3+1&#x3D;dxy$</p>
 <p><strong>加法：</strong></p>
 <span>
 $$
@@ -410,10 +410,15 @@ $$
 <li><p>求乘数B的关于模M的模逆$B^{-1}$</p>
 </li>
 <li><p>计算密文</p>
-<p><span>$$<br>S’&#x3D;B^{-1}S\mod M&#x3D;\sum_{i&#x3D;1}^nx_ia_i \mod M<br>$$</span></p>
 </li>
-<li><p>利用超递增序列特性，从大到小解决背包问题。</p>
-</li>
+</ul>
+<span>
+$$
+S'=B^{-1}S\mod M=\sum_{i=1}^nx_ia_i \mod M
+$$</span>
+
+<ul>
+<li>利用超递增序列特性，从大到小解决背包问题。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">reversed</span>(key):<br>    <span class="hljs-keyword">if</span> s &gt; i:<br>        m += <span class="hljs-string">&#x27;1&#x27;</span><br>        s -= i<br>    <span class="hljs-keyword">else</span>:<br>        m += <span class="hljs-string">&#x27;0&#x27;</span><br>        s -= <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
