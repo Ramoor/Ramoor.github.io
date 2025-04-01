@@ -13,5 +13,5 @@ http://ramoor.github.io/
 http://ramoor.github.io/tags/CTF/
 http://ramoor.github.io/tags/Unity/
 http://ramoor.github.io/categories/WriteUp/
-http://ramoor.github.io/categories/Deployment/
 http://ramoor.github.io/categories/Study/
+http://ramoor.github.io/categories/Deployment/
