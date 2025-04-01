@@ -87,7 +87,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -331,21 +331,21 @@
 <p><strong>个人思路：</strong></p>
 <p>使用Wireshark打开，发现多种类型的流量如SSH，TCP，ARP，MySQL，联系题目，对MySQL流量进行追踪，发现不能很快出结果。</p>
 <p>然后对字符串进行搜索，尝试搜索”flag”,”ctf”等字符串，发现找到flag。</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/1.png" alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/1.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>研究学习：</strong></p>
 <p>参考网上的一张关于MySQL的图</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/2.png" alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/2.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>也就是说Mysql建立连接的过程包括<strong>登录</strong>和<strong>查询</strong>阶段。对MySQL协议流量进行过滤之后，得到</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/3.png" alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/3.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>现在分析可以知道，前半部分是登录阶段，进行了三次登录尝试，前两次失败，最后一次成功；接着进行对关于user的version、database、table进行了查询，最后查询到之后对数据进行了删除。</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/4.png" alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/4.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>最后对flag所在位置的思考，从网上了解到，这个flag的设立位置通常是登录IP，在这里也就是攻击者的IP地址。</p>
 <h4 id="2）Redis流量"><a href="#2）Redis流量" class="headerlink" title="2）Redis流量"></a>2）Redis流量</h4><p><strong>题目：</strong></p>
 <p>一个名为redis.pcap的流量包</p>
 <p><strong>个人思路：</strong></p>
 <p>通解方法，Wireshark打开之后，直接搜索”ctfhub“、”flag“等关键词，发现搜到像是flag的东西，但是不完整，看到flag2之后想到应该是拼接flag。</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/5.png" alt></p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/6.png" alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/6.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>直接就得到了完整flag</p>
 <p><strong>研究学习：</strong></p>
 <p>使用NoSQL（非关系型数据库）进行存储，</p>
@@ -357,14 +357,14 @@
 <p>一个名为mongodb.pcap的文件</p>
 <p><strong>个人思路：</strong></p>
 <p>仍然是用Wireshark打开之后，过滤MongoDB流量，直接搜索“ctfhub”，一个一个审计便能找到flag</p>
-<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/7.png" alt></p>
+<p><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/7.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>研究学习：</strong></p>
 <p>使用NoSQL进行文档存储，MongoDB使用类似于JSON的查询语法。</p>
 <h4 id><a href="#" class="headerlink" title=" "></a> </h4><h4 id="4）Data（ICMP）"><a href="#4）Data（ICMP）" class="headerlink" title="4）Data（ICMP）"></a>4）Data（ICMP）</h4><p><strong>题目：</strong></p>
 <p>ping 也可以携带数据 ？一个名为icmp_data.pcap的流量包</p>
 <p><strong>个人思路：</strong></p>
 <p>使用Wireshark打开，过滤ICMP流量，查看字符串，发现结尾有很多WWW……，搜索常见字符串无果，在翻动时发现每条流量的字符串中都有A<em>WWWW……的结构（只有</em>代表的字符改变），从头开始看，发现每条“reply”的字符构成“ctfhub{……}”，一个一个记录下来，得到flag。</p>
-<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png"><img src="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png" alt></a></p>
+<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png"><img src="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/8.png" srcset="/img/loading.gif" lazyload alt></a></p>
 <p><strong>研究学习：</strong></p>
 <ul>
 <li><strong>ICMP</strong>（Internet Control Message Protocol，互联网控制消息协议）是一种网络层协议，主要用于在IP网络中传递控制和错误信息。它常用于网络设备之间的通信，帮助进行网络故障排除、错误报告和网络管理。</li>
@@ -508,7 +508,7 @@
 <p>一个icmp_len.pcap文件</p>
 <p><strong>个人思路：</strong></p>
 <p>使用Wireshark打开，过滤ICMP流量，搜索常见字符串无果，再逐个审计，发现并没有直接的字符存在。联系题目<strong>lenth</strong>，发现每个Data的字符串长度都不一样，记录每个字符</p>
-<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png"><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png" alt></a></p>
+<p><a href="https://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png"><img src="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/9.png" srcset="/img/loading.gif" lazyload alt></a></p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">99</span> <span class="hljs-number">116</span> <span class="hljs-number">102</span> <span class="hljs-number">104</span> <span class="hljs-number">117</span> <span class="hljs-number">98</span> <span class="hljs-number">123</span> <span class="hljs-number">97</span> <span class="hljs-number">99</span> <span class="hljs-number">98</span> <span class="hljs-number">54</span> <span class="hljs-number">53</span> <span class="hljs-number">57</span> <span class="hljs-number">102</span> <span class="hljs-number">48</span> <span class="hljs-number">50</span> <span class="hljs-number">51</span> <span class="hljs-number">125</span><br></code></pre></td></tr></table></figure>
 <p>转换为ASCII字符,得到flag</p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">ctfhub&#123;acb<span class="hljs-number">659f023</span>&#125;<br></code></pre></td></tr></table></figure>
@@ -637,7 +637,7 @@
             
   
   
-    <article id="comments">
+    <article id="comments" lazyload>
       
   <div id="valine"></div>
   <script type="text/javascript">
@@ -830,6 +830,10 @@
 
 
 
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
