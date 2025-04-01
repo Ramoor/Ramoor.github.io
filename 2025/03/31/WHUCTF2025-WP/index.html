@@ -86,7 +86,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -327,25 +327,25 @@
                 
                 <h1 id="WP"><a href="#WP" class="headerlink" title="WP"></a>WP</h1><h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="签到-益智游戏"><a href="#签到-益智游戏" class="headerlink" title="[签到]益智游戏"></a>[签到]益智游戏</h3><p><strong>1.数独</strong></p>
 <p>数独还没做完，直接爆破就出了。</p>
-<p><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20002907.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20002907.png" alt></p>
 <p>得到<code>WHUCTF&#123;Little_games_reall</code></p>
 <p><strong>2.数织</strong></p>
 <p>队友很强，直接手搓了。</p>
-<p><img src="/2025/03/31/WHUCTF2025-WP/85d0624f43dd995308622fd597fe31cc.jpg" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2025/03/31/WHUCTF2025-WP/85d0624f43dd995308622fd597fe31cc.jpg" alt></p>
 <p>得到<code>y_train_your_brain_&amp;_play</code></p>
 <p><strong>3.鬼脚图</strong></p>
 <p>直接白给了。。。</p>
 <p>得到<code>_more_in_cn.puzzle_website&#125;</code></p>
 <h3 id="哪里有文档"><a href="#哪里有文档" class="headerlink" title="哪里有文档"></a>哪里有文档</h3><p>附件是一个docx文档，而且直接给出了part1。</p>
-<p><strong>part2：</strong><code>ctrl+A</code>一下，发现在文章最后，改一下字体颜色就看到了。<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-29%20112623%201.png" srcset="/img/loading.gif" lazyload alt="|525"></p>
-<p><strong>part3：</strong><code>ctrl+F</code>一下，搜索part，发现一个非常隐秘的文本框，放大一下，找到part3<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20004431.png" srcset="/img/loading.gif" lazyload alt="|525"><br><strong>part4：</strong> 由于docx文档本质是压缩包，可以解压出一个文件夹，在<code>docprops</code>文件夹下边的<code>custom</code>文件中发现part4.<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20004633.png" srcset="/img/loading.gif" lazyload alt><br><strong>part5：</strong> 在<code>word</code>文件夹下边的<code>vbaProject.bin</code>文件中发现非疑似part5的字符串，后来试了一下还真是。<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20004817.png" srcset="/img/loading.gif" lazyload alt><br><strong>解密器：</strong> 在文档页脚的地方发现有东西，换一下字体颜色便发现，<code>by Abracadabra encoder</code>，上网搜索之后发现是魔曰。</p>
+<p><strong>part2：</strong><code>ctrl+A</code>一下，发现在文章最后，改一下字体颜色就看到了。<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-29%20112623%201.png" alt="|525"></p>
+<p><strong>part3：</strong><code>ctrl+F</code>一下，搜索part，发现一个非常隐秘的文本框，放大一下，找到part3<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20004431.png" alt="|525"><br><strong>part4：</strong> 由于docx文档本质是压缩包，可以解压出一个文件夹，在<code>docprops</code>文件夹下边的<code>custom</code>文件中发现part4.<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20004633.png" alt><br><strong>part5：</strong> 在<code>word</code>文件夹下边的<code>vbaProject.bin</code>文件中发现非疑似part5的字符串，后来试了一下还真是。<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-31%20004817.png" alt><br><strong>解密器：</strong> 在文档页脚的地方发现有东西，换一下字体颜色便发现，<code>by Abracadabra encoder</code>，上网搜索之后发现是魔曰。</p>
 <p><strong>解密步骤：</strong> 将5段part拼接后进行base64解码，得到一段文字，</p>
 <p><code>鹏无局，无以致天，光有能听，竹有善然，虽无楼鸢之彰，亦报以畅看瀚水，求将与其家，而任想买以星者，星也，后曲之雨，选之霞而称之茶也，寒冰悠见，写者旅之，叶流而清梦看也，报在莹鹤。</code></p>
 <p>放在魔曰解码器中解码得到flag</p>
 <p><code>WHUCTF&#123;always_follow_your_heart&#125;</code></p>
-<h3 id="行星防御理事会"><a href="#行星防御理事会" class="headerlink" title="行星防御理事会"></a>行星防御理事会</h3><p>附件为一个wav音频，放到Audacity中查看波形图，觉得类似sstv，放入RX-SSTV工具中<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-29%20164824.png" srcset="/img/loading.gif" lazyload alt="|625"><br>发现有密码<code>2024-YR4</code>，联想需要密码的wav音频隐写，在Deepsound中输入密码后得到附件，解压后是一个变形过的二维码和一个变形脚本。编写恢复脚本</p>
+<h3 id="行星防御理事会"><a href="#行星防御理事会" class="headerlink" title="行星防御理事会"></a>行星防御理事会</h3><p>附件为一个wav音频，放到Audacity中查看波形图，觉得类似sstv，放入RX-SSTV工具中<br><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-29%20164824.png" alt="|625"><br>发现有密码<code>2024-YR4</code>，联想需要密码的wav音频隐写，在Deepsound中输入密码后得到附件，解压后是一个变形过的二维码和一个变形脚本。编写恢复脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">m: <span class="hljs-built_in">int</span>, arr: np.ndarray</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;将数组分割为 m x m 块，并将每块顺时针旋转 90 度&quot;&quot;&quot;</span><br>    h, w = arr.shape<br>    new_arr = np.zeros_like(arr)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, h, m):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, w, m):<br>            block = arr[i:i + m, j:j + m]<br>            rotated_block = np.rot90(block, k=-<span class="hljs-number">1</span>)  <span class="hljs-comment"># 顺时针旋转90度</span><br>            new_arr[i:i + m, j:j + m] = rotated_block<br><br>    <span class="hljs-keyword">return</span> new_arr<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-comment"># 读取图片</span><br>    img = Image.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;QR_modified.png&quot;</span>).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>    imgarr = (np.array(img) // <span class="hljs-number">255</span>).astype(np.uint8)<br>    imgarr = imgarr[::<span class="hljs-number">18</span>, ::<span class="hljs-number">18</span>]<br><br>    imgarr = rotate(<span class="hljs-number">5</span>, imgarr)<br><br>    <span class="hljs-comment"># 保存图片</span><br>    newimgarr = np.kron(imgarr, np.ones((<span class="hljs-number">18</span>, <span class="hljs-number">18</span>)))<br>    newimg = Image.fromarray(newimgarr * <span class="hljs-number">255</span>).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>    newimg.save(<span class="hljs-string">&quot;QR.png&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;图片已保存为 QR.png&quot;</span>)<br><span class="hljs-comment">#WHUCTF&#123;much_ado_about_nothing&#125;</span><br></code></pre></td></tr></table></figure>
-<p><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-29%20171521.png" srcset="/img/loading.gif" lazyload alt="|225"><br>扫码得到flag。</p>
+<p><img src="/2025/03/31/WHUCTF2025-WP/屏幕截图%202025-03-29%20171521.png" alt="|225"><br>扫码得到flag。</p>
 <h3 id="青轴还是红轴"><a href="#青轴还是红轴" class="headerlink" title="青轴还是红轴"></a>青轴还是红轴</h3><p>wireshark打开附件，发现全是USB协议流量，结合题目猜测是键盘流量。</p>
 <p>在kali中使用tshark提取键盘流量</p>
 <p><code>tshark -r raw_keyboard.pcapng -T fields -e usbhid.data &gt; usbdata.txt</code></p>
@@ -539,7 +539,7 @@ P^{2\gamma} & 0 & 0 & 0\\
             
   
   
-    <article id="comments" lazyload>
+    <article id="comments">
       
   <div id="valine"></div>
   <script type="text/javascript">
@@ -732,10 +732,6 @@ P^{2\gamma} & 0 & 0 & 0\\
 
 
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
 
 
 

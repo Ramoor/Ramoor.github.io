@@ -87,7 +87,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -327,7 +327,7 @@
               <div class="markdown-body">
                 
                 <h1 id="Unity-Cardboard-XR应用部署（以华为手机为例）"><a href="#Unity-Cardboard-XR应用部署（以华为手机为例）" class="headerlink" title="Unity Cardboard XR应用部署（以华为手机为例）"></a>Unity Cardboard XR应用部署（以华为手机为例）</h1><h2 id="1、创建项目"><a href="#1、创建项目" class="headerlink" title="1、创建项目"></a>1、创建项目</h2><p>我这里使用的版本是2022，需要添加Android模块，可通过下图方式添加。</p>
-<p><img src="/2024/12/04/Unity3D/1.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/1.png" alt></p>
 <p>接下来创建3D项目.</p>
 <h2 id="2、导入Unity-SDK"><a href="#2、导入Unity-SDK" class="headerlink" title="2、导入Unity SDK"></a>2、导入Unity SDK</h2><blockquote>
 <ul>
@@ -345,14 +345,14 @@
 <li><p>若出现导入白模情况，解决方法如下</p>
 </li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/2.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/2.png" alt></p>
 <ul>
 <li>对<strong>Main camera</strong>添加<strong>Tracked Pose Driver</strong>组件。并在组件中的<strong>Tracking Type</strong>改为<strong>Rotation Only</strong>。</li>
 </ul>
 <h2 id="3、配置Android项目"><a href="#3、配置Android项目" class="headerlink" title="3、配置Android项目"></a>3、配置Android项目</h2><ul>
 <li>在<strong>file</strong> -&gt; <strong>Build Settings</strong> 中选择Android -&gt; <strong>Switch Platform</strong>切换到Android平台</li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/3.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/3.png" alt></p>
 <ul>
 <li><p>选择 <strong>Add Open Scenes</strong>，导入你的素材所在的场景。</p>
 </li>
@@ -367,7 +367,7 @@
 <li><p>将<strong>默认方向</strong>设置为<strong>横向向右</strong>。</p>
 </li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/4.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/4.png" alt></p>
 <ul>
 <li>停用<strong>Optimized Frame Pacing</strong>。(提高流畅度)</li>
 </ul>
@@ -375,12 +375,12 @@
 <ul>
 <li>设置API版本</li>
 </ul>
-<p><img src="/2024/12/04/Unity3D/5.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/5.png" alt></p>
 <ul>
 <li>设置Graphics  APIs</li>
 </ul>
 <p>取消勾选<strong>Auto Graphics API</strong>,然后选择<strong>OpenGLES2</strong>，接着将<strong>Color Space</strong>中选择<strong>Gamma</strong>，在<strong>Lightmap Encoding</strong>和<strong>HDR Cubemap Encoding</strong>中均改成<strong>Low Quality</strong>。如下图所示。</p>
-<p><img src="/2024/12/04/Unity3D/6.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/6.png" alt></p>
 <ul>
 <li><strong>在gradle中添加依赖项</strong></li>
 </ul>
@@ -392,18 +392,18 @@
 <blockquote>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache">  <span class="hljs-attribute">implementation</span> &#x27;androidx.appcompat:appcompat:<span class="hljs-number">1</span>.<span class="hljs-number">6</span>.<span class="hljs-number">1</span>&#x27;  <br>  <span class="hljs-attribute">implementation</span> &#x27;com.google.android.gms:play-services-vision:<span class="hljs-number">20</span>.<span class="hljs-number">1</span>.<span class="hljs-number">3</span>&#x27;  <br>  <span class="hljs-attribute">implementation</span> &#x27;com.google.android.material:material:<span class="hljs-number">1</span>.<span class="hljs-number">6</span>.<span class="hljs-number">1</span>&#x27;  <br>  <span class="hljs-attribute">implementation</span> &#x27;com.google.protobuf:protobuf-javalite:<span class="hljs-number">3</span>.<span class="hljs-number">19</span>.<span class="hljs-number">4</span>&#x27;<br></code></pre></td></tr></table></figure>
 </blockquote>
-<p><img src="/2024/12/04/Unity3D/7.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/7.png" alt></p>
 <p>3.将以下代码行添加到 <code>Assets/Plugins/Android/gradleTemplate.properties</code></p>
 <blockquote>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini">  <span class="hljs-attr">android.enableJetifier</span>=<span class="hljs-literal">true</span>  <br>  <span class="hljs-attr">android.useAndroidX</span>=<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 </blockquote>
-<p><img src="/2024/12/04/Unity3D/8.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/8.png" alt></p>
 <ul>
 <li>前往 <strong>Project Settings</strong> &gt;<strong>XR 插件管理</strong>,选择 <strong>Plug-in Providers</strong>（插件提供程序）下的 <code>Cardboard XR Plugin</code>。</li>
 </ul>
 </blockquote>
 <h2 id="4、部署到安卓手机"><a href="#4、部署到安卓手机" class="headerlink" title="4、部署到安卓手机"></a>4、部署到安卓手机</h2><p>在<strong>Build Settings</strong>中选择<strong>build</strong>生成apk并安装到手机查看效果，效果如下。</p>
-<p><img src="/2024/12/04/Unity3D/9.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2024/12/04/Unity3D/9.png" alt></p>
 
                 
               </div>
@@ -518,7 +518,7 @@
             
   
   
-    <article id="comments" lazyload>
+    <article id="comments">
       
   <div id="valine"></div>
   <script type="text/javascript">
@@ -711,10 +711,6 @@
 
 
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
 
 
 
