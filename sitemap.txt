@@ -1,3 +1,4 @@
+http://ramoor.github.io/Template/math.html
 http://ramoor.github.io/2025/03/31/%E6%B5%8B%E8%AF%95/
 http://ramoor.github.io/2025/03/31/WHUCTF2025-WP/
 http://ramoor.github.io/2024/12/04/Unity3D/
