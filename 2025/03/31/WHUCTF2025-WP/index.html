@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://ramoor.github.io/2025/03/31/WHUCTF2025-WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-03-29%20164824.png">
 <meta property="og:image" content="http://ramoor.github.io/2025/03/31/WHUCTF2025-WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-03-29%20171521.png">
 <meta property="article:published_time" content="2025-03-31T10:26:41.000Z">
-<meta property="article:modified_time" content="2025-04-01T06:12:49.432Z">
+<meta property="article:modified_time" content="2025-04-01T14:34:39.824Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -277,7 +277,7 @@
         
         
         
-          31 分钟
+          30 分钟
         
       </span>
     
@@ -372,7 +372,18 @@
 <p><strong>分析：</strong> 可以看出，flag被分成了四部分，而且前两个之间存在关系，后两个之间存在关系。</p>
 <p>重点在于<code>p2 = (p1 - 1) // 2</code>,<code>p2 = (p1 + 1) // 2</code>，我们来逐个分析。</p>
 <p><strong>Part1：</strong></p>
-<p>$$<br>\because p_2&#x3D;(p_1-1)&#x2F;&#x2F;2 \<br>\therefore 2<em>N_2&#x3D;2</em>p_2<em>q_2&#x3D;(p_1-1)q_2 \<br>即 p_1-1|2</em>N2 \<br>\therefore a^{2<em>N_2} \equiv a^{q_2</em>(p1-1)}\equiv1 \mod p_1 \<br>\therefore a^{2<em>N_2}-1 &#x3D; kp_1 \<br>当然 a^{2</em>N_2}-1 \mod N_1 &#x3D; kp_1 \<br>\therefore p_1&#x3D;gcd(a^{2*N2}-1 \mod N_1,N_1)<br>$$</p>
+<span>
+$$
+\because p_2=(p_1-1)//2 \\
+\therefore 2*N_2=2*p_2*q_2=(p_1-1)q_2 \\
+即 p_1-1|2*N2 \\ 
+\therefore a^{2*N_2} \equiv a^{q_2*(p1-1)}\equiv1 \mod p_1 \\
+\therefore a^{2*N_2}-1 = kp_1 \\
+当然 a^{2*N_2}-1 \mod N_1 = kp_1 \\
+\therefore p_1=gcd(a^{2*N2}-1 \mod N_1,N_1)
+$$
+</span>
+
 <p>之后$q_1,p_2,q_2$便都能求出来，之后就是简单的RSA</p>
 <p><strong>Part2:</strong></p>
 <p>对于william p+1光滑算法中，p+1为光滑数，设B为p+1最大的光滑因子，要求得下标为B的阶乘B!卢卡斯序列，目的就是保证(p+1)|B!，而本题中能够看出$2*N_4&#x3D;(p_3+1)*q_4$必然是$(p_3+1)$的整数倍。</p>
@@ -389,13 +400,47 @@
 <p><strong>参考：</strong> <a target="_blank" rel="noopener" href="https://tover.xyz/p/wieners-lattices-equations/">Wiener’s v.s Lattices —— Ax≡y(mod P)的方程解法笔记 | Tover’s Blog</a></p>
 <p><strong>分析：</strong> flag又被分成了两部分，感谢出题人总是先送我一半flag。</p>
 <p><strong>part1:</strong> 非常常规的格，构造</p>
-<p>$$<br>(a[0],a[1],k)<br>\begin{pmatrix}<br>1 &amp; 0 &amp; X[0] \<br>0 &amp; 1 &amp; X[1] \<br>0 &amp; 0 &amp; p    \<br>\end{pmatrix}<br>&#x3D;(a[0],a[1],b_1+b_2)<br>$$</p>
+<span>
+$$
+(a[0],a[1],k)
+\begin{pmatrix}
+1 & 0 & X[0] \\
+0 & 1 & X[1] \\
+0 & 0 & p    \\
+\end{pmatrix}
+=(a[0],a[1],b_1+b_2)
+$$
+</span>
+
 <p><strong>part2:</strong></p>
 <p>参考了大佬博客之后才有思路，总之就是要把X[2],X[3]分开来讨论，构造格</p>
 <p>AM&#x3D;B :</p>
-<p>$$<br>(k_1k_2,a_1k_2,a_2k_1,a_1a_2) \<br>\begin{pmatrix}<br>1 &amp; P &amp; 0 &amp; P^2 \<br>0 &amp; X_1 &amp; X_1 &amp; X_1P \<br>0 &amp; 0 &amp; -X_2 &amp; X_2P \<br>0 &amp; 0 &amp; 0 &amp; X_1X_2\<br>\end{pmatrix}\<br>&#x3D;(k_1k_2,k_2(b_1-sk_1),b_1k_2-b_2k_1,(b_1-k_1s)(b_2-k_2s)<br>$$</p>
+<span>
+$$
+(k_1k_2,a_1k_2,a_2k_1,a_1a_2) \\
+\begin{pmatrix}
+1 & P & 0 & P^2 \\
+0 & X_1 & X_1 & X_1P \\
+0 & 0 & -X_2 & X_2P \\
+0 & 0 & 0 & X_1X_2\\ 
+\end{pmatrix}\\
+=(k_1k_2,k_2(b_1-sk_1),b_1k_2-b_2k_1,(b_1-k_1s)(b_2-k_2s)
+$$
+</span>
+
 <p>由于这个格并不满足<strong>Hermite定理</strong>，因此需要配平，配平系数可以参考大佬博客。</p>
-<p>$$<br>B \approx (P^{2\alpha},P^{2\alpha+\gamma},P^{\alpha+\beta},P^{2\alpha+2\gamma})\<br>\begin{pmatrix}<br>P^{2\gamma} &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; P^{\gamma} &amp; 0 &amp; 0 \<br>0 &amp; 0 &amp; P^{\alpha-\beta+2\gamma} &amp; 0 \<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{pmatrix}<br>$$</p>
+<span>
+$$
+B \approx (P^{2\alpha},P^{2\alpha+\gamma},P^{\alpha+\beta},P^{2\alpha+2\gamma})\\
+\begin{pmatrix}
+P^{2\gamma} & 0 & 0 & 0\\
+0 & P^{\gamma} & 0 & 0 \\
+0 & 0 & P^{\alpha-\beta+2\gamma} & 0 \\
+0 & 0 & 0 & 1\\
+\end{pmatrix}
+$$
+</span>
+
 <p>其中$\gamma&#x3D;\frac12,\alpha&#x3D;\frac{5}{14},\beta&#x3D;0$</p>
 <p>求出矩阵B之后再乘上M的逆，从而得到矩阵A，再利用a中关系求出$a_1,a_2$</p>
 <p><strong>解答：</strong></p>
