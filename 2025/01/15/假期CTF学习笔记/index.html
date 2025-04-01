@@ -27,7 +27,7 @@
 <meta property="og:description" content="Crypto： 一、模运算  二项式定理：   \[ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n \]   针对RSA：\(N&#x3D;p*q\) \(x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n\)   二、AES Python中的简单实现：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-15T13:50:32.000Z">
-<meta property="article:modified_time" content="2025-03-31T11:41:31.146Z">
+<meta property="article:modified_time" content="2025-04-01T04:08:41.675Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -942,5 +942,20 @@ A3：最后修改文件时间 A5 4A：最后修改文件日期 21 38 76
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
