@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/2025/04/01/%E6%B5%8B%E8%AF%95/</loc>
-    
-    <lastmod>2025-04-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://ramoor.github.io/2025/02/28/Crypto%E9%9A%8F%E7%AC%94/</loc>
     
     <lastmod>2025-04-01</lastmod>
@@ -165,13 +156,6 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/WriteUp/</loc>
-    <lastmod>2025-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ramoor.github.io/categories/blog/</loc>
     <lastmod>2025-04-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -180,6 +164,13 @@
   
   <url>
     <loc>http://ramoor.github.io/categories/Deployment/</loc>
+    <lastmod>2025-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ramoor.github.io/categories/WriteUp/</loc>
     <lastmod>2025-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
