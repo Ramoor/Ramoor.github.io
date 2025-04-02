@@ -83,7 +83,7 @@
     <link href="/2025/04/02/%E6%96%87%E4%BB%B6%E5%A4%B4/"/>
     <url>/2025/04/02/%E6%96%87%E4%BB%B6%E5%A4%B4/</url>
     
-    <content type="html"><![CDATA[<h1 id="文件头"><a href="#文件头" class="headerlink" title="文件头"></a>文件头</h1><p><strong>gif</strong>：<code>47 49 46``(GIF</code>)</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="文件头"><a href="#文件头" class="headerlink" title="文件头"></a>文件头</h1><p><strong>png:</strong> <code>89 50 4E 47</code> <code>(‰PNG)</code><br><strong>gif:</strong><code>47 49 46</code> <code>(GIF)</code><br><strong>zip:</strong> <code>50 4B 03 04</code> <code>(PK..)</code></p>]]></content>
     
     
     <categories>
