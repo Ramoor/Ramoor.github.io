@@ -19,23 +19,22 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。 遇见的问题首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了hexo-renderer-markdown">
+    <meta name="description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$   f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j   $$         构造如下矩阵：      $$   S_{f,g}:&#x3D; \begin{bmatr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo+Fulid主题中的Latex渲染问题">
-<meta property="og:url" content="http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="结式与RSA">
+<meta property="og:url" content="http://ramoor.github.io/2025/04/02/%E7%BB%93%E5%BC%8F%E4%B8%8ERSA/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="前言最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。 遇见的问题首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了hexo-renderer-markdown">
+<meta property="og:description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$   f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j   $$         构造如下矩阵：      $$   S_{f,g}:&#x3D; \begin{bmatr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-02T08:15:57.000Z">
-<meta property="article:modified_time" content="2025-04-02T09:42:42.731Z">
+<meta property="article:published_time" content="2025-04-02T11:58:16.000Z">
+<meta property="article:modified_time" content="2025-04-02T12:03:05.696Z">
 <meta property="article:author" content="Ramoor">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="latex">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hexo+Fulid主题中的Latex渲染问题 - Ramoor</title>
+  <title>结式与RSA - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo+Fulid主题中的Latex渲染问题"></span>
+            <span id="subtitle" data-typed-text="结式与RSA"></span>
           
         </div>
 
@@ -246,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-02 16:15" pubdate>
-          2025年4月2日 下午
+        <time datetime="2025-04-02 19:58" pubdate>
+          2025年4月2日 晚上
         </time>
       </span>
     
@@ -258,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          320 字
         
       </span>
     
@@ -269,7 +268,7 @@
         
         
         
-          9 分钟
+          3 分钟
         
       </span>
     
@@ -314,53 +313,64 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hexo+Fulid主题中的Latex渲染问题</h1>
+            <h1 id="seo-header">结式与RSA</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。</p>
-<h2 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h2><p>首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了<code>hexo-renderer-markdown-it-plus</code>+<code>katex</code> 然鹅并没有解决我的问题。<br>后来在大佬的指点下使用了更为稳定的<code>hexo-renderer-kramed</code>+<code>mathjax</code>，但是不知道是CDN的问题问题还是怎样，在本地部署时能好好的，但是在部署到远端服务器之后，网页还是渲染失败，查看了一下控制台， 发现CDN默认访问<code>http</code>，由于<code>https</code>和<code>http</code>不能混用，一般浏览器默认会拒绝访问，若你在浏览器左上角<strong>小锁</strong>的<strong>此网站权限</strong>中将<strong>不安全内容</strong>设为开启，便能渲染成功。（我暂时没找到这个方案的解决办法，有解决办法的师傅可以评论区告诉我。。。）</p>
-<h2 id="引入脚本解决Latex渲染问题"><a href="#引入脚本解决Latex渲染问题" class="headerlink" title="引入脚本解决Latex渲染问题"></a>引入脚本解决Latex渲染问题</h2><p>最后，我使用了引入<code>javascript</code>脚本的方法解决了这个问题，下面介绍具体实现方法。</p>
-<ul>
-<li>首先，检查markdown渲染环境，最好使用默认的<code>hexo-renderer-marked</code> ,如果有其他的，最好先卸载掉，否则会出现渲染冲突的问题</li>
+                <h1 id="Crypto中的结式"><a href="#Crypto中的结式" class="headerlink" title="Crypto中的结式"></a>Crypto中的结式</h1><p>前几天做题遇见了，记录一下。</p>
+<h2 id="结式（resultant）"><a href="#结式（resultant）" class="headerlink" title="结式（resultant）"></a>结式（resultant）</h2><ul>
+<li><p><strong>概念：</strong> 在域中，多项式的结式是Sylvester Matrix的行列式。</p>
+</li>
+<li><p><strong>定义：</strong> 有两个多项式</p>
+</li>
 </ul>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall hexo-renderer-kramed<br><span class="hljs-built_in">npm</span> uninstall hexo-renderer-pandoc<br><br><span class="hljs-built_in">npm</span> install hexo-renderer-marked<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>如果你是默认设置的话，就没必要做这一步了。</p>
-</blockquote>
+<span>
+$$
+  f(x)=\sum_{i=0}^ma_ix^i \\
+g(x)=\sum_{j=0}^nb_jx^j
+  $$
+  </span>
+  
+<p>  构造如下矩阵：</p>
+  <span>
+  $$
+  S_{f,g}:=
+\begin{bmatrix}
+a_m  & a_{m-1} & \cdots & a_1 & a_0 & & \\
+\\
+& \ddots & \ddots & & \ddots & \ddots\\
+& & a_m & a_{m-1} & \dots & a_1 & a_0 & \\
+
+<p>b_n  &amp; b_{n-1} &amp; \cdots &amp; b_1 &amp; b_0 &amp; &amp; \<br>\<br>&amp; \ddots &amp; \ddots &amp; &amp; \ddots &amp; \ddots\<br>&amp; &amp; b_n &amp; b_{n-1} &amp; \dots &amp; b_1 &amp; b_0 &amp; \</p>
+<p>\end{bmatrix}<br>  $$<br>  </p></span><p></p>
+<p>  其中前$n$行是$f(x)$,后$m$行是$g(x)$</p>
+<p>  该矩阵称为<strong>Sylvester矩阵</strong>，它的<strong>行列式</strong>为 <strong>$res(f,g)$</strong>,称为$f,g$的<strong>结式</strong>。</p>
 <ul>
-<li>引入脚本，这里分两种方式<ul>
-<li>一、在博客文章的md文件中引入<code>javascript</code>脚本，推荐写好模板，在需要数学公式的博客文章直接引入模板。</li>
-<li>二、<code>hexo 5.0</code>以上的可以使用注入器，可在<code>/themes/fluid/scripts</code>中添加<code>js</code>文件，下面两个任选其一。<br><code>mathjax.js</code></li>
+<li><p><strong>应用：</strong></p>
+<ul>
+<li><p><strong>判断互素：</strong> 当且仅当$res(f,g)&#x3D;0$时，两多项式存在公共根。</p>
+</li>
+<li><p><strong>消元：</strong> 假设有</p>
+</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs gml">hexo.extend.injector.register(<span class="hljs-string">&#x27;body_end&#x27;</span>, `<br>&lt;<span class="hljs-variable language_">script</span>&gt;  <br>MathJax = &#123;  <br>	tex: &#123;  <br>		inlineMath: [[<span class="hljs-string">&#x27;$&#x27;</span>, <span class="hljs-string">&#x27;$&#x27;</span>], [<span class="hljs-string">&#x27;\\(&#x27;</span>, <span class="hljs-string">&#x27;\\)&#x27;</span>]]  <br>	&#125;  <br>&#125;;  <br>&lt;/<span class="hljs-variable language_">script</span>&gt;  <br>&lt;<span class="hljs-variable language_">script</span> <span class="hljs-variable language_">id</span>=<span class="hljs-string">&quot;MathJax-script&quot;</span> async  <br>	src=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&quot;</span>&gt;  <br>&lt;/<span class="hljs-variable language_">script</span>&gt;<br>`, <span class="hljs-string">&#x27;default&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<p><code>katex.js</code></p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs xquery">hexo.extend.injector.register(<span class="hljs-string">&#x27;body_end&#x27;</span>, `<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>&lt;script defer src=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js&quot;</span> integrity=<span class="hljs-string">&quot;sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05&quot;</span> crossorigin=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">&#123;</span><br><span class="language-xquery">        renderMathInElement<span class="hljs-built_in">(document</span>.body, &#123;</span><br><span class="language-xquery">          // customised options</span><br><span class="language-xquery">          // • auto-render specific keys, e.g.:</span><br><span class="language-xquery">        delimiters: [</span><br><span class="language-xquery">            &#123;left: <span class="hljs-string">&#x27;$$&#x27;</span>, right: <span class="hljs-string">&#x27;$$&#x27;</span>, display:<span class="hljs-built_in"> true</span>&#125;</span><span class="language-xml">,</span><br><span class="language-xml">            </span><span class="language-xquery">&#123;left: <span class="hljs-string">&#x27;$&#x27;</span>, right: <span class="hljs-string">&#x27;$&#x27;</span>, display:<span class="hljs-built_in"> false</span>&#125;</span><span class="language-xml"><span class="language-javascript">,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-comment">//</span></span></span><span class="language-xquery">&#123;left: <span class="hljs-string">&#x27;\\(&#x27;</span>, right: <span class="hljs-string">&#x27;\\)&#x27;</span>, display:<span class="hljs-built_in"> false</span>&#125;</span><span class="language-xml"><span class="language-javascript">,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-comment">//</span></span></span><span class="language-xquery">&#123;left: <span class="hljs-string">&#x27;\\[&#x27;</span>, right: <span class="hljs-string">&#x27;\\]&#x27;</span>, display:<span class="hljs-built_in"> true</span>&#125;</span><span class="language-xml"><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">        ],</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-comment">// • rendering keys, e.g.:</span></span></span><br><span class="language-javascript"><span class="language-xml">        throwOnError : <span class="hljs-literal">false</span></span></span><br><span class="language-javascript"><span class="language-xml">        &#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br>`, <span class="hljs-string">&#x27;default&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<ul>
-<li>注意，在使用矩阵时，外部可用<code>&lt;sapn&gt;&lt;/sapn&gt;</code> 或<code>&lt;div&gt;&lt;/div&gt;</code>包裹，以解决<code>\\</code>的转义问题。</li>
-</ul>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs livescript">&lt;span&gt;<br>$$<br> <span class="hljs-string">\begin&#123;bmatrix&#125;</span><br><span class="hljs-number">2</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-string">\cdots</span> &amp; m_1<span class="hljs-string">\\</span><br><span class="hljs-number">0</span> &amp; <span class="hljs-number">2</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-string">\cdots</span> &amp; m_2<span class="hljs-string">\\</span><br><span class="hljs-number">0</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-number">2</span> &amp; <span class="hljs-string">\cdots</span> &amp; m_3<span class="hljs-string">\\</span><br><span class="hljs-string">\vdots</span> &amp; <span class="hljs-string">\vdots</span> &amp; <span class="hljs-string">\vdots</span> &amp; <span class="hljs-string">\ddots</span> &amp; <span class="hljs-string">\vdots\\</span><br><span class="hljs-number">1</span> &amp; <span class="hljs-number">1</span> &amp; <span class="hljs-number">1</span> &amp; <span class="hljs-string">\cdots</span> &amp; <span class="hljs-number">1</span><span class="hljs-string">\\</span><br><span class="hljs-string">\end&#123;bmatrix&#125;</span><br>$$<br>&lt;/span&gt;<br></code></pre></td></tr></table></figure>
-
-<p>未加<code>&lt;span&gt;&lt;/span&gt;</code>:</p>
-<p>$$<br>\begin{bmatrix}<br>2 &amp; 0 &amp; 0 &amp; \cdots &amp; m_1\<br>0 &amp; 2 &amp; 0 &amp; \cdots &amp; m_2\<br>0 &amp; 0 &amp; 2 &amp; \cdots &amp; m_3\<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1\<br>\end{bmatrix}<br>$$</p>
-<p>加了<code>&lt;span&gt;&lt;/span&gt;</code>:</p>
-<span>
+<span>  
 $$
- \begin{bmatrix}
-2 & 0 & 0 & \cdots & m_1\\
-0 & 2 & 0 & \cdots & m_2\\
-0 & 0 & 2 & \cdots & m_3\\
-\vdots & \vdots & \vdots & \ddots & \vdots\\
-1 & 1 & 1 & \cdots & 1\\
-\end{bmatrix}
-$$
+    \begin{cases}
+F(x,y)=0 \\
+G(x,y)=0
+\end{cases}
+    $$
 </span>
+    
+<pre><code class="hljs">将$y$视为常数，此时$f(x),g(x)$有公因子，因此令$res(f,g)=0$可以解出$y$，再代入原方程便可以解出$x$。代码示例：
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这确实是个挺原始的方法，虽然写矩阵时有点小麻烦，但确实挺好用，如果你有什么更好的方法，可用告诉我，有什么问题也欢迎提出。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.kevinchu.top/2023/09/12/hexo-supports-latex/">Hexo支持LaTeX数学公式渲染 - KEVIN’S BLOG (kevinchu.top)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br>f1 =<span class="hljs-comment">#x,y的表达式1</span><br>f2 =<span class="hljs-comment">#x,y的表达式2</span><br>h = f1.sylvester_matrix(f2, y).det()         <span class="hljs-comment">#利用结式消掉y</span><br>roots = h.univariate_polynomial().roots()    <span class="hljs-comment">#求出x</span><br><span class="hljs-built_in">print</span>(roots)<br></code></pre></td></tr></table></figure>
+
+&gt; 参考：[结式、伴随矩阵、特征多项式和2023江苏省数据安全竞赛的hardrsa | Tover&#39;s Blog](https://tover.xyz/p/resultant-companion-hardrsa/#Resultant)
+</code></pre>
 
                 
               </div>
@@ -379,7 +389,7 @@ $$
     
       <span class="category-chain">
         
-  <a href="/categories/blog/" class="category-chain-item">blog</a>
+  <a href="/categories/Study/" class="category-chain-item">Study</a>
   
   
 
@@ -394,9 +404,7 @@ $$
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/blog/" class="print-no-link">#blog</a>
-      
-        <a href="/tags/latex/" class="print-no-link">#latex</a>
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
     </div>
   
@@ -408,8 +416,8 @@ $$
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo+Fulid主题中的Latex渲染问题</div>
-      <div>http://ramoor.github.io/2025/04/02/Hexo+Fulid主题中的Latex渲染问题/</div>
+      <div>结式与RSA</div>
+      <div>http://ramoor.github.io/2025/04/02/结式与RSA/</div>
     </div>
     <div class="license-meta">
       
@@ -453,9 +461,9 @@ $$
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/02/Template/Front-matter/" title="{{title}}">
+                      <a href="/2025/04/02/%E6%A0%BC%E5%AF%86%E7%A0%81%E4%B8%93%E9%A2%98%E5%AD%A6%E4%B9%A0/" title="格密码专题学习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">{{title}}</span>
+                        <span class="hidden-mobile">格密码专题学习</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -463,8 +471,8 @@ $$
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/31/WHUCTF2025-WP/" title="WHUCTF2025 WP">
-                        <span class="hidden-mobile">WHUCTF2025 WP</span>
+                      <a href="/2025/04/02/%E6%96%87%E4%BB%B6%E5%A4%B4/" title="文件头">
+                        <span class="hidden-mobile">文件头</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -552,12 +560,6 @@ $$
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -776,49 +778,6 @@ $$
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
