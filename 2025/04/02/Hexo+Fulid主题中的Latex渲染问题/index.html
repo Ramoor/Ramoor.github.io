@@ -19,22 +19,23 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Crypto：一、模运算 二项式定理：    $$ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $$   针对RSA：$N&#x3D;p*q$ $x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n$  二、AESPython中的简单实现： 123456789">
+    <meta name="description" content="前言最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。 遇见的问题首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了hexo-renderer-markdown">
 <meta property="og:type" content="article">
-<meta property="og:title" content="假期CTF学习记录">
-<meta property="og:url" content="http://ramoor.github.io/2025/01/15/%E5%81%87%E6%9C%9FCTF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Hexo+Fulid主题中的Latex渲染问题">
+<meta property="og:url" content="http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Crypto：一、模运算 二项式定理：    $$ (x+y)^n&#x3D;(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $$   针对RSA：$N&#x3D;p*q$ $x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n$  二、AESPython中的简单实现： 123456789">
+<meta property="og:description" content="前言最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。 遇见的问题首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了hexo-renderer-markdown">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-15T13:50:32.000Z">
-<meta property="article:modified_time" content="2025-04-01T14:32:13.646Z">
+<meta property="article:published_time" content="2025-04-02T08:15:57.000Z">
+<meta property="article:modified_time" content="2025-04-02T09:12:18.536Z">
 <meta property="article:author" content="Ramoor">
-<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="latex">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>假期CTF学习记录 - Ramoor</title>
+  <title>Hexo+Fulid主题中的Latex渲染问题 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="假期CTF学习记录"></span>
+            <span id="subtitle" data-typed-text="Hexo+Fulid主题中的Latex渲染问题"></span>
           
         </div>
 
@@ -245,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-15 21:50" pubdate>
-          2025年1月15日 晚上
+        <time datetime="2025-04-02 16:15" pubdate>
+          2025年4月2日 下午
         </time>
       </span>
     
@@ -257,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          987 字
         
       </span>
     
@@ -268,7 +269,7 @@
         
         
         
-          14 分钟
+          9 分钟
         
       </span>
     
@@ -313,170 +314,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">假期CTF学习记录</h1>
+            <h1 id="seo-header">Hexo+Fulid主题中的Latex渲染问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Crypto："><a href="#Crypto：" class="headerlink" title="Crypto："></a>Crypto：</h1><h3 id="一、模运算"><a href="#一、模运算" class="headerlink" title="一、模运算"></a>一、模运算</h3><ul>
-<li><strong>二项式定理</strong>：</li>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。</p>
+<h2 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h2><p>首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了<code>hexo-renderer-markdown-it-plus</code>+<code>katex</code> 然鹅并没有解决我的问题。<br>后来在大佬的指点下使用了更为稳定的<code>hexo-renderer-kramed</code>+<code>mathjax</code>，但是不知道是CDN的问题问题还是怎样，在本地部署时能好好的，但是在部署到远端服务器之后，网页还是渲染失败，查看了一下控制台， 发现CDN默认访问<code>http</code>，由于<code>https</code>和<code>http</code>不能混用，一般浏览器默认会拒绝访问，若你在浏览器左上角<strong>小锁</strong>的<strong>此网站权限</strong>中将<strong>不安全内容</strong>设为开启，便能渲染成功。（我暂时没找到这个方案的解决办法，有解决办法的师傅可以私我。。。）</p>
+<h2 id="引入脚本解决Latex渲染问题"><a href="#引入脚本解决Latex渲染问题" class="headerlink" title="引入脚本解决Latex渲染问题"></a>引入脚本解决Latex渲染问题</h2><p>最后，我使用了引入<code>javascript</code>脚本的方法解决了这个问题，下面介绍具体实现方法。</p>
+<ul>
+<li>首先，检查markdown渲染环境，最好使用默认的<code>hexo-renderer-marked</code> ,如果有其他的，最好先卸载掉，否则会出现渲染冲突的问题</li>
 </ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall hexo-renderer-kramed<br><span class="hljs-built_in">npm</span> uninstall hexo-renderer-pandoc<br><br><span class="hljs-built_in">npm</span> install hexo-renderer-marked<br></code></pre></td></tr></table></figure>
 <blockquote>
+<p>如果你是默认设置的话，就没必要做这一步了。</p>
+</blockquote>
+<ul>
+<li>引入脚本，这里分两种方式<ul>
+<li>一、在博客文章的md文件中引入<code>javascript</code>脚本，推荐写好模板，在需要数学公式的博客文章直接引入模板。</li>
+<li>二、<code>hexo 5.0</code>以上的可以使用注入器，可在<code>/themes/fluid/scripts</code>中添加<code>js</code>文件，下面两个任选其一。<br><code>mathjax.js</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs gml">hexo.extend.injector.register(<span class="hljs-string">&#x27;body_end&#x27;</span>, `<br>&lt;<span class="hljs-variable language_">script</span>&gt;  <br>MathJax = &#123;  <br>	tex: &#123;  <br>		inlineMath: [[<span class="hljs-string">&#x27;$&#x27;</span>, <span class="hljs-string">&#x27;$&#x27;</span>], [<span class="hljs-string">&#x27;\\(&#x27;</span>, <span class="hljs-string">&#x27;\\)&#x27;</span>]]  <br>	&#125;  <br>&#125;;  <br>&lt;/<span class="hljs-variable language_">script</span>&gt;  <br>&lt;<span class="hljs-variable language_">script</span> <span class="hljs-variable language_">id</span>=<span class="hljs-string">&quot;MathJax-script&quot;</span> async  <br>	src=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&quot;</span>&gt;  <br>&lt;/<span class="hljs-variable language_">script</span>&gt;<br>`, <span class="hljs-string">&#x27;default&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p><code>katex.js</code></p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs xquery">hexo.extend.injector.register(<span class="hljs-string">&#x27;body_end&#x27;</span>, `<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br>&lt;script defer src=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js&quot;</span> integrity=<span class="hljs-string">&quot;sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05&quot;</span> crossorigin=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">&#123;</span><br><span class="language-xquery">        renderMathInElement<span class="hljs-built_in">(document</span>.body, &#123;</span><br><span class="language-xquery">          // customised options</span><br><span class="language-xquery">          // • auto-render specific keys, e.g.:</span><br><span class="language-xquery">        delimiters: [</span><br><span class="language-xquery">            &#123;left: <span class="hljs-string">&#x27;$$&#x27;</span>, right: <span class="hljs-string">&#x27;$$&#x27;</span>, display:<span class="hljs-built_in"> true</span>&#125;</span><span class="language-xml">,</span><br><span class="language-xml">            </span><span class="language-xquery">&#123;left: <span class="hljs-string">&#x27;$&#x27;</span>, right: <span class="hljs-string">&#x27;$&#x27;</span>, display:<span class="hljs-built_in"> false</span>&#125;</span><span class="language-xml"><span class="language-javascript">,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-comment">//</span></span></span><span class="language-xquery">&#123;left: <span class="hljs-string">&#x27;\\(&#x27;</span>, right: <span class="hljs-string">&#x27;\\)&#x27;</span>, display:<span class="hljs-built_in"> false</span>&#125;</span><span class="language-xml"><span class="language-javascript">,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-comment">//</span></span></span><span class="language-xquery">&#123;left: <span class="hljs-string">&#x27;\\[&#x27;</span>, right: <span class="hljs-string">&#x27;\\]&#x27;</span>, display:<span class="hljs-built_in"> true</span>&#125;</span><span class="language-xml"><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">        ],</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-comment">// • rendering keys, e.g.:</span></span></span><br><span class="language-javascript"><span class="language-xml">        throwOnError : <span class="hljs-literal">false</span></span></span><br><span class="language-javascript"><span class="language-xml">        &#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br>`, <span class="hljs-string">&#x27;default&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>注意，在使用矩阵时，外部可用<code>&lt;sapn&gt;&lt;/sapn&gt;</code> 或<code>&lt;div&gt;&lt;/div&gt;</code>包裹，以解决<code>\\</code>的转义问题。</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs livescript">&lt;span&gt;<br>$$<br> <span class="hljs-string">\begin&#123;bmatrix&#125;</span><br><span class="hljs-number">2</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-string">\cdots</span> &amp; m_1<span class="hljs-string">\\</span><br><span class="hljs-number">0</span> &amp; <span class="hljs-number">2</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-string">\cdots</span> &amp; m_2<span class="hljs-string">\\</span><br><span class="hljs-number">0</span> &amp; <span class="hljs-number">0</span> &amp; <span class="hljs-number">2</span> &amp; <span class="hljs-string">\cdots</span> &amp; m_3<span class="hljs-string">\\</span><br><span class="hljs-string">\vdots</span> &amp; <span class="hljs-string">\vdots</span> &amp; <span class="hljs-string">\vdots</span> &amp; <span class="hljs-string">\ddots</span> &amp; <span class="hljs-string">\vdots\\</span><br><span class="hljs-number">1</span> &amp; <span class="hljs-number">1</span> &amp; <span class="hljs-number">1</span> &amp; <span class="hljs-string">\cdots</span> &amp; <span class="hljs-number">1</span><span class="hljs-string">\\</span><br><span class="hljs-string">\end&#123;bmatrix&#125;</span><br>$$<br>&lt;/span&gt;<br></code></pre></td></tr></table></figure>
 <span>
-$$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $$
-</span></blockquote>
-<blockquote>
-<p>针对<strong>RSA</strong>：$N&#x3D;p*q$</p>
-<p>$x&#x3D;(ap+bq)^n&#x3D;(ap)^n+(bq)^n \mod n$</p>
-</blockquote>
-<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="二、AES"><a href="#二、AES" class="headerlink" title="二、AES"></a>二、AES</h3><p><strong>Python中的简单实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#实现AES</span><br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad, unpad<br><br><br>key        = <span class="hljs-string">b&#x27;\xc3,\\\xa6\xb5\x80^\x0c\xdb\x8d\xa5z*\xb6\xfe\\&#x27;</span><br>ciphertext =<span class="hljs-number">0x61646d696e3d54727565303030303030</span><span class="hljs-comment">#b&#x27;\xd1O\x14j\xa4+O\xb6\xa1\xc4\x08B)\x8f\x12\xdd&#x27;</span><br>iv=<span class="hljs-number">0x8b14b5d74ac2c280b443bbbed84ea8c2</span><br><span class="hljs-comment">#填充</span><br><span class="hljs-comment">#padded_data = pad(data, AES.block_size)</span><br><br><br>decipher=AES.new(key,AES.MODE_CBC,iv)<br>plaintext=decipher.decrypt(ciphertext)<br><br><span class="hljs-built_in">print</span>(plaintext)<br><br><span class="hljs-string">&quot;&quot;&quot; # 解密需要使用相同的密钥和初始化向量 (IV)</span><br><span class="hljs-string">iv = cipher.iv  # 加密时生成的IV</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 创建解密器</span><br><span class="hljs-string">decipher = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 解密</span><br><span class="hljs-string">decrypted_data = unpad(decipher.decrypt(ciphertext), AES.block_size) &quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+$$
+ \begin{bmatrix}
+2 & 0 & 0 & \cdots & m_1\\
+0 & 2 & 0 & \cdots & m_2\\
+0 & 0 & 2 & \cdots & m_3\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+1 & 1 & 1 & \cdots & 1\\
+\end{bmatrix}
+$$
+</span>
 
-<h3 id="三、工作模式（CBC-ECB-OFB-CFB-CTR）"><a href="#三、工作模式（CBC-ECB-OFB-CFB-CTR）" class="headerlink" title="三、工作模式（CBC,ECB,OFB,CFB,CTR）"></a>三、工作模式（CBC,ECB,OFB,CFB,CTR）</h3><ul>
-<li><p>ECB不需要IV，需要短块处理</p>
-</li>
-<li><p>CBC需要短块处理</p>
-</li>
-<li><p>OFB，CFB，CTR是把明文转成密钥流与明文异或进行加密，因此没有短块问题</p>
-</li>
-</ul>
-<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC:"></a>MISC:</h1><h3 id="一、图片题"><a href="#一、图片题" class="headerlink" title="一、图片题"></a>一、图片题</h3><ul>
-<li><strong>LSB</strong>隐写</li>
-</ul>
-<blockquote>
-<p>1、 利用Stegsolve低位通道解决</p>
-</blockquote>
-<blockquote>
-<p>2、 <strong>带密码的LSB隐写：</strong> 在kali中使用<strong>cloacked-pixel</strong>中分离出隐藏信息，命令如下：</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python2 lsb<span class="hljs-selector-class">.py</span> extract xxx<span class="hljs-selector-class">.png</span> <span class="hljs-number">1</span><span class="hljs-selector-class">.txt</span> <span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
 
-<ul>
-<li><p>隐含<strong>文件</strong>，利用<strong>binwalk</strong>查看是否存在隐含文件，再利用<strong>dd</strong>指令或<strong>forecast</strong>指令来分离出隐藏的文件</p>
-</li>
-<li><p>另一种图片隐含<strong>文件</strong>，利用<strong>steghide</strong>分离隐藏的文件</p>
-</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>steghide extract -sf xx.jpg<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p><strong>exif</strong>隐写，在kali中使用<strong>exiftool</strong>工具提取隐藏信息</p>
-</li>
-<li><p><strong>F5</strong>隐写，kali环境中使用F5-steganography-master</p>
-</li>
-<li><p><strong>CRC</strong>校验（有可能出现zlib），在010Editor中找到CRC，使用脚本计算正确的<strong>宽度</strong>和<strong>高度</strong></p>
-</li>
-<li><p><strong>gif</strong>动图：</p>
-</li>
-</ul>
-<blockquote>
-<p>一、47 49 46 38开头</p>
-<p>二、放进Stegsolve中提取每帧动画</p>
-</blockquote>
-<h3 id="二、流量分析"><a href="#二、流量分析" class="headerlink" title="二、流量分析"></a>二、流量分析</h3><ul>
-<li>利用<strong>WireShark</strong>分析流量包，再对详细数据进行过滤</li>
-</ul>
-<blockquote>
-<p>http POST&#x2F;GET 等</p>
-</blockquote>
-<ul>
-<li><p>分析关于<strong>TCP</strong>的流量包，使用<strong>WireShark</strong>中的TCP流量追踪</p>
-</li>
-<li><p>寻找<strong>用户密码</strong>，需要找到**.dmp**文件名</p>
-</li>
-</ul>
-<blockquote>
-<p>（*dmp文件是windows系统中的错误转储文件，当Windows发生错误蓝屏的时候，系统将当前内存【含虚拟内存】中的数据直接写到文件中去，方便定位故障原因。）</p>
-</blockquote>
-<blockquote>
-<p>（*里面包含主机用户密码信息）</p>
-</blockquote>
-<ul>
-<li>对于<strong>USB</strong>流量包，使用<strong>UsbKeyboardDataHacker</strong>脚本提取内容</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> UsbKeyboardDataHacker.<span class="hljs-keyword">py</span> --<span class="hljs-built_in">input</span> xxx.pcap<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>宽带数据泄露</strong>，使用<strong>RoutePassView</strong>查找用户名或密码</li>
-</ul>
-<h3 id="三、压缩文件"><a href="#三、压缩文件" class="headerlink" title="三、压缩文件"></a>三、压缩文件</h3><ul>
-<li>密码<strong>爆破</strong></li>
-</ul>
-<blockquote>
-<p><strong>Kali</strong>中：使用<strong>fcrackzip</strong>工具（ZIP压缩文件）</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">fcrackzip</span> -b -c <span class="hljs-number">1</span> -l <span class="hljs-number">4</span>-<span class="hljs-number">5</span> -u xxx.png  <br></code></pre></td></tr></table></figure>
-
-<p><strong>Windows</strong>中：使用<strong>ARCHPR</strong>工具（ZIP，RAR等压缩文件）</p>
-</blockquote>
-<ul>
-<li><strong>CRC</strong>爆破：</li>
-</ul>
-<blockquote>
-<p>使用py脚本爆破</p>
-</blockquote>
-<ul>
-<li>伪加密（ZIP）：</li>
-</ul>
-<p><strong>a.压缩源文件数据区：</strong></p>
-<blockquote>
-<p>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br>09 00：全局方式位标记 （<strong>有无加密</strong>）<br>08 00：压缩方式<br>50 A3：最后修改文件时间<br>A5 4A：最后修改文件日期<br>21 38 76 64：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>08 00：文件名长度<br>00 00：扩展记录长度</p>
-</blockquote>
-<p><strong>b.压缩源文件目录区:</strong></p>
-<blockquote>
-<p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>1F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>09 00：全局方式位标记（<strong>是否是加密</strong>）<br>08 00：压缩方式<br>50 A3：最后修改文件时间<br>A5 4A：最后修改文件日期<br>21 38 76 65：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>08 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量</p>
-</blockquote>
-<p><strong>c.压缩源文件目录结束标志:</strong></p>
-<blockquote>
-<p>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>5A 00 00 00：目录区尺寸大小<br>3F 00 00 00：目录区对第一张磁盘的偏移量<br>00 00 00：ZIP 文件注释长度</p>
-</blockquote>
-<ul>
-<li>伪加密（RAR）</li>
-</ul>
-<blockquote>
-<p>结构如下<br>RAR 5.0签名由8个字节组成:<br>0x52 0x61 0x72 0x21 0x1A 0x07 0x01 0x00<br>比较一下<br>RAR 4.x 签名由7字节组成:<br>0x52 0x61 0x72 0x21 0x1A 0x07 0x00</p>
-</blockquote>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs tap">D5<span class="hljs-number"> 56 </span>：HEAD_CRC，2字节，也就是文件头部分的crc校验值<br>74 ：HEAD_TYPE，1字节，块类型，74表示块类型是文件头<br>20<span class="hljs-number"> 90 </span>：HEAD_FLAGS，2字节，位标记，这块在资料上没找到对应的数值，不知道20 90代表什么意思。<br>2D<span class="hljs-number"> 00 </span>：HEAD_SIZE，2字节，文件头的全部大小（包含文件名和注释）<br>10<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：PACK_SIZE，4字节，已压缩文件大小<br>10<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：UNP_SIZE，4字节，未压缩文件大小<br>02：HOST_OS，1字节，保存压缩文件使用的操作系统，02代表windows<br>C7<span class="hljs-number"> 88 </span>67 36：FILE_CRC，4字节，文件的CRC值<br>6D BB 4E 4B ：FTIME，4字节，MS DOS 标准格式的日期和时间<br>1D：UNP_VER，1字节，解压文件所需要的最低RAR版本<br>30：METHOD，1字节，压缩方式，这里是存储压缩<br>08<span class="hljs-number"> 00 </span>：NAME_SIZE，2字节，表示文件名大小，这里文件名大小是8字节（flag.txt）<br>20<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>：ATTR，4字节，表示文件属性这里是txt文件<br>66 6C<span class="hljs-number"> 61 </span>67 2E<span class="hljs-number"> 74 </span>78 74：FILE_NAME（文件名） ，NAME_SIZE字节大小，这里NAME_SIZE大小为8<br>再往后是txt文件内容，一直到第六行<span class="hljs-number"> 65 </span>结束，下面是另一个文件块的开始<br><br>这个块中存在两个crc值，一个是文件头块中从块类型到文件名这38个字节的校验，后一个则是压缩包中所包含文件的crc校验，解压时，会计算解压后生成文件的crc值，如果等于这里的crc，则解压完成，如果不同，则报错中断。<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<ol>
-<li><p>找到第24个字节，该字节尾数为4表</p>
-</li>
-<li><p>示加密，0表示无加密，将尾数改为0即可破解伪加密.</p>
-</li>
-</ol>
-</blockquote>
-<h3 id="四、音频题"><a href="#四、音频题" class="headerlink" title="四、音频题"></a>四、音频题</h3><ul>
-<li><p>将<strong>MAV</strong>等音频文件放入<strong>Audacity</strong>中分析，如摩斯电码</p>
-</li>
-<li><p>将<strong>MAV</strong>等音频文件放入<strong>dtmf2num</strong>中分析（<strong>电话数字号码</strong>），代码如下：</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./dtmf2num.exe girlfriend.wav<br></code></pre></td></tr></table></figure>
-
-<h3 id="五、文档题"><a href="#五、文档题" class="headerlink" title="五、文档题"></a>五、文档题</h3><ul>
-<li>Txt文档<strong>ntfs隐写</strong>：</li>
-</ul>
-<p>1】在隐写文档的目录下打开cmd命令行，输入：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">notepad</span> <span class="hljs-number">1</span>.txt:flag.txt<br></code></pre></td></tr></table></figure>
-
-<p>2】在<strong>ntfsstreamseditor</strong>中扫描，尽量使用<strong>Winrar解压</strong></p>
-<blockquote>
-<p>出现<strong>pyc</strong>文件的话：使用<strong>uncompyle</strong>反汇编</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">uncompyle6 xxx<span class="hljs-selector-class">.pyc</span> &gt; <span class="hljs-selector-tag">main</span>.py<br></code></pre></td></tr></table></figure>
-
-<p><strong>或</strong></p>
-<p>在线工具反编译</p>
-</blockquote>
-<ul>
-<li>Docx文档隐写：在文件-&gt;选项-&gt;显示-&gt;选中显示隐藏文字</li>
-</ul>
-<h3 id="六、视频题"><a href="#六、视频题" class="headerlink" title="六、视频题"></a>六、视频题</h3><ul>
-<li>使用<strong>Kinovea</strong>打开视频文件（要求视频文件的路径上没有中文），进行每帧分析</li>
-</ul>
-<h3 id="七、镜像文件"><a href="#七、镜像文件" class="headerlink" title="七、镜像文件"></a>七、镜像文件</h3><ul>
-<li>在<strong>Kali</strong>中用<strong>Foremost</strong>分离</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>很可惜，寒假里总是有种种不可避免的事，因此学到的内容有限，但我也有很多收获，只能说，2025继续努力！！</p>
+<p>$$<br> \begin{bmatrix}<br>2 &amp; 0 &amp; 0 &amp; \cdots &amp; m_1\<br>0 &amp; 2 &amp; 0 &amp; \cdots &amp; m_2\<br>0 &amp; 0 &amp; 2 &amp; \cdots &amp; m_3\<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1\<br>\end{bmatrix}<br>$$</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这确实是个挺原始的方法，虽然写矩阵时有点小麻烦，但确实挺好用，如果你有什么更好的方法，可用告诉我，有什么问题也欢迎提出。</p>
 
                 
               </div>
@@ -485,11 +366,34 @@ $$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/blog/" class="category-chain-item">blog</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+        <a href="/tags/blog/" class="print-no-link">#blog</a>
+      
+        <a href="/tags/latex/" class="print-no-link">#latex</a>
       
     </div>
   
@@ -501,8 +405,8 @@ $$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>假期CTF学习记录</div>
-      <div>http://ramoor.github.io/2025/01/15/假期CTF学习笔记/</div>
+      <div>Hexo+Fulid主题中的Latex渲染问题</div>
+      <div>http://ramoor.github.io/2025/04/02/Hexo+Fulid主题中的Latex渲染问题/</div>
     </div>
     <div class="license-meta">
       
@@ -514,7 +418,7 @@ $$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月15日</div>
+          <div>2025年4月2日</div>
         </div>
       
       
@@ -546,18 +450,12 @@ $$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" title="CTFHub学习日记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CTFHub学习日记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/04/Unity3D/" title="Unity3D">
-                        <span class="hidden-mobile">Unity3D</span>
+                      <a href="/2025/04/01/%E6%B5%8B%E8%AF%95/" title="测试">
+                        <span class="hidden-mobile">测试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -645,6 +543,12 @@ $$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -863,6 +767,49 @@ $$ (x+y)^n=(^n_0)x^ny^0+(^n_1)x^{n-1}y^1+...+(^n_{n-1})x^1y^{n-1}+(^n_n)x^0y^n $
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
