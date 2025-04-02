@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>http://ramoor.github.io/tags/CTF/</loc>
-    <lastmod>2025-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ramoor.github.io/tags/blog/</loc>
     <lastmod>2025-04-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -134,6 +127,13 @@
   
   <url>
     <loc>http://ramoor.github.io/tags/latex/</loc>
+    <lastmod>2025-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ramoor.github.io/tags/CTF/</loc>
     <lastmod>2025-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -149,6 +149,13 @@
 
   
   <url>
+    <loc>http://ramoor.github.io/categories/blog/</loc>
+    <lastmod>2025-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://ramoor.github.io/categories/Study/</loc>
     <lastmod>2025-04-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -157,13 +164,6 @@
   
   <url>
     <loc>http://ramoor.github.io/categories/WriteUp/</loc>
-    <lastmod>2025-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ramoor.github.io/categories/blog/</loc>
     <lastmod>2025-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

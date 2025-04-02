@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://ramoor.github.io/2025/02/28/Crypto%E9%9A%8F%E7%AC%94%E6%89%AB%E7%9B%B2/file-20250402175359931.png">
 <meta property="og:image" content="http://ramoor.github.io/2025/02/28/Crypto%E9%9A%8F%E7%AC%94%E6%89%AB%E7%9B%B2/file-20250402175431141.png">
 <meta property="article:published_time" content="2025-02-28T06:13:39.000Z">
-<meta property="article:modified_time" content="2025-04-02T11:30:21.342Z">
+<meta property="article:modified_time" content="2025-04-02T11:39:49.694Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -321,7 +321,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id><a href="#" class="headerlink" title></a></h2><p>ECDLP（椭圆曲线上的离散对数问题）<br> <strong>概念：</strong> 给定素数 p 和椭圆曲线 E，对于 Q&#x3D;k*P，在已知 P,Q 的情况下求出小于 p 的正整数 k。可以证明由 k 和 P 计算 Q 比较容易，而由 Q 和 P 计算 k 则比较困难。</p>
+                <h2 id="ECDLP（椭圆曲线上的离散对数问题）"><a href="#ECDLP（椭圆曲线上的离散对数问题）" class="headerlink" title="ECDLP（椭圆曲线上的离散对数问题）"></a>ECDLP（椭圆曲线上的离散对数问题）</h2><p> <strong>概念：</strong> 给定素数 p 和椭圆曲线 E，对于 Q&#x3D;k*P，在已知 P,Q 的情况下求出小于 p 的正整数 k。可以证明由 k 和 P 计算 Q 比较容易，而由 Q 和 P 计算 k 则比较困难。</p>
 <p> <strong>方法：（类似DL问题）</strong></p>
 <ul>
 <li><p><strong>暴力搜索（Brute Force）</strong>：适用于小规模，k比较小</p>
@@ -546,9 +546,8 @@ $$
  0x01 \times 256^2 + 0x02\times 256^1+0x03\times 256^0
  $$
  </span>
-## 流密码
-
-<p><strong>概念：</strong> 以最小单位<strong>比特</strong>作为一次加密、解密的操作元素。目前都是对称加密。</p>
+ 
+<h2 id="流密码"><a href="#流密码" class="headerlink" title="流密码"></a>流密码</h2><p><strong>概念：</strong> 以最小单位<strong>比特</strong>作为一次加密、解密的操作元素。目前都是对称加密。</p>
 <p> <strong>特点：</strong></p>
 <ul>
 <li><p>流密码的密钥派生自一个较短的密钥，派生算法通常为一个伪随机数生成算法。</p>
@@ -557,7 +556,7 @@ $$
 </li>
 </ul>
 <p> <strong>关键：</strong> 在于设计好的<strong>伪随机数生成器</strong>，其基本构造模块为反馈移位寄存器(FSR)。</p>
-<h1 id="伪随机数生成器-PRNG"><a href="#伪随机数生成器-PRNG" class="headerlink" title="伪随机数生成器(PRNG)"></a>伪随机数生成器(PRNG)</h1><p> <strong>别称：</strong> 确定性随机位生成器（DRBG）</p>
+<h2 id="伪随机数生成器-PRNG"><a href="#伪随机数生成器-PRNG" class="headerlink" title="伪随机数生成器(PRNG)"></a>伪随机数生成器(PRNG)</h2><p> <strong>别称：</strong> 确定性随机位生成器（DRBG）</p>
 <p> <strong>用途：</strong> 用来生成接近绝对随机数序列的数字序列的算法。</p>
 <p> <strong>主要类型：</strong></p>
 <ul>
@@ -574,7 +573,7 @@ $$
 <li><p>线性反馈移位寄存器（LFSR）</p>
 </li>
 </ul>
-<h1 id="LFSR线性反馈移位寄存器"><a href="#LFSR线性反馈移位寄存器" class="headerlink" title="LFSR线性反馈移位寄存器"></a>LFSR线性反馈移位寄存器</h1><p> <strong>用途：</strong> 用于产生<strong>伪随机数</strong>。</p>
+<h2 id="LFSR线性反馈移位寄存器"><a href="#LFSR线性反馈移位寄存器" class="headerlink" title="LFSR线性反馈移位寄存器"></a>LFSR线性反馈移位寄存器</h2><p> <strong>用途：</strong> 用于产生<strong>伪随机数</strong>。</p>
 <p> <strong>概念：</strong> LFSR是反馈寄存器中的一种，另一种为NFSR（非线性反馈寄存器）。</p>
 <p> <strong>结构：</strong></p>
 <p><img src="/2025/02/28/Crypto%E9%9A%8F%E7%AC%94%E6%89%AB%E7%9B%B2/file-20250402175359931.png" srcset="/img/loading.gif" lazyload></p>
