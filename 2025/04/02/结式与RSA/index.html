@@ -19,15 +19,15 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$   f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j   $$         构造如下矩阵：      $$   S_{f,g}:&#x3D; \begin{bmatr">
+    <meta name="description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$ f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j $$       构造如下矩阵：  $$ S_{f,g}:&#x3D; \begin{bmatrix} a_m  &amp; a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="结式与RSA">
 <meta property="og:url" content="http://ramoor.github.io/2025/04/02/%E7%BB%93%E5%BC%8F%E4%B8%8ERSA/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$   f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j   $$         构造如下矩阵：      $$   S_{f,g}:&#x3D; \begin{bmatr">
+<meta property="og:description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$ f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j $$       构造如下矩阵：  $$ S_{f,g}:&#x3D; \begin{bmatrix} a_m  &amp; a">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-02T11:58:16.000Z">
-<meta property="article:modified_time" content="2025-04-02T12:03:05.696Z">
+<meta property="article:modified_time" content="2025-04-02T12:18:36.821Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -327,15 +327,15 @@
 </ul>
 <span>
 $$
-  f(x)=\sum_{i=0}^ma_ix^i \\
+f(x)=\sum_{i=0}^ma_ix^i \\
 g(x)=\sum_{j=0}^nb_jx^j
-  $$
-  </span>
+$$
+</span>
   
 <p>  构造如下矩阵：</p>
-  <span>
-  $$
-  S_{f,g}:=
+<span>
+$$
+S_{f,g}:=
 \begin{bmatrix}
 a_m  & a_{m-1} & \cdots & a_1 & a_0 & & \\
 \\
@@ -343,7 +343,7 @@ a_m  & a_{m-1} & \cdots & a_1 & a_0 & & \\
 & & a_m & a_{m-1} & \dots & a_1 & a_0 & \\
 
 <p>b_n  &amp; b_{n-1} &amp; \cdots &amp; b_1 &amp; b_0 &amp; &amp; \<br>\<br>&amp; \ddots &amp; \ddots &amp; &amp; \ddots &amp; \ddots\<br>&amp; &amp; b_n &amp; b_{n-1} &amp; \dots &amp; b_1 &amp; b_0 &amp; \</p>
-<p>\end{bmatrix}<br>  $$<br>  </p></span><p></p>
+<p>\end{bmatrix}<br>$$<br></p></span><p></p>
 <p>  其中前$n$行是$f(x)$,后$m$行是$g(x)$</p>
 <p>  该矩阵称为<strong>Sylvester矩阵</strong>，它的<strong>行列式</strong>为 <strong>$res(f,g)$</strong>,称为$f,g$的<strong>结式</strong>。</p>
 <ul>
