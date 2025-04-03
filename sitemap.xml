@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ramoor.github.io/2025/04/02/%E7%BB%93%E5%BC%8F%E4%B8%8ERSA/</loc>
+    <loc>http://ramoor.github.io/2025/04/02/Java%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
     
     <lastmod>2025-04-03</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/2025/04/02/Java%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>http://ramoor.github.io/2025/04/02/%E7%BB%93%E5%BC%8F%E4%B8%8ERSA/</loc>
     
     <lastmod>2025-04-03</lastmod>
     
@@ -249,14 +249,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/WriteUp/</loc>
+    <loc>http://ramoor.github.io/categories/blog/</loc>
     <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/blog/</loc>
+    <loc>http://ramoor.github.io/categories/WriteUp/</loc>
     <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
