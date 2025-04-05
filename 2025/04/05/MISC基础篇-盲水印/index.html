@@ -19,22 +19,24 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="今天我们来学习一下Brainfuck语言，它是MISC中的基础知识，一般会出在签到题。 介绍Brainfuck是最小的，图灵完备的语言。  图灵完备可以简单理解为任何可用算法解决的问题，都可用这个编程语言去解决。  结构： Brainfuck是由一个指针和一个数组组成，如下 12指针：    ↓数组：0 0 0 0 0 0 0 0 0  组成： 它只由8种字符组成  &gt;: 指针向右移动一格。">
+    <meta name="description" content="介绍通常是两张看起来相同的图片，目前我所知的对两张相同图片的处理方式只有两种：  对像素值进行运算： 使用stegsolve的image combiner对两张图片像素值进行异或，加减等。 盲水印： 使用bwmforpy3.py脚本进行操作。接下来会介绍这种方法。  项目脚本https:&#x2F;&#x2F;github.com&#x2F;chishaxie&#x2F;BlindWaterMark下载安装 1git clone htt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MISC基础篇-Brainfuck">
-<meta property="og:url" content="http://ramoor.github.io/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-Brainfuck/index.html">
+<meta property="og:title" content="MISC基础篇-盲水印">
+<meta property="og:url" content="http://ramoor.github.io/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="今天我们来学习一下Brainfuck语言，它是MISC中的基础知识，一般会出在签到题。 介绍Brainfuck是最小的，图灵完备的语言。  图灵完备可以简单理解为任何可用算法解决的问题，都可用这个编程语言去解决。  结构： Brainfuck是由一个指针和一个数组组成，如下 12指针：    ↓数组：0 0 0 0 0 0 0 0 0  组成： 它只由8种字符组成  &gt;: 指针向右移动一格。">
+<meta property="og:description" content="介绍通常是两张看起来相同的图片，目前我所知的对两张相同图片的处理方式只有两种：  对像素值进行运算： 使用stegsolve的image combiner对两张图片像素值进行异或，加减等。 盲水印： 使用bwmforpy3.py脚本进行操作。接下来会介绍这种方法。  项目脚本https:&#x2F;&#x2F;github.com&#x2F;chishaxie&#x2F;BlindWaterMark下载安装 1git clone htt">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-05T09:05:41.000Z">
-<meta property="article:modified_time" content="2025-04-05T09:51:13.998Z">
+<meta property="og:image" content="http://ramoor.github.io/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/file-20250405202453394.png">
+<meta property="article:published_time" content="2025-04-05T11:39:12.000Z">
+<meta property="article:modified_time" content="2025-04-05T12:24:53.830Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/file-20250405202453394.png">
   
   
   
-  <title>MISC基础篇-Brainfuck - Ramoor</title>
+  <title>MISC基础篇-盲水印 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MISC基础篇-Brainfuck"></span>
+            <span id="subtitle" data-typed-text="MISC基础篇-盲水印"></span>
           
         </div>
 
@@ -245,8 +247,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-05 17:05" pubdate>
-          2025年4月5日 下午
+        <time datetime="2025-04-05 19:39" pubdate>
+          2025年4月5日 晚上
         </time>
       </span>
     
@@ -257,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          592 字
+          214 字
         
       </span>
     
@@ -268,7 +270,7 @@
         
         
         
-          5 分钟
+          2 分钟
         
       </span>
     
@@ -313,54 +315,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MISC基础篇-Brainfuck</h1>
+            <h1 id="seo-header">MISC基础篇-盲水印</h1>
             
             
               <div class="markdown-body">
                 
-                <p>今天我们来学习一下Brainfuck语言，它是MISC中的基础知识，一般会出在签到题。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Brainfuck是<strong>最小</strong>的，<strong>图灵完备</strong>的语言。</p>
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>通常是两张看起来相同的图片，<br>目前我所知的对两张相同图片的处理方式只有两种：</p>
+<ul>
+<li><strong>对像素值进行运算：</strong> 使用<code>stegsolve</code>的<code>image combiner</code>对两张图片像素值进行异或，加减等。</li>
+<li><strong>盲水印：</strong> 使用<code>bwmforpy3.py</code>脚本进行操作。接下来会介绍这种方法。</li>
+</ul>
+<h2 id="项目脚本"><a href="#项目脚本" class="headerlink" title="项目脚本"></a>项目脚本</h2><p><a target="_blank" rel="noopener" href="https://github.com/chishaxie/BlindWaterMark">https://github.com/chishaxie/BlindWaterMark</a><br>下载安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/chishaxie/BlindWaterMark.git<br></code></pre></td></tr></table></figure>
+<p>先安装<code>opencv</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install opencv-python<br></code></pre></td></tr></table></figure>
+<p>升级pip3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install --upgrade pip setuptools wheel<br></code></pre></td></tr></table></figure>
+<p>安装matplotlib</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install matplotlib<br></code></pre></td></tr></table></figure>
+<p>运行脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 bwmforpy3.py decode 1.png 2.png flag.png<br></code></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>图灵完备</strong>可以简单理解为任何可用算法解决的问题，都可用这个编程语言去解决。</p>
+<p><strong>求助</strong>：这里有个遗留问题，使用<code>--oldseed</code>来兼容python2脚本random算法时会抛出错误<code>Random.shuffle() got an unexpected keyword argument &#39;random&#39;</code>。有大佬知道怎么回事可以告诉我。。</p>
 </blockquote>
-<p><strong>结构：</strong> Brainfuck是由一个<strong>指针</strong>和一个<strong>数组</strong>组成，如下</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tap">指针：    ↓<br>数组：0<span class="hljs-number"> 0 </span>0<span class="hljs-number"> 0 </span>0<span class="hljs-number"> 0 </span>0<span class="hljs-number"> 0 </span>0<br></code></pre></td></tr></table></figure>
-
-<p><strong>组成：</strong> 它只由<strong>8种</strong>字符组成</p>
-<ul>
-<li><code>&gt;</code>: 指针向右移动一格。</li>
-<li><code>&lt;</code>: 指针向左移动一格。</li>
-<li><code>+</code>: 使指针当前格的字节数加1。</li>
-<li><code>-</code>: 使指针当前格的字节数减1.</li>
-<li><code>.</code>: 把当前格数按ASCII表输出到终端。</li>
-<li><code>,</code>: 接收一个字节的输入，将其值存储在数据指针的字节中。</li>
-<li><code>[</code>: 当前值为0时，程序跳转至与之对应的<code>]</code>之后；否则程序正常执行。</li>
-<li><code>]</code>: 程序跳转回与之对应的<code>[</code>处。</li>
-</ul>
-<h2 id="编程实现"><a href="#编程实现" class="headerlink" title="编程实现"></a>编程实现</h2><h3 id="1-表示字母’A’"><a href="#1-表示字母’A’" class="headerlink" title="1.表示字母’A’"></a>1.表示字母’A’</h3><p>已知A的ASCII对应值为65，想必你一定会想到下面的表示方法：</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-literal">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="hljs-string">.</span><br></code></pre></td></tr></table></figure>
-<p>虽然有点蠢，但不失为一种方法。下面我们来学习改进后的方法。</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-literal">+++++</span><br><span class="hljs-title">[</span><br>&gt;<span class="hljs-literal">+++++++++++++</span><br>&lt;<span class="hljs-literal">-</span><br><span class="hljs-title">]</span><br>&gt;<span class="hljs-string">.</span><br></code></pre></td></tr></table></figure>
-<p>我们来分析这段代码，假设指针最开始指向数组<code>a[0]</code>，<br>第一行，进行<code>+++++</code>说明，<code>a[0]=5</code>；<br>第二行，当前指针指向<code>a[0]</code>，不等于0，因此进入循环；<br>第三行，<code>&gt;</code>指针右移一位，指向<code>a[1]</code>，接着13个<code>+</code>，即<code>a[1]=a[1]+13</code>；<br>第四行，<code>&lt;</code>指针左移，再次指向<code>a[0]</code>，接着<code>-</code>，即<code>a[0]=a[0]-1; 第五行，返回</code>[<code>; 第六行，</code>&gt;<code>右移指向</code>a[1]<code>，</code>.<code>输出</code>a[1]&#96;;</p>
-<p>可以转换为C语言脚本来理解</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>	<span class="hljs-type">int</span> a[<span class="hljs-number">2</span>];<br>	a[<span class="hljs-number">0</span>]=<span class="hljs-number">5</span>;<br>	a[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(;a[<span class="hljs-number">0</span>]&gt;<span class="hljs-number">0</span>;a[<span class="hljs-number">0</span>]--)<br>	&#123;<br>		a[<span class="hljs-number">1</span>]+=<span class="hljs-number">13</span>;<br>	&#125;<br>	<span class="hljs-comment">//这里输出ASCII的值，没有输出对应字符，实际应该输出字符。</span><br>	print(a[<span class="hljs-number">1</span>]);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="实现输出’Hello-MISC’"><a href="#实现输出’Hello-MISC’" class="headerlink" title="实现输出’Hello MISC’"></a>实现输出’Hello MISC’</h2><p>首先，我们要找到对应的ASCII值：</p>
-<ul>
-<li><code>H</code>: 72</li>
-<li><code>e</code>: 101</li>
-<li><code>l</code>: 108</li>
-<li><code>o</code>: 111</li>
-<li><code>空格</code> : 32</li>
-<li><code>M</code>: 77</li>
-<li><code>I</code>: 73</li>
-<li><code>S</code>: 83</li>
-<li><code>C</code>: 67<br>脚本实现如下:</li>
-</ul>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-literal">++++++++++</span><span class="hljs-title">[</span>&gt;<span class="hljs-literal">+++++++</span>&gt;<span class="hljs-literal">++++++++++</span>&gt;<span class="hljs-literal">+++</span>&gt;<span class="hljs-literal">+++++++</span>&gt;<span class="hljs-literal">+++++++</span>&lt;&lt;&lt;&lt;&lt;<span class="hljs-literal">-</span><span class="hljs-title">]</span><br>&gt;<span class="hljs-literal">++</span><span class="hljs-string">.</span>&gt;<span class="hljs-literal">+</span><span class="hljs-string">.</span><span class="hljs-literal">+++++++</span><span class="hljs-string">.</span><span class="hljs-string">.</span><span class="hljs-literal">+++</span><span class="hljs-string">.</span>&gt;<span class="hljs-literal">++</span><span class="hljs-string">.</span>&gt;<span class="hljs-literal">+++++++</span><span class="hljs-string">.</span><span class="hljs-literal">----</span><span class="hljs-string">.</span><span class="hljs-literal">++++++++++</span><span class="hljs-string">.</span>&gt;<span class="hljs-literal">---</span><span class="hljs-string">.</span><br></code></pre></td></tr></table></figure>
-<p>至此，你已经掌握了Brainfuck的编程方法，准备开启你的签到之旅吧！</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2147388">一门能让你五分钟学会的语言-Brainfuck-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
-<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p><a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">https://www.splitbrain.org/services/ook</a></p>
+<h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p>有时候也可以用一款名为<code>WaterMark</code>的工具，包括文字水印和图片水印。<br>论坛链接<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1980917-1-1.html">盲水印工具WaterMark.exe - 吾爱破解 - 52pojie.cn</a><br><img src="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/file-20250405202453394.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -406,8 +384,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MISC基础篇-Brainfuck</div>
-      <div>http://ramoor.github.io/2025/04/05/MISC基础篇-Brainfuck/</div>
+      <div>MISC基础篇-盲水印</div>
+      <div>http://ramoor.github.io/2025/04/05/MISC基础篇-盲水印/</div>
     </div>
     <div class="license-meta">
       
@@ -451,18 +429,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/" title="MISC基础篇-盲水印">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MISC基础篇-盲水印</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/02/Java%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" title="Java简单项目实现">
-                        <span class="hidden-mobile">Java简单项目实现</span>
+                      <a href="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-Brainfuck/" title="MISC基础篇-Brainfuck">
+                        <span class="hidden-mobile">MISC基础篇-Brainfuck</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

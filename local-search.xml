@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>MISC基础篇-盲水印</title>
+    <link href="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/"/>
+    <url>/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>通常是两张看起来相同的图片，<br>目前我所知的对两张相同图片的处理方式只有两种：</p><ul><li><strong>对像素值进行运算：</strong> 使用<code>stegsolve</code>的<code>image combiner</code>对两张图片像素值进行异或，加减等。</li><li><strong>盲水印：</strong> 使用<code>bwmforpy3.py</code>脚本进行操作。接下来会介绍这种方法。</li></ul><h2 id="项目脚本"><a href="#项目脚本" class="headerlink" title="项目脚本"></a>项目脚本</h2><p><a href="https://github.com/chishaxie/BlindWaterMark">https://github.com/chishaxie/BlindWaterMark</a><br>下载安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/chishaxie/BlindWaterMark.git<br></code></pre></td></tr></table></figure><p>先安装<code>opencv</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install opencv-python<br></code></pre></td></tr></table></figure><p>升级pip3</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install --upgrade pip setuptools wheel<br></code></pre></td></tr></table></figure><p>安装matplotlib</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip3 install matplotlib<br></code></pre></td></tr></table></figure><p>运行脚本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 bwmforpy3.py decode 1.png 2.png flag.png<br></code></pre></td></tr></table></figure><blockquote><p><strong>求助</strong>：这里有个遗留问题，使用<code>--oldseed</code>来兼容python2脚本random算法时会抛出错误<code>Random.shuffle() got an unexpected keyword argument &#39;random&#39;</code>。有大佬知道怎么回事可以告诉我。。</p></blockquote><h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p>有时候也可以用一款名为<code>WaterMark</code>的工具，包括文字水印和图片水印。<br>论坛链接<a href="https://www.52pojie.cn/thread-1980917-1-1.html">盲水印工具WaterMark.exe - 吾爱破解 - 52pojie.cn</a><br><img src="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/file-20250405202453394.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MISC基础篇-Brainfuck</title>
     <link href="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-Brainfuck/"/>
     <url>/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-Brainfuck/</url>
