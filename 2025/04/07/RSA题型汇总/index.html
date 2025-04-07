@@ -19,24 +19,22 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$ f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j $$       构造如下矩阵：  $$ S_{f,g}:&#x3D; \begin{bmatrix} a_m  &amp; a">
+    <meta name="description" content="RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。 dP泄露(dp&#x3D;d mod p-1)分析：$\because dp\equiv d \mod p-1$$\therefore edp\equiv ed\mod p-1$$\because ed \equiv 1 \mod (p-1)(q-1)$$\therefo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="结式与RSA">
-<meta property="og:url" content="http://ramoor.github.io/2025/04/02/%E7%BB%93%E5%BC%8F%E4%B8%8ERSA/index.html">
+<meta property="og:title" content="RSA题型汇总">
+<meta property="og:url" content="http://ramoor.github.io/2025/04/07/RSA%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Crypto中的结式前几天做题遇见了，记录一下。 结式（resultant） 概念： 在域中，多项式的结式是Sylvester Matrix的行列式。  定义： 有两个多项式    $$ f(x)&#x3D;\sum_{i&#x3D;0}^ma_ix^i \\ g(x)&#x3D;\sum_{j&#x3D;0}^nb_jx^j $$       构造如下矩阵：  $$ S_{f,g}:&#x3D; \begin{bmatrix} a_m  &amp; a">
+<meta property="og:description" content="RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。 dP泄露(dp&#x3D;d mod p-1)分析：$\because dp\equiv d \mod p-1$$\therefore edp\equiv ed\mod p-1$$\because ed \equiv 1 \mod (p-1)(q-1)$$\therefo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-02T11:58:16.000Z">
-<meta property="article:modified_time" content="2025-04-07T14:32:45.955Z">
+<meta property="article:published_time" content="2025-04-07T13:39:40.000Z">
+<meta property="article:modified_time" content="2025-04-07T14:48:59.159Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="结式与rsa">
-<meta property="article:tag" content="结式">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>结式与RSA - Ramoor</title>
+  <title>RSA题型汇总 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="结式与RSA"></span>
+            <span id="subtitle" data-typed-text="RSA题型汇总"></span>
           
         </div>
 
@@ -247,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-02 19:58" pubdate>
-          2025年4月2日 晚上
+        <time datetime="2025-04-07 21:39" pubdate>
+          2025年4月7日 晚上
         </time>
       </span>
     
@@ -259,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          300 字
+          382 字
         
       </span>
     
@@ -270,7 +268,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -315,67 +313,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">结式与RSA</h1>
+            <h1 id="seo-header">RSA题型汇总</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Crypto中的结式"><a href="#Crypto中的结式" class="headerlink" title="Crypto中的结式"></a>Crypto中的结式</h1><p>前几天做题遇见了，记录一下。</p>
-<h2 id="结式（resultant）"><a href="#结式（resultant）" class="headerlink" title="结式（resultant）"></a>结式（resultant）</h2><ul>
-<li><p><strong>概念：</strong> 在域中，多项式的结式是Sylvester Matrix的行列式。</p>
-</li>
-<li><p><strong>定义：</strong> 有两个多项式</p>
-</li>
-</ul>
-<span>
-$$
-f(x)=\sum_{i=0}^ma_ix^i \\
-g(x)=\sum_{j=0}^nb_jx^j
-$$
-</span>
-  
-<p>  构造如下矩阵：</p>
-<span>
-$$
-S_{f,g}:=
-\begin{bmatrix}
-a_m  & a_{m-1} & \cdots & a_1 & a_0 & & \\ \\
-& \ddots & \ddots & & \ddots & \ddots\\
-& & a_m & a_{m-1} & \dots & a_1 & a_0 & \\
-b_n  & b_{n-1} & \cdots & b_1 & b_0 & & \\ \\
-& \ddots & \ddots & & \ddots & \ddots\\
-& & b_n & b_{n-1} & \dots & b_1 & b_0 & \\
-\end{bmatrix}
-$$
-</span>
-  
-<p>  其中前$n$行是$f(x)$,后$m$行是$g(x)$</p>
-<p>  该矩阵称为<strong>Sylvester矩阵</strong>，它的<strong>行列式</strong>为 <strong>$res(f,g)$</strong>,称为$f,g$的<strong>结式</strong>。</p>
-<ul>
-<li><p><strong>应用：</strong></p>
-<ul>
-<li><p><strong>判断互素：</strong> 当且仅当$res(f,g)&#x3D;0$时，两多项式存在公共根。</p>
-</li>
-<li><p><strong>消元：</strong> 假设有</p>
-</li>
-</ul>
-</li>
-</ul>
-<span>  
-$$
-    \begin{cases}
-F(x,y)=0 \\
-G(x,y)=0
-\end{cases}
-$$
-</span>
-    
-<p>将$y$视为常数，此时$f(x),g(x)$有公因子，因此令$res(f,g)&#x3D;0$可以解出$y$，再代入原方程便可以解出$x$。代码示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br>R = PolynomialRing(ZZ, <span class="hljs-string">&#x27;x, y&#x27;</span>)<br>f1 =<span class="hljs-comment">#x,y的表达式1</span><br>f2 =<span class="hljs-comment">#x,y的表达式2</span><br>h = f1.sylvester_matrix(f2, y).det()         <span class="hljs-comment">#利用结式消掉y</span><br>roots = h.univariate_polynomial().roots()    <span class="hljs-comment">#求出x</span><br><span class="hljs-built_in">print</span>(roots)<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>参考：<a target="_blank" rel="noopener" href="https://tover.xyz/p/resultant-companion-hardrsa/#Resultant">结式、伴随矩阵、特征多项式和2023江苏省数据安全竞赛的hardrsa | Tover’s Blog</a></p>
-</blockquote>
+                <p>RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。</p>
+<h2 id="dP泄露-dp-d-mod-p-1"><a href="#dP泄露-dp-d-mod-p-1" class="headerlink" title="dP泄露(dp&#x3D;d mod p-1)"></a>dP泄露(dp&#x3D;d mod p-1)</h2><p><strong>分析：</strong><br>$\because dp\equiv d \mod p-1$<br>$\therefore edp\equiv ed\mod p-1$<br>$\because ed \equiv 1 \mod (p-1)(q-1)$<br>$\therefore edp+k_1(p-1) &#x3D; 1+k_2(p-1)(q-1)$<br>$\therefore edp&#x3D;(p-1)[k_1+k_2(q-1)]+1$<br>$\because dp&lt;p-1$<br>$\therefore 令A&#x3D;k_1+k_2(q-1)，有e&gt;A$<br>$\therefore A\in (0,e)$<br>$\because 转换得p&#x3D;\frac{edp-1}{A}+1$<br>$\therefore 遍历A（此时A不等于0）\in(1,e)，找到能整除的A，进而计算出p$<br><strong>代码实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-comment">#已知量</span><br>dp= <br>n = <br>c = <br>e = <br><br>x = e*dp-<span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,e):<br>    <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:<br>        p_us = x//i +<span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> n % p_us == <span class="hljs-number">0</span>:<br>            p = p_us<br>            <span class="hljs-keyword">break</span><br><br><span class="hljs-comment">#print(p)</span><br>q=n//p<br>phi=(p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d=inverse(e,phi)<br>m=<span class="hljs-built_in">pow</span>(c,d,n)<br>ans=long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
 
+<h2 id="公共因子攻击"><a href="#公共因子攻击" class="headerlink" title="公共因子攻击"></a>公共因子攻击</h2><p>原本觉得太简单是不想放的，但是后来考虑到许多题都是使用了类似的思想，所以本题型的重点是学会利用 <strong>公因数</strong> 求解一系列问题。这里以最简单的RSA为例。<br><strong>问题：</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">n1 = p*q1<br>n2 = p*q2<br>e = <br>m = bytes_to_long(flag)<br>c = <span class="hljs-built_in">pow</span>(m,e,n1)<br><span class="hljs-comment">#已知n1,n2,e,c求m</span><br></code></pre></td></tr></table></figure>
+<p><strong>分析：</strong><br>可以看出$p$是$n_1,n_2$的公共因子，因此可以通过求两者的最大公因数来求$p$<br>$即p&#x3D;gcd(n_1,n_2)$<br><strong>代码：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#公共因子攻击</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-comment">#已知量</span><br>n1= <br>n2=<br>c = <br>e =<br><br>p=GCD(n1,n2)<br>q1=n1//p<br>phi=(p-<span class="hljs-number">1</span>)*(q1-<span class="hljs-number">1</span>)<br>d=inverse(e,phi)<br>m=<span class="hljs-built_in">pow</span>(c,d,n1)<br>ans=long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -410,10 +360,6 @@ $$
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
-        <a href="/tags/%E7%BB%93%E5%BC%8F%E4%B8%8Ersa/" class="print-no-link">#结式与rsa</a>
-      
-        <a href="/tags/%E7%BB%93%E5%BC%8F/" class="print-no-link">#结式</a>
-      
     </div>
   
 </div>
@@ -424,8 +370,8 @@ $$
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>结式与RSA</div>
-      <div>http://ramoor.github.io/2025/04/02/结式与RSA/</div>
+      <div>RSA题型汇总</div>
+      <div>http://ramoor.github.io/2025/04/07/RSA题型汇总/</div>
     </div>
     <div class="license-meta">
       
@@ -437,7 +383,7 @@ $$
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月2日</div>
+          <div>2025年4月7日</div>
         </div>
       
       
@@ -469,18 +415,12 @@ $$
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/02/%E6%A0%BC%E5%AF%86%E7%A0%81%E4%B8%93%E9%A2%98%E5%AD%A6%E4%B9%A0/" title="格密码专题学习">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">格密码专题学习</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/02/%E6%96%87%E4%BB%B6%E5%A4%B4/" title="文件头">
-                        <span class="hidden-mobile">文件头</span>
+                      <a href="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/" title="MISC基础篇-盲水印">
+                        <span class="hidden-mobile">MISC基础篇-盲水印</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
