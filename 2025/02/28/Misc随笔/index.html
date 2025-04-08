@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ramoor.github.io/2025/02/28/Misc%E9%9A%8F%E7%AC%94/1.png">
 <meta property="article:published_time" content="2025-02-28T06:13:39.000Z">
-<meta property="article:modified_time" content="2025-04-07T12:25:24.360Z">
+<meta property="article:modified_time" content="2025-04-08T12:31:28.567Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2k 字
         
       </span>
     
@@ -270,7 +270,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -552,7 +552,29 @@
 </ul>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><br>    ↓  ↓   ↓  ↓<br>KEYWORDABCFGHIJLMNPQSTUVXZ<br></code></pre></td></tr></table></figure>
 <p>对应字母替换后就是密文，在本例中替换后，得到<code>AOGGJ</code>。</p>
-
+<h2 id="图片拼接-复位"><a href="#图片拼接-复位" class="headerlink" title="图片拼接+复位"></a>图片拼接+复位</h2><p><strong>拼接工具：</strong> <code>montage</code><br><strong>安装：</strong> <code>sudo apt-get install imagemagick</code><br><strong>使用：</strong> <code>montage *.jpg -tile 12x10 -geometry 200x100+0+0 flag.jpg</code><br><code>*.jpg</code>：表示当前文件夹下所有<code>jpg</code>图片<br><code>12x10 </code>：表示合成后为宽12张图片，高10张图片<br><code>200x100+0+0</code>：表示每张小图片宽200像素，高100像素，+0+0表示宽高方向间隙都为0。</p>
+<p><strong>复位工具：</strong> <code>gaps</code><br><strong>安装：（建议python3.9版本）</strong> </p>
+<ul>
+<li><strong>获取项目</strong>：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/nemanja-m/gaps.git<br><span class="hljs-built_in">cd</span> gaps<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>安装需求：</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">poetry install<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>本地安装项目：</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install .<br></code></pre></td></tr></table></figure>
+<p><strong>使用：</strong></p>
+<ul>
+<li>打乱</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gaps create images/pillars.jpg puzzle.jpg --size=64<br></code></pre></td></tr></table></figure>
+<ul>
+<li>复位</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gaps run puzzle.jpg solution.jpg --generations=20 --population=600<br></code></pre></td></tr></table></figure>
                 
               </div>
             
