@@ -27,7 +27,7 @@
 <meta property="og:description" content="简介LCG： 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$该问题总结来说的常见考点：  求$X_0(seed)$ 求$b$ 求$a$ 求$m$ 非连续 $X_n$高位泄露我们接下来逐个分析求解，  求$X_0(seed)$条件： 已知$a,b,m,X_n$分析：$\because X_{n}\equiv aX_{n-1}+b \mod m$$\therefore">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-08T05:43:33.000Z">
-<meta property="article:modified_time" content="2025-04-08T08:38:56.682Z">
+<meta property="article:modified_time" content="2025-04-08T09:39:25.403Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="LCG">
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          961 字
+          930 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -343,7 +343,22 @@
 
 <h2 id="非连续"><a href="#非连续" class="headerlink" title="非连续"></a>非连续</h2><p><strong>条件：</strong> 已知$X_n,X_{n+2}$等序列<br><strong>分析：</strong><br>$\because X_{n+2}\equiv a(aX_n+b)+b \mod m$<br>$\therefore X_{n+2} \equiv a^2X_n+(a+1)b \mod m$<br>令$a_1&#x3D;a^2,b_1&#x3D;(a+1)b$<br>$\therefore X_{n+2}\equiv a_1X_n+b_1 \mod m$<br>之后按正常LCG步骤便可以解答即可</p>
 <h2 id="X-n-高位-低位泄露"><a href="#X-n-高位-低位泄露" class="headerlink" title="$X_n$高位&#x2F;低位泄露"></a>$X_n$高位&#x2F;低位泄露</h2><p><strong>条件：</strong> 已知$X_n$高位$H_1,H_2,…,H_n（与原bit位相同的高位）,a,b,m$，求$L_1$<br><strong>分析：</strong><br>$\because H_2+L_2\equiv a(H_1+L_1)+b \mod m$<br>$\therefore L_2\equiv aL_1+(aH_1-H_2+b) \mod m$<br>$\therefore L_3\equiv a^2L_1+(a(aH_1-H_2+b)-H_3+b) \mod m$<br>令$A_i&#x3D;a^i\mod m,B_i&#x3D;aB_{i-1}-H_{i+1}+aH_i+b\mod m$，其中$B_1&#x3D;(aH_1-H_2+b)\mod m$<br>因此，得到<br>$L_{i+1}\equiv A_iL_1+B_i \mod m$<br>下一步，构造格</p>
-<p>$$<br>(k_1,k_2,…,k_n,L_1,1)<br>\begin{pmatrix}<br>m &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \<br>0 &amp; m &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots \<br>0 &amp; 0 &amp; \cdots &amp; m &amp; 0 &amp; 0 \<br>A_1 &amp; A_2 &amp; \cdots &amp; A_n &amp; 1 &amp; 0 \<br>B_1 &amp; B_2 &amp; \cdots &amp; B_n &amp; 0 &amp; K<br>\end{pmatrix} \<br>&#x3D;(L_2,L_3,…,L_{n+1},L_1,K)<br>$$</p>
+<span>
+$$
+(k_1,k_2,...,k_n,L_1,1)
+\begin{pmatrix}
+m & 0 & \cdots & 0 & 0 & 0 \\
+0 & m & \cdots & 0 & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+0 & 0 & \cdots & m & 0 & 0 \\
+A_1 & A_2 & \cdots & A_n & 1 & 0 \\
+B_1 & B_2 & \cdots & B_n & 0 & K 
+\end{pmatrix} \\
+=(L_2,L_3,...,L_{n+1},L_1,K)
+$$
+
+</span>
+
 <p>求出$L_1$之后便可以反向求出$seed$，这里的$K$与$L$的bit位相同。</p>
 <blockquote>
 <p>到这里你可能也已经发现了，已知$X_n$的<strong>高位</strong>或者<strong>低位</strong>，其求法本质是一样的，因为在我们的分析中$H$和$L$几乎是完全等效的。</p>
