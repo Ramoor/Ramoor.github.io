@@ -27,7 +27,7 @@
 <meta property="og:description" content="RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。 dP泄露(dp&#x3D;d mod p-1)分析：$\because dp\equiv d \mod p-1$$\therefore edp\equiv ed\mod p-1$$\because ed \equiv 1 \mod (p-1)(q-1)$$\therefo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-07T13:39:40.000Z">
-<meta property="article:modified_time" content="2025-04-08T03:46:15.502Z">
+<meta property="article:modified_time" content="2025-04-08T09:18:07.406Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          636 字
+          650 字
         
       </span>
     
@@ -335,7 +335,7 @@
 <p> <strong>实现：</strong> 在$Sagemath$中使用<code>small_roots()</code>方法实现。</p>
 <h3 id="P高位泄露，求低位"><a href="#P高位泄露，求低位" class="headerlink" title="P高位泄露，求低位"></a>P高位泄露，求低位</h3><p><strong>分析：</strong> 利用Coppersmith，此时$p&#x3D;pHigh+x$，则有$\frac 1e&#x3D;1$ ,<br>令$p\equiv 0 \mod b$ ，其中$n^\beta \leq b \leq n$ ,<br>若想$b&#x3D;p$，则需要$p\geq n^\beta$ ，由于RSA中$p,q$ 一般位数相近，都在$n^{0.5}$，所以一般取$\beta \in [0.1,0.4]$。</p>
 <blockquote>
-<p>据说$p$的泄露位数$pHigh$要大于$\frac12 nbits$ 左右才能解出，本人试了几次，感觉还是概率问题。</p>
+<p>据说$p$的泄露位数$\frac{pHigh.nbits()}{p.nbits()}$要大于<strong>0.56</strong>左右才能解出，对512bits的$p$来说需要288位已知，对1024bits的$p$来说要576位左右。</p>
 </blockquote>
 <p><strong>代码实现：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br>n=<br>p_high=<br>pbits=<br>kbits=pbits-p_high.nbits()  <span class="hljs-comment">#小根位数</span><br><br>R.&lt;x&gt; = PolynomialRing(Zmod(n))<br>p = p_high + x <br>roots = f.small_roots(X=<span class="hljs-number">2</span>^kbits,beta=<span class="hljs-number">0.4</span>)<br><br>p = p_high + <span class="hljs-built_in">int</span>(roots[<span class="hljs-number">0</span>])<br>q = n // p<br></code></pre></td></tr></table></figure>
