@@ -19,22 +19,23 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。 dP泄露(dp&#x3D;d mod p-1)分析：$\because dp\equiv d \mod p-1$$\therefore edp\equiv ed\mod p-1$$\because ed \equiv 1 \mod (p-1)(q-1)$$\therefo">
+    <meta name="description" content="简介LCG： 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$该问题总结来说的常见考点：  求$X_0(seed)$ 求$b$ 求$a$ 求$m$ 非连续 $X_n$高位泄露我们接下来逐个分析求解，  求$X_0(seed)$条件： 已知$a,b,m,X_n$分析：$\because X_{n}\equiv aX_{n-1}+b \mod m$$\therefore">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RSA题型汇总">
-<meta property="og:url" content="http://ramoor.github.io/2025/04/07/RSA%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:title" content="Crypto基础篇-LCG">
+<meta property="og:url" content="http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。 dP泄露(dp&#x3D;d mod p-1)分析：$\because dp\equiv d \mod p-1$$\therefore edp\equiv ed\mod p-1$$\because ed \equiv 1 \mod (p-1)(q-1)$$\therefo">
+<meta property="og:description" content="简介LCG： 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$该问题总结来说的常见考点：  求$X_0(seed)$ 求$b$ 求$a$ 求$m$ 非连续 $X_n$高位泄露我们接下来逐个分析求解，  求$X_0(seed)$条件： 已知$a,b,m,X_n$分析：$\because X_{n}\equiv aX_{n-1}+b \mod m$$\therefore">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-07T13:39:40.000Z">
-<meta property="article:modified_time" content="2025-04-08T03:46:15.502Z">
+<meta property="article:published_time" content="2025-04-08T05:43:33.000Z">
+<meta property="article:modified_time" content="2025-04-08T08:29:39.033Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
+<meta property="article:tag" content="LCG">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>RSA题型汇总 - Ramoor</title>
+  <title>Crypto基础篇-LCG - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RSA题型汇总"></span>
+            <span id="subtitle" data-typed-text="Crypto基础篇-LCG"></span>
           
         </div>
 
@@ -245,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-07 21:39" pubdate>
-          2025年4月7日 晚上
+        <time datetime="2025-04-08 13:43" pubdate>
+          2025年4月8日 下午
         </time>
       </span>
     
@@ -257,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          636 字
+          958 字
         
       </span>
     
@@ -268,7 +269,7 @@
         
         
         
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -313,32 +314,47 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RSA题型汇总</h1>
+            <h1 id="seo-header">Crypto基础篇-LCG</h1>
             
             
               <div class="markdown-body">
                 
-                <p>RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。</p>
-<h2 id="dP泄露-dp-d-mod-p-1"><a href="#dP泄露-dp-d-mod-p-1" class="headerlink" title="dP泄露(dp&#x3D;d mod p-1)"></a>dP泄露(dp&#x3D;d mod p-1)</h2><p><strong>分析：</strong><br>$\because dp\equiv d \mod p-1$<br>$\therefore edp\equiv ed\mod p-1$<br>$\because ed \equiv 1 \mod (p-1)(q-1)$<br>$\therefore edp+k_1(p-1) &#x3D; 1+k_2(p-1)(q-1)$<br>$\therefore edp&#x3D;(p-1)[k_1+k_2(q-1)]+1$<br>$\because dp&lt;p-1$<br>$\therefore 令A&#x3D;k_1+k_2(q-1)，有e&gt;A$<br>$\therefore A\in (0,e)$<br>$\because 转换得p&#x3D;\frac{edp-1}{A}+1$<br>$\therefore 遍历A（此时A不等于0）\in(1,e)，找到能整除的A，进而计算出p$<br><strong>代码实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-comment">#已知量</span><br>dp= <br>n = <br>c = <br>e = <br><br>x = e*dp-<span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,e):<br>    <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:<br>        p_us = x//i +<span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> n % p_us == <span class="hljs-number">0</span>:<br>            p = p_us<br>            <span class="hljs-keyword">break</span><br><br><span class="hljs-comment">#print(p)</span><br>q=n//p<br>phi=(p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d=inverse(e,phi)<br>m=<span class="hljs-built_in">pow</span>(c,d,n)<br>ans=long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
-
-<h2 id="公共因子攻击"><a href="#公共因子攻击" class="headerlink" title="公共因子攻击"></a>公共因子攻击</h2><p>原本觉得太简单是不想放的，但是后来考虑到许多题都是使用了类似的思想，所以本题型的重点是学会利用 <strong>公因数</strong> 求解一系列问题。这里以最简单的RSA为例。<br><strong>问题：</strong> </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">n1 = p*q1<br>n2 = p*q2<br>e = <br>m = bytes_to_long(flag)<br>c = <span class="hljs-built_in">pow</span>(m,e,n1)<br><span class="hljs-comment">#已知n1,n2,e,c求m</span><br></code></pre></td></tr></table></figure>
-<p><strong>分析：</strong><br>可以看出$p$是$n_1,n_2$的公共因子，因此可以通过求两者的最大公因数来求$p$<br>$即p&#x3D;gcd(n_1,n_2)$<br><strong>代码：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#公共因子攻击</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-comment">#已知量</span><br>n1= <br>n2=<br>c = <br>e =<br><br>p=GCD(n1,n2)<br>q1=n1//p<br>phi=(p-<span class="hljs-number">1</span>)*(q1-<span class="hljs-number">1</span>)<br>d=inverse(e,phi)<br>m=<span class="hljs-built_in">pow</span>(c,d,n1)<br>ans=long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
-
-<h2 id="Coppersmith攻击"><a href="#Coppersmith攻击" class="headerlink" title="Coppersmith攻击"></a>Coppersmith攻击</h2><p><strong>介绍：</strong> Coppersmith方法基于<strong>LLL算法</strong>求多项式<strong>小根</strong>，求“<strong>已知某些二进制位，求剩余位</strong>”问题，<br><strong>功能：</strong> 假如有一个$e$阶的多项式$f$，则有</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>LCG：</strong> 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$<br>该问题总结来说的常见考点：</p>
 <ul>
-<li>在模$n$下，可以用$O(\log n)$的算法求出$n^{\frac1e}$以内的根</li>
-<li>给定$\beta$，快速求出模$b$下的小根（其中$b\geq n^\beta$，且$b$是$n$的因数）</li>
+<li>求$X_0(seed)$</li>
+<li>求$b$</li>
+<li>求$a$</li>
+<li>求$m$</li>
+<li>非连续</li>
+<li>$X_n$高位泄露<br>我们接下来逐个分析求解，</li>
 </ul>
-<p> <strong>实现：</strong> 在$Sagemath$中使用<code>small_roots()</code>方法实现。</p>
-<h3 id="P高位泄露，求低位"><a href="#P高位泄露，求低位" class="headerlink" title="P高位泄露，求低位"></a>P高位泄露，求低位</h3><p><strong>分析：</strong> 利用Coppersmith，此时$p&#x3D;pHigh+x$，则有$\frac 1e&#x3D;1$ ,<br>令$p\equiv 0 \mod b$ ，其中$n^\beta \leq b \leq n$ ,<br>若想$b&#x3D;p$，则需要$p\geq n^\beta$ ，由于RSA中$p,q$ 一般位数相近，都在$n^{0.5}$，所以一般取$\beta \in [0.1,0.4]$。</p>
+<h2 id="求-X-0-seed"><a href="#求-X-0-seed" class="headerlink" title="求$X_0(seed)$"></a>求$X_0(seed)$</h2><p><strong>条件：</strong> 已知$a,b,m,X_n$<br><strong>分析：</strong><br>$\because X_{n}\equiv aX_{n-1}+b \mod m$<br>$\therefore aX_{n-1}\equiv X_n-b\mod m$<br>$\therefore X_{n-1}\equiv a^{-1}(X_n-b) \mod m$<br>依次类推，便可以求得$X_0$<br><strong>代码实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>a=<br>b=<br>m=<br>X_n=<br><br>inv_a=inverse(a)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>	X_n=inv_a*(X_n-b) %m<br>seed=X_n<br><span class="hljs-built_in">print</span>(seed)<br></code></pre></td></tr></table></figure>
+
+<h2 id="求b"><a href="#求b" class="headerlink" title="求b"></a>求b</h2><p><strong>条件：</strong> 已知$a,m,X_n,X_{n+1}$<br><strong>分析：</strong><br>$\because X_{n+1}\equiv aX_n+b \mod m$<br>$\therefore b\equiv X_{n+1}-aX_n \mod m$<br><strong>代码实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>a=<br>m=<br>X_n=<br>X_n_plus=<br><br>b=X_n_plus-a*X_n %m<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+
+<h2 id="求a"><a href="#求a" class="headerlink" title="求a"></a>求a</h2><p><strong>条件：</strong> 已知$m,X_n,X_{n+1},X_{n+2}$<br><strong>分析：</strong><br>$\because已知$<br>$X_{n+2}\equiv aX_{n+1}+b \mod m$<br>$X_{n+1}\equiv aX_n+b \mod m$<br>$\therefore X_{n+2}-X_{n+1}\equiv a(X_{n+1}-X_n) \mod m$<br>$\therefore a\equiv(X_{n+1}-X_n)^{-1}(X_{n+2}-X_{n+1})\mod m$<br><strong>代码实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>m=<br>X_n=<br>X_np1=<br>X_np2=<br><br>a=inverse(X_np1-X_n)*(X_np2-X_np1) %m<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+
+<h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><p><strong>条件：</strong> 已知至少两组四个连续的序列值，即最少五个连续值$X_{n-1},X_n,X_{n+1},X_{n+2},X_{n+3}$<br><strong>分析：</strong><br>$\because X_n\equiv aX_{n-1}+b \mod m$<br>令$t_n&#x3D;X_{n+1}-X_n$<br>则$t_{n-1}&#x3D;X_n-X_{n-1}$<br>易得$t_n\equiv at_{n-1} \mod m$<br>同理$t_{n+1}\equiv at_n \mod m$<br>相除消去$a$，再移项得$t_{n+1}t_{n-1}\equiv t_n^2 \mod m$<br>$\therefore t_{n+1}t_{n-1} - t_n^2 &#x3D; k_1m$<br>同理有$t_{n+2}t_{n} - t_{n+1}^2 &#x3D; k_2m$<br>$\therefore m&#x3D;gcd(t_{n+1}t_{n-1} - t_n^2,t_{n+2}t_{n} - t_{n+1}^2 )$</p>
+<p><strong>代码实现：</strong><br>由于实际情况中公因数可能会带有小因子，因此若序列足够多可多试几组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>X_seq=[]<br><br>t=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(X_seq)):<br>	t.append(X_seq[i+<span class="hljs-number">1</span>]-X_seq[i])<br><br>T=[]  <span class="hljs-comment">#T_i=T_ip2 * T_i - T_ip1**2 </span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(t)-<span class="hljs-number">1</span>):<br>	T.append(t[i+<span class="hljs-number">2</span>]*t[i]-t[i+<span class="hljs-number">1</span>]**<span class="hljs-number">2</span>)<br><br>m=GCD(T[<span class="hljs-number">0</span>],T[<span class="hljs-number">1</span>]) <span class="hljs-comment">#m的候选值</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,<span class="hljs-built_in">len</span>(T)):<br>    m=GCD(m,T[i])<br><br><span class="hljs-built_in">print</span>(m)<br></code></pre></td></tr></table></figure>
+
+<h2 id="非连续"><a href="#非连续" class="headerlink" title="非连续"></a>非连续</h2><p><strong>条件：</strong> 已知$X_n,X_{n+2}$等序列<br><strong>分析：</strong><br>$\because X_{n+2}\equiv a(aX_n+b)+b \mod m$<br>$\therefore X_{n+2} \equiv a^2X_n+(a+1)b \mod m$<br>令$a_1&#x3D;a^2,b_1&#x3D;(a+1)b$<br>$\therefore X_{n+2}\equiv a_1X_n+b_1 \mod m$<br>之后按正常LCG步骤便可以解答即可</p>
+<h2 id="X-n-高位-低位泄露"><a href="#X-n-高位-低位泄露" class="headerlink" title="$X_n$高位&#x2F;低位泄露"></a>$X_n$高位&#x2F;低位泄露</h2><p><strong>条件：</strong> 已知$X_n$高位$H_1,H_2,…,H_n（与原bit位相同的高位）,a,b,m$，求$L_1$<br><strong>分析：</strong><br>$\because H_2+L_2\equiv a(H_1+L_1)+b \mod m$<br>$\therefore L_2\equiv aL_1+(aH_1-H_2+b) \mod m$<br>$\therefore L_3\equiv a^2L_1+(a(aH_1-H_2+b)-H_3+b) \mod m$<br>令$A_i&#x3D;a^i\mod m,B_i&#x3D;aB_{i-1}-H_{i+1}+aH_i+b\mod m$，其中$B_1&#x3D;(aH_1-H_2+b)\mod m$<br>因此，得到<br>$L_{i+1}\equiv A_iL_1+B_i \mod m$<br>下一步，构造格</p>
+<p>$$<br>(k_1,k_2,…,k_n,L_1,1)<br>\begin{pmatrix}<br>m &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \<br>0 &amp; m &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots \<br>0 &amp; 0 &amp; \cdots &amp; m &amp; 0 &amp; 0 \<br>A_1 &amp; A_2 &amp; \cdots &amp; A_n &amp; 1 &amp; 0 \<br>B_1 &amp; B_2 &amp; \cdots &amp; B_n &amp; 0 &amp; K<br>\end{pmatrix} \<br>&#x3D;(L_2,L_3,…,L_{n+1},L_1,K)<br>$$</p>
+<p>求出$L_1$之后便可以反向求出$seed$，这里的$K$与$L$的bit位相同。</p>
 <blockquote>
-<p>据说$p$的泄露位数$pHigh$要大于$\frac12 nbits$ 左右才能解出，本人试了几次，感觉还是概率问题。</p>
+<p>到这里你可能也已经发现了，已知$X_n$的<strong>高位</strong>或者<strong>低位</strong>，其求法本质是一样的，因为在我们的分析中$H$和$L$几乎是完全等效的。</p>
 </blockquote>
 <p><strong>代码实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br>n=<br>p_high=<br>pbits=<br>kbits=pbits-p_high.nbits()  <span class="hljs-comment">#小根位数</span><br><br>R.&lt;x&gt; = PolynomialRing(Zmod(n))<br>p = p_high + x <br>roots = f.small_roots(X=<span class="hljs-number">2</span>^kbits,beta=<span class="hljs-number">0.4</span>)<br><br>p = p_high + <span class="hljs-built_in">int</span>(roots[<span class="hljs-number">0</span>])<br>q = n // p<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>a=<br>b=<br>m=<br>h=[]<br>kbits=<br><br>H=[<span class="hljs-number">0</span>]+h<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> H:<br>	i &lt;&lt;= kbits<br><br>A=[<span class="hljs-number">1</span>]<br>B=[<span class="hljs-number">0</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(h)-<span class="hljs-number">1</span>):  <br>	A.append(a*A[i-<span class="hljs-number">1</span>] % m)  <br>	B.append((a*B[i-<span class="hljs-number">1</span>]+a*h[i]+b-h[i+<span class="hljs-number">1</span>]) % m)  <br>  <br>A = A[<span class="hljs-number">1</span>:]  <br>B = B[<span class="hljs-number">1</span>:]<br><br>G = Matrix(ZZ,<span class="hljs-built_in">len</span>(H),<span class="hljs-built_in">len</span>(H))<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>[A]):<br>	G[i,i] = m<br>	G[-<span class="hljs-number">2</span>,i] = A[i]<br>	G[-<span class="hljs-number">1.</span>i] = B[i]<br><br>G[-<span class="hljs-number">2</span>,-<span class="hljs-number">2</span>] = <span class="hljs-number">1</span><br>G[-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>] = <span class="hljs-number">2</span>^kbits<br>L=G.LLL()[<span class="hljs-number">0</span>]<br>L1=L[-<span class="hljs-number">2</span>]<br><span class="hljs-built_in">print</span>(L1)<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>LCG也是让新手头疼的一部分，希望你看完我的文章之后能有新的收获，如果有问题的话欢迎指出，本人作为一名ctfer菜鸟，难免会有些小错误哒(๑´ڡ ‘๑)&#x2F;。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://dexterjie.github.io/2024/07/16/%E6%B5%81%E5%AF%86%E7%A0%81/%E6%B5%81%E5%AF%86%E7%A0%81-LCG/?highlight=lcg">LCG | DexterJie’Blog</a></p>
+
                 
               </div>
             
@@ -373,6 +389,8 @@
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
+        <a href="/tags/LCG/" class="print-no-link">#LCG</a>
+      
     </div>
   
 </div>
@@ -383,8 +401,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RSA题型汇总</div>
-      <div>http://ramoor.github.io/2025/04/07/RSA题型汇总/</div>
+      <div>Crypto基础篇-LCG</div>
+      <div>http://ramoor.github.io/2025/04/08/Crypto基础篇-LCG/</div>
     </div>
     <div class="license-meta">
       
@@ -396,7 +414,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月7日</div>
+          <div>2025年4月8日</div>
         </div>
       
       
@@ -428,18 +446,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/" title="Crypto基础篇-LCG">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Crypto基础篇-LCG</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/" title="MISC基础篇-盲水印">
-                        <span class="hidden-mobile">MISC基础篇-盲水印</span>
+                      <a href="/2025/04/07/RSA%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/" title="RSA题型汇总">
+                        <span class="hidden-mobile">RSA题型汇总</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

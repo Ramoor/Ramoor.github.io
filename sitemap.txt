@@ -1,8 +1,9 @@
+http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/
+http://ramoor.github.io/2025/02/28/Crypto%E9%9A%8F%E7%AC%94%E6%89%AB%E7%9B%B2/
 http://ramoor.github.io/2025/04/07/RSA%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/
 http://ramoor.github.io/2025/04/02/%E7%BB%93%E5%BC%8F%E4%B8%8ERSA/
 http://ramoor.github.io/2025/02/28/Misc%E9%9A%8F%E7%AC%94/
 http://ramoor.github.io/2025/04/02/MISC%E9%9F%B3%E9%A2%91%E9%A2%98/
-http://ramoor.github.io/2025/02/28/Crypto%E9%9A%8F%E7%AC%94%E6%89%AB%E7%9B%B2/
 http://ramoor.github.io/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E7%9B%B2%E6%B0%B4%E5%8D%B0/
 http://ramoor.github.io/2025/04/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-Brainfuck/
 http://ramoor.github.io/2025/04/02/Java%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/
@@ -23,13 +24,14 @@ http://ramoor.github.io/2025/02/17/CTFHub%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/
 http://ramoor.github.io/about/index.html
 http://ramoor.github.io/
 http://ramoor.github.io/tags/CTF/
+http://ramoor.github.io/tags/LCG/
 http://ramoor.github.io/tags/blog/
 http://ramoor.github.io/tags/latex/
 http://ramoor.github.io/tags/Java/
 http://ramoor.github.io/tags/Unity/
 http://ramoor.github.io/tags/%E7%BB%93%E5%BC%8F%E4%B8%8Ersa/
 http://ramoor.github.io/tags/%E7%BB%93%E5%BC%8F/
-http://ramoor.github.io/categories/Study/
 http://ramoor.github.io/categories/WriteUp/
+http://ramoor.github.io/categories/Study/
 http://ramoor.github.io/categories/blog/
 http://ramoor.github.io/categories/Deployment/
