@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ramoor.github.io/2025/04/10/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/file-20250410173839147.png">
 <meta property="article:published_time" content="2025-04-10T07:40:00.000Z">
-<meta property="article:modified_time" content="2025-04-15T14:00:01.910Z">
+<meta property="article:modified_time" content="2025-04-16T14:28:22.131Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="misc">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          594 字
+          598 字
         
       </span>
     
@@ -363,7 +363,8 @@
 <h3 id="BMP图片"><a href="#BMP图片" class="headerlink" title="BMP图片"></a>BMP图片</h3><p>宽：<code>0012h ~ 0015h</code><br>高：<code>0016h ~ 0019h</code></p>
 <h2 id="JPEG隐写"><a href="#JPEG隐写" class="headerlink" title="JPEG隐写"></a>JPEG隐写</h2><p>jsteg、JPHS（JPHide &amp; JPSeek）、outguess 01.3b、steghide 0.4、stegbreak、camouflage、appendx和wbirch。</p>
 <h3 id="1-JPHS（JPHide-JPSeek）"><a href="#1-JPHS（JPHide-JPSeek）" class="headerlink" title="1.JPHS（JPHide &amp; JPSeek）"></a>1.JPHS（JPHide &amp; JPSeek）</h3><p><strong>工具：</strong> jphswin<br><strong>原理：</strong><br>将隐藏信息嵌入到图片的DCT系数的LSB中。<br><strong>操作：</strong><br><code>JPHide:</code>用于隐藏信息。<br><code>JPSeek:</code>用于提取JPHide隐藏的信息。</p>
-<h2 id="PNG隐写"><a href="#PNG隐写" class="headerlink" title="PNG隐写"></a>PNG隐写</h2><h3 id="APNG动态图"><a href="#APNG动态图" class="headerlink" title="APNG动态图"></a>APNG动态图</h3><p>是PNG的动态扩展，结合了PNG和GIF的优势。<br><strong>工具：</strong> <a target="_blank" rel="noopener" href="https://apngdis.sourceforge.net/">apngdis_gui</a><br><strong>功能：</strong> 将APNG动图分解成多张图片。</p>
+<h2 id="PNG隐写"><a href="#PNG隐写" class="headerlink" title="PNG隐写"></a>PNG隐写</h2><h3 id="1-zsteg"><a href="#1-zsteg" class="headerlink" title="1.zsteg"></a>1.zsteg</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zsteg xxx.png --all<br></code></pre></td></tr></table></figure>
+<h3 id="2-APNG动态图"><a href="#2-APNG动态图" class="headerlink" title="2.APNG动态图"></a>2.APNG动态图</h3><p>是PNG的动态扩展，结合了PNG和GIF的优势。<br><strong>工具：</strong> <a target="_blank" rel="noopener" href="https://apngdis.sourceforge.net/">apngdis_gui</a><br><strong>功能：</strong> 将APNG动图分解成多张图片。</p>
 
                 
               </div>
