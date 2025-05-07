@@ -27,7 +27,7 @@
 <meta property="og:description" content="简介梅森旋转（Mersenne Twister）是一个PRNG（伪随机数发生器），基于有限二进制字段上的矩阵线性递归，可快速产生高质量的伪随机数，周期为$2^{19937}-1$，也就是19937bits。python中的random库使用的便是这种算法。 实现步骤： 获得基础的梅森旋转链 对于旋转链进行旋转算法 对旋转算法所得结果进行处理  涉及变量： $w:$ 加密长度，以bit为单位，$w$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-29T09:16:11.000Z">
-<meta property="article:modified_time" content="2025-04-29T14:38:32.448Z">
+<meta property="article:modified_time" content="2025-05-06T07:35:01.262Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -350,7 +350,7 @@
 <li><strong>高$l\sim 2l$位：</strong> 由$z$的高$(l\sim 2l)\oplus y的高l位$得到$y的高l\sim 2l位$</li>
 <li><strong>高$il\sim (i+1)l$位：</strong> 同上由$z$的高$(il\sim (i+1)l)\oplus y$的高$[(i-1)l]\sim il$位得到</li>
 </ul>
-<h2 id="2-逆向第三步"><a href="#2-逆向第三步" class="headerlink" title="2.逆向第三步"></a>2.逆向第三步</h2><p>$y_1 &#x3D; y \oplus ((y&lt;&lt;t) &amp; c)$，求$y$</p>
+<h2 id="2-逆向第三步"><a href="#2-逆向第三步" class="headerlink" title="2.逆向第三步"></a>2.逆向第三步</h2><p>$y_1 &#x3D; y \oplus ((y&lt;&lt;t) \land c)$，求$y$</p>
 <ul>
 <li><strong>低$t$位：</strong> 可以看出$y_1$的低$t$位便是$y$的低$t$位<strong>异或</strong>$c$的低$t$位</li>
 <li><strong>低$it\sim (i+1)t$位：</strong> 由$y_1$的低$it\sim (i+1)t$位与$y的(i-1)\sim it$位与$c$的$it\sim (i+1)t$的<strong>并的异或</strong></li>
