@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ramoor.github.io/2025/04/10/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/file-20250410173839147.png">
 <meta property="article:published_time" content="2025-04-10T07:40:00.000Z">
-<meta property="article:modified_time" content="2025-04-17T08:44:07.807Z">
+<meta property="article:modified_time" content="2025-05-12T12:53:40.498Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="misc">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          690 字
+          691 字
         
       </span>
     
@@ -356,7 +356,7 @@
 <h2 id="4-修改图片宽高"><a href="#4-修改图片宽高" class="headerlink" title="4.修改图片宽高"></a>4.修改图片宽高</h2><h3 id="PNG图片"><a href="#PNG图片" class="headerlink" title="PNG图片"></a>PNG图片</h3><p>宽：<code>0010h ~ 0013h</code><br>高：<code>0014h ~ 0017h</code><br>CRC（循环冗余检测）：<code>001dh ~ 0020h</code><br>可通过爆破CRC来恢复原图片宽高，脚本如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#图片CRC校验</span><br><span class="hljs-keyword">import</span> binascii<br><span class="hljs-keyword">import</span> struct<br><br>crc32_hex = <span class="hljs-number">0x2044BBCE</span> <span class="hljs-comment">#图片CRC值</span><br><br>filename = <span class="hljs-string">&#x27;xxx.png&#x27;</span> <span class="hljs-comment">##图片路径</span><br>crcbp = <span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&quot;rb&quot;</span>).read()<br>  <br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2000</span>):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2000</span>):<br>        data = crcbp[<span class="hljs-number">12</span>:<span class="hljs-number">16</span>] + \<br>            struct.pack(<span class="hljs-string">&#x27;&gt;i&#x27;</span>, i) + struct.pack(<span class="hljs-string">&#x27;&gt;i&#x27;</span>, j) + crcbp[<span class="hljs-number">24</span>:<span class="hljs-number">29</span>]<br>        crc32 = binascii.crc32(data) &amp; <span class="hljs-number">0xffffffff</span><br>        <span class="hljs-keyword">if</span>(crc32 == crc32_hex):<br>            <span class="hljs-built_in">print</span>(i, j)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;wid:&#x27;</span>, <span class="hljs-built_in">hex</span>(i))<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hight:&#x27;</span>, <span class="hljs-built_in">hex</span>(j))<br></code></pre></td></tr></table></figure>
 
-<h2 id="JPG图片"><a href="#JPG图片" class="headerlink" title="JPG图片"></a>JPG图片</h2><p>高：在<code>FF CO</code>数据之后的 <strong>第4、第5个</strong>字节。<br>宽：在<strong>高之后</strong>的两个字节。<br><img src="/2025/04/10/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/file-20250410173839147.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="JPG图片"><a href="#JPG图片" class="headerlink" title="JPG图片"></a>JPG图片</h2><p>高：在<code>FF CO/C2</code>数据之后的 <strong>第4、第5个</strong>字节。<br>宽：在<strong>高之后</strong>的两个字节。<br><img src="/2025/04/10/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/file-20250410173839147.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>如图各个块：<br><code>1:</code>起始头<br><code>2:</code>数据长度<br><code>3:</code>数据精度<br><code>4:</code>高<br><code>5:</code>宽</p>
 </blockquote>
