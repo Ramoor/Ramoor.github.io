@@ -19,68 +19,67 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="（1）Pass-01先尝试上传一句话木马php文件进行抓包，发现直接返回文件类型错误，且抓包失败，结合源码分析，应该是文件类型在前端便进行了验证   因此我们可以先修改木马文件的后缀名，然后成功抓包   右键发送到repeater中send，然后查找文件上传路径   然后提交查看结果   使用蚁剑测试连接     成功使用蚁剑getshell   （2）Pass-02先直接上传php发现返回错误信">
+    <meta name="description" content="（1）Pass-01先尝试上传一句话木马php文件进行抓包，发现直接返回文件类型错误，且抓包失败，结合源码分析，应该是文件类型在前端便进行了验证  因此我们可以先修改木马文件的后缀名，然后成功抓包  右键发送到repeater中send，然后查找文件上传路径   然后提交查看结果   使用蚁剑测试连接    （2）Pass-02先直接上传php发现返回错误信息  提示文件类型错误，接下来进行bp抓">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Uploads-labs通关笔记（1-10）">
 <meta property="og:url" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="（1）Pass-01先尝试上传一句话木马php文件进行抓包，发现直接返回文件类型错误，且抓包失败，结合源码分析，应该是文件类型在前端便进行了验证   因此我们可以先修改木马文件的后缀名，然后成功抓包   右键发送到repeater中send，然后查找文件上传路径   然后提交查看结果   使用蚁剑测试连接     成功使用蚁剑getshell   （2）Pass-02先直接上传php发现返回错误信">
+<meta property="og:description" content="（1）Pass-01先尝试上传一句话木马php文件进行抓包，发现直接返回文件类型错误，且抓包失败，结合源码分析，应该是文件类型在前端便进行了验证  因此我们可以先修改木马文件的后缀名，然后成功抓包  右键发送到repeater中send，然后查找文件上传路径   然后提交查看结果   使用蚁剑测试连接    （2）Pass-02先直接上传php发现返回错误信息  提示文件类型错误，接下来进行bp抓">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps1.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps2.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps3.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps4.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps5.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps6.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps7.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps8.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps9.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps10.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps11.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps12.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps13.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps14.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps15.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps16.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps17.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps18.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps19.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps20.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps21.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps22.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps23.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps24.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps25.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps26.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps27.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps28.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps29.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps30.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps31.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps32.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps33.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps34.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps35.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps36.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps37.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps38.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps39.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps40.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps41.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps42.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps43.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps44.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps45.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps46.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps47.jpg">
-<meta property="og:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps48.jpg">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092136817.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092200319.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092219427.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092232128.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092242310.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092257953.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092326693.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092340066.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092354522.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092404430.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092422402.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092434464.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092444754.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092452599.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092512904.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092524762.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092535878.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092543725.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092555106.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092606385.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092631432.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092642245.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092656245.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092702961.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092713984.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092722858.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092736681.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092746807.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092755555.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092802986.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092813314.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092819995.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092835060.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092846483.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092853532.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092903914.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092911367.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092919001.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092926821.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092934051.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092944548.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093023270.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093030931.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093043830.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093051665.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093059114.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093115655.png">
 <meta property="article:published_time" content="2025-07-08T01:14:42.000Z">
-<meta property="article:modified_time" content="2025-07-08T01:15:15.130Z">
+<meta property="article:modified_time" content="2025-07-08T01:39:51.349Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Web">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="file:///C:/Users/29226/AppData/Local/Temp/ksohtml28576/wps1.jpg">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092136817.png">
   
   
   
@@ -307,7 +306,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          741 字
+          737 字
         
       </span>
     
@@ -368,100 +367,97 @@
             
               <div class="markdown-body">
                 
-                <h4 id="（1）Pass-01"><a href="#（1）Pass-01" class="headerlink" title="（1）Pass-01"></a>（1）<strong>Pass-01</strong></h4><p>先尝试上传一句话木马php文件进行抓包，发现直接返回文件类型错误，且抓包失败，结合源码分析，应该是文件类型在前端便进行了验证</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps1.jpg" srcset="/img/loading.gif" lazyload> </p>
+                <h4 id="（1）Pass-01"><a href="#（1）Pass-01" class="headerlink" title="（1）Pass-01"></a>（1）<strong>Pass-01</strong></h4><p>先尝试上传一句话木马php文件进行抓包，发现直接返回文件类型错误，且抓包失败，结合源码分析，应该是文件类型在前端便进行了验证<br> <br><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092136817.png" srcset="/img/loading.gif" lazyload></p>
 <p>因此我们可以先修改木马文件的后缀名，然后成功抓包</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps2.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092200319.png" srcset="/img/loading.gif" lazyload></p>
 <p>右键发送到repeater中send，然后查找文件上传路径</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps3.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092219427.png" srcset="/img/loading.gif" lazyload> </p>
 <p>然后提交查看结果</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps4.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092232128.png" srcset="/img/loading.gif" lazyload> </p>
 <p>使用蚁剑测试连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps5.jpg" srcset="/img/loading.gif" lazyload> </p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps6.jpg" srcset="/img/loading.gif" lazyload> </p>
-<p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps7.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092242310.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092257953.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（2）Pass-02"><a href="#（2）Pass-02" class="headerlink" title="（2）Pass-02"></a>（2）<strong>Pass-02</strong></h4><p>先直接上传php发现返回错误信息</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps8.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092326693.png" srcset="/img/loading.gif" lazyload></p>
 <p>提示文件类型错误，接下来进行bp抓包，结合源码分析，并修改文件类型为image&#x2F;jpeg</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps9.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092340066.png" srcset="/img/loading.gif" lazyload> </p>
 <p>右键发送给repeater，尝试进行上传，并查找上传路径</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps10.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092354522.png" srcset="/img/loading.gif" lazyload></p>
 <p>使用蚁剑成功连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps11.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092404430.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps12.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092422402.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（3）Pass-03"><a href="#（3）Pass-03" class="headerlink" title="（3）Pass-03"></a>（3）<strong>Pass-03</strong></h4><p>尝试直接上传php文件</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps13.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092434464.png" srcset="/img/loading.gif" lazyload> </p>
 <p>分析源码</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps14.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092444754.png" srcset="/img/loading.gif" lazyload></p>
 <p>抓包，将文件后缀名改为.phtml</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps15.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092452599.png" srcset="/img/loading.gif" lazyload></p>
 <p>发送到repeater，send之后搜索找到上传的文件路径和修改过的文件名</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps16.jpg" srcset="/img/loading.gif" lazyload> </p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps17.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092512904.png" srcset="/img/loading.gif" lazyload><br><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092524762.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps18.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092535878.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（4）Pass-04"><a href="#（4）Pass-04" class="headerlink" title="（4）Pass-04"></a>（4）<strong>Pass-04</strong></h4><p>查看源代码</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps19.jpg" srcset="/img/loading.gif" lazyload> </p>
-<p>但我们发.htaccess没有被封禁，因此我们可以利用.htaccess文件来将后续的文件转变为.php文件。先创建.htaccess文件，内容如下</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps20.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092543725.png" srcset="/img/loading.gif" lazyload><br>但我们发.htaccess没有被封禁，因此我们可以利用.htaccess文件来将后续的文件转变为.php文件。先创建.htaccess文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs htaccess">SetHandler application/x-httpd-php<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092555106.png" srcset="/img/loading.gif" lazyload></p>
 <p>然后上传130_4.php文件，抓包，右键送入repeater，修改文件名后缀为.png，然后send，再查找上传路径</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps21.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092606385.png" srcset="/img/loading.gif" lazyload></p>
 <p>蚁剑连接成功</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps22.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092631432.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps23.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092642245.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（5）Pass-05"><a href="#（5）Pass-05" class="headerlink" title="（5）Pass-05"></a>（5）<strong>Pass-05</strong></h4><p>查看源码，仍然存在很多黑名单</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps24.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092656245.png" srcset="/img/loading.gif" lazyload></p>
 <p>而且我们上一关使用的.htaccess也被封禁</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps25.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092702961.png" srcset="/img/loading.gif" lazyload></p>
 <p>分析源码，发现代码会删除文件末尾的点和空格，因此这里使用“双写点+空格”进行绕过</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps26.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092713984.png" srcset="/img/loading.gif" lazyload></p>
 <p>进行蚁剑连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps27.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092722858.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps28.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092736681.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（6）Pass-06"><a href="#（6）Pass-06" class="headerlink" title="（6）Pass-06"></a>（6）<strong>Pass-06</strong></h4><p>分析源码，发现没有大小写转换的代码，因此尝试使用大小写绕过</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps29.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092746807.png" srcset="/img/loading.gif" lazyload></p>
 <p>bp抓包修改后缀名的大小写为.phP，并在Repeater中查看上传路径</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps30.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092755555.png" srcset="/img/loading.gif" lazyload></p>
 <p>进行蚁剑连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps31.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092802986.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps32.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092813314.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（7）Pass-07"><a href="#（7）Pass-07" class="headerlink" title="（7）Pass-07"></a>（7）<strong>Pass-07</strong></h4><p>分析源码，发现没有处理空格</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps33.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092819995.png" srcset="/img/loading.gif" lazyload></p>
 <p>因此使用空格绕过，同样的抓包步骤</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps34.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092835060.png" srcset="/img/loading.gif" lazyload></p>
 <p>蚁剑连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps35.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092846483.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps36.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092853532.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（8）Pass-08"><a href="#（8）Pass-08" class="headerlink" title="（8）Pass-08"></a>（8）<strong>Pass-08</strong></h4><p>分析源码，发现没有处理末尾的点</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps37.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092903914.png" srcset="/img/loading.gif" lazyload></p>
 <p>因此抓包在后缀名后添加点进行绕过</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps38.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092911367.png" srcset="/img/loading.gif" lazyload></p>
 <p>蚁剑连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps39.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092919001.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps40.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092926821.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（9）Pass-09"><a href="#（9）Pass-09" class="headerlink" title="（9）Pass-09"></a>（9）<strong>Pass-09</strong></h4><p>分析源码，发现未去除::$DATA</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps41.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092934051.png" srcset="/img/loading.gif" lazyload></p>
 <p>因此使用在后缀名末尾添加::$DATA，让php文件被当作文件流处理，便不会进行后缀名检查。进行bp抓包，发送到repeater</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps42.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708092944548.png" srcset="/img/loading.gif" lazyload></p>
 <p>蚁剑连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps43.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093023270.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps44.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093030931.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="（10）Pass-10"><a href="#（10）Pass-10" class="headerlink" title="（10）Pass-10"></a>（10）<strong>Pass-10</strong></h4><p>分析源码，虽然文件对末尾的符号都进行了处理，但是没有进行后缀名双写的处理，因此可将文件名后缀改为.phpphp进行绕过</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps45.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093043830.png" srcset="/img/loading.gif" lazyload></p>
 <p>Bp抓包，送入Repeater，修改文件后缀双写，并搜索到上传路径</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps46.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093051665.png" srcset="/img/loading.gif" lazyload></p>
 <p>蚁剑连接</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps47.jpg" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093059114.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功使用蚁剑getshell</p>
-<p><img src="file:///C:\Users\29226\AppData\Local\Temp\ksohtml28576\wps48.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/file-20250708093115655.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
