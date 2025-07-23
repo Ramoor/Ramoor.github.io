@@ -387,14 +387,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/Crypto/</loc>
+    <loc>http://ramoor.github.io/tags/LCG/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/LCG/</loc>
+    <loc>http://ramoor.github.io/tags/Crypto/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -436,14 +436,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/misc/</loc>
+    <loc>http://ramoor.github.io/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/%E9%9A%90%E5%86%99/</loc>
+    <loc>http://ramoor.github.io/tags/misc/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -457,7 +457,7 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/</loc>
+    <loc>http://ramoor.github.io/tags/%E9%9A%90%E5%86%99/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -492,6 +492,13 @@
   </url>
   
   <url>
+    <loc>http://ramoor.github.io/tags/Forensics/</loc>
+    <lastmod>2025-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://ramoor.github.io/tags/%E7%BB%93%E5%BC%8F%E4%B8%8Ersa/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -500,13 +507,6 @@
   
   <url>
     <loc>http://ramoor.github.io/tags/%E7%BB%93%E5%BC%8F/</loc>
-    <lastmod>2025-07-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ramoor.github.io/tags/Forensics/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -543,14 +543,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/Crypto/</loc>
+    <loc>http://ramoor.github.io/categories/Deployment/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/Deployment/</loc>
+    <loc>http://ramoor.github.io/categories/Crypto/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
