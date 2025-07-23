@@ -63,5 +63,5 @@ http://ramoor.github.io/categories/Study/
 http://ramoor.github.io/categories/WriteUp/
 http://ramoor.github.io/categories/Study/Crypto/
 http://ramoor.github.io/categories/blog/
-http://ramoor.github.io/categories/Deployment/
 http://ramoor.github.io/categories/Crypto/
+http://ramoor.github.io/categories/Deployment/
