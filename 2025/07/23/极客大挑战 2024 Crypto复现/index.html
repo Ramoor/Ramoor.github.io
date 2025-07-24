@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ramoor">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文是关于极客大挑战2024 Crypto方向的部分题目复现，本次复现主要目的是刷题，因此并没有写详细的解题步骤，总结来说，这个比赛的题目难度都不是很大，覆盖面较广，适合新手练习(ﾟ∀ﾟ) 共模攻击题目： 123456789101112131415161718192021from Crypto.Util.number import *from secret import flagp,q &#x3D; [ge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="极客大挑战 2024 Crypto复现">
+<meta property="og:url" content="http://ramoor.github.io/2025/07/23/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202024%20Crypto%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Ramoor">
+<meta property="og:description" content="本文是关于极客大挑战2024 Crypto方向的部分题目复现，本次复现主要目的是刷题，因此并没有写详细的解题步骤，总结来说，这个比赛的题目难度都不是很大，覆盖面较广，适合新手练习(ﾟ∀ﾟ) 共模攻击题目： 123456789101112131415161718192021from Crypto.Util.number import *from secret import flagp,q &#x3D; [ge">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-23T09:20:57.000Z">
+<meta property="article:modified_time" content="2025-07-24T08:59:59.665Z">
+<meta property="article:author" content="Ramoor">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="极客大挑战">
+<meta property="article:tag" content="Geek">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>极客大挑战 2024 Crypto复现 - Ramoor</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ramoor</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="极客大挑战 2024 Crypto复现"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-23 17:20" pubdate>
+          2025年7月23日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">极客大挑战 2024 Crypto复现</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本文是关于极客大挑战2024 Crypto方向的部分题目复现，本次复现主要目的是刷题，因此并没有写详细的解题步骤，总结来说，这个比赛的题目难度都不是很大，覆盖面较广，适合新手练习(<em>ﾟ∀ﾟ</em>)</p>
+<h1 id="共模攻击"><a href="#共模攻击" class="headerlink" title="共模攻击"></a>共模攻击</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br>p,q = [getPrime(<span class="hljs-number">1024</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>)] <br>n = p*q<br>e = [getPrime(<span class="hljs-number">10</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>)]<br><br>m = bytes_to_long(flag)<br><br>c = [<span class="hljs-built_in">pow</span>(m, e[i], n) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>)]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;n = <span class="hljs-subst">&#123;n&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e1 = <span class="hljs-subst">&#123;e[<span class="hljs-number">0</span>]&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e2 = <span class="hljs-subst">&#123;e[<span class="hljs-number">1</span>]&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c1 = <span class="hljs-subst">&#123;c[<span class="hljs-number">0</span>]&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c2 = <span class="hljs-subst">&#123;c[<span class="hljs-number">1</span>]&#125;</span>&#x27;</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 19742875423645690846073637620470497648804310111201409901059297083827103813674034450200432098143959078292346910591785265323563248781526393718834491458926162514713269984791730816121181307827624489725923763353393879316510062227511469438742429290073999388690825732236465647396755899136346150862848924231619666069528077790933176798057396704758072769660663756346237040909579775389576227450505746914753205890194457812893098491264392293949768193694560954874603451253079446652049592976605414438411872223250039782381259212718733455588477129910357095186014496957765297934289263536712574572533650393220492870445376144568199077767</span><br><span class="hljs-string">e1 = 911</span><br><span class="hljs-string">e2 = 967</span><br><span class="hljs-string">c1 = 18676091924461946809127036439355116782539894105245796626898495935702348484076501694838877829307466429933623102626122909782775514926293363853121828819237500456062111805212209491398720528499589486241208820804465599279152640624618194425740368495072591471531868392274503936869225072123214869399971636428177516761675388589238329574042518038702529606188240859751459632643230538522947412931990009143731829484941397093509641320264169403755707495153433568106934850283614529793695266717330769019091782929139589939928210818515744604847453929432990185347112319971445630830477574679898503825626294542336195240055995445217249602983</span><br><span class="hljs-string">c2 = 4229417863231092939788858229435938841085459330992709019823280977891432565586698228613770964563920779991584732527715378842621171338649745186081520176123907689669636473919678398014317024138622949923292787095400632018991311254591786179660603414693984024161009444842277220189315861986306573182865656366278782315864366857374874763243428496061153290565891942968876789905670073321426112497113145141539289020571684634406829272902118484670099097148727072718299512735637087933649345419433312872607209633402427461708181971718804026293074540519907755129917132236240606834816534369171888633588190859475764799895410284484045429152</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br><br>n = <span class="hljs-number">19742875423645690846073637620470497648804310111201409901059297083827103813674034450200432098143959078292346910591785265323563248781526393718834491458926162514713269984791730816121181307827624489725923763353393879316510062227511469438742429290073999388690825732236465647396755899136346150862848924231619666069528077790933176798057396704758072769660663756346237040909579775389576227450505746914753205890194457812893098491264392293949768193694560954874603451253079446652049592976605414438411872223250039782381259212718733455588477129910357095186014496957765297934289263536712574572533650393220492870445376144568199077767</span><br>e1 = <span class="hljs-number">911</span><br>e2 = <span class="hljs-number">967</span><br>c1 = <span class="hljs-number">18676091924461946809127036439355116782539894105245796626898495935702348484076501694838877829307466429933623102626122909782775514926293363853121828819237500456062111805212209491398720528499589486241208820804465599279152640624618194425740368495072591471531868392274503936869225072123214869399971636428177516761675388589238329574042518038702529606188240859751459632643230538522947412931990009143731829484941397093509641320264169403755707495153433568106934850283614529793695266717330769019091782929139589939928210818515744604847453929432990185347112319971445630830477574679898503825626294542336195240055995445217249602983</span><br>c2 = <span class="hljs-number">4229417863231092939788858229435938841085459330992709019823280977891432565586698228613770964563920779991584732527715378842621171338649745186081520176123907689669636473919678398014317024138622949923292787095400632018991311254591786179660603414693984024161009444842277220189315861986306573182865656366278782315864366857374874763243428496061153290565891942968876789905670073321426112497113145141539289020571684634406829272902118484670099097148727072718299512735637087933649345419433312872607209633402427461708181971718804026293074540519907755129917132236240606834816534369171888633588190859475764799895410284484045429152</span><br><br>_ , p1, q1 = gmpy2.gcdext(e1, e2)<br>m = (<span class="hljs-built_in">pow</span>(c1, p1, n) * <span class="hljs-built_in">pow</span>(c2, q1, n)) % n<br>ans = long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="凯撒加密"><a href="#凯撒加密" class="headerlink" title="凯撒加密"></a>凯撒加密</h1><p><strong>题目：</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">YEI&#123;CKRIUSK_ZU_2024_MKKQ_INGRRKTMK&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;Caesar.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>)<br>strings = file.read()<br>ans = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> strings:<br>    <span class="hljs-keyword">if</span> i.isalpha() == <span class="hljs-literal">False</span>:<br>        ans += i<br>        <span class="hljs-keyword">continue</span><br>    ans += <span class="hljs-built_in">chr</span>((<span class="hljs-built_in">ord</span>(i)-<span class="hljs-built_in">ord</span>(<span class="hljs-string">&quot;A&quot;</span>)-<span class="hljs-number">6</span>)%<span class="hljs-number">26</span>+<span class="hljs-built_in">ord</span>(<span class="hljs-string">&quot;A&quot;</span>))<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> getPrime,bytes_to_long<br><br>p,q = getPrime(<span class="hljs-number">512</span>),getPrime(<span class="hljs-number">512</span>)<br>n = p * q<br>e = <span class="hljs-number">65537</span><br>d = <span class="hljs-built_in">pow</span>(e,-<span class="hljs-number">1</span>,(p-<span class="hljs-number">1</span>) * (q-<span class="hljs-number">1</span>))<br>dp = d % (p-<span class="hljs-number">1</span>)<br>m = bytes_to_long(flag) <span class="hljs-comment">#type:ignore</span><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;c = &quot;</span>,c)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;n = &quot;</span>,n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;e = &quot;</span>,e)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;dp = &quot;</span>,dp)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">c =  127916287434936224964530288403657504450134210781148845328357237956681373722556447001247137686758965891751380034827824922625307521221598031789165449134994998397717982461775225812413476283147124013667777578827293691666320739053915493782515447112364470583788127477537555786778672970196314874316507098162498135060</span><br><span class="hljs-string">n =  157667866005866043809675592336288962106125998780791920007920833145068421861029354497045918471672956655205541928071253023208751202980457919399456984628429198438149779785543371372206661553180051432786094530268099696823142821724314197245158942206348670703497441629288741715352106143317909146546420870645633338871</span><br><span class="hljs-string">e =  65537</span><br><span class="hljs-string">dp =  2509050304161548479367108202753097217949816106531036020623500808413533337006939302155166063392071003278307018323129989037561756887882853296553118973548769</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse,long_to_bytes<br>c =  <span class="hljs-number">127916287434936224964530288403657504450134210781148845328357237956681373722556447001247137686758965891751380034827824922625307521221598031789165449134994998397717982461775225812413476283147124013667777578827293691666320739053915493782515447112364470583788127477537555786778672970196314874316507098162498135060</span><br>n =  <span class="hljs-number">157667866005866043809675592336288962106125998780791920007920833145068421861029354497045918471672956655205541928071253023208751202980457919399456984628429198438149779785543371372206661553180051432786094530268099696823142821724314197245158942206348670703497441629288741715352106143317909146546420870645633338871</span><br>e =  <span class="hljs-number">65537</span><br>dp =  <span class="hljs-number">2509050304161548479367108202753097217949816106531036020623500808413533337006939302155166063392071003278307018323129989037561756887882853296553118973548769</span><br><br>x = e*dp - <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,e):<br>    <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:<br>        p_1 = x // i + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> n % p_1 == <span class="hljs-number">0</span>:<br>            p = p_1<br>            q = n // p<br>            <span class="hljs-keyword">break</span><br>phi = (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>)<br>d = inverse(e, phi)<br>m = <span class="hljs-built_in">pow</span>(c, d, n)<br>ans = long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="easy-LLL"><a href="#easy-LLL" class="headerlink" title="easy LLL"></a>easy LLL</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>m = bytes_to_long(flag)<br>p = getPrime(<span class="hljs-number">1024</span>)<br><span class="hljs-keyword">assert</span> m.bit_length() ==  <span class="hljs-number">255</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">encrypt</span>(<span class="hljs-params">m</span>):<br>    a = getPrime(<span class="hljs-number">1024</span>)<br>    b = getPrime(<span class="hljs-number">400</span>)<br>    c = (a * m + b) % p<br>    <span class="hljs-keyword">return</span> c, a<br><br>result = [encrypt(m) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)]<br>c = [x[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> result]<br>a = [x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> result]<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;p =&#x27;</span>, p)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;c =&#x27;</span>, c)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a =&#x27;</span>, a)<br><br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">p = 114770017142688382362918268558878024848633097928402093647914503696492833723966801545716194546592346338592062332306371502256979159033965343002132956304625610134374822329402499359634555710129039614275145668904822690744696925414716152630310915301980153974374009140517084226870950134327432658087834138202887501571</span><br><span class="hljs-string">c = [25269157674120082500323585451842928560404625967932662908517922704871828513397233858615005968124017428639853960550468542894270451871612496631645175015826203493265945456529848647562285359912541672751550625137876486033809099678631009005979648033707322772087110235116987698692692467320479776960630479772236446980, 75827517416784647262997004080634347924631190865715212882627791181841845414253117114184423517850773219376565782814219713490136873921446382123059696483594598328510450811390866671002685611755205236016843942407419858592870716928648777362367108239158432436307113173823883182666320180058177554647020175991566479974, 4000439731719746534404360339840675006453847582492745979982221624660296805996044239209286181541462187650487112017410839740281883027081539802479046385802021188067656190594734619927933032154534742175380783895559841318520045144113562164247717915766667365412215754183668349398802684299015216478025166881475794536, 16711257143606850336586355581909703391105580636095435863487225535083010317005439435375105800641024112138121810242207127443011036209544967633123983636015153089843815287370646565071784002098183021489882046492609441708361550786752857773565252821037805549119284258373739189052221307754872723967188683410620808193, 106512227999048988543537542345636528925594107128125030635002665980574709006558840446189017357623681828677935125012144689963798865971782914704616798239451971370511961281779438306334353650663495164449411037055054859128957955413918744183200858441122917851347996800797164614883188302584586112732819164555910532500]</span><br><span class="hljs-string">a = [177876163920838720585474640511391249051418827853372387342635245341495792468826199544624082182728094652999191797576747605771062756630817438777653951772485569478516324903956113309190795622258346824643390004835397272889256696087356239515881459115499360779486974615331766141255410923960657795391638070660994726539, 154147211832384364492785997490497428696214843927503185938896425556028644075902949520267734189423717477702286854849502563505554965833703544305651488482204719931055591825164774932532116940955079750398001376723036214113076925445019856194390932639722726924707396244454184674407094860919513514591518499956074524561, 162236910312416448303316079284626131452444352290110477620135842885125003493068172330766174225997049094080836685617836911475638508283918576304502582848847097467251286819613975600023439985149604495163647781268904127545271241114039490048103188362740808427663167350820948490766499995036870926879430699822216419877, 156324330649465856865205652642919116551480610060830456323361514761783406613162826555066367215822747145109223530381689780625035795004458919262362420375225560790467893332585836287433463308447660726674632677063603419250881619682710122472587150879771212601074942044613408069114640355658551759306352327418458216623, 94727349364308455432706991721504607810501329870619614073375570944298709074650444442139356318854809081925625009516102978518170343525726627149123655332253529418292440747073463615106501530133930750010290051226765906194210372904323460884238665194406125116885468971886527174150462509520345910607640580833401931201]</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>p = <span class="hljs-number">114770017142688382362918268558878024848633097928402093647914503696492833723966801545716194546592346338592062332306371502256979159033965343002132956304625610134374822329402499359634555710129039614275145668904822690744696925414716152630310915301980153974374009140517084226870950134327432658087834138202887501571</span><br>c = [<span class="hljs-number">25269157674120082500323585451842928560404625967932662908517922704871828513397233858615005968124017428639853960550468542894270451871612496631645175015826203493265945456529848647562285359912541672751550625137876486033809099678631009005979648033707322772087110235116987698692692467320479776960630479772236446980</span>, <span class="hljs-number">75827517416784647262997004080634347924631190865715212882627791181841845414253117114184423517850773219376565782814219713490136873921446382123059696483594598328510450811390866671002685611755205236016843942407419858592870716928648777362367108239158432436307113173823883182666320180058177554647020175991566479974</span>, <span class="hljs-number">4000439731719746534404360339840675006453847582492745979982221624660296805996044239209286181541462187650487112017410839740281883027081539802479046385802021188067656190594734619927933032154534742175380783895559841318520045144113562164247717915766667365412215754183668349398802684299015216478025166881475794536</span>, <span class="hljs-number">16711257143606850336586355581909703391105580636095435863487225535083010317005439435375105800641024112138121810242207127443011036209544967633123983636015153089843815287370646565071784002098183021489882046492609441708361550786752857773565252821037805549119284258373739189052221307754872723967188683410620808193</span>, <span class="hljs-number">106512227999048988543537542345636528925594107128125030635002665980574709006558840446189017357623681828677935125012144689963798865971782914704616798239451971370511961281779438306334353650663495164449411037055054859128957955413918744183200858441122917851347996800797164614883188302584586112732819164555910532500</span>]<br>a = [<span class="hljs-number">177876163920838720585474640511391249051418827853372387342635245341495792468826199544624082182728094652999191797576747605771062756630817438777653951772485569478516324903956113309190795622258346824643390004835397272889256696087356239515881459115499360779486974615331766141255410923960657795391638070660994726539</span>, <span class="hljs-number">154147211832384364492785997490497428696214843927503185938896425556028644075902949520267734189423717477702286854849502563505554965833703544305651488482204719931055591825164774932532116940955079750398001376723036214113076925445019856194390932639722726924707396244454184674407094860919513514591518499956074524561</span>, <span class="hljs-number">162236910312416448303316079284626131452444352290110477620135842885125003493068172330766174225997049094080836685617836911475638508283918576304502582848847097467251286819613975600023439985149604495163647781268904127545271241114039490048103188362740808427663167350820948490766499995036870926879430699822216419877</span>, <span class="hljs-number">156324330649465856865205652642919116551480610060830456323361514761783406613162826555066367215822747145109223530381689780625035795004458919262362420375225560790467893332585836287433463308447660726674632677063603419250881619682710122472587150879771212601074942044613408069114640355658551759306352327418458216623</span>, <span class="hljs-number">94727349364308455432706991721504607810501329870619614073375570944298709074650444442139356318854809081925625009516102978518170343525726627149123655332253529418292440747073463615106501530133930750010290051226765906194210372904323460884238665194406125116885468971886527174150462509520345910607640580833401931201</span>]<br><br><br>M = matrix(ZZ,<span class="hljs-number">7</span>,<span class="hljs-number">7</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    M[i,i] = p<br>    M[-<span class="hljs-number">2</span>,i] = a[i]<br>    M[-<span class="hljs-number">1</span>,i] = c[i]<br>M[-<span class="hljs-number">2</span>,-<span class="hljs-number">2</span>] = <span class="hljs-number">1</span><br>M[-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>] = <span class="hljs-number">1</span><br>L = M.LLL()[<span class="hljs-number">0</span>]<br><span class="hljs-keyword">if</span> L:<br>    <span class="hljs-built_in">print</span>(long_to_bytes(<span class="hljs-built_in">abs</span>(L[-<span class="hljs-number">2</span>])%p))<br></code></pre></td></tr></table></figure>
+<h1 id="ECBpad"><a href="#ECBpad" class="headerlink" title="ECBpad"></a>ECBpad</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socketserver<br><span class="hljs-keyword">import</span> signal<br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><br><br>KEY = <span class="hljs-string">b&#x27;...&#x27;</span><br>FLAG = <span class="hljs-string">b&#x27;SYC&#123;...&#125;&#x27;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">encrypt</span>(<span class="hljs-params">key, plaintext</span>):<br>        plaintext = padding(plaintext)<br>        cipher = AES.new(key, AES.MODE_ECB)<br>        <span class="hljs-keyword">return</span> cipher.encrypt(plaintext)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">padding</span>(<span class="hljs-params">m</span>):<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">len</span>(m) % <span class="hljs-number">16</span> != <span class="hljs-number">0</span>):<br>        m = m + <span class="hljs-string">b&#x27;F&#x27;</span> * (<span class="hljs-number">16</span> - (<span class="hljs-built_in">len</span>(m) % <span class="hljs-number">16</span>))<br>    <span class="hljs-keyword">return</span> m<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Serve</span>(socketserver.BaseRequestHandler):<br><br>    ctry = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_recvall</span>(<span class="hljs-params">self</span>):<br>        BUFF_SIZE = <span class="hljs-number">2048</span><br>        data = <span class="hljs-string">b&#x27;&#x27;</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            part = <span class="hljs-variable language_">self</span>.request.recv(BUFF_SIZE)<br>            data += part<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(part) &lt; BUFF_SIZE:<br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">return</span> data.strip()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">send</span>(<span class="hljs-params">self, msg, newline=<span class="hljs-literal">True</span></span>):<br>        <span class="hljs-keyword">try</span>:<br>            <span class="hljs-keyword">if</span> newline:<br>                msg += <span class="hljs-string">b&#x27;\n&#x27;</span><br>            <span class="hljs-variable language_">self</span>.request.sendall(msg)<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">pass</span><br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">recv</span>(<span class="hljs-params">self, prompt=<span class="hljs-string">b&#x27;[-] &#x27;</span></span>):<br>        <span class="hljs-variable language_">self</span>.send(prompt, newline=<span class="hljs-literal">False</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>._recvall()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">handle</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">try</span>:<br>            go = <span class="hljs-number">1</span><br>            signal.alarm(<span class="hljs-number">3000</span>)<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;Welcome to the AES_ECB Cryptography System&#x27;</span>)<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;You can send your plaintext and get ciphertext&#x27;</span>)<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[+] ciphertext = plaintext + FLAG&#x27;</span>)<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;Start?(yes/no)&#x27;</span>)<br>            <span class="hljs-keyword">while</span> go:<br>                c = <span class="hljs-variable language_">self</span>.recv()<br>                <span class="hljs-keyword">if</span> c == <span class="hljs-string">b&#x27;yes&#x27;</span>:<br>                    plain = <span class="hljs-variable language_">self</span>.recv()<br>                    cipher = encrypt(KEY,plain+FLAG)<br>                    <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;Your cipher:&#x27;</span>+ cipher.<span class="hljs-built_in">hex</span>().encode())<br>                <span class="hljs-keyword">else</span>:<br>                    go = <span class="hljs-number">0</span><br>                    <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;GoodBye!&#x27;</span>)<br><br>        <span class="hljs-keyword">except</span> TimeoutError:<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[!] Ohhehe, Timeout!&#x27;</span>)<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadedServer</span>(socketserver.ThreadingMixIn, socketserver.TCPServer):<br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ForkedServer</span>(socketserver.ForkingMixIn, socketserver.TCPServer):<br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    HOST,PORT = <span class="hljs-string">&#x27;0.0.0.0&#x27;</span>,<span class="hljs-number">12321</span><br>    server = ForkedServer((HOST,PORT),Serve)<br>    server.allow_reuse_address = <span class="hljs-literal">True</span><br>    <span class="hljs-built_in">print</span>(HOST, PORT)<br>    server.serve_forever()<br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">attack</span>():<br>    <span class="hljs-comment">#建立连接</span><br>    host = <span class="hljs-string">&#x27;nc1.ctfplus.cn&#x27;</span><br>    port = <span class="hljs-number">14816</span><br>    conn = remote(host, port)<br>    <span class="hljs-comment">#爆破表</span><br>    table = <span class="hljs-string">&#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_&#123;&#125;&#x27;</span><br><br>    <span class="hljs-comment">#进入交互</span><br>    <span class="hljs-comment">#记录初始密文长度</span><br>    conn.recvuntil(<span class="hljs-string">b&#x27;Start?(yes/no)&#x27;</span>)<br>    conn.sendline(<span class="hljs-string">b&#x27;yes&#x27;</span>)<br><br>    <br>    send_data = <span class="hljs-string">b&#x27;&#x27;</span><br>    conn.sendline(send_data)<br>    conn.recvuntil(<span class="hljs-string">b&#x27;Your cipher:&#x27;</span>)<br>    ct = conn.recvline()[:-<span class="hljs-number">1</span>]   <span class="hljs-comment">#去掉换行符</span><br>    <span class="hljs-built_in">print</span>(ct)<br><br>    <br>    lenth = <span class="hljs-built_in">len</span>(ct)<br><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        conn.sendline(<span class="hljs-string">b&#x27;yes&#x27;</span>)<br>        send_data =  send_data + <span class="hljs-string">b&#x27;0&#x27;</span><br>        conn.sendline(send_data)<br><br>        conn.recvuntil(<span class="hljs-string">b&#x27;Your cipher:&#x27;</span>)<br>        ct = conn.recvline()[:-<span class="hljs-number">1</span>]<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ct=&quot;</span>, ct)<br><br>        lenth2 = <span class="hljs-built_in">len</span>(ct)<br>        <span class="hljs-keyword">if</span> lenth2 &gt; lenth:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;lenth2=&quot;</span>, lenth2)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;lenth=&quot;</span>, lenth)<br>            <span class="hljs-keyword">break</span><br>    lenth = lenth//<span class="hljs-number">2</span>-<span class="hljs-built_in">len</span>(send_data)+<span class="hljs-number">1</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;lenth=&quot;</span>, lenth)<br><br>    <span class="hljs-comment">#爆破flag</span><br>    flag = <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(lenth):<br>        send_data = <span class="hljs-string">b&#x27;A&#x27;</span> * (<span class="hljs-number">31</span> - i)<br>        conn.sendline(<span class="hljs-string">b&#x27;yes&#x27;</span>)<br>        conn.sendline(send_data)<br><br>        conn.recvuntil(<span class="hljs-string">b&#x27;Your cipher:&#x27;</span>)<br>        ct = conn.recvline()[:-<span class="hljs-number">1</span>]<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ct=&quot;</span>, ct)<br><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> table:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;j=&quot;</span>, j.encode())<br>            send_data = <span class="hljs-string">b&#x27;A&#x27;</span> * (<span class="hljs-number">31</span> - i) + flag.encode() + j.encode()<br>            conn.sendline(<span class="hljs-string">b&#x27;yes&#x27;</span>)<br>            conn.sendline(send_data)<br>            conn.recvuntil(<span class="hljs-string">b&#x27;Your cipher:&#x27;</span>)<br>            ct2 = conn.recvline()[:-<span class="hljs-number">1</span>]<br><br>            <span class="hljs-keyword">if</span> ct2[:<span class="hljs-number">64</span>] == ct[:<span class="hljs-number">64</span>]:<br>                <span class="hljs-comment">#print(&quot;ct2=&quot;, ct2)</span><br>                <span class="hljs-comment">#print(&quot;ct=&quot;, ct)</span><br>                flag = flag + j<br><br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;flag=&quot;</span>, flag)<br>                <span class="hljs-keyword">break</span><br><br>    <br>    <span class="hljs-keyword">return</span> flag<br><br>flag = attack()<br></code></pre></td></tr></table></figure>
+<h1 id="ECC"><a href="#ECC" class="headerlink" title="ECC"></a>ECC</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> getPrime<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br><br>p = getPrime(<span class="hljs-number">256</span>)<br>a = getPrime(<span class="hljs-number">256</span>)<br>b = getPrime(<span class="hljs-number">256</span>)<br>E = EllipticCurve(GF(p),[a,b])<br>m = E.random_point()<br>G = E.random_point()<br>k = getPrime(<span class="hljs-number">256</span>)<br>K = k * G<br>r = getPrime(<span class="hljs-number">256</span>)<br>c1 = m + r * K<br>c2 = r * G<br><br>cipher_left = bytes_to_long(flag[:<span class="hljs-built_in">len</span>(flag)//<span class="hljs-number">2</span>]) * m[<span class="hljs-number">0</span>]<br>cipher_right = bytes_to_long(flag[<span class="hljs-built_in">len</span>(flag)//<span class="hljs-number">2</span>:]) * m[<span class="hljs-number">1</span>]<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;p = <span class="hljs-subst">&#123;p&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;a = <span class="hljs-subst">&#123;a&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;b = <span class="hljs-subst">&#123;b&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;k = <span class="hljs-subst">&#123;k&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;E = <span class="hljs-subst">&#123;E&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;c1 = <span class="hljs-subst">&#123;c1&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;c2 = <span class="hljs-subst">&#123;c2&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;cipher_left = <span class="hljs-subst">&#123;cipher_left&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;cipher_right = <span class="hljs-subst">&#123;cipher_right&#125;</span>&quot;</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">p = 93202687891394085633786409619308940289806301885603002539703165565954917915237</span><br><span class="hljs-string">a = 93822086754590882682502837744000915992590989006575416134628106376590825652793</span><br><span class="hljs-string">b = 80546187587527518012258369984400999843218609481640396827119274116524742672463</span><br><span class="hljs-string">k = 58946963503925758614502522844777257459612909354227999110879446485128547020161</span><br><span class="hljs-string">E = Elliptic Curve defined by y^2 = x^3 + 619398863196797048716428124691975702784687120972413594924940810635907737556*x + 80546187587527518012258369984400999843218609481640396827119274116524742672463 over Finite Field of size 93202687891394085633786409619308940289806301885603002539703165565954917915237</span><br><span class="hljs-string">c1 = (40485287784577105052142632380297282223290388901294496494726004092953216846111 : 81688798450940847410572480357702533480504451191937977779652402489509511335169 : 1)</span><br><span class="hljs-string">c2 = (51588540344302003527882762117190244240363885481651104291377049503085003152858 : 77333747801859674540077067783932976850711668089918703995609977466893496793359 : 1)</span><br><span class="hljs-string">cipher_left = 34210996654599605871773958201517275601830496965429751344560373676881990711573</span><br><span class="hljs-string">cipher_right = 62166121351090454316858010748966403510891793374784456622783974987056684617905</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>p = <span class="hljs-number">93202687891394085633786409619308940289806301885603002539703165565954917915237</span><br>a = <span class="hljs-number">93822086754590882682502837744000915992590989006575416134628106376590825652793</span><br>b = <span class="hljs-number">80546187587527518012258369984400999843218609481640396827119274116524742672463</span><br>k = <span class="hljs-number">58946963503925758614502522844777257459612909354227999110879446485128547020161</span><br><br>E = EllipticCurve(GF(p), [a, b])<br><br>c1 = E(<br>    <span class="hljs-number">40485287784577105052142632380297282223290388901294496494726004092953216846111</span>,<br>    <span class="hljs-number">81688798450940847410572480357702533480504451191937977779652402489509511335169</span><br>)<br>c2 = E(<br>    <span class="hljs-number">51588540344302003527882762117190244240363885481651104291377049503085003152858</span>,<br>    <span class="hljs-number">77333747801859674540077067783932976850711668089918703995609977466893496793359</span><br>)<br>cipher_left = <span class="hljs-number">34210996654599605871773958201517275601830496965429751344560373676881990711573</span><br>cipher_right = <span class="hljs-number">62166121351090454316858010748966403510891793374784456622783974987056684617905</span><br><br>m = c1 - k * c2<br>m_x = <span class="hljs-built_in">int</span>(m[<span class="hljs-number">0</span>])<br>m_y = <span class="hljs-built_in">int</span>(m[<span class="hljs-number">1</span>])<br>m0 = inverse(m_x, p)<br>m1 = inverse(m_y, p)<br>ans0 = long_to_bytes((cipher_left * m0) % p)<br>ans1 = long_to_bytes((cipher_right * m1) % p)<br><span class="hljs-built_in">print</span>(ans0 + ans1)<br></code></pre></td></tr></table></figure>
+<h1 id="ezRSA"><a href="#ezRSA" class="headerlink" title="ezRSA"></a>ezRSA</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br>m = bytes_to_long(flag)<br><span class="hljs-keyword">assert</span> m.bit_length()&lt;<span class="hljs-number">500</span><br>p = getPrime(<span class="hljs-number">512</span>)<br>q = getPrime(<span class="hljs-number">512</span>)<br>n = p*q<br>e = <span class="hljs-number">3</span><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br>bits = <span class="hljs-number">150</span><br>m = (m &gt;&gt; bits) &lt;&lt; bits<br>h = (<span class="hljs-number">2024</span>*m-<span class="hljs-number">2023</span>) % n<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;n =&#x27;</span>,n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;c =&#x27;</span>,c)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;h =&#x27;</span>,h)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 98776098002891477120992675696155328927086322526307976337988006606436135336004472363084175941067711391936982491358233723506086793155908108571814951698009309071244571404116817767749308434991695075517682979438837852005396491907180020541510210086588426719828012276157990720969176680296088209573781988504138607511</span><br><span class="hljs-string">c = 9379399412697943604731810117788765980709097637865795846842608472521416662350816995261599566999896411508374352899659705171307916591351157861393506101348972544843696221631571188094524310759046142743046919075577350821523746192424192386688583922197969461446371843309934880019670502610876840610213491163201385965</span><br><span class="hljs-string">h = 111518648179416351438603824560360041496706848494616308866057817087295675324528913254309319829895222661760009533326673551072163865</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse, long_to_bytes<br><br>n = <span class="hljs-number">98776098002891477120992675696155328927086322526307976337988006606436135336004472363084175941067711391936982491358233723506086793155908108571814951698009309071244571404116817767749308434991695075517682979438837852005396491907180020541510210086588426719828012276157990720969176680296088209573781988504138607511</span><br>c = <span class="hljs-number">9379399412697943604731810117788765980709097637865795846842608472521416662350816995261599566999896411508374352899659705171307916591351157861393506101348972544843696221631571188094524310759046142743046919075577350821523746192424192386688583922197969461446371843309934880019670502610876840610213491163201385965</span><br>h = <span class="hljs-number">111518648179416351438603824560360041496706848494616308866057817087295675324528913254309319829895222661760009533326673551072163865</span><br>e = <span class="hljs-number">3</span><br>bits = <span class="hljs-number">150</span><br><br>m = (h + <span class="hljs-number">2023</span>)*inverse(<span class="hljs-number">2024</span>, n) % n<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;m = <span class="hljs-subst">&#123;m&#125;</span>&quot;</span>)<br><br>P.&lt;x&gt; = PolynomialRing(Zmod(n))<br>f = (m+x)^e - c<br>roots = f.small_roots()[<span class="hljs-number">0</span>]<br><span class="hljs-keyword">if</span> roots:<br>    ans = long_to_bytes(<span class="hljs-built_in">int</span>(m+roots))<br>    <span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="highlow"><a href="#highlow" class="headerlink" title="highlow"></a>highlow</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>e = <span class="hljs-number">65537</span><br>p = getPrime(<span class="hljs-number">1024</span>)<br>q = getPrime(<span class="hljs-number">1024</span>)<br>n = p * q<br>pxor = p ^ (bytes_to_long(flag)&lt;&lt;<span class="hljs-number">400</span>)<br><span class="hljs-keyword">assert</span> <span class="hljs-built_in">len</span>(flag)== <span class="hljs-number">44</span><br>m = bytes_to_long(flag)<br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;c =&#x27;</span>,c)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;n =&#x27;</span>,n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;pxor =&#x27;</span>,pxor)<br><br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">c = 11017336122691034053241992293963114590816319844384287448629663672049205892828600396465505710922907685545939978376321927394655458727494361852952898280905220963163625482295222856129164172619564344634365520328815972232825639292605311741655988427166811406091329613627961070231457035303298793651546412496975662225857123805867756651901374507447803198638466304862480202099076813471571495380132563252630789218173007275890600746758285415274434393381125742526014986039652677605642226576741424053749512280825231217420239089105794080707322357602941046822659335487420672699022969372037662958497832065752272061853723653365171768556</span><br><span class="hljs-string">n = 14091206320622523674847720139761543154822190879035380245424481267482550932229611965964424965958386255076593911062804299275581742665134207390532802109700225140999812698020838683697375891035625255222001884477214361835101442288725383073334392995186053867261497679234362794914108033574681292656522807928680812726462195077833184018122369579002715900477290345396065912536529290811962117814900448319776590712946259540382461632468634827959957286905806432005632864663985014872365672653476822833921870071851313424903481282350342304819149894610089804321405589433980650340610521659031234826823369114800150883988613877877881069579</span><br><span class="hljs-string">pxor = 124229245244085791439650934438639686782423445183921252684721764061493908790073948877623812930339081158169421854801552819088679937157357924845248082716160727839419054107753000815066526032809275137495740454967765165248115412626716101315676902716808647904092798908601183908297141420793614426863816161203796966951</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>pxor = <span class="hljs-number">124229245244085791439650934438639686782423445183921252684721764061493908790073948877623812930339081158169421854801552819088679937157357924845248082716160727839419054107753000815066526032809275137495740454967765165248115412626716101315676902716808647904092798908601183908297141420793614426863816161203796966951</span><br>c = <span class="hljs-number">11017336122691034053241992293963114590816319844384287448629663672049205892828600396465505710922907685545939978376321927394655458727494361852952898280905220963163625482295222856129164172619564344634365520328815972232825639292605311741655988427166811406091329613627961070231457035303298793651546412496975662225857123805867756651901374507447803198638466304862480202099076813471571495380132563252630789218173007275890600746758285415274434393381125742526014986039652677605642226576741424053749512280825231217420239089105794080707322357602941046822659335487420672699022969372037662958497832065752272061853723653365171768556</span><br>n = <span class="hljs-number">14091206320622523674847720139761543154822190879035380245424481267482550932229611965964424965958386255076593911062804299275581742665134207390532802109700225140999812698020838683697375891035625255222001884477214361835101442288725383073334392995186053867261497679234362794914108033574681292656522807928680812726462195077833184018122369579002715900477290345396065912536529290811962117814900448319776590712946259540382461632468634827959957286905806432005632864663985014872365672653476822833921870071851313424903481282350342304819149894610089804321405589433980650340610521659031234826823369114800150883988613877877881069579</span><br>e = <span class="hljs-number">65537</span><br><br>p_low = pxor &amp; (<span class="hljs-number">2</span>^<span class="hljs-number">400</span> - <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(p_low)<br>fbits = <span class="hljs-number">44</span>*<span class="hljs-number">8</span><br>kbits = <span class="hljs-number">400</span> + fbits<br><span class="hljs-built_in">print</span>(kbits)<br><br>p_high = (pxor &gt;&gt; kbits) &lt;&lt; kbits<br><span class="hljs-built_in">print</span>(p_high)<br><br>P.&lt;x&gt; = PolynomialRing(Zmod(n))<br>f = p_high + x * <span class="hljs-number">2</span>^<span class="hljs-number">400</span> + p_low<br>f = f.monic()<br>root = f.small_roots(X=<span class="hljs-number">2</span>^fbits,beta=<span class="hljs-number">0.44</span>)[<span class="hljs-number">0</span>]<br>p = p_high + <span class="hljs-built_in">int</span>(root)*<span class="hljs-number">2</span>^<span class="hljs-number">400</span> + p_low <br>q = n//p<br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d = inverse(e,phi)<br>m = <span class="hljs-built_in">pow</span>(c,d,n)<br>ans = long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="inPEM"><a href="#inPEM" class="headerlink" title="inPEM"></a>inPEM</h1><p><strong>分析：</strong><br>可以通过不完整的私钥文件得到dp，dq，具体原理可参考我的另一篇文章<a href="https://ramoor.github.io/2025/07/03/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-PEM%E6%96%87%E4%BB%B6/">Crypto基础篇-PEM文件 - Ramoor</a></p>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse, long_to_bytes,bytes_to_long<br><br>dp = <span class="hljs-string">&quot;00 ba 5b ea f3 82 f5 86 bf 04 46 15 f3 ec 8b f3 5e 0a d0 a4 1c ec b2 13 93 0a 86 ac 35 a8 0d 90 31 9a 05 aa 56 da 31 1e e8 43 5a be 63 17 eb 6d 15 90 4f c7 87 d3 7b 34 c4 8d aa d7 5d 2b 77 a4 1d 5c ec 4c 27 cc ed 07 cb da 89 1f ef a0 d9 d7 02 50 23 bc b8 65 c1 6c 00 02 66 a0 90 64 00 32 75 2a cc e7 3a 33 58 06 0c 05 67 23 e7 88 f4 2e dc 8e 12 0e 0f 58 f5 e2 4f 32 7f ff 1c 56 68 7f b1&quot;</span><br>dq = <span class="hljs-string">&quot;a1 46 44 8c 98 0f cf 49 be 56 40 ea 8c fb 62 78 f3 b2 70 e5 4e ad 35 b5 dd f6 5c 0b b0 eb 67 59 40 75 a6 83 59 e9 0b 76 2d cc 59 60 4f 23 58 d9 07 a5 39 b9 ab cb 27 36 bc 59 f1 56 14 d8 70 35 c5 2d 0c 2b 5f c5 f9 61 5e 00 ac 50 00 97 2c f1 a4 dc d8 3f 30 c7 ad da 8b 0f a3 e1 31 4f b0 46 e1 d5 3f 20 2d 34 1b 0b d0 df a6 81 07 2c 58 92 6f 9e 04 93 1e 0f 3a 90 93 a5 1e 53 6e 2c 11 a1&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">strings_trans</span>(<span class="hljs-params">strings</span>):<br>    strings=strings.replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-keyword">return</span> strings<br><br>dp = <span class="hljs-built_in">int</span>(strings_trans(dp),<span class="hljs-number">16</span>)<br>dq = <span class="hljs-built_in">int</span>(strings_trans(dq),<span class="hljs-number">16</span>)<br>n = <span class="hljs-number">19909823107653171578063591352961144331355821517081529017694276790993397379180193511755806958091550033235815834847549265751244192211761569881061742997804509098095297146520946343734939782935970054031389390447526577982809412074573616889663964050032806967234869741452169276495048891650957729859124875343810181695665153129824527065062831773013713479602052423965588148263292672514853749647510938621421264137177666497737099263481269491867593812579958283619882699866915561357437484323854411934718569074869408000191465973545262527827064708529700071967884924505367105288433603597633451764659888020272057850625902629529400734213</span><br>e = <span class="hljs-number">65537</span><br>c = <span class="hljs-number">127916287434936224964530288403657504450134210781148845328357237956681373722556447001247137686758965891751380034827824922625307521221598031789165449134994998397717982461775225812413476283147124013667777578827293691666320739053915493782515447112364470583788127477537555786778672970196314874316507098162498135060</span><br><br><br>file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;key.enc&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>)<br>c = bytes_to_long(file.read())<br><br>x = e*dp - <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,e):<br>    <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:<br>        p_1 = x // i + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> n % p_1 == <span class="hljs-number">0</span>:<br>            p = p_1<br>            q = n // p<br>            <span class="hljs-keyword">break</span><br>phi = (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>)<br>d = inverse(e, phi)<br>m = <span class="hljs-built_in">pow</span>(c, d, n)<br>ans = long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="LLL"><a href="#LLL" class="headerlink" title="LLL"></a>LLL</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">b&#x27;******&#x27;</span><br>m = bytes_to_long(flag)<br><br><span class="hljs-keyword">assert</span> m.bit_length() == <span class="hljs-number">327</span><br>p = getPrime(<span class="hljs-number">1024</span>)<br>a = getPrime(<span class="hljs-number">1024</span>)<br>c = getPrime(<span class="hljs-number">400</span>)<br><br>b = (a*m + c) % p<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;a = <span class="hljs-subst">&#123;a&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;b = <span class="hljs-subst">&#123;b&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;p = <span class="hljs-subst">&#123;p&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">a = 169790849804323540946197204708402762862586197604183102589270741859708550301920348112941305999764092197996929298474590062625556806793613268527763774013772685954699561684244945434843656515307801882995934869499880288594142919381501796488815033294127591623260894764750214588993456840404443515671353802614450411717</span><br><span class="hljs-string">b = 87985708831523238980948938165414984318379459926002798504435964538203443877988599888615810231215118828138306895572062833107988965151522391460216837691927960249874511818878134399363147008042562222910234739940697553852540265617603482995091203105040187460485673579382171260197291783748886765929376179151804062085</span><br><span class="hljs-string">p = 131724494512065658801039766546788821718063963144467818735768040631367069153816254855229655449559099188694403260044990366292026916085340250077198735215774149087025577263769846650728593180101073940507285459917860726551385227481715873503612683249433020201729190862430476054822102865441136763977415824331858801617</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse, long_to_bytes<br>a = <span class="hljs-number">169790849804323540946197204708402762862586197604183102589270741859708550301920348112941305999764092197996929298474590062625556806793613268527763774013772685954699561684244945434843656515307801882995934869499880288594142919381501796488815033294127591623260894764750214588993456840404443515671353802614450411717</span><br>b = <span class="hljs-number">87985708831523238980948938165414984318379459926002798504435964538203443877988599888615810231215118828138306895572062833107988965151522391460216837691927960249874511818878134399363147008042562222910234739940697553852540265617603482995091203105040187460485673579382171260197291783748886765929376179151804062085</span><br>p = <span class="hljs-number">131724494512065658801039766546788821718063963144467818735768040631367069153816254855229655449559099188694403260044990366292026916085340250077198735215774149087025577263769846650728593180101073940507285459917860726551385227481715873503612683249433020201729190862430476054822102865441136763977415824331858801617</span><br><br>m = matrix(ZZ ,[[<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,a],[<span class="hljs-number">0</span>,<span class="hljs-number">2</span>^<span class="hljs-number">400</span>,b],[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,p]])<br>L = m.LLL()[<span class="hljs-number">0</span>]<br><span class="hljs-built_in">print</span>(long_to_bytes(<span class="hljs-built_in">abs</span>(<span class="hljs-built_in">int</span>(L[<span class="hljs-number">0</span>]))))<br></code></pre></td></tr></table></figure>
+<h1 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> sha256<br><span class="hljs-keyword">import</span> socketserver<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> signal<br><span class="hljs-keyword">import</span> string<br><span class="hljs-keyword">import</span> random<br><br>flag = <span class="hljs-string">&quot;SYC&#123;...&#125;&quot;</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Task</span>(socketserver.BaseRequestHandler):<br><br>    ctry = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_recvall</span>(<span class="hljs-params">self</span>):<br>        BUFF_SIZE = <span class="hljs-number">2048</span><br>        data = <span class="hljs-string">b&#x27;&#x27;</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            part = <span class="hljs-variable language_">self</span>.request.recv(BUFF_SIZE)<br>            data += part<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(part) &lt; BUFF_SIZE:<br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">return</span> data.strip()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">send</span>(<span class="hljs-params">self, msg, newline=<span class="hljs-literal">True</span></span>):<br>        <span class="hljs-keyword">try</span>:<br>            <span class="hljs-keyword">if</span> newline:<br>                msg += <span class="hljs-string">b&#x27;\n&#x27;</span><br>            <span class="hljs-variable language_">self</span>.request.sendall(msg)<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">pass</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">recv</span>(<span class="hljs-params">self, prompt=<span class="hljs-string">b&#x27;[-] &#x27;</span></span>):<br>        <span class="hljs-variable language_">self</span>.send(prompt, newline=<span class="hljs-literal">False</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>._recvall()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">proof_of_work</span>(<span class="hljs-params">self</span>):<br>        random.seed(os.urandom(<span class="hljs-number">8</span>))<br>        proof = <span class="hljs-string">&#x27;&#x27;</span>.join(<br>            [random.choice(string.ascii_letters+string.digits) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">20</span>)])<br>        _hexdigest = sha256(proof.encode()).hexdigest()<br>        <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">f&quot;[+] sha256(XXXX+<span class="hljs-subst">&#123;proof[<span class="hljs-number">4</span>:]&#125;</span>) == <span class="hljs-subst">&#123;_hexdigest&#125;</span>&quot;</span>.encode())<br>        x = <span class="hljs-variable language_">self</span>.recv(prompt=<span class="hljs-string">b&#x27;[+] Plz tell me XXXX: &#x27;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(x) != <span class="hljs-number">4</span> <span class="hljs-keyword">or</span> sha256(x+proof[<span class="hljs-number">4</span>:].encode()).hexdigest() != _hexdigest:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">handle</span>(<span class="hljs-params">self</span>):<br>        signal.alarm(<span class="hljs-number">60</span>)<br>        <span class="hljs-keyword">try</span>:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.proof_of_work():<br>                <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[!] Wrong!&#x27;</span>)<br>                <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[*] Maybe you need a little force, right?&#x27;</span>)<br>                <span class="hljs-keyword">return</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[*] HEY, MY NEW FRIENDDD, YOUUUUUU FIND THE RIGHT WAAAAAAY!&#x27;</span>)<br>                <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[*] Or even more complex?&#x27;</span>)<br>                <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[*] Maybe these details are not important. See below :D&#x27;</span>)<br><br>            signal.alarm(<span class="hljs-number">400</span>)<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[+] &#x27;</span>)<br>            <span class="hljs-keyword">while</span> <span class="hljs-variable language_">self</span>.ctry &lt; <span class="hljs-number">35</span>:<br>                data = <span class="hljs-variable language_">self</span>.recv().decode()<br>                f = <span class="hljs-variable language_">self</span>.oraicle(data)<br>                <span class="hljs-variable language_">self</span>.send(f)<br>                <span class="hljs-variable language_">self</span>.ctry += <span class="hljs-number">1</span><br><br>        <span class="hljs-keyword">except</span> TimeoutError:<br>            <span class="hljs-variable language_">self</span>.send(<span class="hljs-string">b&#x27;[!] Ohhehe, Timeout!&#x27;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">oraicle</span>(<span class="hljs-params">self,a</span>):<br><br>        <span class="hljs-keyword">if</span> a.isdigit() <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(a)&lt;<span class="hljs-number">33</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(a)&gt;<span class="hljs-number">0</span>:<br>            a = <span class="hljs-built_in">int</span>(a)-<span class="hljs-number">1</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-string">b&#x27;[+] &#x27;</span> + flag[a].encode()<br><br>        <span class="hljs-keyword">return</span>  <span class="hljs-string">b&#x27;[!] Invalid Member!&#x27;</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadedServer</span>(socketserver.ThreadingMixIn, socketserver.TCPServer):<br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ForkedServer</span>(socketserver.ForkingMixIn, socketserver.TCPServer):<br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    HOST,PORT = <span class="hljs-string">&#x27;0.0.0.0&#x27;</span>,<span class="hljs-number">12321</span><br>    server = ForkedServer((HOST,PORT),Task)<br>    server.allow_reuse_address = <span class="hljs-literal">True</span><br>    <span class="hljs-built_in">print</span>(HOST, PORT)<br>    server.serve_forever()<br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> sha256<br><span class="hljs-keyword">import</span> sys<br><br>table = <span class="hljs-string">&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> table:<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> table:<br>        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> table:<br>            <span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> table:<br>                string = i + j + k + l + <span class="hljs-string">&quot;wMysYhu7k3xtiRw8&quot;</span><br>                str_sha256 = sha256(string.encode()).hexdigest()<br>                <span class="hljs-keyword">if</span> str_sha256 == <span class="hljs-string">&quot;8529c5821de162e1c9d1a10f40d43706cb6c157544e029c1bc0a2833d1603198&quot;</span>:<br>                    <span class="hljs-built_in">print</span>(i+j+k+l)<br>                    sys.exit()<br><span class="hljs-comment">#SYC&#123;MAYB3_Y0U_KN0W_A1AN-B3&lt;K3R?&#125;</span><br></code></pre></td></tr></table></figure>
+<h1 id="ncoCRT"><a href="#ncoCRT" class="headerlink" title="ncoCRT"></a>ncoCRT</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> random<br><br>flag = <span class="hljs-string">b&#x27;SYC&#123;...&#125;&#x27;</span><br>m = bytes_to_long(flag+<span class="hljs-string">b&#x27;\x01&#x27;</span>*<span class="hljs-number">23</span>)<br><br>p = [<span class="hljs-number">0</span>]*<span class="hljs-number">5</span><br>c = [<span class="hljs-number">0</span>]*<span class="hljs-number">5</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    p0 = random.randint(<span class="hljs-number">2</span>**<span class="hljs-number">100</span>,<span class="hljs-number">2</span>**<span class="hljs-number">101</span>)<br>    p[i] = p0<br>c = [m%p[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;p = <span class="hljs-subst">&#123;p&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;c = <span class="hljs-subst">&#123;c&#125;</span>&quot;</span>)<br><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">p = [1921232050179818686537976490035, 2050175089402111328155892746480, 1960810970476421389691930930824, 1797713136323968089432024221276, 2326915607951286191807212748022]</span><br><span class="hljs-string">c = [1259284928311091851012441581576, 1501691203352712190922548476321, 1660842626322200346728249202857, 657314037433265072289232145909, 2056630082529583499248887436721]</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br>ms = [<span class="hljs-number">1921232050179818686537976490035</span>, <span class="hljs-number">2050175089402111328155892746480</span>, <span class="hljs-number">1960810970476421389691930930824</span>, <span class="hljs-number">1797713136323968089432024221276</span>, <span class="hljs-number">2326915607951286191807212748022</span>]<br>cs = [<span class="hljs-number">1259284928311091851012441581576</span>, <span class="hljs-number">1501691203352712190922548476321</span>, <span class="hljs-number">1660842626322200346728249202857</span>, <span class="hljs-number">657314037433265072289232145909</span>, <span class="hljs-number">2056630082529583499248887436721</span>]<br>x = crt(cs, ms)<br><span class="hljs-built_in">print</span>(long_to_bytes(x))<br></code></pre></td></tr></table></figure>
+<h1 id="Number-theory"><a href="#Number-theory" class="headerlink" title="Number_theory"></a>Number_theory</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br><br>m = bytes_to_long(flag)<br>q = getPrime(<span class="hljs-number">1024</span>)<br>p = getPrime(<span class="hljs-number">1024</span>)<br>q1 = getPrime(<span class="hljs-number">1024</span>)<br>p1 = getPrime(<span class="hljs-number">1024</span>)<br>n = p * q<br>n1 = p1 * q<br>h0 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1012</span> * q + <span class="hljs-number">2024</span>, p1, n1)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;h0 = <span class="hljs-subst">&#123;h0&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;n1 = <span class="hljs-subst">&#123;n1&#125;</span>&quot;</span>)<br><br>n2 = p * q1<br>h1 = getPrime(<span class="hljs-number">128</span>)*p+getPrime(<span class="hljs-number">13</span>)*q1<br>h2 = getPrime(<span class="hljs-number">128</span>)*p+getPrime(<span class="hljs-number">13</span>)*q1<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;h1 = <span class="hljs-subst">&#123;h1&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;h2 = <span class="hljs-subst">&#123;h2&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;n2 = <span class="hljs-subst">&#123;n2&#125;</span>&#x27;</span>)<br><br>e = <span class="hljs-number">65537</span><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">h0 = 3220497006402049508998763812708472832647814868290156746347730942871191356255789659370553564805270033069126673720344310199953651087754072020225702916105541813428786992668144172000495857408180695235017329451164552864440669887978780387408892281885728829108705426036377534262123812335152528611168777211280571694805002313718755871797426493929314877273385162106226582910473718696585558235361302211164190022765345477880209355073870857330694309139033191510002831755011163554405501084092882774630793037506647051531578470767441695642108269033577519614546722167605348209455599860877630930453549375215766657975702946679735793440</span><br><span class="hljs-string">n1 = 20609629372145649869124883931477035418773265506807982287973634398860995335157854064383658546598627777214414513344620919765235474447787454254677033199140440513722365295528339478763686234572386246701669139829187532179573583918405628738545887852577214800663095592976049188005405242091639210252676232732956312108538849591909382864675439965387851084691144379692503823575367370407191667133473482821484955537306602611587604747693171586870973700406072872451067709522642066831289686968535823774273770385924779368338446367102184983154486987531633971065357864924738084803301054789863293592286600424063888458243900130876991944561</span><br><span class="hljs-string">h1 = 49194502383195208917988199785355579000471120627698824524136563939112767971337049691779758664899497703009458337602635607307068610164325874221815125058246159504553260658300727486252329656228567456351563661171511248498573151135374757953887871426130912974127123668357951196795364055703535399924661649957282476915345782505912688106575686848420343362888</span><br><span class="hljs-string">h2 = 56029812337811022982598747354987989915364610368395101948222609237230875599013444593473706280586983516630982411154519894488542135837471701015074142753084529513202513061481615522865380857058628008542724882609524855349464549317203533208567803034618377155637303135785566874122555481931560957334493233423618193735362609235034574175221191665401074291634</span><br><span class="hljs-string">n2 = 21127172569887870569621986802814771398069606826661397979515556618791602174698226712111670185315617811180192688381471253591193212149192104216153890060029438171543010427356810059660168369171504065120474047401466632600230981702536898738744701541132759858595341068713321976579864810553447534204513491008705215041861247277449063318972113826820821732327255577559447446606667162763843696891825420560307688553022453470653875157114663943723258181186659915926780802902213978395961981750159147594076399769386787561910947372748908551775527715538708855235861297549189165238857651886658156332640360898769204102407630920314871304057</span><br><span class="hljs-string">c = 5607552428806279725164332098717496105359323731793797865776852054987286366396268835656116948807084338497364746716217052175055013330847114498067023163878490040957130515880922531725226729467904687450269817551037876044274898360914422201634758724176912018795267171627398316542607462818553194467631468793807762529509728325759331142060865432879561622747895422022839077034959965640817419843376693946391886148327389538923557583964708218796910422008150480950732394548385083016293891237783400286493750498647816940000092965104858068292374074379723230507283787259827582725133425982004517180631242028412315096023451549819804660838</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>分析：</strong><br>(1)<br>$h0\equiv (1012\cdot q+2024)^{p1} \mod n1$<br>$h0 \equiv 2024^{p1} \mod q$<br>两边同时取$q$次方：$h0^q \equiv 2024^{n1} \mod q$<br>$h0\equiv 2024^{n1}\mod q$<br>$h0 - 2024^{n1} &#x3D; k\cdot q$<br>$q &#x3D; gcd(h0-2024^{n1},n1)$<br>(2)<br>$h1 &#x3D; k1\cdot p+a\cdot q1$<br>$h2 &#x3D; k2\cdot p+ b\cdot q1$<br>由于$a,b$是小位数，可爆破出来，因此当作已知量<br>$b\cdot h1 &#x3D; b\cdot k1\cdot p+a\cdot b\cdot q1$<br>$a\cdot h2 &#x3D; a\cdot k2\cdot p+a\cdot b\cdot q1$<br>$b\cdot h1 - a\cdot h2 &#x3D; b\cdot k1\cdot p-a\cdot k2\cdot p&#x3D;(b\cdot k1-a\cdot k2)\cdot p$<br>则$p&#x3D;gcd(b\cdot h1-a\cdot h2,n2)$</p>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> isPrime,inverse,long_to_bytes<br>h0 = <span class="hljs-number">3220497006402049508998763812708472832647814868290156746347730942871191356255789659370553564805270033069126673720344310199953651087754072020225702916105541813428786992668144172000495857408180695235017329451164552864440669887978780387408892281885728829108705426036377534262123812335152528611168777211280571694805002313718755871797426493929314877273385162106226582910473718696585558235361302211164190022765345477880209355073870857330694309139033191510002831755011163554405501084092882774630793037506647051531578470767441695642108269033577519614546722167605348209455599860877630930453549375215766657975702946679735793440</span><br>n1 = <span class="hljs-number">20609629372145649869124883931477035418773265506807982287973634398860995335157854064383658546598627777214414513344620919765235474447787454254677033199140440513722365295528339478763686234572386246701669139829187532179573583918405628738545887852577214800663095592976049188005405242091639210252676232732956312108538849591909382864675439965387851084691144379692503823575367370407191667133473482821484955537306602611587604747693171586870973700406072872451067709522642066831289686968535823774273770385924779368338446367102184983154486987531633971065357864924738084803301054789863293592286600424063888458243900130876991944561</span><br>h1 = <span class="hljs-number">49194502383195208917988199785355579000471120627698824524136563939112767971337049691779758664899497703009458337602635607307068610164325874221815125058246159504553260658300727486252329656228567456351563661171511248498573151135374757953887871426130912974127123668357951196795364055703535399924661649957282476915345782505912688106575686848420343362888</span><br>h2 = <span class="hljs-number">56029812337811022982598747354987989915364610368395101948222609237230875599013444593473706280586983516630982411154519894488542135837471701015074142753084529513202513061481615522865380857058628008542724882609524855349464549317203533208567803034618377155637303135785566874122555481931560957334493233423618193735362609235034574175221191665401074291634</span><br>n2 = <span class="hljs-number">21127172569887870569621986802814771398069606826661397979515556618791602174698226712111670185315617811180192688381471253591193212149192104216153890060029438171543010427356810059660168369171504065120474047401466632600230981702536898738744701541132759858595341068713321976579864810553447534204513491008705215041861247277449063318972113826820821732327255577559447446606667162763843696891825420560307688553022453470653875157114663943723258181186659915926780802902213978395961981750159147594076399769386787561910947372748908551775527715538708855235861297549189165238857651886658156332640360898769204102407630920314871304057</span><br>c = <span class="hljs-number">5607552428806279725164332098717496105359323731793797865776852054987286366396268835656116948807084338497364746716217052175055013330847114498067023163878490040957130515880922531725226729467904687450269817551037876044274898360914422201634758724176912018795267171627398316542607462818553194467631468793807762529509728325759331142060865432879561622747895422022839077034959965640817419843376693946391886148327389538923557583964708218796910422008150480950732394548385083016293891237783400286493750498647816940000092965104858068292374074379723230507283787259827582725133425982004517180631242028412315096023451549819804660838</span><br>e = <span class="hljs-number">65537</span><br>q = gmpy2.gcd(h0-<span class="hljs-built_in">pow</span>(<span class="hljs-number">2024</span>,n1,n1),n1)<br><span class="hljs-built_in">print</span>(q)<br><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>**<span class="hljs-number">12</span>,<span class="hljs-number">2</span>**<span class="hljs-number">13</span>-<span class="hljs-number">1</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isPrime(a):<br>        <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>**<span class="hljs-number">12</span>,<span class="hljs-number">2</span>**<span class="hljs-number">13</span>-<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isPrime(b):<br>            <span class="hljs-keyword">continue</span><br>        p=gmpy2.gcd(b*h1-a*h2,n2)<br>        <span class="hljs-keyword">if</span> p!= <span class="hljs-number">1</span>:<br>            <span class="hljs-built_in">print</span>(p)<br>            n = p*q<br>            phi = (p-<span class="hljs-number">1</span>) * (q-<span class="hljs-number">1</span>)<br>            d = inverse(e,phi)<br>            m = <span class="hljs-built_in">pow</span>(c,d,n)<br>            ans = long_to_bytes(m)<br>            <span class="hljs-built_in">print</span>(ans)<br>            exit()<br><br></code></pre></td></tr></table></figure>
+<h1 id="RnoCRT"><a href="#RnoCRT" class="headerlink" title="RnoCRT"></a>RnoCRT</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> x<br><br>m = [getRandomNBitInteger(<span class="hljs-number">256</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>)]<br>u = hashlib.sha256(x).hexdigest()<br><span class="hljs-keyword">assert</span> u[:<span class="hljs-number">5</span>]==<span class="hljs-string">b&#x27;6a651&#x27;</span><br>flag = <span class="hljs-string">b&#x27;SYC&#123;&#x27;</span>+u+<span class="hljs-string">b&#x27;&#125;&#x27;</span><br>c = [x % i  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> m]<br><span class="hljs-built_in">print</span>(m)<br><span class="hljs-built_in">print</span>(c)<br><br><span class="hljs-comment">#[207867980504656835313307696396607264603, 245036212212570610987366430554968489325, 270836744824069537438646110613439698666, 319275775495422875474878625752594133023, 254268823435329877199449670714528712873, 213093607196415232366564484229844568444, 246921085368773491003187313772615702950]</span><br><span class="hljs-comment">#[150031581047390726903711035932621949276, 21260202376534810598778595491323328519, 144049733622518360270048059408969512643, 236920143187836025924037873968303507493, 99781504248790469459151935530031893836, 69236016568483424294966410179787943383, 20613188366058016717435734248097940419]</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> hashlib<br><br>m=[<span class="hljs-number">207867980504656835313307696396607264603</span>, <span class="hljs-number">245036212212570610987366430554968489325</span>, <span class="hljs-number">270836744824069537438646110613439698666</span>, <span class="hljs-number">319275775495422875474878625752594133023</span>, <span class="hljs-number">254268823435329877199449670714528712873</span>, <span class="hljs-number">213093607196415232366564484229844568444</span>, <span class="hljs-number">246921085368773491003187313772615702950</span>]<br>c=[<span class="hljs-number">150031581047390726903711035932621949276</span>, <span class="hljs-number">21260202376534810598778595491323328519</span>, <span class="hljs-number">144049733622518360270048059408969512643</span>, <span class="hljs-number">236920143187836025924037873968303507493</span>, <span class="hljs-number">99781504248790469459151935530031893836</span>, <span class="hljs-number">69236016568483424294966410179787943383</span>, <span class="hljs-number">20613188366058016717435734248097940419</span>]<br>x = crt(c,m)<br><span class="hljs-comment">#print(x)</span><br>l=<span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):<br>    l=lcm(l,m[i])<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10000</span>):<br>    u = x + i*l<br>    u = hashlib.sha256(<span class="hljs-built_in">str</span>(u).encode()).hexdigest()<br>    <span class="hljs-keyword">if</span> u[:<span class="hljs-number">5</span>] == <span class="hljs-string">&#x27;6a651&#x27;</span>:<br>        flag = <span class="hljs-string">b&#x27;SYC&#123;&#x27;</span> + u.encode() + <span class="hljs-string">b&#x27;&#125;&#x27;</span><br>        <span class="hljs-built_in">print</span>(flag)<br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+<h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> bytes_to_long, getPrime<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br>p = getPrime(<span class="hljs-number">128</span>)<br>q = getPrime(<span class="hljs-number">128</span>)<br>n = p*q<br>e = <span class="hljs-number">65537</span><br>m = bytes_to_long(flag)<br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;n = <span class="hljs-subst">&#123;n&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;p = <span class="hljs-subst">&#123;p&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;q = <span class="hljs-subst">&#123;q&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;c = <span class="hljs-subst">&#123;c&#125;</span>&quot;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 33108009203593648507706487693709965711774665216872550007309537128959455938833</span><br><span class="hljs-string">p = 192173332221883349384646293941837353967</span><br><span class="hljs-string">q = 172282016556631997385463935089230918399</span><br><span class="hljs-string">c = 5366332878961364744687912786162467698377615956518615197391990327680664213847</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes, inverse<br>n = <span class="hljs-number">33108009203593648507706487693709965711774665216872550007309537128959455938833</span><br>p = <span class="hljs-number">192173332221883349384646293941837353967</span><br>q = <span class="hljs-number">172282016556631997385463935089230918399</span><br>c = <span class="hljs-number">5366332878961364744687912786162467698377615956518615197391990327680664213847</span><br>e = <span class="hljs-number">65537</span><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d = inverse(e, phi)<br>m = <span class="hljs-built_in">pow</span>(c, d, n)<br>ans = long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<h1 id="XOR"><a href="#XOR" class="headerlink" title="XOR"></a>XOR</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> xor<br><br>key = <span class="hljs-string">b&#x27;...&#x27;</span><br>flag = <span class="hljs-string">b&#x27;...&#x27;</span><br><span class="hljs-keyword">assert</span> <span class="hljs-built_in">len</span>(key)==<span class="hljs-number">4</span><br><br>enc = bytes_to_long(xor(flag,key))<br><br>f1 = <span class="hljs-number">4585958212176920650644941909171976689111990</span><br>f2 = <span class="hljs-number">3062959364761961602614252587049328627114908</span><br>e1 = enc^f1<br>e2 = e1^f2<br><span class="hljs-built_in">print</span>(e2)<br><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">10706859949950921239354880312196039515724907</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+<p><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> xor<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br>f1 = <span class="hljs-number">4585958212176920650644941909171976689111990</span><br>f2 = <span class="hljs-number">3062959364761961602614252587049328627114908</span><br><br>e2=<span class="hljs-number">10706859949950921239354880312196039515724907</span><br>e1 = e2^f2<br>enc = e1^f1<br><span class="hljs-comment">#已知部分明文</span><br>hint = <span class="hljs-string">b&#x27;SYC&#123;&#x27;</span><br>key = xor(hint,long_to_bytes(enc)[:<span class="hljs-number">4</span>])<br>flag = xor(long_to_bytes(enc),key)<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/WriteUp/" class="category-chain-item">WriteUp</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/WriteUp/Study/" class="category-chain-item">Study</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/" class="print-no-link">#极客大挑战</a>
+      
+        <a href="/tags/Geek/" class="print-no-link">#Geek</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>极客大挑战 2024 Crypto复现</div>
+      <div>http://ramoor.github.io/2025/07/23/极客大挑战 2024 Crypto复现/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年7月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/07/20/L3HCTF%202025%20WriteUp/" title="L3HCTF 2025 WriteUp">
+                        <span class="hidden-mobile">L3HCTF 2025 WriteUp</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            //{left: '\(', right: '\)', display: false},
+            //{left: '\[', right: '\]', display: true}
+        ],
+          // • rendering keys, e.g.:
+        throwOnError : false
+        });
+    });
+</script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
