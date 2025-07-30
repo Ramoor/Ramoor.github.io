@@ -27,7 +27,7 @@
 <meta property="og:description" content="格密码专题学习最近发现每次做格的题都一知半解格不出来，因此决定从零开始系统学习一下格。 一、定义 基： 在n维空间中给定的n个线性无关向量：$\vec{b_1},\vec{b_2},…,\vec{b_n}$。  格： 对于n维空间中的基，存在线性组合$x_1\vec{b_1}+x_2\vec{b_2}+…+x_n\vec{b_n}$,其中整系数的线性组合构成的集合成为格，即$x_i\in \mat">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-02T11:58:28.000Z">
-<meta property="article:modified_time" content="2025-04-02T12:50:52.803Z">
+<meta property="article:modified_time" content="2025-07-28T10:26:33.311Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          3.2k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          26 分钟
+          27 分钟
         
       </span>
     
@@ -694,8 +694,10 @@ $$
 </ul>
 <h4 id="5-NTRU"><a href="#5-NTRU" class="headerlink" title="5.NTRU"></a>5.NTRU</h4><ul>
 <li><strong>概述：</strong> 公开密钥加密系统，使用基于格的加密算法来加密，包括<strong>加密算法</strong>和<strong>签名算法</strong>。</li>
-<li><strong>简化问题：</strong> $g\equiv hf \mod p$，已知$(h,p)$，求$(f,g)$</li>
-<li><strong>构造格：</strong> 变换得到$g&#x3D;hf+kp$</li>
+<li><strong>密钥生成：</strong> $h\equiv f^{-1}g \mod p$，已知公钥$(h,p)$，求私钥$(f,g)$</li>
+<li><strong>加密：</strong>$c\equiv rh + m \mod p$</li>
+<li><strong>解密：</strong>$cf\equiv rg + mf\mod p$，满足$rg + mf&lt;p$，则有$a\equiv cf\equiv mf \mod g$，因此只要有私钥$(f,g)$和密文$c$，就能求得明文$m$</li>
+<li><strong>构造格：</strong> $h\equiv f^{-1}g \mod p$变换得到$g&#x3D;hf+kp$</li>
 </ul>
 <span>
 $$
@@ -712,6 +714,8 @@ $$
 <ul>
 <li>脚本求解</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>p = <br>h = <br>c = <br><br>M = Matrix(ZZ,[[<span class="hljs-number">1</span>,h],[<span class="hljs-number">0</span>,p]])<br>L = M.LLL()[<span class="hljs-number">0</span>]<br>f , g = L<br>f = <span class="hljs-built_in">abs</span>(f)<br>g = <span class="hljs-built_in">abs</span>(g)<br><span class="hljs-comment">#print(f,q)</span><br>a = (c*f) %p<br>m = a*inverse(f,g)%g<br></code></pre></td></tr></table></figure>
+
 <h4 id="6-Ring-LWE问题"><a href="#6-Ring-LWE问题" class="headerlink" title="6.Ring-LWE问题"></a>6.Ring-LWE问题</h4><ul>
 <li><strong>概述：</strong> <strong>LWE</strong>在环上的版本，$A$和$x$是多项式环</li>
 </ul>

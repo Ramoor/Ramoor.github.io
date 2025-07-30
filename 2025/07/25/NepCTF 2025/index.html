@@ -19,23 +19,22 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最近做题的时候经常遇见Python不同版本中库的冲突调整，这里记录一下miniconda的安装过程。 介绍Miniconda是一款轻量级的只包含python和conda的软件包管理系统，适合需要灵活管理包和环境的用户。它能够快速的在不同的python版本之间切换。 安装环境我这里只记录我本人安装的环境  Kali Linux x86_64架构  安装步骤 下载安装脚本  1wget https:&#x2F;">
+    <meta name="description" content="Nepsign题目： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283from gmssl import sm3from random">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MIniconda安装记录">
-<meta property="og:url" content="http://ramoor.github.io/2025/04/08/Miniconda%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="NepCTF 2025">
+<meta property="og:url" content="http://ramoor.github.io/2025/07/25/NepCTF%202025/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="最近做题的时候经常遇见Python不同版本中库的冲突调整，这里记录一下miniconda的安装过程。 介绍Miniconda是一款轻量级的只包含python和conda的软件包管理系统，适合需要灵活管理包和环境的用户。它能够快速的在不同的python版本之间切换。 安装环境我这里只记录我本人安装的环境  Kali Linux x86_64架构  安装步骤 下载安装脚本  1wget https:&#x2F;">
+<meta property="og:description" content="Nepsign题目： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283from gmssl import sm3from random">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-08T10:43:07.000Z">
-<meta property="article:modified_time" content="2025-07-27T08:37:03.232Z">
+<meta property="article:published_time" content="2025-07-25T11:04:32.000Z">
+<meta property="article:modified_time" content="2025-07-28T10:41:44.275Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="conda">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>MIniconda安装记录 - Ramoor</title>
+  <title>NepCTF 2025 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MIniconda安装记录"></span>
+            <span id="subtitle" data-typed-text="NepCTF 2025"></span>
           
         </div>
 
@@ -246,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-08 18:43" pubdate>
-          2025年4月8日 晚上
+        <time datetime="2025-07-25 19:04" pubdate>
+          2025年7月25日 晚上
         </time>
       </span>
     
@@ -258,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          288 字
+          426 字
         
       </span>
     
@@ -269,7 +268,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -314,65 +313,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MIniconda安装记录</h1>
+            <h1 id="seo-header">NepCTF 2025</h1>
             
             
               <div class="markdown-body">
                 
-                <p>最近做题的时候经常遇见Python不同版本中库的冲突调整，<br>这里记录一下miniconda的安装过程。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Miniconda是一款轻量级的只包含python和conda的软件包管理系统，适合需要灵活管理包和环境的用户。<br>它能够快速的在不同的python版本之间切换。</p>
-<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p>我这里只记录我本人安装的环境</p>
-<ul>
-<li>Kali Linux</li>
-<li>x86_64架构</li>
-</ul>
-<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ul>
-<li>下载安装脚本</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh<br></code></pre></td></tr></table></figure>
-<ul>
-<li>运行脚本</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash miniconda.sh<br></code></pre></td></tr></table></figure>
-<p><code>Enter</code>查看协议，一直<code>Enter</code>下翻，之后输入<code>yes</code>接收协议。<br>下一步<code>Enter</code>接收默认安装路径<code>~/miniconda3</code>，也可以自己输入自定义路径。<br>下一步询问初始化，输入<code>yes</code>，同意初始化。</p>
-<ul>
-<li>重启电脑</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">reboot<br></code></pre></td></tr></table></figure>
-<ul>
-<li>验证安装是否成功</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda --version<br></code></pre></td></tr></table></figure>
-<p>显示版本信息即为安装成功。</p>
-<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ul>
-<li>创建新环境</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n myenv python=3.9 -y<br></code></pre></td></tr></table></figure>
-<p><code>myenv:</code>自定义名称<br><code>python=3.9:</code>自定义版本</p>
-<ul>
-<li>开启环境</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate myenv<br></code></pre></td></tr></table></figure>
-<ul>
-<li>包相关</li>
-</ul>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">#numpy为例</span><br>conda <span class="hljs-keyword">install</span> numpy<br>conda update numpy<br>conda <span class="hljs-keyword">remove</span> numpy<br></code></pre></td></tr></table></figure>
-<ul>
-<li>退出环境</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br></code></pre></td></tr></table></figure>
-<ul>
-<li>查看已有环境</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
-<ul>
-<li>查看每个环境大小</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -sh /root/miniconda3/envs/*<br></code></pre></td></tr></table></figure>
-<ul>
-<li>删除环境</li>
-</ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">conda <span class="hljs-built_in">remove</span> -n myenv <span class="hljs-comment">--all</span><br></code></pre></td></tr></table></figure>
+                <h1 id="Nepsign"><a href="#Nepsign" class="headerlink" title="Nepsign"></a>Nepsign</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> gmssl <span class="hljs-keyword">import</span> sm3<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> SystemRandom<br><span class="hljs-keyword">from</span> ast <span class="hljs-keyword">import</span> literal_eval<br><span class="hljs-keyword">import</span> os<br>flag = os.environ[<span class="hljs-string">&quot;FLAG&quot;</span>]<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">SM3</span>(<span class="hljs-params">data</span>):<br>    d = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data]<br>    h = sm3.sm3_hash(d)<br>    <span class="hljs-keyword">return</span> h<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">SM3_n</span>(<span class="hljs-params">data, n=<span class="hljs-number">1</span>, bits=<span class="hljs-number">256</span></span>):<br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        data = <span class="hljs-built_in">bytes</span>.fromhex(SM3(data))<br>    <span class="hljs-keyword">return</span> data.<span class="hljs-built_in">hex</span>()[:bits // <span class="hljs-number">4</span>]<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Nepsign</span>():<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-variable language_">self</span>.n = <span class="hljs-number">256</span><br>        <span class="hljs-variable language_">self</span>.hex_symbols = <span class="hljs-string">&#x27;0123456789abcdef&#x27;</span><br>        <span class="hljs-variable language_">self</span>.keygen()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">keygen</span>(<span class="hljs-params">self</span>):<br>        rng = SystemRandom()<br>        <span class="hljs-variable language_">self</span>.sk = [rng.randbytes(<span class="hljs-number">32</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">48</span>)]<br>        <span class="hljs-variable language_">self</span>.pk = [SM3_n(<span class="hljs-variable language_">self</span>.sk[_], <span class="hljs-number">255</span>, <span class="hljs-variable language_">self</span>.n) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">48</span>)]<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.sk, <span class="hljs-variable language_">self</span>.pk<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sign</span>(<span class="hljs-params">self, msg, sk=<span class="hljs-literal">None</span></span>):<br>        sk = sk <span class="hljs-keyword">if</span> sk <span class="hljs-keyword">else</span> <span class="hljs-variable language_">self</span>.sk<br>        m = SM3(msg)<br>        m_bin = <span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(m, <span class="hljs-number">16</span>))[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">256</span>)<br>        a = [<span class="hljs-built_in">int</span>(m_bin[<span class="hljs-number">8</span> * i: <span class="hljs-number">8</span> * i + <span class="hljs-number">8</span>], <span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-variable language_">self</span>.n // <span class="hljs-number">8</span>)]<br>        step = [<span class="hljs-number">0</span>] * <span class="hljs-number">48</span>;<br>        qq = [<span class="hljs-number">0</span>] * <span class="hljs-number">48</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):<br>            step[i] = a[i]<br>            qq[i] = SM3_n(sk[i], step[i])<br>        <span class="hljs-built_in">sum</span> = [<span class="hljs-number">0</span>] * <span class="hljs-number">16</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">16</span>):<br>            <span class="hljs-built_in">sum</span>[i] = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">65</span>):<br>                <span class="hljs-keyword">if</span> m[j - <span class="hljs-number">1</span>] == <span class="hljs-variable language_">self</span>.hex_symbols[i]:<br>                    <span class="hljs-built_in">sum</span>[i] += j<br>            step[i + <span class="hljs-number">32</span>] = <span class="hljs-built_in">sum</span>[i] % <span class="hljs-number">255</span><br>            qq[i + <span class="hljs-number">32</span>] = SM3_n(sk[i + <span class="hljs-number">32</span>], step[i + <span class="hljs-number">32</span>])<br>        <span class="hljs-keyword">return</span> [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> qq]<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">verify</span>(<span class="hljs-params">self, msg, qq, pk=<span class="hljs-literal">None</span></span>):<br>        qq = [<span class="hljs-built_in">bytes</span>.fromhex(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> qq]<br>        pk = pk <span class="hljs-keyword">if</span> pk <span class="hljs-keyword">else</span> <span class="hljs-variable language_">self</span>.pk<br>        m = SM3(msg)<br>        m_bin = <span class="hljs-built_in">bin</span>(<span class="hljs-built_in">int</span>(m, <span class="hljs-number">16</span>))[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">256</span>)<br>        a = [<span class="hljs-built_in">int</span>(m_bin[<span class="hljs-number">8</span> * i: <span class="hljs-number">8</span> * i + <span class="hljs-number">8</span>], <span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-variable language_">self</span>.n // <span class="hljs-number">8</span>)]<br>        step = [<span class="hljs-number">0</span>] * <span class="hljs-number">48</span>;<br>        pk_ = [<span class="hljs-number">0</span>] * <span class="hljs-number">48</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):<br>            step[i] = a[i]<br>            pk_[i] = SM3_n(qq[i], <span class="hljs-number">255</span> - step[i])<br>        <span class="hljs-built_in">sum</span> = [<span class="hljs-number">0</span>] * <span class="hljs-number">16</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">16</span>):<br>            <span class="hljs-built_in">sum</span>[i] = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">65</span>):<br>                <span class="hljs-keyword">if</span> m[j - <span class="hljs-number">1</span>] == <span class="hljs-variable language_">self</span>.hex_symbols[i]:<br>                    <span class="hljs-built_in">sum</span>[i] += j<br>            step[i + <span class="hljs-number">32</span>] = <span class="hljs-built_in">sum</span>[i] % <span class="hljs-number">255</span><br>            pk_[i + <span class="hljs-number">32</span>] = SM3_n(qq[i + <span class="hljs-number">32</span>], <span class="hljs-number">255</span> - step[i + <span class="hljs-number">32</span>])<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> pk_ == pk <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span><br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;initializing...&#x27;</span>)<br>Sign = Nepsign()<br><span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:<br>    <span class="hljs-keyword">match</span> <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;&gt; &#x27;</span>)):<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            msg = <span class="hljs-built_in">bytes</span>.fromhex(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;msg: &#x27;</span>))<br>            <span class="hljs-keyword">if</span> msg != <span class="hljs-string">b&#x27;happy for NepCTF 2025&#x27;</span>:<br>                <span class="hljs-built_in">print</span>(Sign.sign(msg))<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;You can&#x27;t do that&quot;</span>)<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            qq = literal_eval(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;give me a qq: &#x27;</span>))<br>            <span class="hljs-keyword">if</span> Sign.verify(<span class="hljs-string">b&#x27;happy for NepCTF 2025&#x27;</span>, qq):<br>                <span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+<h1 id="Lattice-Bros"><a href="#Lattice-Bros" class="headerlink" title="Lattice Bros"></a>Lattice Bros</h1><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#已知α的极小多项式为三次多项式f(x),即f(α)=0,且α≈54236.606188881754809671280151541781895183337725393</span><br><span class="hljs-comment">#上述极小多项式的常数项为a0</span><br><br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> a0,alpha<br><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt,log2<br><br>d=<span class="hljs-number">981020902672546902438782010902608140583199504862558032616415</span><br>p = d - a0<br><br>k=sqrt(log2(p))+log2(log2(p))<br>B = <span class="hljs-number">2</span>**<span class="hljs-number">30</span><br><span class="hljs-keyword">assert</span> B &lt; p/<span class="hljs-number">2</span>**k<br><br>m = <span class="hljs-number">30</span><br><span class="hljs-keyword">assert</span> m &gt; <span class="hljs-number">2</span>*sqrt(log2(p))<br><br>samples = []<br>betas = []<br><br>f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;samples.txt&quot;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)<br><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>    t = random.randint(<span class="hljs-number">1</span>, p-<span class="hljs-number">1</span>)<br>    beta = random.randint(-B + <span class="hljs-number">1</span>, B - <span class="hljs-number">1</span>)<br>    a = (t * alpha - beta) % p<br>    samples.append((t, a))<br>    betas.append(beta)<br><br>f.write(<span class="hljs-built_in">str</span>(samples))<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">30</span>):<br>    <span class="hljs-keyword">assert</span> (betas[i]-samples[i][<span class="hljs-number">0</span>]*alpha+samples[i][<span class="hljs-number">1</span>])%p == <span class="hljs-number">0</span><br><br><span class="hljs-comment">#flag = long_to_bytes(alpha)</span><br></code></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+
                 
               </div>
             
@@ -407,8 +359,6 @@
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
-        <a href="/tags/conda/" class="print-no-link">#conda</a>
-      
     </div>
   
 </div>
@@ -419,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MIniconda安装记录</div>
-      <div>http://ramoor.github.io/2025/04/08/Miniconda安装记录/</div>
+      <div>NepCTF 2025</div>
+      <div>http://ramoor.github.io/2025/07/25/NepCTF 2025/</div>
     </div>
     <div class="license-meta">
       
@@ -432,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月8日</div>
+          <div>2025年7月25日</div>
         </div>
       
       
@@ -464,18 +414,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/10/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" title="MISC基础篇-图片隐写">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MISC基础篇-图片隐写</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/" title="Crypto基础篇-LCG">
-                        <span class="hidden-mobile">Crypto基础篇-LCG</span>
+                      <a href="/2025/07/25/%E7%BE%8A%E5%9F%8E%E6%9D%AF%202023%20Wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/" title="羊城杯 2023 Wp（复现）">
+                        <span class="hidden-mobile">羊城杯 2023 Wp（复现）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
