@@ -19,27 +19,24 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)参考：Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡ USB流量分析键盘流量分析在键盘流量分析中，最重要的就是8字节的usbhid数据，我们的目的就是提取出这些h">
+    <meta name="description" content="本篇博客用来记录我备考CSP的刷题笔记，用来督促自己学习，争取至少每日一题(ง๑ •̀_•́)ง 排序快速排序算法步骤 时间复杂度$O(n\log(n))$   选择数组中第一个元素作为基准target 设定两个指针i和j，其中： i指向数组第一个元素，j指向数组最后一个元素 i从左往右遍历，直到i指向的元素大于target j从右往左遍历，直到j指向的元素小于target 若此时i&lt;j，交">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MISC基础篇-流量分析">
-<meta property="og:url" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="CCF CSP刷题笔记">
+<meta property="og:url" content="http://ramoor.github.io/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)参考：Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡ USB流量分析键盘流量分析在键盘流量分析中，最重要的就是8字节的usbhid数据，我们的目的就是提取出这些h">
+<meta property="og:description" content="本篇博客用来记录我备考CSP的刷题笔记，用来督促自己学习，争取至少每日一题(ง๑ •̀_•́)ง 排序快速排序算法步骤 时间复杂度$O(n\log(n))$   选择数组中第一个元素作为基准target 设定两个指针i和j，其中： i指向数组第一个元素，j指向数组最后一个元素 i从左往右遍历，直到i指向的元素大于target j从右往左遍历，直到j指向的元素小于target 若此时i&lt;j，交">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161305614.png">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161454680.png">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161759498.png">
-<meta property="article:published_time" content="2025-08-04T18:54:47.000Z">
-<meta property="article:modified_time" content="2025-08-05T08:26:04.575Z">
+<meta property="og:image" content="http://ramoor.github.io/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/file-20250815020223559.png">
+<meta property="article:published_time" content="2025-08-14T15:43:05.000Z">
+<meta property="article:modified_time" content="2025-08-14T18:02:24.093Z">
 <meta property="article:author" content="Ramoor">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="misc">
+<meta property="article:tag" content="CSP">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161305614.png">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/file-20250815020223559.png">
   
   
   
-  <title>MISC基础篇-流量分析 - Ramoor</title>
+  <title>CCF CSP刷题笔记 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MISC基础篇-流量分析"></span>
+            <span id="subtitle" data-typed-text="CCF CSP刷题笔记"></span>
           
         </div>
 
@@ -250,8 +247,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-05 02:54" pubdate>
-          2025年8月5日 凌晨
+        <time datetime="2025-08-14 23:43" pubdate>
+          2025年8月14日 晚上
         </time>
       </span>
     
@@ -262,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          364 字
+          539 字
         
       </span>
     
@@ -273,7 +270,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -318,18 +315,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MISC基础篇-流量分析</h1>
+            <h1 id="seo-header">CCF CSP刷题笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <p>本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)<br>参考：<br><a target="_blank" rel="noopener" href="https://goodlunatic.github.io/posts/5422d65/">Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡</a></p>
-<h2 id="USB流量分析"><a href="#USB流量分析" class="headerlink" title="USB流量分析"></a>USB流量分析</h2><h3 id="键盘流量分析"><a href="#键盘流量分析" class="headerlink" title="键盘流量分析"></a>键盘流量分析</h3><p>在键盘流量分析中，最重要的就是8字节的<code>usbhid</code>数据，我们的目的就是提取出这些<code>hid</code>数据，然后我们便可以还原出按键记录。<br>需要注意的是，有些题目会用<code>&lt;DEL&gt;</code>按键，如果忽略该按键就会不知道出题人删除了哪些数据。</p>
-<h2 id="Webshell流量分析"><a href="#Webshell流量分析" class="headerlink" title="Webshell流量分析"></a>Webshell流量分析</h2><h3 id="冰蝎流量分析"><a href="#冰蝎流量分析" class="headerlink" title="冰蝎流量分析"></a>冰蝎流量分析</h3><p>冰蝎的默认密钥：<code>e45e329feb5d925b</code>（该密钥为默认连接密码<code>rebeyond</code>32位md5值的前16位）<br>在流量包中寻找木马时，可以使用下面语句进行过滤：</p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">http.request.method==<span class="hljs-string">&quot;<span class="hljs-keyword">POST</span>&quot;</span><br></code></pre></td></tr></table></figure>
-<p><img src="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161305614.png" srcset="/img/loading.gif" lazyload><br>找到最可疑的流量，然后右键追踪流，大概率能够看见加密代码<br><img src="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161454680.png" srcset="/img/loading.gif" lazyload><br>我们通过加密代码可疑确定，该木马进行了AES128+BASE64的加密，因此我们可以使用密码对数据包进行解密，一般是AES-CBC模式，IV是：</p>
-<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">IV = \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00<br></code></pre></td></tr></table></figure>
-<p><img src="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161759498.png" srcset="/img/loading.gif" lazyload><br>再还原得到的BASE64数据一般就能得到想要的信息。</p>
+                <p>本篇博客用来记录我备考CSP的刷题笔记，用来督促自己学习，争取至少每日一题(ง๑ •̀_•́)ง</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h4><blockquote>
+<p>时间复杂度$O(n\log(n))$</p>
+</blockquote>
+<ul>
+<li>选择数组中第一个元素作为基准<code>target</code></li>
+<li>设定两个指针<code>i</code>和<code>j</code>，其中：<ul>
+<li><code>i</code>指向数组第一个元素，<code>j</code>指向数组最后一个元素</li>
+<li><code>i</code>从左往右遍历，直到<code>i</code>指向的元素大于<code>target</code></li>
+<li><code>j</code>从右往左遍历，直到<code>j</code>指向的元素小于<code>target</code></li>
+<li>若此时<code>i&lt;j</code>，交换<code>i</code>和<code>j</code>指向的元素；否则直接跳出循环</li>
+<li>最后再将<code>i</code>和基准位置上的元素进行交换。（这样就实现了基准元素左侧的元素都$\leq$ <code>target</code>，基准元素右侧的元素都$&gt;$<code>target</code>。</li>
+</ul>
+</li>
+<li>然后再对基准左侧和右侧的子数组分别递归执行该算法。<br><strong>模板：</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> low,<span class="hljs-type">int</span> high)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(low &gt;= high) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i=low,j=high;<br>    <span class="hljs-type">int</span> target = arr[low];<br><br>    <span class="hljs-keyword">while</span>(i&lt;j)<br>    &#123;<br>        <span class="hljs-keyword">while</span>(arr[j] &gt;= target &amp;&amp; i &lt; j ) j--;<br>        <span class="hljs-keyword">if</span>(i &lt; j) arr[i] = arr[j];<br>        <span class="hljs-keyword">while</span>(arr[i] &lt;= target &amp;&amp; i &lt; j) i++;<br>        <span class="hljs-keyword">if</span>(i &lt; j) arr[j] = arr[i];<br>    &#125;<br>    arr[i] = target;<br>    <span class="hljs-built_in">quick_sort</span>(arr,low,i<span class="hljs-number">-1</span>);<br>    <span class="hljs-built_in">quick_sort</span>(arr,i<span class="hljs-number">+1</span>,high);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-an-array/">912. 排序数组 - 力扣（LeetCode）</a><br><strong>知识点：</strong><br>本题中直接打板子会发现出现超时情况，因此我们就需要进行一些优化：</p>
+<ul>
+<li><strong>优化点1：</strong> 将<code>target</code>的选取随机化，这样能够避免一些数组的基准一直取到最差的情况。并且可以使用<code>srand(time(nullptr));</code>来优化随机数的选取。</li>
+<li><strong>优化点2：</strong> 使用<code>Hoare</code>分区法，左右指针不断交换元素，基准值始终留在数组里，循环结束后自然归位。<br><strong>代码</strong>：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span> (low &gt;= high) <span class="hljs-keyword">return</span>;<br><br>        <span class="hljs-type">int</span> idx = low + <span class="hljs-built_in">rand</span>() % (high - low + <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">swap</span>(arr[low], arr[idx]);<br>        <span class="hljs-type">int</span> target = arr[low];<br><br>        <span class="hljs-type">int</span> i = low - <span class="hljs-number">1</span>, j = high + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>            <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (arr[i] &lt; target);<br>            <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (arr[j] &gt; target);<br>            <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(arr[i], arr[j]);<br>        &#125;<br><br>        <span class="hljs-built_in">quick_sort</span>(arr, low, j);<br>        <span class="hljs-built_in">quick_sort</span>(arr, j + <span class="hljs-number">1</span>, high);<br>    &#125;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-built_in">quick_sort</span>(nums.<span class="hljs-built_in">data</span>(), <span class="hljs-number">0</span>, (<span class="hljs-type">int</span>)nums.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> nums;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>最后成功通过<br><img src="/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/file-20250815020223559.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -363,9 +377,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
-      
-        <a href="/tags/misc/" class="print-no-link">#misc</a>
+        <a href="/tags/CSP/" class="print-no-link">#CSP</a>
       
     </div>
   
@@ -377,8 +389,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MISC基础篇-流量分析</div>
-      <div>http://ramoor.github.io/2025/08/05/MISC基础篇-流量分析/</div>
+      <div>CCF CSP刷题笔记</div>
+      <div>http://ramoor.github.io/2025/08/14/CCF CSP刷题笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -390,7 +402,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月5日</div>
+          <div>2025年8月14日</div>
         </div>
       
       
@@ -422,18 +434,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/" title="MTCTF 2021 Writeup（复现练习）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MTCTF 2021 Writeup（复现练习）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/31/AFCTF%202018%20Writeup/" title="AFCTF 2018 Writeup">
-                        <span class="hidden-mobile">AFCTF 2018 Writeup</span>
+                      <a href="/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/" title="MTCTF 2021 Writeup（复现练习）">
+                        <span class="hidden-mobile">MTCTF 2021 Writeup（复现练习）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

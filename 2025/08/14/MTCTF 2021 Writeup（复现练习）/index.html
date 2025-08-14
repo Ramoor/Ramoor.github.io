@@ -19,27 +19,24 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)参考：Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡ USB流量分析键盘流量分析在键盘流量分析中，最重要的就是8字节的usbhid数据，我们的目的就是提取出这些h">
+    <meta name="description" content="NSSCTF Crypto继续刷题中，本文章用来记录，有问题欢迎交流＼(●´ϖ’●)／ Symbol题目 分析看格式像是flag，猜测前四个字母就是flag，仔细观察对比之后，发现希腊字母$\lambda ,\alpha ,\gamma$的latex语法标注分别为： 1\lambda,\alpha,\gamma 发现首字母分别对应$l,a,g$，那么第一个应该是$f$，看起来像是音乐符号，搜索之后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MISC基础篇-流量分析">
-<meta property="og:url" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="MTCTF 2021 Writeup（复现练习）">
+<meta property="og:url" content="http://ramoor.github.io/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)参考：Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡ USB流量分析键盘流量分析在键盘流量分析中，最重要的就是8字节的usbhid数据，我们的目的就是提取出这些h">
+<meta property="og:description" content="NSSCTF Crypto继续刷题中，本文章用来记录，有问题欢迎交流＼(●´ϖ’●)／ Symbol题目 分析看格式像是flag，猜测前四个字母就是flag，仔细观察对比之后，发现希腊字母$\lambda ,\alpha ,\gamma$的latex语法标注分别为： 1\lambda,\alpha,\gamma 发现首字母分别对应$l,a,g$，那么第一个应该是$f$，看起来像是音乐符号，搜索之后">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161305614.png">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161454680.png">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161759498.png">
-<meta property="article:published_time" content="2025-08-04T18:54:47.000Z">
-<meta property="article:modified_time" content="2025-08-05T08:26:04.575Z">
+<meta property="og:image" content="http://ramoor.github.io/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/Symbols.png">
+<meta property="article:published_time" content="2025-08-14T07:02:36.000Z">
+<meta property="article:modified_time" content="2025-08-14T10:31:13.236Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="misc">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://ramoor.github.io/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161305614.png">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/Symbols.png">
   
   
   
-  <title>MISC基础篇-流量分析 - Ramoor</title>
+  <title>MTCTF 2021 Writeup（复现练习） - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MISC基础篇-流量分析"></span>
+            <span id="subtitle" data-typed-text="MTCTF 2021 Writeup（复现练习）"></span>
           
         </div>
 
@@ -250,8 +247,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-05 02:54" pubdate>
-          2025年8月5日 凌晨
+        <time datetime="2025-08-14 15:02" pubdate>
+          2025年8月14日 下午
         </time>
       </span>
     
@@ -262,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          364 字
+          365 字
         
       </span>
     
@@ -318,18 +315,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MISC基础篇-流量分析</h1>
+            <h1 id="seo-header">MTCTF 2021 Writeup（复现练习）</h1>
             
             
               <div class="markdown-body">
                 
-                <p>本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)<br>参考：<br><a target="_blank" rel="noopener" href="https://goodlunatic.github.io/posts/5422d65/">Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡</a></p>
-<h2 id="USB流量分析"><a href="#USB流量分析" class="headerlink" title="USB流量分析"></a>USB流量分析</h2><h3 id="键盘流量分析"><a href="#键盘流量分析" class="headerlink" title="键盘流量分析"></a>键盘流量分析</h3><p>在键盘流量分析中，最重要的就是8字节的<code>usbhid</code>数据，我们的目的就是提取出这些<code>hid</code>数据，然后我们便可以还原出按键记录。<br>需要注意的是，有些题目会用<code>&lt;DEL&gt;</code>按键，如果忽略该按键就会不知道出题人删除了哪些数据。</p>
-<h2 id="Webshell流量分析"><a href="#Webshell流量分析" class="headerlink" title="Webshell流量分析"></a>Webshell流量分析</h2><h3 id="冰蝎流量分析"><a href="#冰蝎流量分析" class="headerlink" title="冰蝎流量分析"></a>冰蝎流量分析</h3><p>冰蝎的默认密钥：<code>e45e329feb5d925b</code>（该密钥为默认连接密码<code>rebeyond</code>32位md5值的前16位）<br>在流量包中寻找木马时，可以使用下面语句进行过滤：</p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">http.request.method==<span class="hljs-string">&quot;<span class="hljs-keyword">POST</span>&quot;</span><br></code></pre></td></tr></table></figure>
-<p><img src="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161305614.png" srcset="/img/loading.gif" lazyload><br>找到最可疑的流量，然后右键追踪流，大概率能够看见加密代码<br><img src="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161454680.png" srcset="/img/loading.gif" lazyload><br>我们通过加密代码可疑确定，该木马进行了AES128+BASE64的加密，因此我们可以使用密码对数据包进行解密，一般是AES-CBC模式，IV是：</p>
-<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">IV = \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00<br></code></pre></td></tr></table></figure>
-<p><img src="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/file-20250805161759498.png" srcset="/img/loading.gif" lazyload><br>再还原得到的BASE64数据一般就能得到想要的信息。</p>
+                <p>NSSCTF Crypto继续刷题中，本文章用来记录，有问题欢迎交流＼(●´ϖ’●)／</p>
+<h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/Symbols.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看格式像是flag，猜测前四个字母就是flag，仔细观察对比之后，发现希腊字母$\lambda ,\alpha ,\gamma$的latex语法标注分别为：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\lambda</span>,<span class="hljs-keyword">\alpha</span>,<span class="hljs-keyword">\gamma</span><br></code></pre></td></tr></table></figure>
+<p>发现首字母分别对应$l,a,g$，那么第一个应该是$f$，看起来像是音乐符号，搜索之后发现是降号（flat）$\flat$对应$f$，证明我们的思路是正确的，就是要找到对应符号的英文语法的首字母，那么接下来便挨个寻找即可<br>找到一个参考博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/gaopursuit/p/17060810.html">Latex符号大全 - 高峰OUC - 博客园</a></p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-string">\forall</span> <span class="hljs-string">\uplus</span> <span class="hljs-string">\nu</span> _ <span class="hljs-string">\Lambda</span> <span class="hljs-string">\alpha</span> T <span class="hljs-string">\epsilon</span> <span class="hljs-string">\Xi</span> _ T <span class="hljs-string">\approx</span> <span class="hljs-string">\triangleleft</span> <span class="hljs-string">\hbar</span><br></code></pre></td></tr></table></figure>
+<p>即$\forall \uplus \nu _ \Lambda \alpha T \epsilon \Xi _ M \approx \triangleleft \hbar$<br>对应的字符为<code>fun_LaTeX_Math</code>，计算得到32为md5为<code>e1b217dc3b5e90b237b45e0a636e5a86</code></p>
+<h1 id="Strange-rsa1"><a href="#Strange-rsa1" class="headerlink" title="Strange_rsa1"></a>Strange_rsa1</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> sage.<span class="hljs-built_in">all</span> <span class="hljs-keyword">import</span> RealField<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag1<br><br><br>Bits = <span class="hljs-number">512</span><br>p = getPrime(Bits)<br>q = getPrime(Bits)<br>n = p * q<br><br>gift = RealField(prec=Bits*<span class="hljs-number">2</span>)(p) / RealField(prec=Bits*<span class="hljs-number">2</span>)(q)<br>e = <span class="hljs-number">0x10001</span><br>m = bytes_to_long(flag1)<br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br>output = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;output.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;n = &#x27;</span> + <span class="hljs-built_in">str</span>(n) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;c = &#x27;</span> + <span class="hljs-built_in">str</span>(c) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;gift = &#x27;</span> + <span class="hljs-built_in">str</span>(gift) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>$gift &#x3D; \frac{p}{q},n&#x3D;p\cdot q$<br>即$p &#x3D; \sqrt {gift\cdot n}&#x3D;\sqrt{p^2}$<br>这里使用sagemath中的<code>sqrt</code>进行高精度开方，之后正常RSA解密即可</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>n = <span class="hljs-number">108525167048069618588175976867846563247592681279699764935868571805537995466244621039138584734968186962015154069834228913223982840558626369903697856981515674800664445719963249384904839446749699482532818680540192673814671582032905573381188420997231842144989027400106624744146739238687818312012920530048166672413</span><br>c = <span class="hljs-number">23970397560482326418544500895982564794681055333385186829686707802322923345863102521635786012870368948010933275558746273559080917607938457905967618777124428711098087525967347923209347190956512520350806766416108324895660243364661936801627882577951784569589707943966009295758316967368650512558923594173887431924</span><br>gift = <span class="hljs-number">0.9878713210057139023298389025767652308503013961919282440169053652488565206963320721234736480911437918373201299590078678742136736290349578719187645145615363088975706222696090029443619975380433122746296316430693294386663490221891787292112964989501856435389725149610724585156154688515007983846599924478524442938</span><br>e = <span class="hljs-number">0x10001</span><br>p = <span class="hljs-built_in">int</span>(sqrt(n*gift))<br><span class="hljs-comment">#print(p)</span><br>q = n // p<br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d = inverse(e, phi)<br>m = <span class="hljs-built_in">pow</span>(c, d, n)<br>ans = long_to_bytes(m)<br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -351,6 +351,13 @@
   <a href="/categories/Study/" class="category-chain-item">Study</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/Study/WriteUp/" class="category-chain-item">WriteUp</a>
+  
+  
+
+  
 
       </span>
     
@@ -365,8 +372,6 @@
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
-        <a href="/tags/misc/" class="print-no-link">#misc</a>
-      
     </div>
   
 </div>
@@ -377,8 +382,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MISC基础篇-流量分析</div>
-      <div>http://ramoor.github.io/2025/08/05/MISC基础篇-流量分析/</div>
+      <div>MTCTF 2021 Writeup（复现练习）</div>
+      <div>http://ramoor.github.io/2025/08/14/MTCTF 2021 Writeup（复现练习）/</div>
     </div>
     <div class="license-meta">
       
@@ -390,7 +395,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月5日</div>
+          <div>2025年8月14日</div>
         </div>
       
       
@@ -422,9 +427,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/" title="MTCTF 2021 Writeup（复现练习）">
+                      <a href="/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="CCF CSP刷题笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MTCTF 2021 Writeup（复现练习）</span>
+                        <span class="hidden-mobile">CCF CSP刷题笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -432,8 +437,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/31/AFCTF%202018%20Writeup/" title="AFCTF 2018 Writeup">
-                        <span class="hidden-mobile">AFCTF 2018 Writeup</span>
+                      <a href="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" title="MISC基础篇-流量分析">
+                        <span class="hidden-mobile">MISC基础篇-流量分析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
