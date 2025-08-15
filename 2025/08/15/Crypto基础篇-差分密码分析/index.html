@@ -19,23 +19,32 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Ramoor Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类 - Study">
-<meta property="og:url" content="http://ramoor.github.io/categories/Study/index.html">
+    <meta name="description" content="简介差分密码分析是攻击迭代型分组密码最有效的方法之一，也是衡量一个分组密码安全性的重要指标之一。它属于选择明文攻击 原理123456789101112\usepackage&#123;tikz&#125;\begin&#123;document&#125;\begin&#123;tikzpicture&#125;  \node (x) at (0,0) &#123;X &#x3D; Yo&#125;;  \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crypto基础篇-差分密码分析">
+<meta property="og:url" content="http://ramoor.github.io/2025/08/15/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%B7%AE%E5%88%86%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="Ramoor Blog">
+<meta property="og:description" content="简介差分密码分析是攻击迭代型分组密码最有效的方法之一，也是衡量一个分组密码安全性的重要指标之一。它属于选择明文攻击 原理123456789101112\usepackage&#123;tikz&#125;\begin&#123;document&#125;\begin&#123;tikzpicture&#125;  \node (x) at (0,0) &#123;X &#x3D; Yo&#125;;  \">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-15T10:27:32.000Z">
+<meta property="article:modified_time" content="2025-08-15T10:58:31.069Z">
 <meta property="article:author" content="Ramoor">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>分类 - Study - Ramoor</title>
+  <title>Crypto基础篇-差分密码分析 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -107,7 +116,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -219,15 +228,64 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/8.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="分类 - Study"></span>
+            <span id="subtitle" data-typed-text="Crypto基础篇-差分密码分析"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-15 18:27" pubdate>
+          2025年8月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          130 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          2 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
 
         
       </div>
@@ -242,100 +300,224 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 33 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2025</p>
-    
-    <a href="/2025/08/15/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%B7%AE%E5%88%86%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90/" class="list-group-item list-group-item-action">
-      <time>08-15</time>
-      <div class="list-group-item-title">Crypto基础篇-差分密码分析</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Crypto基础篇-差分密码分析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>差分密码分析</strong>是攻击<strong>迭代型分组密码</strong>最有效的方法之一，也是衡量一个分组密码安全性的重要指标之一。它属于<strong>选择明文攻击</strong></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs tikz">\usepackage&#123;tikz&#125;<br>\begin&#123;document&#125;<br>\begin&#123;tikzpicture&#125;<br>  \node (x) at (0,0) &#123;X = Yo&#125;;<br>  \node (y) at (2,0) &#123;Y, = Z&#125;;<br>  \node[draw] (k1) at (1,-1) &#123;K1&#125;;<br>  \node[draw] (k2) at (3,-1) &#123;K2&#125;;<br>  \node (k) at (5,-1) &#123;K&#125;;<br>  \draw[-&gt;] (k1) -- (k2);<br>  \draw[-&gt;] (k2) -- (k);<br>\end&#123;tikzpicture&#125;<br>\end&#123;document&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
-      <time>08-14</time>
-      <div class="list-group-item-title">CCF CSP刷题笔记</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/Study/" class="category-chain-item">Study</a>
   
-    
-    <a href="/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/" class="list-group-item list-group-item-action">
-      <time>08-14</time>
-      <div class="list-group-item-title">MTCTF 2021 Writeup（复现练习）</div>
-    </a>
   
+    <span>></span>
     
-    <a href="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" class="list-group-item list-group-item-action">
-      <time>08-05</time>
-      <div class="list-group-item-title">MISC基础篇-流量分析</div>
-    </a>
+  <a href="/categories/Study/Crypto/" class="category-chain-item">Crypto</a>
   
-    
-    <a href="/2025/07/31/AFCTF%202018%20Writeup/" class="list-group-item list-group-item-action">
-      <time>07-31</time>
-      <div class="list-group-item-title">AFCTF 2018 Writeup</div>
-    </a>
   
-    
-    <a href="/2025/07/25/NepCTF%202025%20Writeup/" class="list-group-item list-group-item-action">
-      <time>07-25</time>
-      <div class="list-group-item-title">NepCTF 2025 Writeup</div>
-    </a>
+
   
+
+      </span>
     
-    <a href="/2025/07/25/%E7%BE%8A%E5%9F%8E%E6%9D%AF%202023%20Wp%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/" class="list-group-item list-group-item-action">
-      <time>07-25</time>
-      <div class="list-group-item-title">羊城杯 2023 Wp（复现）</div>
-    </a>
   
-    
-    <a href="/2025/07/08/Uploads-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0%EF%BC%881-10%EF%BC%89/" class="list-group-item list-group-item-action">
-      <time>07-08</time>
-      <div class="list-group-item-title">Uploads-labs通关笔记（1-10）</div>
-    </a>
+</span>
+
+    </div>
   
-    
-    <a href="/2025/07/04/Web%E5%85%A5%E9%97%A8/" class="list-group-item list-group-item-action">
-      <time>07-04</time>
-      <div class="list-group-item-title">Web入门</div>
-    </a>
   
-    
-    <a href="/2025/07/03/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-PEM%E6%96%87%E4%BB%B6/" class="list-group-item list-group-item-action">
-      <time>07-03</time>
-      <div class="list-group-item-title">Crypto基础篇-PEM文件</div>
-    </a>
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+    </div>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/categories/Study/page/2/#board">2</a><a class="page-number" href="/categories/Study/page/3/#board">3</a><a class="page-number" href="/categories/Study/page/4/#board">4</a><a class="extend next" rel="next" href="/categories/Study/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Crypto基础篇-差分密码分析</div>
+      <div>http://ramoor.github.io/2025/08/15/Crypto基础篇-差分密码分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年8月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="CCF CSP刷题笔记">
+                        <span class="hidden-mobile">CCF CSP刷题笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -454,6 +636,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script defer src="/js/leancloud.js" ></script>
 
