@@ -452,13 +452,6 @@
 
   
   <url>
-    <loc>http://ramoor.github.io/tags/CTF/</loc>
-    <lastmod>2025-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ramoor.github.io/tags/CSP/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -466,7 +459,7 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/LCG/</loc>
+    <loc>http://ramoor.github.io/tags/CTF/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -474,6 +467,13 @@
   
   <url>
     <loc>http://ramoor.github.io/tags/Crypto/</loc>
+    <lastmod>2025-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ramoor.github.io/tags/LCG/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -501,13 +501,6 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/Java/</loc>
-    <lastmod>2025-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ramoor.github.io/tags/L3HCTF/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -516,6 +509,13 @@
   
   <url>
     <loc>http://ramoor.github.io/tags/XCTF/</loc>
+    <lastmod>2025-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ramoor.github.io/tags/Java/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -543,14 +543,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/%E6%96%87%E6%A1%A3%E9%9A%90%E5%86%99/</loc>
+    <loc>http://ramoor.github.io/tags/%E9%9A%90%E5%86%99/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/tags/%E9%9A%90%E5%86%99/</loc>
+    <loc>http://ramoor.github.io/tags/%E6%96%87%E6%A1%A3%E9%9A%90%E5%86%99/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -629,14 +629,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/Study/WriteUp/</loc>
+    <loc>http://ramoor.github.io/categories/WriteUp/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/WriteUp/</loc>
+    <loc>http://ramoor.github.io/categories/Study/WriteUp/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -657,14 +657,14 @@
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/Deployment/</loc>
+    <loc>http://ramoor.github.io/categories/Crypto/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ramoor.github.io/categories/Crypto/</loc>
+    <loc>http://ramoor.github.io/categories/Deployment/</loc>
     <lastmod>2025-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
