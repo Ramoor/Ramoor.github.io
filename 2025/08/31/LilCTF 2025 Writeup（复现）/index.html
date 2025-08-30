@@ -19,22 +19,22 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言本篇博客用于记录本人对于差分密码分析的入门学习，主要参考为网上各种博客以及《分组密码的攻击方法与实例分析 (李超, 孙兵, 李瑞林) 》。同时由于CTF中出题的常见性，本文主要侧重于对DES的差分分析。 简介差分密码分析是攻击迭代型分组密码最有效的方法之一，也是衡量一个分组密码安全性的重要指标之一。它属于选择明文攻击 概念在深入探究差分分析之前，我们要理解一些概念（这里我只是用自己的话描述一下">
+    <meta name="description" content="Cryptoez_math题目： 12345678910111213141516171819202122from sage.all import *from Crypto.Util.number import *flag &#x3D; b&#x27;LILCTF&#123;test_flag&#125;&#x27;[7:-1]lambda1 &#x3D; bytes_to_long(flag[:len(flag)&#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Crypto基础篇-差分密码分析">
-<meta property="og:url" content="http://ramoor.github.io/2025/08/15/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%B7%AE%E5%88%86%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="LilCTF 2025 Writeup（复现）">
+<meta property="og:url" content="http://ramoor.github.io/2025/08/31/LilCTF%202025%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="前言本篇博客用于记录本人对于差分密码分析的入门学习，主要参考为网上各种博客以及《分组密码的攻击方法与实例分析 (李超, 孙兵, 李瑞林) 》。同时由于CTF中出题的常见性，本文主要侧重于对DES的差分分析。 简介差分密码分析是攻击迭代型分组密码最有效的方法之一，也是衡量一个分组密码安全性的重要指标之一。它属于选择明文攻击 概念在深入探究差分分析之前，我们要理解一些概念（这里我只是用自己的话描述一下">
+<meta property="og:description" content="Cryptoez_math题目： 12345678910111213141516171819202122from sage.all import *from Crypto.Util.number import *flag &#x3D; b&#x27;LILCTF&#123;test_flag&#125;&#x27;[7:-1]lambda1 &#x3D; bytes_to_long(flag[:len(flag)&#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-15T10:27:32.000Z">
-<meta property="article:modified_time" content="2025-08-24T08:08:28.009Z">
+<meta property="article:published_time" content="2025-08-30T18:44:36.000Z">
+<meta property="article:modified_time" content="2025-08-30T19:48:12.636Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Crypto基础篇-差分密码分析 - Ramoor</title>
+  <title>LilCTF 2025 Writeup（复现） - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Crypto基础篇-差分密码分析"></span>
+            <span id="subtitle" data-typed-text="LilCTF 2025 Writeup（复现）"></span>
           
         </div>
 
@@ -245,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-15 18:27" pubdate>
-          2025年8月15日 晚上
+        <time datetime="2025-08-31 02:44" pubdate>
+          2025年8月31日 凌晨
         </time>
       </span>
     
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          446 字
+          399 字
         
       </span>
     
@@ -313,16 +313,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Crypto基础篇-差分密码分析</h1>
+            <h1 id="seo-header">LilCTF 2025 Writeup（复现）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇博客用于记录本人对于差分密码分析的入门学习，主要参考为网上各种博客以及《分组密码的攻击方法与实例分析 (李超, 孙兵, 李瑞林) 》。同时由于CTF中出题的常见性，本文主要侧重于对DES的差分分析。</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>差分密码分析</strong>是攻击<strong>迭代型分组密码</strong>最有效的方法之一，也是衡量一个分组密码安全性的重要指标之一。它属于<strong>选择明文攻击</strong></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>在深入探究差分分析之前，我们要理解一些概念（这里我只是用自己的话描述一下，并不足够严谨）：<br><strong>差分值：</strong> 两个数$X,X’$的差分值为$\Delta X &#x3D; X \oplus X’$<br><strong>差分对：</strong> 在分组密码中，设输入对$(X,X’)$的差分值为$\alpha$，经过$i$轮加密后得到的输出对$(Y_i,Y_i’)$的差分值为$\beta$，则称$(\alpha,\beta)$为该分组密码的一个$i$轮差分对<br><strong>差分特征（差分路径）：</strong> 对于一个$n$轮分组密码的差分特征$\Omega&#x3D;(\beta_0,\beta_1,,,\beta_{n-1},\beta_n)$，表示输入对$(X,X’)$的差分值为$\beta_0$，加密$i$轮后得到的中间对$(Y_i,Y_i’)$的差分值为$\beta_i$</p>
-<h1 id="DES的差分密码分析"><a href="#DES的差分密码分析" class="headerlink" title="DES的差分密码分析"></a>DES的差分密码分析</h1><p>在DES中，其初始置换$IP$和逆置换$IP^{-1}$公开，因此我们在讨论安全性时可以将其忽略。在差分分析中，由于DES采用的Feistel结构，导致对低轮DES和高轮DES的差分分析并不相同。<br>由于DES使用的S盒的差分分布存在不均匀的特性，因此我们在对DES算法进行差分分析之前要对S盒的差分传播特性进行研究。</p>
-
+                <h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="ez-math"><a href="#ez-math" class="headerlink" title="ez_math"></a>ez_math</h2><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sage.<span class="hljs-built_in">all</span> <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">b&#x27;LILCTF&#123;test_flag&#125;&#x27;</span>[<span class="hljs-number">7</span>:-<span class="hljs-number">1</span>]<br>lambda1 = bytes_to_long(flag[:<span class="hljs-built_in">len</span>(flag)//<span class="hljs-number">2</span>])<br>lambda2 = bytes_to_long(flag[<span class="hljs-built_in">len</span>(flag)//<span class="hljs-number">2</span>:])<br>p = getPrime(<span class="hljs-number">512</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">mul</span>(<span class="hljs-params">vector, c</span>):<br>    <span class="hljs-keyword">return</span> [vector[<span class="hljs-number">0</span>]*c, vector[<span class="hljs-number">1</span>]*c]<br><br>v1 = [getPrime(<span class="hljs-number">128</span>), getPrime(<span class="hljs-number">128</span>)]<br>v2 = [getPrime(<span class="hljs-number">128</span>), getPrime(<span class="hljs-number">128</span>)]<br><br>A = matrix(GF(p), [v1, v2])<br>B = matrix(GF(p), [mul(v1,lambda1), mul(v2,lambda2)])<br>C = A.inverse() * B<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;p = <span class="hljs-subst">&#123;p&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;C = <span class="hljs-subst">&#123;<span class="hljs-built_in">str</span>(C).replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;,&quot;</span>).replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;,&quot;</span>).replace(<span class="hljs-string">&quot;[,&quot;</span>, <span class="hljs-string">&quot;[&quot;</span>)&#125;</span>&#x27;</span>)<br><br><span class="hljs-comment"># p = 9620154777088870694266521670168986508003314866222315790126552504304846236696183733266828489404860276326158191906907396234236947215466295418632056113826161</span><br><span class="hljs-comment"># C = [7062910478232783138765983170626687981202937184255408287607971780139482616525215270216675887321965798418829038273232695370210503086491228434856538620699645,7096268905956462643320137667780334763649635657732499491108171622164208662688609295607684620630301031789132814209784948222802930089030287484015336757787801],[7341430053606172329602911405905754386729224669425325419124733847060694853483825396200841609125574923525535532184467150746385826443392039086079562905059808,2557244298856087555500538499542298526800377681966907502518580724165363620170968463050152602083665991230143669519866828587671059318627542153367879596260872]</span><br></code></pre></td></tr></table></figure>
+<p><strong>分析：</strong><br>我们已知 A 向量，为了后续方便运算，我们写成列向量的形式：<br>$$<br>A &#x3D;<br>\begin{bmatrix}<br>v_1 \newline<br>v_2<br>\end{bmatrix}<br>$$<br>我们根据 B 的生成方式，可以将其进行分解成两个矩阵相乘的形式：<br>$$</p>
+<h1 id="B-begin-bmatrix-v-1-lambda-1-newlinev-2-lambda-2-end-bmatrix"><a href="#B-begin-bmatrix-v-1-lambda-1-newlinev-2-lambda-2-end-bmatrix" class="headerlink" title="B &#x3D;\begin{bmatrix}v_1\lambda_1 \newlinev_2\lambda_2\end{bmatrix}"></a>B &#x3D;<br>\begin{bmatrix}<br>v_1\lambda_1 \newline<br>v_2\lambda_2<br>\end{bmatrix}</h1><p>\begin{bmatrix}<br>\lambda_1 &amp; 0 \newline<br>0 &amp; \lambda_2<br>\end{bmatrix}</p>
+<h1 id="begin-bmatrix-v-1-newlinev-2-end-bmatrix"><a href="#begin-bmatrix-v-1-newlinev-2-end-bmatrix" class="headerlink" title="\begin{bmatrix}v_1 \newlinev_2\end{bmatrix}"></a>\begin{bmatrix}<br>v_1 \newline<br>v_2<br>\end{bmatrix}</h1><p>\begin{bmatrix}<br>\lambda_1 &amp; 0 \newline<br>0 &amp; \lambda_2<br>\end{bmatrix}<br>A<br>$$</p>
+<h1 id="然后再观察生成的-C，可以发现貌似找到了思路：-C-A-1-B-A-1-begin-bmatrix-lambda-1-0-newline0-lambda-2-end-bmatrix-A-我们设-D"><a href="#然后再观察生成的-C，可以发现貌似找到了思路：-C-A-1-B-A-1-begin-bmatrix-lambda-1-0-newline0-lambda-2-end-bmatrix-A-我们设-D" class="headerlink" title="然后再观察生成的 C，可以发现貌似找到了思路：$$C &#x3D; A^{-1}B&#x3D;A^{-1}\begin{bmatrix}\lambda_1 &amp; 0 \newline0 &amp; \lambda_2\end{bmatrix}A$$我们设$$D"></a>然后再观察生成的 C，可以发现貌似找到了思路：<br>$$<br>C &#x3D; A^{-1}B&#x3D;A^{-1}<br>\begin{bmatrix}<br>\lambda_1 &amp; 0 \newline<br>0 &amp; \lambda_2<br>\end{bmatrix}<br>A<br>$$<br>我们设<br>$$<br>D</h1><p>\begin{bmatrix}<br>\lambda_1 &amp; 0 \newline<br>0 &amp; \lambda_2<br>\end{bmatrix}<br>$$<br>上述的分析说明，C 和 D 矩阵相似，由相似矩阵的特性可知其特征值一样，而 D 的特征值很容易得到为 $\lambda_1,\lambda_2$，那么说明 C 的特征值也是 $\lambda_1,\lambda_2$。<br>那么直接求C的特征值便可以得到 $\lambda_1,\lambda_2$，再转换为 ASCII 字符便能获取到 flag。<br><strong>解答：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br>p = <span class="hljs-number">9620154777088870694266521670168986508003314866222315790126552504304846236696183733266828489404860276326158191906907396234236947215466295418632056113826161</span><br>C = [<span class="hljs-number">7062910478232783138765983170626687981202937184255408287607971780139482616525215270216675887321965798418829038273232695370210503086491228434856538620699645</span>,<span class="hljs-number">7096268905956462643320137667780334763649635657732499491108171622164208662688609295607684620630301031789132814209784948222802930089030287484015336757787801</span>],[<span class="hljs-number">7341430053606172329602911405905754386729224669425325419124733847060694853483825396200841609125574923525535532184467150746385826443392039086079562905059808</span>,<span class="hljs-number">2557244298856087555500538499542298526800377681966907502518580724165363620170968463050152602083665991230143669519866828587671059318627542153367879596260872</span>]<br><br>C = matrix(GF(p), <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, C)<br><br>evalue = C.eigenvalues()<br><br>lambda1 = <span class="hljs-built_in">int</span>(evalue[<span class="hljs-number">0</span>])<br>lambda2 = <span class="hljs-built_in">int</span>(evalue[<span class="hljs-number">1</span>])<br><br>flag1 = long_to_bytes(lambda1)<br>flag2 = long_to_bytes(lambda2)<br><br>flag = flag1 + flag2<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;LilCTF&#123;&#123;<span class="hljs-subst">&#123;flag.decode()&#125;</span>&#125;&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -345,7 +347,7 @@
   
     <span>></span>
     
-  <a href="/categories/Study/Crypto/" class="category-chain-item">Crypto</a>
+  <a href="/categories/Study/WriteUp/" class="category-chain-item">WriteUp</a>
   
   
 
@@ -374,8 +376,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Crypto基础篇-差分密码分析</div>
-      <div>http://ramoor.github.io/2025/08/15/Crypto基础篇-差分密码分析/</div>
+      <div>LilCTF 2025 Writeup（复现）</div>
+      <div>http://ramoor.github.io/2025/08/31/LilCTF 2025 Writeup（复现）/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +389,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月15日</div>
+          <div>2025年8月31日</div>
         </div>
       
       
@@ -419,18 +421,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/31/LilCTF%202025%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/" title="LilCTF 2025 Writeup（复现）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LilCTF 2025 Writeup（复现）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" title="CCF CSP刷题笔记">
-                        <span class="hidden-mobile">CCF CSP刷题笔记</span>
+                      <a href="/2025/08/15/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%B7%AE%E5%88%86%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90/" title="Crypto基础篇-差分密码分析">
+                        <span class="hidden-mobile">Crypto基础篇-差分密码分析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
