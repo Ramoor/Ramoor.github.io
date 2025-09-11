@@ -50,8 +50,8 @@ http://ramoor.github.io/about/index.html
 http://ramoor.github.io/
 http://ramoor.github.io/tags/CTF/
 http://ramoor.github.io/tags/CSP/
-http://ramoor.github.io/tags/LCG/
 http://ramoor.github.io/tags/Crypto/
+http://ramoor.github.io/tags/LCG/
 http://ramoor.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/
 http://ramoor.github.io/tags/blog/
 http://ramoor.github.io/tags/latex/
