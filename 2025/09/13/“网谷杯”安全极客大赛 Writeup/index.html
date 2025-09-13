@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ramoor">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="碎念这次比赛是在看见群里有人说起这个比赛，刚好闲着没事顺手打了一下，主要写了 Crypto 和 MISC （流量分析也算 MISC 吧）方向的题目，整体来看难度不高，但有些时候需要一些想象力，因为对其他的方向并不是很了解，因此一个人想打入决赛还是有点难度的&#x3D;͟͟͞͞( •̀д•́)不过想要吐槽的一点就是这个比赛的赛制，没想到它的动态积分竟然是越早提交分越高，那这样的话拼的不就是简单题的手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“网谷杯”安全极客大赛 Writeup">
+<meta property="og:url" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/index.html">
+<meta property="og:site_name" content="Ramoor">
+<meta property="og:description" content="碎念这次比赛是在看见群里有人说起这个比赛，刚好闲着没事顺手打了一下，主要写了 Crypto 和 MISC （流量分析也算 MISC 吧）方向的题目，整体来看难度不高，但有些时候需要一些想象力，因为对其他的方向并不是很了解，因此一个人想打入决赛还是有点难度的&#x3D;͟͟͞͞( •̀д•́)不过想要吐槽的一点就是这个比赛的赛制，没想到它的动态积分竟然是越早提交分越高，那这样的话拼的不就是简单题的手">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913200135092.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/_posts/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/download%20(1).png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913200432369.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/_posts/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/1.jpg">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913203512984.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913203633374.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913203830386.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/flag.jpg">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913204136629.png">
+<meta property="article:published_time" content="2025-09-13T13:11:29.000Z">
+<meta property="article:modified_time" content="2025-09-13T13:06:31.780Z">
+<meta property="article:author" content="Ramoor">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913200135092.png">
+  
+  
+  
+  <title>“网谷杯”安全极客大赛 Writeup - Ramoor</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ramoor</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="“网谷杯”安全极客大赛 Writeup"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-13 21:11" pubdate>
+          2025年9月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">“网谷杯”安全极客大赛 Writeup</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="碎念"><a href="#碎念" class="headerlink" title="碎念"></a>碎念</h2><p>这次比赛是在看见群里有人说起这个比赛，刚好闲着没事顺手打了一下，主要写了 Crypto 和 MISC （流量分析也算 MISC 吧）方向的题目，整体来看难度不高，但有些时候需要一些想象力，因为对其他的方向并不是很了解，因此一个人想打入决赛还是有点难度的&#x3D;͟͟͞͞( •̀д•́)<br>不过想要吐槽的一点就是这个比赛的赛制，没想到它的动态积分竟然是越早提交分越高，那这样的话拼的不就是简单题的手速和网速了吗，简单题和难题都没有什么差别了，感觉是有点离谱的。。</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="证书修复-wgb"><a href="#证书修复-wgb" class="headerlink" title="证书修复-wgb"></a>证书修复-wgb</h2><p>本题考查 PEM，首先我们要了解私钥文件的格式</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">RSAPrivateKey ::= <span class="hljs-keyword">SEQUENCE</span> &#123;<br>  <span class="hljs-keyword">version</span>           <span class="hljs-keyword">Version</span>,           <span class="hljs-comment">-- INTEGER（一般是 0）</span><br>  modulus           <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- n</span><br>  publicExponent    <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- e</span><br>  privateExponent   <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- d</span><br>  prime1            <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- p</span><br>  prime2            <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- q</span><br>  exponent1         <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- d mod (p-1)</span><br>  exponent2         <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- d mod (q-1)</span><br>  coefficient       <span class="hljs-type">INTEGER</span>,           <span class="hljs-comment">-- q^(-1) mod p</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h3><p>直接给出了私钥文件，将 base64 解码后能够得到 n、d，我们便可以直接解密<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">MIICXAIBAAKBgQCsnlJbVdPOwSCVdI6tiL7J88QfPFomm4mySzKu6AHCVS8gMJc+<br>OTV+k14Q3M9PjqEDQfpt/oP2nNq0Z8sDYErT323Q75gsJM8YNe+sK/W2qzsP/XP2<br>y+Z6qLZXYXgE9g1ofqeZYgcwN819Xiw7ELHkHP53w+KChUDp7fJH/s0+wwIDAQAB<br>AoGAIwia5Gid7UdrCoo2bufi+O/dbQ19qnpEzwfOCIuT19IcF2dlOr63qbHVFI0M<br>EjR7X0LjxbEzLTkWdijenhfL96+IwzPig5PFL1dzxwp7bFct/9sQNuf/FZD1eC56<br>QjzXxOD0v9itzVMvbIR80MclgEK1zUeg7tlIRHCofoLoALECQQD8sNNSgmMKdXBt<br>dimY6ziK/xXtQ2TW2ekQ8l2VT5f/HD2M6n7gwadSPM2P2/UVC2ekK9SMGwe5giGR<br>bTerjjNZAkEAruELdXFBj/iheihbSXO3uDf9+BdvQFyMDIjPDTjx3GaY2Rwvl1Da<br>Cnwx2326mW3fuRYT/r9KZ9ViM5VX23vLewJAF7VrjnFHY6LTMqIEkyF2w6vdXc6V<br>9oaplHp5B1pZc4ktyTvzPZlN3qxvyRClNR1F0yR9o8uhdOldxuxNbd5AuQJAAJAi<br>7E7gCimfw3fry1G/Dq3HeIwCxK9HmCa8m+tKBA6kgVZw5MjS2uPJeU5vUl0jMkJa<br>8CAHikwKk+XwMXm1jwJBAK8rEl7TVWO5vmP2Xt/JITHUu5qSgYB9p9YwnfhQa4b/<br>rOIIFyuuq0tg3xASP+50O+fqvSOK5gZIx+KbNtWugcI=<br></code></pre></td></tr></table></figure><br> 转换成十六进制后，可以按照上边格式拆分，最终得到：<br> <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">121216793759965406495195349784688471172903898464863919579528667261419201175006158506254851920269184174476441342645096664857617956346276850231302641370595849992364168925183323567715165305825214477546120105756089950903529561478112787635175307546002017263761103481685637785188859785795387227441771118141108993731</span><br><span class="hljs-attribute">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">24601440007954283409258790415889365626604738597756305511807235656867674669709582591386480696270815244895420087866738342299329789849425948470734950224610450629270896689735724164750653504067075012851069860052288413393492140397638874689747304249627737638521072321625292497180208183282090634794285367566044496049</span><br></code></pre></td></tr></table></figure></p>
+<p>直接给出私钥 d，直接解密</p>
+<h3 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h3><p>与 flag1 相比，多了一个公钥文件，里边只有 n、e，<br>而私钥文件的前半部分不显示，但是我们可以得到 p、q，并且 n、e 和公钥文件中相同，因此也可以直接解 rsa 了。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">88024091485722968131203129772830524881654529625144134588814340590011554124604316403258794718595058760192581465181932954405288276198255951037890441057834815115351239151027730304080110594116192807779817527469691548261644538550529011882499685981945213841298369305720161373509056672240371216670722254664850792423</span><br><span class="hljs-attribute">e</span> <span class="hljs-operator">=</span> <span class="hljs-number">65537</span><br><span class="hljs-attribute">p</span> <span class="hljs-operator">=</span> <span class="hljs-number">9582848127563543144923745964600370727631625906884933335707836734329263380236258927038536326818153720067174259502906373148203118612164064303294028202007639</span><br><span class="hljs-attribute">q</span> <span class="hljs-operator">=</span> <span class="hljs-number">9185587657654265271925862790545538824407691820908394988893401857915219018271791875599781315096940084389655919586711021311553394520708985687587340820963057</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="flag3"><a href="#flag3" class="headerlink" title="flag3"></a>flag3</h3><p>与第二问不同的是，该私钥文件前边缺失的地方更多，但观察后发现仍然可以得到 d mod p-1，d mod q-1，即 dp，然后便可以使用最常规的 dp 泄露的思路来做</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">161097000312435047639025857083798608426453770394810689419872061300529854423940452844900091705515387130272189159935215821125906831946941166430461267964034092194438035823677086083564924149614045494613496178826123777949284989729443312266399276493423985154752448654420778684877265358368899693320567387749119123981</span><br><span class="hljs-attribute">e</span> <span class="hljs-operator">=</span> <span class="hljs-number">65537</span><br><span class="hljs-attribute">dp</span> <span class="hljs-operator">=</span> <span class="hljs-number">8466156897235505876858915949875848826731809609609498324537270201005685410904242916171703973272057335477219350238441206686126349368220272071006389601023573</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>c1 = bytes_to_long(<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;flag1/flag1.txt&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>).read())<br>c2 = bytes_to_long(<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;flag2/flag2.txt&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>).read())<br>c3 = bytes_to_long(<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;flag3/flag3.txt&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>).read())<br><br>n1 = <span class="hljs-number">121216793759965406495195349784688471172903898464863919579528667261419201175006158506254851920269184174476441342645096664857617956346276850231302641370595849992364168925183323567715165305825214477546120105756089950903529561478112787635175307546002017263761103481685637785188859785795387227441771118141108993731</span><br>n2 = <span class="hljs-number">88024091485722968131203129772830524881654529625144134588814340590011554124604316403258794718595058760192581465181932954405288276198255951037890441057834815115351239151027730304080110594116192807779817527469691548261644538550529011882499685981945213841298369305720161373509056672240371216670722254664850792423</span><br>n3 = <span class="hljs-number">161097000312435047639025857083798608426453770394810689419872061300529854423940452844900091705515387130272189159935215821125906831946941166430461267964034092194438035823677086083564924149614045494613496178826123777949284989729443312266399276493423985154752448654420778684877265358368899693320567387749119123981</span><br>e = <span class="hljs-number">65537</span><br><br><span class="hljs-comment"># flag1 中泄露 d</span><br>d1 = <span class="hljs-number">24601440007954283409258790415889365626604738597756305511807235656867674669709582591386480696270815244895420087866738342299329789849425948470734950224610450629270896689735724164750653504067075012851069860052288413393492140397638874689747304249627737638521072321625292497180208183282090634794285367566044496049</span><br>m1 = <span class="hljs-built_in">pow</span>(c1, d1, n1)<br>flag1 = long_to_bytes(m1)<br><br><span class="hljs-comment"># flag2 中泄露 p，q</span><br><br>p2 = <span class="hljs-number">9582848127563543144923745964600370727631625906884933335707836734329263380236258927038536326818153720067174259502906373148203118612164064303294028202007639</span><br>q2 = <span class="hljs-number">9185587657654265271925862790545538824407691820908394988893401857915219018271791875599781315096940084389655919586711021311553394520708985687587340820963057</span><br><br>phi2 = (p2-<span class="hljs-number">1</span>)*(q2-<span class="hljs-number">1</span>)<br>d2 = inverse(e, phi2)<br>m2 = <span class="hljs-built_in">pow</span>(c2, d2, n2)<br>flag2 = long_to_bytes(m2)<br><br><span class="hljs-comment"># flag3 中泄露 dp，dq</span><br>dp = <span class="hljs-number">8466156897235505876858915949875848826731809609609498324537270201005685410904242916171703973272057335477219350238441206686126349368220272071006389601023573</span><br><br>b = e*dp - <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,e):<br>    <span class="hljs-keyword">if</span> b % i == <span class="hljs-number">0</span>:<br>        pp = b // i + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> n3 % pp == <span class="hljs-number">0</span>:<br>            p3 = pp<br>            q3 = n3 // p3<br>            <span class="hljs-keyword">break</span><br><br>phi3 = (p3 - <span class="hljs-number">1</span>) * (q3 - <span class="hljs-number">1</span>)<br>d3 = inverse(e, phi3)<br>m3 = <span class="hljs-built_in">pow</span>(c3, d3, n3)<br>flag3 = long_to_bytes(m3)<br><span class="hljs-built_in">print</span>(flag1 + flag2 + flag3)<br></code></pre></td></tr></table></figure>
+
+<h2 id="三重秘影-wgb"><a href="#三重秘影-wgb" class="headerlink" title="三重秘影-wgb"></a>三重秘影-wgb</h2><p>Hint：一个神秘的间谍组织使用了三重加密来隐藏他们的通信内容。你拦截到了一串奇怪密码线索，请注意他们的神秘标记！<br>还有一段密文：依稀只剩下：“Stone Memory For…？”,请解开此段密文，获取flag</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目首先给出了一个 text.txt 文件，查看过后发现是 BASE64 编码后的结果，先进行 BASE64 的解码，发现开头字符为 PNG 图片的数据开头格式。<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913200135092.png" srcset="/img/loading.gif" lazyload><br>直接保存为 PNG 图片，打开后发现是一个二维码，扫码能得到一个字符串<code>...--cfadeb-----</code>，明显前后两个是摩斯密码，得到<code>3cfadeb0</code><br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/_posts/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/download%20(1).png" srcset="/img/loading.gif" lazyload><br>接着使用 010 Editor 打开该图片，往下翻找发现 JPG 的文件格式，并且在文件末尾找到一个字符串<code>d96247f2167ba262a5d8325019623b035436a8be27f807516a76c231307994b0</code><br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913200432369.png" srcset="/img/loading.gif" lazyload><br>再将 JPG 文件保存之后，得到一串摩斯密码<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/_posts/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/1.jpg" srcset="/img/loading.gif" lazyload><br>解密后得到<code>9273016854</code>，结合前边的两端也是摩斯密码，且刚好在下边这个图片中相邻，因此猜测第一个字符串应该插在第二个字符串中间，得到<code>9273cfadeb016854</code><br>这两个字符串一长一短，很容易把它们当作一个密文一个密钥，但是不知道是什么加密。最后结合题目所说<code>Stone Memory For...？</code>，猜测加密算法为 SM4，<code>9273cfadeb016854</code>也刚好 16 个字节，直接 ECB 模式解密便得到 flag</p>
+<h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> gmssl.sm4 <span class="hljs-keyword">import</span> CryptSM4, SM4_DECRYPT<br><br>c = <span class="hljs-string">&quot;d96247f2167ba262a5d8325019623b035436a8be27f807516a76c231307994b0&quot;</span><br>key = <span class="hljs-string">b&quot;9273cfadeb016854&quot;</span><br>c_bytes = <span class="hljs-built_in">bytes</span>.fromhex(c)<br><br>sm4 = CryptSM4()<br>sm4.set_key(key, SM4_DECRYPT)<br><br>flag = sm4.crypt_ecb(c_bytes)<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="Format-8bit-wgb"><a href="#Format-8bit-wgb" class="headerlink" title="Format-8bit-wgb"></a>Format-8bit-wgb</h2><p>Hint：看不懂的汉字隐藏了什么秘密呢？</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>题目给了一个 JPG 文件，010 Editor 打开查看十六进制数据，发现文件结尾存在着一个 Zip 压缩包，可以使用 Binwalk 直接分离</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">DECIMAL       HEXADECIMAL     DESCRIPTION</span><br><span class="hljs-section">--------------------------------------------------------------------------------</span><br>351661        0x55DAD         Zip archive data, at least v2.0 to extract, compressed size: 154, uncompressed size: 165, name: 422.txt<br></code></pre></td></tr></table></figure>
+<p>得到一个 422.txt 文件，查看发现文件内好像是非常复杂的汉字还有一些乱码，猜测是<code>utf-16</code>编码的字符，尝试过后发现是大端序 <code>utf-16be</code>，将其转换为字节流，然后再使用<code>gbk</code>解码便能得到flag</p>
+<h3 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">txt = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;422.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>).read()<br><br>utf16be_bytes = <span class="hljs-string">b&#x27;&#x27;</span>.join(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">ord</span>(ch)).encode(<span class="hljs-string">&#x27;utf-16be&#x27;</span>) <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> txt)<br>flag = utf16be_bytes.decode(<span class="hljs-string">&#x27;gbk&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<h2 id="non-interlaced-wgb"><a href="#non-interlaced-wgb" class="headerlink" title="non-interlaced-wgb"></a>non-interlaced-wgb</h2><p>Hint：神奇的图片有什么意义呢？</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>题目给出了 9 张不同颜色的像素图片，分别为 3 张红色，3 张绿色，3 张蓝色，因此猜测和像素的 RGB 值有关，将图片放入 Stegsolve 进行分析。<br>以 <code>图片 1</code> 为例，发现在 Red 的每个通道上都存在很多数据<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913203512984.png" srcset="/img/loading.gif" lazyload><br>然后使用 Data Extract 对通道上的数据进行分析，勾选 Red 的所有通道，查看十六进制数据，发现是 Zip 的数据，但是并不完整，因此猜测后边的每个图片是否都带有一部分数据<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913203633374.png" srcset="/img/loading.gif" lazyload><br>为了验证猜测，直接查看 <code>图片9</code> 是否含有 Zip 的文件结尾<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913203830386.png" srcset="/img/loading.gif" lazyload><br>查看之后，说明确实如我们所假设的那样，因此我们便可以将每个图片中隐写的数据都提取出来，拼接在一起便可以得到一个 Zip 压缩包，解压之后得到 flag.jpg<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/flag.jpg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h1><h2 id="Spyware-wgb"><a href="#Spyware-wgb" class="headerlink" title="Spyware-wgb"></a>Spyware-wgb</h2><p>Hint：情况紧急，小A使用了绝妙的隐藏方法传输了密码信息。</p>
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>附件中给出了一个 1.pcapng 的流量数据包，使用 Wireshark 打开查看发现是 USB 流量，猜测是否会是鼠标流量或者键盘流量。<br><img src="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/file-20250913204136629.png" srcset="/img/loading.gif" lazyload><br>但是我们并没有发现 usbhid，只发现了许多 Leftover Capture Data ，搜索之后发现是没有被认出的报文数据，因此它们本质上是一样的，只不过需要使用<code>capdata</code>将数据过滤出，然后使用 tshark 提取即可。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">tshark</span> -r <span class="hljs-number">1</span>.pcapng -T fields -e usb.capdata &gt; <span class="hljs-number">1</span>.txt<br></code></pre></td></tr></table></figure>
+<p>观察提取出的数据，发现其数据的变换并不连续，因此猜测不是鼠标流量，而是键盘流量，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br>hid = &#123;<br>    <span class="hljs-number">0x04</span>: <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">0x05</span>: <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-number">0x06</span>: <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-number">0x07</span>: <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-number">0x08</span>: <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-number">0x09</span>: <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-number">0x0A</span>: <span class="hljs-string">&#x27;g&#x27;</span>, <span class="hljs-number">0x0B</span>: <span class="hljs-string">&#x27;h&#x27;</span>, <span class="hljs-number">0x0C</span>: <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-number">0x0D</span>: <span class="hljs-string">&#x27;j&#x27;</span>, <span class="hljs-number">0x0E</span>: <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-number">0x0F</span>: <span class="hljs-string">&#x27;l&#x27;</span>,<br>    <span class="hljs-number">0x10</span>: <span class="hljs-string">&#x27;m&#x27;</span>, <span class="hljs-number">0x11</span>: <span class="hljs-string">&#x27;n&#x27;</span>, <span class="hljs-number">0x12</span>: <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-number">0x13</span>: <span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-number">0x14</span>: <span class="hljs-string">&#x27;q&#x27;</span>, <span class="hljs-number">0x15</span>: <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-number">0x16</span>: <span class="hljs-string">&#x27;s&#x27;</span>, <span class="hljs-number">0x17</span>: <span class="hljs-string">&#x27;t&#x27;</span>, <span class="hljs-number">0x18</span>: <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-number">0x19</span>: <span class="hljs-string">&#x27;v&#x27;</span>, <span class="hljs-number">0x1A</span>: <span class="hljs-string">&#x27;w&#x27;</span>, <span class="hljs-number">0x1B</span>: <span class="hljs-string">&#x27;x&#x27;</span>,<br>    <span class="hljs-number">0x1C</span>: <span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-number">0x1D</span>: <span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-number">0x1E</span>: <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-number">0x1F</span>: <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-number">0x20</span>: <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-number">0x21</span>: <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-number">0x22</span>: <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-number">0x23</span>: <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-number">0x24</span>: <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-number">0x25</span>: <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-number">0x26</span>: <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-number">0x27</span>: <span class="hljs-string">&#x27;0&#x27;</span>,<br>    <span class="hljs-number">0x28</span>: <span class="hljs-string">&#x27;\n&#x27;</span>,<span class="hljs-number">0x2C</span>: <span class="hljs-string">&#x27; &#x27;</span> <br>&#125;<br><br>flag = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;1.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>        <span class="hljs-keyword">if</span> line.startswith(<span class="hljs-string">&quot;2000&quot;</span>):<br>            key_code = line[<span class="hljs-number">8</span>:<span class="hljs-number">10</span>]<br>            <span class="hljs-keyword">if</span> key_code:<br>                key = <span class="hljs-built_in">int</span>(key_code, <span class="hljs-number">16</span>)<br>                <span class="hljs-keyword">if</span> key <span class="hljs-keyword">in</span> hid:<br>                    flag += hid[key]<br>                <br><span class="hljs-built_in">print</span>(flag)<br>flag =flag.replace(<span class="hljs-string">&quot;m&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>).replace(<span class="hljs-string">&quot;3&quot;</span>,<span class="hljs-string">&quot;1&quot;</span>)<br><span class="hljs-built_in">print</span>(long_to_bytes(<span class="hljs-built_in">int</span>(flag,<span class="hljs-number">2</span>))) <br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Study/" class="category-chain-item">Study</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Study/WriteUp/" class="category-chain-item">WriteUp</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>“网谷杯”安全极客大赛 Writeup</div>
+      <div>http://ramoor.github.io/2025/09/13/“网谷杯”安全极客大赛 Writeup/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年9月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/31/LilCTF%202025%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89/" title="LilCTF 2025 Writeup（复现）">
+                        <span class="hidden-mobile">LilCTF 2025 Writeup（复现）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+<script>  
+MathJax = {  
+	tex: {  
+		inlineMath: [['$', '$'], ['\(', '\)']]  
+	}  
+};  
+</script>  
+<script id="MathJax-script" async  
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  
+</script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
