@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ramoor">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AI 从你训练好的 *.pth（保存的是 state_dict）中自动定位最后一层的线性权重与偏置（常见形式：...weight 的 shape 为 [1, hidden]，...bias 的 shape 为 [1]），并把它们取负（相当于把模型输出翻转为 1 - original）。 可选地在本地做一次快速自检：把原模型和翻转后模型都载入到 TextClassifier(Parameters)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ramoor">
+<meta property="og:url" content="http://ramoor.github.io/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/index.html">
+<meta property="og:site_name" content="Ramoor">
+<meta property="og:description" content="AI 从你训练好的 *.pth（保存的是 state_dict）中自动定位最后一层的线性权重与偏置（常见形式：...weight 的 shape 为 [1, hidden]，...bias 的 shape 为 [1]），并把它们取负（相当于把模型输出翻转为 1 - original）。 可选地在本地做一次快速自检：把原模型和翻转后模型都载入到 TextClassifier(Parameters)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143530510.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143631920.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143848512.png">
+<meta property="article:published_time" content="2025-09-14T04:09:49.253Z">
+<meta property="article:modified_time" content="2025-09-14T06:38:48.876Z">
+<meta property="article:author" content="Ramoor">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143530510.png">
+  
+  
+  
+  <title>Ramoor</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ramoor</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-14 12:09" pubdate>
+          2025年9月14日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="AI"><a href="#AI" class="headerlink" title="AI"></a>AI</h2><ol>
+<li>从你训练好的 <code>*.pth</code>（保存的是 <code>state_dict</code>）中<strong>自动定位最后一层的线性权重与偏置</strong>（常见形式：<code>...weight</code> 的 shape 为 <code>[1, hidden]</code>，<code>...bias</code> 的 shape 为 <code>[1]</code>），并把它们取负（相当于把模型输出翻转为 <code>1 - original</code>）。</li>
+<li>可选地在本地做一次快速自检：把原模型和翻转后模型都载入到 <code>TextClassifier(Parameters)</code> 中，用一个随机&#x2F;空输入比较两者输出（期望近似 <code>y + y_flipped ≈ 1</code>）</li>
+</ol>
+<blockquote>
+<p>说明：此脚本遵循尽量通用的查找规则（通过参数形状和常见名字识别最后一层）。若你的模型最后层命名非常特殊，脚本会给出诊断信息并提示手工指定权重名。</p>
+</blockquote>
+<ul>
+<li><strong>若原模型在 secret <code>val_set.csv</code> 上的预测几乎全部正确（原模型 <code>pred == original_label</code>）</strong>，那么翻转后 <code>pred&#39; = 1 - pred</code> 将几乎全部等于 <code>1 - original_label</code>，从而满足题目判定条件，服务器会返回 flag。</li>
+<li>如果原模型在验证集上不够准确（预测与真实标签并非基本一致），翻转也无法保证“全部被误导”。这就是为什么通常先用投毒或训练得到一个在验证集上表现很高的模型，再翻转其输出以稳妥通过。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># flip_model.py</span><br><span class="hljs-keyword">import</span> argparse<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_candidate_last_linear</span>(<span class="hljs-params">state_dict</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    尝试从 state_dict 中寻找最后一层 linear 的 weight key。</span><br><span class="hljs-string">    策略：</span><br><span class="hljs-string">      1) 首先找所有 tensor ndim==2 且 shape[0]==1 的 weight（典型 binary linear 输出 [1, hidden]）</span><br><span class="hljs-string">      2) 若没有，尝试按名字启发式匹配包含常见后缀的 weight（fc, classifier, out, linear, dense）</span><br><span class="hljs-string">    返回 (weight_key, bias_key) 或 (None, None)</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    cand_weights = [k <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> state_dict.items() <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isinstance</span>(v, torch.Tensor) <span class="hljs-keyword">and</span> v.ndim == <span class="hljs-number">2</span> <span class="hljs-keyword">and</span> v.shape[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>)]<br>    <span class="hljs-keyword">if</span> cand_weights:<br>        <span class="hljs-comment"># 选第一个（通常只有一个）</span><br>        wkey = cand_weights[<span class="hljs-number">0</span>]<br>        <span class="hljs-comment"># 尝试对应 bias</span><br>        bkey = wkey.rsplit(<span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;.bias&#x27;</span> <span class="hljs-keyword">if</span> (wkey.rsplit(<span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;.bias&#x27;</span>) <span class="hljs-keyword">in</span> state_dict <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">if</span> bkey <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-comment"># 尝试找到任何 shape == (1,) 的 bias</span><br>            bias_cands = [k <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> state_dict.items() <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(v, torch.Tensor) <span class="hljs-keyword">and</span> v.ndim == <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> v.shape[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>]<br>            bkey = bias_cands[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> bias_cands <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">return</span> wkey, bkey<br><br>    <span class="hljs-comment"># 启发式名称匹配</span><br>    name_hints = [<span class="hljs-string">&#x27;fc.weight&#x27;</span>, <span class="hljs-string">&#x27;classifier.weight&#x27;</span>, <span class="hljs-string">&#x27;out.weight&#x27;</span>, <span class="hljs-string">&#x27;linear.weight&#x27;</span>, <span class="hljs-string">&#x27;dense.weight&#x27;</span>]<br>    <span class="hljs-keyword">for</span> hint <span class="hljs-keyword">in</span> name_hints:<br>        matches = [k <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> state_dict.keys() <span class="hljs-keyword">if</span> hint <span class="hljs-keyword">in</span> k <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(state_dict[k], torch.Tensor)]<br>        <span class="hljs-keyword">if</span> matches:<br>            wkey = matches[-<span class="hljs-number">1</span>]  <span class="hljs-comment"># 取最后一项更可能是顶层</span><br>            bkey = wkey.rsplit(<span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;.bias&#x27;</span> <span class="hljs-keyword">if</span> (wkey.rsplit(<span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;.bias&#x27;</span>) <span class="hljs-keyword">in</span> state_dict <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>            <span class="hljs-keyword">if</span> bkey <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                bias_cands = [k <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> state_dict.items() <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(v, torch.Tensor) <span class="hljs-keyword">and</span> v.ndim == <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> v.shape[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>]<br>                bkey = bias_cands[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> bias_cands <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>            <span class="hljs-keyword">return</span> wkey, bkey<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">flip_last_layer</span>(<span class="hljs-params">input_path, output_path, force=<span class="hljs-literal">False</span></span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(input_path):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[ERROR] 输入模型文件不存在: <span class="hljs-subst">&#123;input_path&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br>    sd = torch.load(input_path, map_location=<span class="hljs-string">&#x27;cpu&#x27;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(sd, <span class="hljs-built_in">dict</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[WARN] 加载到的对象不是 state_dict（dict）。如果这是整个 model 对象，尝试保存 state_dict 而不是整个模型。&quot;</span>)<br>        <span class="hljs-comment"># 如果用户确实保存了整个模型对象，尝试取其 state_dict</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(sd, <span class="hljs-string">&#x27;state_dict&#x27;</span>):<br>            sd = sd.state_dict()<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[ERROR] 既不是 state_dict 也不是 model 对象，无法处理。&quot;</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br>    wkey, bkey = find_candidate_last_linear(sd)<br>    <span class="hljs-keyword">if</span> wkey <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[WARN] 未能自动定位最后一层线性权重（没有找到形状为 [1, hidden] 的 weight，也未匹配常见名称）。&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;可选操作：&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;  1) 手动指定要翻转的权重 key（使用 --weight-key 与 --bias-key）。&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;  2) 查看 state_dict.keys() 并选择合适的 key。&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nstate_dict keys preview:&quot;</span>)<br>        <span class="hljs-keyword">for</span> i, k <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">list</span>(sd.keys())[:<span class="hljs-number">50</span>]):<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;  <span class="hljs-subst">&#123;i+<span class="hljs-number">1</span>:02d&#125;</span>. <span class="hljs-subst">&#123;k&#125;</span>    shape=<span class="hljs-subst">&#123;<span class="hljs-built_in">tuple</span>(sd[k].shape) <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(sd[k], torch.Tensor) <span class="hljs-keyword">else</span> <span class="hljs-built_in">type</span>(sd[k])&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[INFO] 自动定位到 weight: &#x27;<span class="hljs-subst">&#123;wkey&#125;</span>&#x27;  bias: &#x27;<span class="hljs-subst">&#123;bkey&#125;</span>&#x27;&quot;</span>)<br>    <span class="hljs-comment"># 备份</span><br>    new_sd = &#123;&#125;<br>    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> sd.items():<br>        new_sd[k] = v.clone() <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(v, torch.Tensor) <span class="hljs-keyword">else</span> v<br><br>    <span class="hljs-comment"># 翻转 weight / bias</span><br>    new_sd[wkey] = -new_sd[wkey]<br>    <span class="hljs-keyword">if</span> bkey:<br>        new_sd[bkey] = -new_sd[bkey]<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[OK] 已将 <span class="hljs-subst">&#123;wkey&#125;</span> 与 <span class="hljs-subst">&#123;bkey&#125;</span> 取负。&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[OK] 已将 <span class="hljs-subst">&#123;wkey&#125;</span> 取负。未找到对应 bias (将仅翻转 weight)。&quot;</span>)<br><br>    torch.save(new_sd, output_path)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[OK] 已保存翻转后模型为: <span class="hljs-subst">&#123;output_path&#125;</span>  (<span class="hljs-subst">&#123;os.path.getsize(output_path)/<span class="hljs-number">1024</span>:<span class="hljs-number">.1</span>f&#125;</span> KB)&quot;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">quick_self_test</span>(<span class="hljs-params">original_path, flipped_path</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    若工程包含 src.model.TextClassifier 和 src.parameters.Parameters，</span><br><span class="hljs-string">    此函数会加载两份 state_dict 到模型并对一个零输入进行比对（近似 y + y_flipped ≈ 1）。</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">from</span> src.parameters <span class="hljs-keyword">import</span> Parameters<br>        <span class="hljs-keyword">from</span> src.model <span class="hljs-keyword">import</span> TextClassifier<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[SKIP TEST] 未能导入 TextClassifier/Parameters（&quot;</span>, e, <span class="hljs-string">&quot;)，跳过自检。&quot;</span>)<br>        <span class="hljs-keyword">return</span><br><br>    params = Parameters()<br>    model_a = TextClassifier(params)<br>    model_b = TextClassifier(params)<br><br>    sd_a = torch.load(original_path, map_location=<span class="hljs-string">&#x27;cpu&#x27;</span>)<br>    sd_b = torch.load(flipped_path, map_location=<span class="hljs-string">&#x27;cpu&#x27;</span>)<br><br>    <span class="hljs-comment"># 如果用户保存的是整 model 对象，尝试获取 state_dict</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(sd_a, <span class="hljs-built_in">dict</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">hasattr</span>(sd_a, <span class="hljs-string">&#x27;state_dict&#x27;</span>):<br>        sd_a = sd_a.state_dict()<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(sd_b, <span class="hljs-built_in">dict</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">hasattr</span>(sd_b, <span class="hljs-string">&#x27;state_dict&#x27;</span>):<br>        sd_b = sd_b.state_dict()<br><br>    model_a.load_state_dict(sd_a)<br>    model_b.load_state_dict(sd_b)<br>    model_a.<span class="hljs-built_in">eval</span>(); model_b.<span class="hljs-built_in">eval</span>()<br><br>    seq_len = params.seq_len <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(params, <span class="hljs-string">&#x27;seq_len&#x27;</span>) <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> seq_len <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[SKIP TEST] Parameters 未包含 seq_len，无法构造输入进行自检。&quot;</span>)<br>        <span class="hljs-keyword">return</span><br><br>    <span class="hljs-comment"># 构造一个零输入 / 随机输入（batch_size=1, seq_len）</span><br>    inp = torch.zeros((<span class="hljs-number">1</span>, seq_len), dtype=torch.long)<br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        out_a = model_a(inp)<br>        out_b = model_b(inp)<br>        <span class="hljs-comment"># 处理不同输出维度情况</span><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">to_scalar</span>(<span class="hljs-params">x</span>):<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(x, torch.Tensor):<br>                x = x.detach()<br>                <span class="hljs-keyword">if</span> x.numel() == <span class="hljs-number">0</span>:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>                x = x.squeeze()<br>                <span class="hljs-keyword">if</span> x.dim() == <span class="hljs-number">0</span>:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-built_in">float</span>(x.item())<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-comment"># 取第一个元素</span><br>                    <span class="hljs-keyword">return</span> <span class="hljs-built_in">float</span>(x.view(-<span class="hljs-number">1</span>)[<span class="hljs-number">0</span>].item())<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>        va = to_scalar(out_a)<br>        vb = to_scalar(out_b)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[SELF TEST] 原模型输出 (sample): <span class="hljs-subst">&#123;va&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[SELF TEST] 翻转后模型输出 (sample): <span class="hljs-subst">&#123;vb&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">if</span> va <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> vb <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[SELF TEST] va + vb = <span class="hljs-subst">&#123;va + vb:<span class="hljs-number">.6</span>f&#125;</span> (接近 1 则表示翻转成功)&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    parser = argparse.ArgumentParser(description=<span class="hljs-string">&quot;Flip final linear layer (weight &amp; bias) in a PyTorch state_dict to invert outputs (approx 1 - y).&quot;</span>)<br>    parser.add_argument(<span class="hljs-string">&quot;--input&quot;</span>, <span class="hljs-string">&quot;-i&quot;</span>, required=<span class="hljs-literal">True</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;输入的 state_dict 文件 (pth)&quot;</span>)<br>    parser.add_argument(<span class="hljs-string">&quot;--output&quot;</span>, <span class="hljs-string">&quot;-o&quot;</span>, default=<span class="hljs-string">&quot;flipped_model.pth&quot;</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;输出文件名&quot;</span>)<br>    parser.add_argument(<span class="hljs-string">&quot;--weight-key&quot;</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;手动指定要翻转的 weight key（可选）&quot;</span>)<br>    parser.add_argument(<span class="hljs-string">&quot;--bias-key&quot;</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;手动指定要翻转的 bias key（可选）&quot;</span>)<br>    parser.add_argument(<span class="hljs-string">&quot;--test&quot;</span>, action=<span class="hljs-string">&quot;store_true&quot;</span>, <span class="hljs-built_in">help</span>=<span class="hljs-string">&quot;尝试对原/翻转模型做快速自检（需能导入 src.model）&quot;</span>)<br>    args = parser.parse_args()<br><br>    <span class="hljs-keyword">if</span> args.weight_key:<br>        sd = torch.load(args.<span class="hljs-built_in">input</span>, map_location=<span class="hljs-string">&#x27;cpu&#x27;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(sd, <span class="hljs-built_in">dict</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">hasattr</span>(sd, <span class="hljs-string">&#x27;state_dict&#x27;</span>):<br>            sd = sd.state_dict()<br>        <span class="hljs-keyword">if</span> args.weight_key <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> sd:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[ERROR] 指定的 weight key 不存在: <span class="hljs-subst">&#123;args.weight_key&#125;</span>&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;state_dict keys preview:&quot;</span>)<br>            <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>(sd.keys())[:<span class="hljs-number">50</span>]:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;  &quot;</span>, k)<br>            sys.exit(<span class="hljs-number">2</span>)<br>        <span class="hljs-comment"># 直接翻转指定的 keys</span><br>        <span class="hljs-keyword">if</span> args.bias_key <span class="hljs-keyword">and</span> args.bias_key <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> sd:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[ERROR] 指定的 bias key 不存在: <span class="hljs-subst">&#123;args.bias_key&#125;</span>&quot;</span>)<br>            sys.exit(<span class="hljs-number">2</span>)<br>        new_sd = &#123;&#125;<br>        <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> sd.items():<br>            new_sd[k] = v.clone() <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(v, torch.Tensor) <span class="hljs-keyword">else</span> v<br>        new_sd[args.weight_key] = -new_sd[args.weight_key]<br>        <span class="hljs-keyword">if</span> args.bias_key:<br>            new_sd[args.bias_key] = -new_sd[args.bias_key]<br>        torch.save(new_sd, args.output)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[OK] 翻转并保存到 <span class="hljs-subst">&#123;args.output&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">if</span> args.test:<br>            quick_self_test(args.<span class="hljs-built_in">input</span>, args.output)<br>        sys.exit(<span class="hljs-number">0</span>)<br><br>    ok = flip_last_layer(args.<span class="hljs-built_in">input</span>, args.output)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ok:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[FAILED] 自动翻转失败，请手动指定 --weight-key 和 --bias-key（参考 state_dict.keys()）&quot;</span>)<br>        sys.exit(<span class="hljs-number">2</span>)<br><br>    <span class="hljs-keyword">if</span> args.test:<br>        quick_self_test(args.<span class="hljs-built_in">input</span>, args.output)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+<p>先使用<code>example.py</code>运行得到一个干净模型，然后执行</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python flip_model<span class="hljs-selector-class">.py</span> -<span class="hljs-selector-tag">i</span> sentiment_model<span class="hljs-selector-class">.pth</span> -o submitted_model<span class="hljs-selector-class">.pth</span> <span class="hljs-attr">--test</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h1><h2 id="RealCheckIn-1"><a href="#RealCheckIn-1" class="headerlink" title="RealCheckIn-1"></a>RealCheckIn-1</h2><p>Wireshark 打开流量包，先试着搜索  <code>flag</code> ，发现一段可疑流量，貌似有 <code>flag.txt</code> 的文件<br><img src="/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143530510.png" srcset="/img/loading.gif" lazyload><br>追踪一下 TCP 流<br><img src="/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143631920.png" srcset="/img/loading.gif" lazyload><br>发现可疑数据，我们都知道字符串“flag{”的 Base64 编码字符是“ZmxhZ3”开头的，因此发现 echo 的可能就是 flag，解码一下，确实得到了 flag。<br><img src="/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/file-20250914143848512.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://ramoor.github.io/2025/09/14/第五届“长城杯”网络安全大赛 暨京津冀蒙网络安全技能竞赛（初赛）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年9月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/09/22/WMCTF%202025%20Writeup%20+%20%E5%A4%8D%E7%8E%B0/" title="WMCTF 2025 Writeup + 复现">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WMCTF 2025 Writeup + 复现</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/13/%E2%80%9C%E7%BD%91%E8%B0%B7%E6%9D%AF%E2%80%9D%E5%AE%89%E5%85%A8%E6%9E%81%E5%AE%A2%E5%A4%A7%E8%B5%9B%20Writeup/" title="“网谷杯”安全极客大赛 Writeup">
+                        <span class="hidden-mobile">“网谷杯”安全极客大赛 Writeup</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+<script>  
+MathJax = {  
+	tex: {  
+		inlineMath: [['$', '$'], ['\(', '\)']]  
+	}  
+};  
+</script>  
+<script id="MathJax-script" async  
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  
+</script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -19,24 +19,23 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本篇博客用来记录我备考CSP的刷题笔记，用来督促自己学习，争取至少每日一题(ง๑ •̀_•́)ง 排序快速排序算法步骤 时间复杂度$O(n\log(n))$   选择数组中第一个元素作为基准target 设定两个指针i和j，其中： i指向数组第一个元素，j指向数组最后一个元素 i从左往右遍历，直到i指向的元素大于target j从右往左遍历，直到j指向的元素小于target 若此时i&lt;j，交">
+    <meta name="description" content="更新ing CryptoLW3比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。题目： 12345678910111213141516from random import choice, samplefrom Crypto.Cipher import AESfrom hashlib import md5from secret import flagm, n &#x3D; 90, 64p &#x3D; 10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CCF CSP刷题笔记">
-<meta property="og:url" content="http://ramoor.github.io/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="WMCTF 2025 Writeup + 复现">
+<meta property="og:url" content="http://ramoor.github.io/2025/09/22/WMCTF%202025%20Writeup%20+%20%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="本篇博客用来记录我备考CSP的刷题笔记，用来督促自己学习，争取至少每日一题(ง๑ •̀_•́)ง 排序快速排序算法步骤 时间复杂度$O(n\log(n))$   选择数组中第一个元素作为基准target 设定两个指针i和j，其中： i指向数组第一个元素，j指向数组最后一个元素 i从左往右遍历，直到i指向的元素大于target j从右往左遍历，直到j指向的元素小于target 若此时i&lt;j，交">
+<meta property="og:description" content="更新ing CryptoLW3比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。题目： 12345678910111213141516from random import choice, samplefrom Crypto.Cipher import AESfrom hashlib import md5from secret import flagm, n &#x3D; 90, 64p &#x3D; 10">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://ramoor.github.io/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/file-20250815020223559.png">
-<meta property="article:published_time" content="2025-08-14T15:43:05.000Z">
-<meta property="article:modified_time" content="2025-09-26T02:08:19.739Z">
+<meta property="article:published_time" content="2025-09-22T06:28:16.000Z">
+<meta property="article:modified_time" content="2025-09-28T02:48:51.965Z">
 <meta property="article:author" content="Ramoor">
-<meta property="article:tag" content="CSP">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://ramoor.github.io/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/file-20250815020223559.png">
   
   
   
-  <title>CCF CSP刷题笔记 - Ramoor</title>
+  <title>WMCTF 2025 Writeup + 复现 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CCF CSP刷题笔记"></span>
+            <span id="subtitle" data-typed-text="WMCTF 2025 Writeup + 复现"></span>
           
         </div>
 
@@ -247,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-14 23:43" pubdate>
-          2025年8月14日 晚上
+        <time datetime="2025-09-22 14:28" pubdate>
+          2025年9月22日 下午
         </time>
       </span>
     
@@ -259,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          656 字
+          876 字
         
       </span>
     
@@ -270,7 +269,7 @@
         
         
         
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -315,44 +314,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CCF CSP刷题笔记</h1>
+            <h1 id="seo-header">WMCTF 2025 Writeup + 复现</h1>
             
             
               <div class="markdown-body">
                 
-                <p>本篇博客用来记录我备考CSP的刷题笔记，用来督促自己学习，争取至少每日一题(ง๑ •̀_•́)ง</p>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h4><blockquote>
-<p>时间复杂度$O(n\log(n))$</p>
-</blockquote>
-<ul>
-<li>选择数组中第一个元素作为基准<code>target</code></li>
-<li>设定两个指针<code>i</code>和<code>j</code>，其中：<ul>
-<li><code>i</code>指向数组第一个元素，<code>j</code>指向数组最后一个元素</li>
-<li><code>i</code>从左往右遍历，直到<code>i</code>指向的元素大于<code>target</code></li>
-<li><code>j</code>从右往左遍历，直到<code>j</code>指向的元素小于<code>target</code></li>
-<li>若此时<code>i&lt;j</code>，交换<code>i</code>和<code>j</code>指向的元素；否则直接跳出循环</li>
-<li>最后再将<code>i</code>和基准位置上的元素进行交换。（这样就实现了基准元素左侧的元素都$\leq$ <code>target</code>，基准元素右侧的元素都$&gt;$<code>target</code>。</li>
-</ul>
-</li>
-<li>然后再对基准左侧和右侧的子数组分别递归执行该算法。<br><strong>模板：</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> low,<span class="hljs-type">int</span> high)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(low &gt;= high) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i=low,j=high;<br>    <span class="hljs-type">int</span> target = arr[low];<br><br>    <span class="hljs-keyword">while</span>(i&lt;j)<br>    &#123;<br>        <span class="hljs-keyword">while</span>(arr[j] &gt;= target &amp;&amp; i &lt; j ) j--;<br>        <span class="hljs-keyword">if</span>(i &lt; j) arr[i] = arr[j];<br>        <span class="hljs-keyword">while</span>(arr[i] &lt;= target &amp;&amp; i &lt; j) i++;<br>        <span class="hljs-keyword">if</span>(i &lt; j) arr[j] = arr[i];<br>    &#125;<br>    arr[i] = target;<br>    <span class="hljs-built_in">quick_sort</span>(arr,low,i<span class="hljs-number">-1</span>);<br>    <span class="hljs-built_in">quick_sort</span>(arr,i<span class="hljs-number">+1</span>,high);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><strong>题目</strong>：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-an-array/">912. 排序数组 - 力扣（LeetCode）</a><br><strong>知识点：</strong><br>本题中直接打板子会发现出现超时情况，因此我们就需要进行一些优化：</p>
-<ul>
-<li><strong>优化点1：</strong> 将<code>target</code>的选取随机化，这样能够避免一些数组的基准一直取到最差的情况。并且可以使用<code>srand(time(nullptr));</code>来优化随机数的选取。</li>
-<li><strong>优化点2：</strong> 使用<code>Hoare</code>分区法，左右指针不断交换元素，基准值始终留在数组里，循环结束后自然归位。<br><strong>代码</strong>：</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span> (low &gt;= high) <span class="hljs-keyword">return</span>;<br><br>        <span class="hljs-type">int</span> idx = low + <span class="hljs-built_in">rand</span>() % (high - low + <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">swap</span>(arr[low], arr[idx]);<br>        <span class="hljs-type">int</span> target = arr[low];<br><br>        <span class="hljs-type">int</span> i = low - <span class="hljs-number">1</span>, j = high + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>            <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (arr[i] &lt; target);<br>            <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (arr[j] &gt; target);<br>            <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(arr[i], arr[j]);<br>        &#125;<br><br>        <span class="hljs-built_in">quick_sort</span>(arr, low, j);<br>        <span class="hljs-built_in">quick_sort</span>(arr, j + <span class="hljs-number">1</span>, high);<br>    &#125;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-built_in">quick_sort</span>(nums.<span class="hljs-built_in">data</span>(), <span class="hljs-number">0</span>, (<span class="hljs-type">int</span>)nums.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> nums;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>最后成功通过<br><img src="/2025/08/14/CCF%20CSP%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/file-20250815020223559.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h4 id="算法步骤-1"><a href="#算法步骤-1" class="headerlink" title="算法步骤"></a>算法步骤</h4><blockquote>
-<p>时间复杂度$O(n^2)$</p>
-</blockquote>
-<ul>
-<li>从数组第一个元素开始两两比较，若逆序就交换顺序，这样经过<code>n-1</code>次比较后，最后的元素就是最大的元素</li>
-<li>然后再进行<code>n-1</code>次循环后就完成了排序<br><strong>模板：</strong></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bubble_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;n<span class="hljs-number">-1</span>-i; j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(arr[j] &gt; arr[j<span class="hljs-number">+1</span>]) <span class="hljs-built_in">swap</span>(arr[j],arr[j<span class="hljs-number">+1</span>]);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+                <p>更新ing</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="LW3"><a href="#LW3" class="headerlink" title="LW3"></a>LW3</h2><p>比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。<br><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> choice, sample<br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> md5<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br><br>m, n = <span class="hljs-number">90</span>, <span class="hljs-number">64</span><br>p = <span class="hljs-number">1048583</span><br><br>E = sample(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, p), <span class="hljs-number">3</span>)<br>s = random_vector(Zmod(p), n)<br>A = random_matrix(Zmod(p), m, n)<br>e = vector(Zmod(p), [choice(E) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m)])<br>b = A*s + e<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;🎁 :&quot;</span>, E + A.<span class="hljs-built_in">list</span>() + b.<span class="hljs-built_in">list</span>())<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;🚩 :&quot;</span>, AES.new(key=md5((<span class="hljs-built_in">str</span>(s)).encode()).digest(), nonce=<span class="hljs-string">b&quot;Tiffany&quot;</span>, mode=AES.MODE_CTR).encrypt(flag))<br></code></pre></td></tr></table></figure>
+<p><strong>分析：</strong><br>$$<br>b_{m\times1} &#x3D; A_{m\times n}s_{n\times 1}+e_{m\times 1} \mod p<br>$$<br>这种形式应该很容易就联想到 LWE 容错学习问题，但是通常情况下， e 都是随机取值，而这道题虽然说也是随机取值，但是它的取值只能从长度为 3 的空间 E 中选取。<br>由于我们的目标就是要找到随机变量 s 的值，因此这是一个搜索型 LWE，我们通常使用 Primal Attack，也就是直接规约整个线性系统，有<br>$$<br>(s_1,s_2…s_n,1,k_1,k_2…k_m)<br>\begin{pmatrix}<br>1 &amp;   &amp;   &amp;   &amp; -a_{11} &amp; -a_{21} &amp; \cdots &amp; -a_{(m-1)1} &amp; -a_{m1} \newline<br>  &amp;  \ddots &amp;   -&amp;   &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \newline<br>  &amp;   &amp;   &amp; 1 &amp; -a_{1n} &amp; -a_{2n} &amp; \cdots &amp; -a_{(m-1)n} &amp; -a_{mn} \newline<br>  &amp;   &amp;   &amp;   &amp; b_1   &amp; b_2   &amp; \cdots &amp; b_{m-1}   &amp; b_m  \newline<br>  &amp;   &amp;   &amp;   &amp; p      &amp; 0      &amp; \cdots &amp; 0          &amp; 0  \newline<br>  &amp;   &amp;   &amp;   &amp; 0      &amp; p      &amp; \cdots &amp; 0          &amp; 0  \newline<br>  &amp;   &amp;   &amp;   &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots     &amp; \vdots \newline<br>  &amp;   &amp;   &amp;   &amp; 0      &amp; 0      &amp; \cdots &amp; p          &amp; 0 \newline<br>  &amp;   &amp;   &amp;   &amp; 0      &amp; 0      &amp; \cdots &amp; 0          &amp; p<br>\end{pmatrix}<br>&#x3D;(s_1,s_2…s_n,e_1,e_2…e_m)</p>
+<p>$$</p>
+<h1 id="简要地写就有：-s-1-times-n-1-k-1-times-m-begin-pmatrix-I-n-times-n-A-T-newline0-b-1-times-m-newline0-pI-end-pmatrix-s-1-times-n-e-1-times-m-但是这个格并不是很好，需要进行优化，我们可以通过消去目标向量中的-s-向量来进行降维处理-s-1-times-n-1-k-1-times-m-begin-pmatrix-A-T-newlineb-1-times-m-newlinepI-end-pmatrix-e-1-times-m-在比赛过程中，我按照鸡块师傅的-easy-mod-X-题目的步骤尝试复现，将-e-的取值空间-E-仿射到一个数值较小的空间-E’-中，具体的仿射方法如下：-E’-kE-t-1-1-1-mod-p-具体可以造格来求-k-t-r-1-r-2-r-3-begin-pmatrix-E-1-E-2-E-3-newline1-1-1-newlinep-0-0-newline0-p-0-newline0-0-p-newline-end-pmatrix"><a href="#简要地写就有：-s-1-times-n-1-k-1-times-m-begin-pmatrix-I-n-times-n-A-T-newline0-b-1-times-m-newline0-pI-end-pmatrix-s-1-times-n-e-1-times-m-但是这个格并不是很好，需要进行优化，我们可以通过消去目标向量中的-s-向量来进行降维处理-s-1-times-n-1-k-1-times-m-begin-pmatrix-A-T-newlineb-1-times-m-newlinepI-end-pmatrix-e-1-times-m-在比赛过程中，我按照鸡块师傅的-easy-mod-X-题目的步骤尝试复现，将-e-的取值空间-E-仿射到一个数值较小的空间-E’-中，具体的仿射方法如下：-E’-kE-t-1-1-1-mod-p-具体可以造格来求-k-t-r-1-r-2-r-3-begin-pmatrix-E-1-E-2-E-3-newline1-1-1-newlinep-0-0-newline0-p-0-newline0-0-p-newline-end-pmatrix" class="headerlink" title="简要地写就有：$$(s_{1\times n},1,k_{1\times m})\begin{pmatrix}I_{n\times n} &amp; -A^T \newline0  &amp;  b_{1\times m} \newline0  &amp;  pI\end{pmatrix}&#x3D;(s_{1\times n},e_{1\times m})$$但是这个格并不是很好，需要进行优化，我们可以通过消去目标向量中的 s 向量来进行降维处理$$(s_{1\times n},1,k_{1\times m})\begin{pmatrix}-A^T \newlineb_{1\times m} \newlinepI\end{pmatrix}&#x3D; (e_{1\times m})$$在比赛过程中，我按照鸡块师傅的 easy_mod X 题目的步骤尝试复现，将 e 的取值空间 E 仿射到一个数值较小的空间 E’ 中，具体的仿射方法如下：$$E’ &#x3D; kE + t(1,1,1) \mod p$$具体可以造格来求$$(k,t,r_1,r_2,r_3)\begin{pmatrix}E_1 &amp; E_2 &amp; E_3 \newline1   &amp; 1   &amp; 1   \newlinep   &amp; 0   &amp; 0   \newline0   &amp; p   &amp; 0   \newline0   &amp; 0   &amp; p   \newline\end{pmatrix}"></a>简要地写就有：<br>$$<br>(s_{1\times n},1,k_{1\times m})<br>\begin{pmatrix}<br>I_{n\times n} &amp; -A^T \newline<br>0  &amp;  b_{1\times m} \newline<br>0  &amp;  pI<br>\end{pmatrix}<br>&#x3D;(s_{1\times n},e_{1\times m})<br>$$<br>但是这个格并不是很好，需要进行优化，我们可以通过消去目标向量中的 s 向量来进行降维处理<br>$$<br>(s_{1\times n},1,k_{1\times m})<br>\begin{pmatrix}<br>-A^T \newline<br>b_{1\times m} \newline<br>pI<br>\end{pmatrix}<br>&#x3D; (e_{1\times m})<br>$$<br>在比赛过程中，我按照鸡块师傅的 easy_mod X 题目的步骤尝试复现，将 e 的取值空间 E 仿射到一个数值较小的空间 E’ 中，具体的仿射方法如下：<br>$$<br>E’ &#x3D; kE + t(1,1,1) \mod p<br>$$<br>具体可以造格来求<br>$$<br>(k,t,r_1,r_2,r_3)<br>\begin{pmatrix}<br>E_1 &amp; E_2 &amp; E_3 \newline<br>1   &amp; 1   &amp; 1   \newline<br>p   &amp; 0   &amp; 0   \newline<br>0   &amp; p   &amp; 0   \newline<br>0   &amp; 0   &amp; p   \newline<br>\end{pmatrix}</h1><p>(E_1’,E_2’,E_3’)<br>$$<br>然鹅通过这种方法算出的 E’ 并不是很小，实测出来的 E’ 为<code>[-298,582,-285]</code>，这就导致仿射之后的 error’ 其实还是很大，我们还是不能直接求解这个 LWE 问题。<br>在比赛时的思路就到这儿了，当时也跟队友讨论过 k,t 是不是找的不好，导致 E’ 并不能很小，但是也没找到更好地仿射方法。比赛时也想过是否跟仿射子空间相关，毕竟之前在复现 LilCTF 2025 时鸡块师傅就出过 Space Travel 这类跟仿射子空间相关的题目，但是思路好像并不是很明了，也加上对仿射子空间的理解还不是很深，因此并没有深究，就这样无为到了比赛结束。。<br>赛后看了鸡块师傅的 wp 之后才明白过来，利用 LeetSpe4k 这道题的思路不论是多大的 E 都能映射到多个 01 组成的向量中，在本题中就有：<br>$$<br>e_i &#x3D; (x_i,y_i,z_i)E_{3\times 1}<br>$$<br>其中，$x_i,y_i,z_i\in {0,1}$<br>这样也就可以将 $e_i$ 映射为三个 01 向量上，这三个向量</p>
 
                 
               </div>
@@ -371,7 +343,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Study/" class="category-chain-item">Study</a>
+  <a href="/categories/WriteUp/" class="category-chain-item">WriteUp</a>
   
   
 
@@ -386,7 +358,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CSP/" class="print-no-link">#CSP</a>
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/Crypto/" class="print-no-link">#Crypto</a>
       
     </div>
   
@@ -398,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CCF CSP刷题笔记</div>
-      <div>http://ramoor.github.io/2025/08/14/CCF CSP刷题笔记/</div>
+      <div>WMCTF 2025 Writeup + 复现</div>
+      <div>http://ramoor.github.io/2025/09/22/WMCTF 2025 Writeup + 复现/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +385,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月14日</div>
+          <div>2025年9月22日</div>
         </div>
       
       
@@ -443,18 +417,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/15/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%B7%AE%E5%88%86%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90/" title="Crypto基础篇-差分密码分析">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Crypto基础篇-差分密码分析</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/14/MTCTF%202021%20Writeup%EF%BC%88%E5%A4%8D%E7%8E%B0%E7%BB%83%E4%B9%A0%EF%BC%89/" title="MTCTF 2021 Writeup（复现练习）">
-                        <span class="hidden-mobile">MTCTF 2021 Writeup（复现练习）</span>
+                      <a href="/2025/09/14/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/" title="">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
