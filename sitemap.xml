@@ -556,6 +556,13 @@
   </url>
   
   <url>
+    <loc>http://ramoor.github.io/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://ramoor.github.io/tags/misc/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -564,13 +571,6 @@
   
   <url>
     <loc>http://ramoor.github.io/tags/%E9%9A%90%E5%86%99/</loc>
-    <lastmod>2025-10-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ramoor.github.io/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
