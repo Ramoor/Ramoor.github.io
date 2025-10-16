@@ -19,23 +19,22 @@
   <meta name="author" content="Ramoor">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在团队的共同努力下，我们 DAWN 战队也是成功挤进了前十 σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ，记录一下有趣的题目，更新ing CryptoLW3比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。题目： 12345678910111213141516from random import choice, samplefrom Crypto.Cipher import AESfrom hashli">
+    <meta name="description" content="复现一下前几年的强网杯练练手，马上强网杯就要开赛了，好好加油备赛吧＼＼\٩( ‘ω’ )و &#x2F;&#x2F;／／ CryptoASR题目： 12345678910111213141516171819202122from Crypto.Util.number import getPrimefrom secret import falgpad &#x3D; lambda s:s + bytes([(le">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WMCTF 2025 复现">
-<meta property="og:url" content="http://ramoor.github.io/2025/09/22/WMCTF%202025%20%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:title" content="强网杯 2022 复现">
+<meta property="og:url" content="http://ramoor.github.io/2025/10/16/%E5%BC%BA%E7%BD%91%E6%9D%AF%202022%20%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="Ramoor">
-<meta property="og:description" content="在团队的共同努力下，我们 DAWN 战队也是成功挤进了前十 σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ，记录一下有趣的题目，更新ing CryptoLW3比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。题目： 12345678910111213141516from random import choice, samplefrom Crypto.Cipher import AESfrom hashli">
+<meta property="og:description" content="复现一下前几年的强网杯练练手，马上强网杯就要开赛了，好好加油备赛吧＼＼\٩( ‘ω’ )و &#x2F;&#x2F;／／ CryptoASR题目： 12345678910111213141516171819202122from Crypto.Util.number import getPrimefrom secret import falgpad &#x3D; lambda s:s + bytes([(le">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-22T06:28:16.000Z">
-<meta property="article:modified_time" content="2025-10-14T03:36:51.717Z">
+<meta property="article:published_time" content="2025-10-16T02:14:15.000Z">
+<meta property="article:modified_time" content="2025-10-16T03:17:12.792Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>WMCTF 2025 复现 - Ramoor</title>
+  <title>强网杯 2022 复现 - Ramoor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="WMCTF 2025 复现"></span>
+            <span id="subtitle" data-typed-text="强网杯 2022 复现"></span>
           
         </div>
 
@@ -246,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-09-22 14:28" pubdate>
-          2025年9月22日 下午
+        <time datetime="2025-10-16 10:14" pubdate>
+          2025年10月16日 上午
         </time>
       </span>
     
@@ -258,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          430 字
         
       </span>
     
@@ -269,7 +268,7 @@
         
         
         
-          9 分钟
+          4 分钟
         
       </span>
     
@@ -314,27 +313,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">WMCTF 2025 复现</h1>
+            <h1 id="seo-header">强网杯 2022 复现</h1>
             
             
               <div class="markdown-body">
                 
-                <p>在团队的共同努力下，我们 DAWN 战队也是成功挤进了前十 σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ，记录一下有趣的题目，更新ing</p>
-<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="LW3"><a href="#LW3" class="headerlink" title="LW3"></a>LW3</h2><p>比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。<br><strong>题目：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> choice, sample<br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> md5<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br><br>m, n = <span class="hljs-number">90</span>, <span class="hljs-number">64</span><br>p = <span class="hljs-number">1048583</span><br><br>E = sample(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, p), <span class="hljs-number">3</span>)<br>s = random_vector(Zmod(p), n)<br>A = random_matrix(Zmod(p), m, n)<br>e = vector(Zmod(p), [choice(E) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m)])<br>b = A*s + e<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;🎁 :&quot;</span>, E + A.<span class="hljs-built_in">list</span>() + b.<span class="hljs-built_in">list</span>())<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;🚩 :&quot;</span>, AES.new(key=md5((<span class="hljs-built_in">str</span>(s)).encode()).digest(), nonce=<span class="hljs-string">b&quot;Tiffany&quot;</span>, mode=AES.MODE_CTR).encrypt(flag))<br></code></pre></td></tr></table></figure>
-<p><strong>分析：</strong><br>$$<br>b_{m\times1} &#x3D; A_{m\times n}s_{n\times 1}+e_{m\times 1} \mod p<br>$$<br>这种形式应该很容易就联想到 LWE 容错学习问题，但是通常情况下， e 都是随机取值，而这道题虽然说也是随机取值，但是它的取值只能从长度为 3 的空间 E 中选取。<br>由于我们的目标就是要找到随机变量 s 的值，因此这是一个搜索型 LWE，我们通常使用 Primal Attack，也就是直接规约整个线性系统，有</p>
-<p>$$<br>(s_1,s_2…s_n,1,k_1,k_2…k_m)<br>\begin{pmatrix}<br>1 &amp;   &amp;   &amp;   &amp; -a_{11} &amp; -a_{21} &amp; \cdots &amp; -a_{(m-1)1} &amp; -a_{m1} \newline<br>  &amp;  \ddots &amp;   &amp;   &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \newline<br>  &amp;   &amp;   &amp; 1 &amp; -a_{1n} &amp; -a_{2n} &amp; \cdots &amp; -a_{(m-1)n} &amp; -a_{mn} \newline<br>  &amp;   &amp;   &amp;   &amp; b_1   &amp; b_2   &amp; \cdots &amp; b_{m-1}   &amp; b_m  \newline<br>  &amp;   &amp;   &amp;   &amp; p      &amp; 0      &amp; \cdots &amp; 0          &amp; 0  \newline<br>  &amp;   &amp;   &amp;   &amp; 0      &amp; p      &amp; \cdots &amp; 0          &amp; 0  \newline<br>  &amp;   &amp;   &amp;   &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots     &amp; \vdots \newline<br>  &amp;   &amp;   &amp;   &amp; 0      &amp; 0      &amp; \cdots &amp; p          &amp; 0 \newline<br>  &amp;   &amp;   &amp;   &amp; 0      &amp; 0      &amp; \cdots &amp; 0          &amp; p<br>\end{pmatrix}<br>&#x3D;(s_1,s_2…s_n,e_1,e_2…e_m)<br>$$</p>
-<p>简要地写就有：</p>
-<p>$$<br>(s_{1\times n},1,k_{1\times m})<br>\begin{pmatrix}<br>I_{n\times n} &amp; -A^T \newline<br>0  &amp;  b_{1\times m} \newline<br>0  &amp;  pI<br>\end{pmatrix}<br>&#x3D;(s_{1\times n},e_{1\times m})<br>$$</p>
-<p>但是这个格并不是很好，需要进行优化，我们可以通过消去目标向量中的 s 向量来进行降维处理</p>
-<p>$$<br>(s_{1\times n},1,k_{1\times m})<br>\begin{pmatrix}<br>-A^T \newline<br>b_{1\times m} \newline<br>pI<br>\end{pmatrix}<br>&#x3D; (e_{1\times m})<br>$$</p>
-<p>在比赛过程中，我按照鸡块师傅的 easy_mod X 题目的步骤尝试复现，将 e 的取值空间 E 仿射到一个数值较小的空间 E’ 中，具体的仿射方法如下：</p>
-<p>$$<br>E’ &#x3D; kE + t(1,1,1) \mod p<br>$$</p>
-<p>具体可以造格来求</p>
-<p>$$<br>(k,t,r_1,r_2,r_3)</p>
-<h1 id="begin-pmatrix-E-1-E-2-E-3-newline1-1-1-newlinep-0-0-newline0-p-0-newline0-0-p-end-pmatrix"><a href="#begin-pmatrix-E-1-E-2-E-3-newline1-1-1-newlinep-0-0-newline0-p-0-newline0-0-p-end-pmatrix" class="headerlink" title="\begin{pmatrix}E_1 &amp; E_2 &amp; E_3 \newline1   &amp; 1   &amp; 1   \newlinep   &amp; 0   &amp; 0   \newline0   &amp; p   &amp; 0   \newline0   &amp; 0   &amp; p\end{pmatrix}"></a>\begin{pmatrix}<br>E_1 &amp; E_2 &amp; E_3 \newline<br>1   &amp; 1   &amp; 1   \newline<br>p   &amp; 0   &amp; 0   \newline<br>0   &amp; p   &amp; 0   \newline<br>0   &amp; 0   &amp; p<br>\end{pmatrix}</h1><p>(E_1’,E_2’,E_3’)<br>$$</p>
-<p>然鹅通过这种方法算出的 E’ 并不是很小，实测出来的 E’ 为<code>[-298,582,-285]</code>，这就导致仿射之后的 error’ 其实还是很大，我们还是不能直接求解这个 LWE 问题。<br>在比赛时的思路就到这儿了，当时也跟队友讨论过 k,t 是不是找的不好，导致 E’ 并不能很小，但是也没找到更好地仿射方法。比赛时也想过是否跟仿射子空间相关，毕竟之前在复现 LilCTF 2025 时鸡块师傅就出过 Space Travel 这类跟仿射子空间相关的题目，但是思路好像并不是很明了，也加上对仿射子空间的理解还不是很深，因此并没有深究，就这样无为到了比赛结束。。<br>赛后看了鸡块师傅的 wp 之后才明白过来，利用 LeetSpe4k 这道题的思路不论是多大的 E 都能映射到多个 01 组成的向量中，在本题中就有：<br>$$<br>e_i &#x3D; (x_i,y_i,z_i)E_{3\times 1}<br>$$<br>其中，$x_i,y_i,z_i\in {0,1}$<br>这样也就可以将 $e_i$ 映射为三个 01 向量上，这三个向量分别为 $(1,0,0),(0,1,0),(0,0,1)$，明显存在仿射子空间。<br>即<br>$$<br>e_i &#x3D; E_1+(x_i,y_i)<br>\begin{pmatrix}<br>E_2-E_1 \newline<br>E_3-E_1<br>\end{pmatrix}<br>$$<br>其中，$x_i,y_i\in {0,1}$,分别为 $(0,0),(1,0),(0,1)$<br>$$<br>b_{m\times1} &#x3D; A_{m\times n}s_{n\times 1}+e_{m\times 1} \mod p<br>$$<br>后续就是造格了，具体代码暂时没写，有需要可以直接查看鸡块师傅的代码。</p>
+                <p>复现一下前几年的强网杯练练手，马上强网杯就要开赛了，好好加油备赛吧＼＼\٩( ‘ω’ )و &#x2F;&#x2F;／／</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="ASR"><a href="#ASR" class="headerlink" title="ASR"></a>ASR</h2><p><strong>题目：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> getPrime<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> falg<br>pad = <span class="hljs-keyword">lambda</span> s:s + <span class="hljs-built_in">bytes</span>([(<span class="hljs-built_in">len</span>(s)-<span class="hljs-number">1</span>)%<span class="hljs-number">16</span>+<span class="hljs-number">1</span>]*((<span class="hljs-built_in">len</span>(s)-<span class="hljs-number">1</span>)%<span class="hljs-number">16</span>+<span class="hljs-number">1</span>))<br><br>n = getPrime(<span class="hljs-number">128</span>)**<span class="hljs-number">2</span> * getPrime(<span class="hljs-number">128</span>)**<span class="hljs-number">2</span> * getPrime(<span class="hljs-number">128</span>)**<span class="hljs-number">2</span> * getPrime(<span class="hljs-number">128</span>)**<span class="hljs-number">2</span><br>e = <span class="hljs-number">3</span><br><br>flag = pad(flag)<br><span class="hljs-built_in">print</span>(flag)<br><span class="hljs-keyword">assert</span>(<span class="hljs-built_in">len</span>(flag) &gt;= <span class="hljs-number">48</span>)<br>m = <span class="hljs-built_in">int</span>.from_bytes(flag,<span class="hljs-string">&#x27;big&#x27;</span>)<br>c = <span class="hljs-built_in">pow</span>(m,e,n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;n = <span class="hljs-subst">&#123;n&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 8250871280281573979365095715711359115372504458973444367083195431861307534563246537364248104106494598081988216584432003199198805753721448450911308558041115465900179230798939615583517756265557814710419157462721793864532239042758808298575522666358352726060578194045804198551989679722201244547561044646931280001</span><br><span class="hljs-string">e = 3</span><br><span class="hljs-string">c = 945272793717722090962030960824180726576357481511799904903841312265308706852971155205003971821843069272938250385935597609059700446530436381124650731751982419593070224310399320617914955227288662661442416421725698368791013785074809691867988444306279231013360024747585261790352627234450209996422862329513284149</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
 
+<p><strong>分析：</strong><br>已知 $n&#x3D;p_1^2p_2^2p_3^2p_4^2$，且 $p_1,p_2,p_3,p_4$ 都是较小的素数，尝试使用 factordb 或 yafu 直接分解 n，发现 factordb 可以直接分解，我们现在便得到了 $p_i$，但是 e&#x3D;3，尝试直接求解 d 发现 phi 和 e 不互素，看来并不能直接求解。<br>既然我们已经知道了 $p_i$，那我们就可以利用数论中的求解方法来求 m。<br>首先要分别对 $x^3 \equiv c \mod p_i$ 进行有限域开方得到 x，然后再使用 Hensel 引理将 x 的值提升到模 $p_i^2$ 下，之后我们便可以使用 CRT 进行求解，就能得到候选值，挨个尝试，寻找含有 <code>b&#39;flag&#123;&#39;</code> 的便是 flag。</p>
+<p><strong>exp：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br><span class="hljs-keyword">from</span> sympy.ntheory.modular <span class="hljs-keyword">import</span> crt<br><span class="hljs-keyword">from</span> sympy.ntheory.residue_ntheory <span class="hljs-keyword">import</span> nthroot_mod<br><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> product<br><span class="hljs-keyword">import</span> gmpy2<br><br>n = <span class="hljs-number">8250871280281573979365095715711359115372504458973444367083195431861307534563246537364248104106494598081988216584432003199198805753721448450911308558041115465900179230798939615583517756265557814710419157462721793864532239042758808298575522666358352726060578194045804198551989679722201244547561044646931280001</span><br>e = <span class="hljs-number">3</span><br>c = <span class="hljs-number">945272793717722090962030960824180726576357481511799904903841312265308706852971155205003971821843069272938250385935597609059700446530436381124650731751982419593070224310399320617914955227288662661442416421725698368791013785074809691867988444306279231013360024747585261790352627234450209996422862329513284149</span><br><br><span class="hljs-comment">#factordb 分解</span><br>p1 = <span class="hljs-number">218566259296037866647273372633238739089</span><br>p2 = <span class="hljs-number">223213222467584072959434495118689164399</span><br>p3 = <span class="hljs-number">225933944608558304529179430753170813347</span><br>p4 = <span class="hljs-number">260594583349478633632570848336184053653</span><br>ps = [p1, p2, p3, p4]<br><br>roots_p2 = []<br><span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> ps:<br>    sols = nthroot_mod(c % p, <span class="hljs-number">3</span>, p, all_roots=<span class="hljs-literal">True</span>)<br>    lifts = []<br>    a = c % (p*p)<br>    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> sols:<br>        <span class="hljs-comment">#Hensel引理：r&#x27; = r + t*p, 其中 t ≡ ((a - r^3)/p) * (3 r^2)^(-1) (mod p)</span><br>        r3 = <span class="hljs-built_in">pow</span>(r, <span class="hljs-number">3</span>, p*p)<br>        delta = ((a - r3) % (p*p)) // p <br>        t = (delta * gmpy2.invert((<span class="hljs-number">3</span> * r * r) % p, p)) % p<br>        lifts.append((r + t * p) % (p*p))<br>    roots_p2.append(lifts)<br><br><span class="hljs-comment">#CRT</span><br>modules = [p*p <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> ps]<br>candidates = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> product(*roots_p2):<br>    m, M = crt(modules, <span class="hljs-built_in">list</span>(i))<br>    m = <span class="hljs-built_in">int</span>(m % M)<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">pow</span>(m, e, n) == c:<br>        candidates.append(m)<br><br><span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> candidates:<br>    b = long_to_bytes(m)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">b&quot;flag&#123;&quot;</span> <span class="hljs-keyword">in</span> b:<br>        <span class="hljs-built_in">print</span>(b)<br>        <span class="hljs-comment">#print(m)</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -352,7 +342,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/WriteUp/" class="category-chain-item">WriteUp</a>
+  <a href="/categories/Study/" class="category-chain-item">Study</a>
   
   
 
@@ -369,8 +359,6 @@
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
-        <a href="/tags/Crypto/" class="print-no-link">#Crypto</a>
-      
     </div>
   
 </div>
@@ -381,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>WMCTF 2025 复现</div>
-      <div>http://ramoor.github.io/2025/09/22/WMCTF 2025 复现/</div>
+      <div>强网杯 2022 复现</div>
+      <div>http://ramoor.github.io/2025/10/16/强网杯 2022 复现/</div>
     </div>
     <div class="license-meta">
       
@@ -394,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年9月22日</div>
+          <div>2025年10月16日</div>
         </div>
       
       
@@ -426,18 +414,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/10/16/%E5%BC%BA%E7%BD%91%E6%9D%AF%202022%20%E5%A4%8D%E7%8E%B0/" title="强网杯 2022 复现">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">强网杯 2022 复现</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/09/20/%E7%AC%AC%E4%BA%94%E5%B1%8A%E2%80%9C%E9%95%BF%E5%9F%8E%E6%9D%AF%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%20%E6%9A%A8%E4%BA%AC%E6%B4%A5%E5%86%80%E8%92%99%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%88%9D%E8%B5%9B%EF%BC%89/" title="第五届“长城杯”网络安全大赛 暨京津冀蒙网络安全技能竞赛（初赛）">
-                        <span class="hidden-mobile">第五届“长城杯”网络安全大赛 暨京津冀蒙网络安全技能竞赛（初赛）</span>
+                      <a href="/2025/09/22/WMCTF%202025%20%E5%A4%8D%E7%8E%B0/" title="WMCTF 2025 复现">
+                        <span class="hidden-mobile">WMCTF 2025 复现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
