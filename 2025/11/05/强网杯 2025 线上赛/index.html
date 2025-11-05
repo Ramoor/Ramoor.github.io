@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
+  <link rel="icon" href="/img/2.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ramoor">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Ramoor 碎碎念本次以 Dawn 战队的密码手出征 qwb S9，线上赛基本已经告一段落了，怎么说呢，在此期间也经历了很多，自己在某些方面也成熟了很多。在比赛剩几分钟快结束的时候，看着排名一直从19降到29的时候，心是悬的。密码两天只做出了两道简单题（不想提一上午看了一道题结果题目撤回的这件事了），看着那么多成百上千解的 misc 题，我毫无思路的时候，心如死灰，害怕因为自己做不出 50 pt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强网杯 2025 线上赛">
+<meta property="og:url" content="http://ramoor.github.io/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Ramoor">
+<meta property="og:description" content="Ramoor 碎碎念本次以 Dawn 战队的密码手出征 qwb S9，线上赛基本已经告一段落了，怎么说呢，在此期间也经历了很多，自己在某些方面也成熟了很多。在比赛剩几分钟快结束的时候，看着排名一直从19降到29的时候，心是悬的。密码两天只做出了两道简单题（不想提一上午看了一道题结果题目撤回的这件事了），看着那么多成百上千解的 misc 题，我毫无思路的时候，心如死灰，害怕因为自己做不出 50 pt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ramoor.github.io/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/_posts/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/2.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/file-20251018134936781.png">
+<meta property="og:image" content="http://ramoor.github.io/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/file-20251018153839791.png">
+<meta property="article:published_time" content="2025-11-05T12:09:36.000Z">
+<meta property="article:modified_time" content="2025-11-05T12:41:39.396Z">
+<meta property="article:author" content="Ramoor">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ramoor.github.io/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/_posts/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/2.png">
+  
+  
+  
+  <title>强网杯 2025 线上赛 - Ramoor</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ramoor</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="强网杯 2025 线上赛"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-11-05 20:09" pubdate>
+          2025年11月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">强网杯 2025 线上赛</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Ramoor-碎碎念"><a href="#Ramoor-碎碎念" class="headerlink" title="Ramoor 碎碎念"></a>Ramoor 碎碎念</h1><p>本次以 Dawn 战队的密码手出征 qwb S9，线上赛基本已经告一段落了，怎么说呢，在此期间也经历了很多，自己在某些方面也成熟了很多。在比赛剩几分钟快结束的时候，看着排名一直从19降到29的时候，心是悬的。密码两天只做出了两道简单题（不想提一上午看了一道题结果题目撤回的这件事了），看着那么多成百上千解的 misc 题，我毫无思路的时候，心如死灰，害怕因为自己做不出 50 pts 的题而葬送了队友的努力。不过结果是好的，比赛结束的最后一刻极限定格到了 29 名。<br><img src="/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/_posts/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/2.png" srcset="/img/loading.gif" lazyload><br>原本觉得事情就此结束了，结果后续又经历了误判风波，在提交完申诉书焦虑等待了好几天之后终于有了结果，证实了确实是误判，最终的成绩是 21 名。感谢猛猛带飞的队友们，我以后肯定会更加努力地 CTF 的！＼＼\٩( ‘ω’ )و &#x2F;&#x2F;／／</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="check-little"><a href="#check-little" class="headerlink" title="check-little"></a>check-little</h2><p><strong>分析：</strong><br>e&#x3D;3 较小，若 key 较小的话应该直接开方就行，但是尝试了之后不可行，毕竟不会这么直接，也就是说 $key^3&gt;N$，key应该是一个较大的数，爆破了很长时间也打不出来，尝试转换思路。<br>后来经过多次尝试发现 N 和 c 是不互素的，直接求解最大公因数就能求出 p,q，之后就能求解出 flag 了。<br>exp.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad<br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">import</span> gmpy2<br>N = <span class="hljs-number">18795243691459931102679430418438577487182868999316355192329142792373332586982081116157618183340526639820832594356060100434223256500692328397325525717520080923556460823312550686675855168462443732972471029248411895298194999914208659844399140111591879226279321744653193556611846787451047972910648795242491084639500678558330667893360111323258122486680221135246164012614985963764584815966847653119900209852482555918436454431153882157632072409074334094233788430465032930223125694295658614266389920401471772802803071627375280742728932143483927710162457745102593163282789292008750587642545379046283071314559771249725541879213</span><br>c = <span class="hljs-number">10533300439600777643268954021939765793377776034841545127500272060105769355397400380934565940944293911825384343828681859639313880125620499839918040578655561456321389174383085564588456624238888480505180939435564595727140532113029361282409382333574306251485795629774577583957179093609859781367901165327940565735323086825447814974110726030148323680609961403138324646232852291416574755593047121480956947869087939071823527722768175903469966103381291413103667682997447846635505884329254225027757330301667560501132286709888787328511645949099996122044170859558132933579900575094757359623257652088436229324185557055090878651740</span><br>iv = <span class="hljs-string">b&#x27;\x91\x16\x04\xb9\xf0RJ\xdd\xf7&#125;\x8cW\xe7n\x81\x8d&#x27;</span><br>ciphertext = <span class="hljs-number">0xbf87027bc63e69d3096365703a6d47b559e0364b1605092b6473ecde6babeff2</span><br>e = <span class="hljs-number">3</span><br>p = gmpy2.gcd(N,c)<br>q = N // p<br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d = gmpy2.invert(e,phi)<br>key1 = <span class="hljs-built_in">pow</span>(c,d,N)<br><span class="hljs-built_in">print</span>(key1)<br>plaintext = AES.new(key = long_to_bytes(key1)[:<span class="hljs-number">16</span>], iv = iv, mode = AES.MODE_CBC).decrypt(long_to_bytes(ciphertext))<br><span class="hljs-built_in">print</span>(plaintext)<br></code></pre></td></tr></table></figure>
+<p><img src="/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/file-20251018134936781.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="The-Interrogation-Room"><a href="#The-Interrogation-Room" class="headerlink" title="The_Interrogation_Room"></a>The_Interrogation_Room</h2><p>exp.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> remote, context, log<br><span class="hljs-keyword">import</span> re, itertools, hashlib, time, string, sys<br><br>context.log_level = <span class="hljs-string">&#x27;info&#x27;</span><br><br><span class="hljs-comment"># fixed target</span><br>host = <span class="hljs-string">&quot;8.147.132.101&quot;</span><br>port = <span class="hljs-number">26651</span><br><br>ALPHANUM = string.ascii_letters + string.digits<br>WHITE_TOKENS = <span class="hljs-built_in">set</span>([<span class="hljs-string">&#x27;==&#x27;</span>,<span class="hljs-string">&#x27;(&#x27;</span>,<span class="hljs-string">&#x27;)&#x27;</span>,<span class="hljs-string">&#x27;S0&#x27;</span>,<span class="hljs-string">&#x27;S1&#x27;</span>,<span class="hljs-string">&#x27;S2&#x27;</span>,<span class="hljs-string">&#x27;S3&#x27;</span>,<span class="hljs-string">&#x27;S4&#x27;</span>,<span class="hljs-string">&#x27;S5&#x27;</span>,<span class="hljs-string">&#x27;S6&#x27;</span>,<span class="hljs-string">&#x27;S7&#x27;</span>,<span class="hljs-string">&#x27;0&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;and&#x27;</span>,<span class="hljs-string">&#x27;or&#x27;</span>])<br>POW_RE = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r&quot;sha256\(XXXX\+([^\)]+)\)\s*==\s*([0-9a-f]&#123;64&#125;)&quot;</span>)<br><br>M = [<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],<br>]<br><span class="hljs-keyword">assert</span> <span class="hljs-built_in">len</span>(M) == <span class="hljs-number">17</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">all</span>(<span class="hljs-built_in">len</span>(r)==<span class="hljs-number">8</span> <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> M)<br><br><span class="hljs-comment"># token helpers</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">token_wrap</span>(<span class="hljs-params">toklist</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(toklist) == <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> toklist[:]<br>    <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;(&#x27;</span>] + toklist[:] + [<span class="hljs-string">&#x27;)&#x27;</span>]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">xor_two_tokens</span>(<span class="hljs-params">A, B</span>):<br>    Aw = token_wrap(A); Bw = token_wrap(B)<br>    inner = [<span class="hljs-string">&#x27;(&#x27;</span>] + Aw + [<span class="hljs-string">&#x27;==&#x27;</span>] + Bw + [<span class="hljs-string">&#x27;)&#x27;</span>]<br>    expr = [<span class="hljs-string">&#x27;(&#x27;</span>] + inner + [<span class="hljs-string">&#x27;==&#x27;</span>, <span class="hljs-string">&#x27;0&#x27;</span>] + [<span class="hljs-string">&#x27;)&#x27;</span>]<br>    <span class="hljs-keyword">return</span> expr<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">xor_subset_tokens</span>(<span class="hljs-params">indices</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> indices:<br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;0&#x27;</span>]<br>    toks = [<span class="hljs-string">&#x27;S&#x27;</span> + <span class="hljs-built_in">str</span>(indices[<span class="hljs-number">0</span>])]<br>    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> indices[<span class="hljs-number">1</span>:]:<br>        toks = xor_two_tokens(toks, [<span class="hljs-string">&#x27;S&#x27;</span> + <span class="hljs-built_in">str</span>(idx)])<br>    <span class="hljs-keyword">return</span> toks<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">tokens_to_query</span>(<span class="hljs-params">tokens</span>):<br>    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> tokens:<br>        <span class="hljs-keyword">if</span> t == <span class="hljs-string">&quot;&quot;</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Empty token produced&quot;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> (t <span class="hljs-keyword">in</span> WHITE_TOKENS <span class="hljs-keyword">or</span> re.fullmatch(<span class="hljs-string">r&quot;S[0-7]&quot;</span>, t)):<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Invalid token produced: &quot;</span> + <span class="hljs-built_in">repr</span>(t))<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(tokens)<br><br><span class="hljs-comment"># evaluator (internal)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">eval_expression</span>(<span class="hljs-params">expr, candidate</span>):<br>    tokens = []; i = <span class="hljs-number">0</span>; s = expr<br>    <span class="hljs-keyword">while</span> i &lt; <span class="hljs-built_in">len</span>(s):<br>        c = s[i]<br>        <span class="hljs-keyword">if</span> c.isspace():<br>            i += <span class="hljs-number">1</span>; <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;()&#x27;</span>:<br>            tokens.append(c); i += <span class="hljs-number">1</span>; <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;01&#x27;</span>:<br>            tokens.append(<span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> c == <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span>); i += <span class="hljs-number">1</span>; <span class="hljs-keyword">continue</span><br>        j = i<br>        <span class="hljs-keyword">while</span> j &lt; <span class="hljs-built_in">len</span>(s) <span class="hljs-keyword">and</span> (s[j].isalnum() <span class="hljs-keyword">or</span> s[j] <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;_=&#x27;</span>):<br>            j += <span class="hljs-number">1</span><br>        word = s[i:j]; i = j<br>        <span class="hljs-keyword">if</span> re.fullmatch(<span class="hljs-string">r&quot;S[0-7]&quot;</span>, word):<br>            tokens.append(<span class="hljs-built_in">bool</span>(candidate[<span class="hljs-built_in">int</span>(word[<span class="hljs-number">1</span>])]))<br>        <span class="hljs-keyword">elif</span> word <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;and&#x27;</span>,<span class="hljs-string">&#x27;or&#x27;</span>,<span class="hljs-string">&#x27;==&#x27;</span>):<br>            tokens.append(word)<br>        <span class="hljs-keyword">elif</span> word.lower() <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;true&#x27;</span>,<span class="hljs-string">&#x27;false&#x27;</span>):<br>            tokens.append(<span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> word.lower()==<span class="hljs-string">&#x27;true&#x27;</span> <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span>)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Unknown token in eval: &quot;</span>+<span class="hljs-built_in">repr</span>(word))<br>    prec = &#123;<span class="hljs-string">&#x27;==&#x27;</span>:<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;and&#x27;</span>:<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;or&#x27;</span>:<span class="hljs-number">1</span>&#125;<br>    output = []; ops = []<br>    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> tokens:<br>        <span class="hljs-keyword">if</span> t <span class="hljs-keyword">is</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">or</span> t <span class="hljs-keyword">is</span> <span class="hljs-literal">False</span>:<br>            output.append(t)<br>        <span class="hljs-keyword">elif</span> t == <span class="hljs-string">&#x27;(&#x27;</span>:<br>            ops.append(t)<br>        <span class="hljs-keyword">elif</span> t == <span class="hljs-string">&#x27;)&#x27;</span>:<br>            <span class="hljs-keyword">while</span> ops <span class="hljs-keyword">and</span> ops[-<span class="hljs-number">1</span>] != <span class="hljs-string">&#x27;(&#x27;</span>:<br>                output.append(ops.pop())<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ops <span class="hljs-keyword">or</span> ops[-<span class="hljs-number">1</span>] != <span class="hljs-string">&#x27;(&#x27;</span>:<br>                <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Mismatched parentheses&quot;</span>)<br>            ops.pop()<br>        <span class="hljs-keyword">elif</span> t <span class="hljs-keyword">in</span> prec:<br>            <span class="hljs-keyword">while</span> ops <span class="hljs-keyword">and</span> ops[-<span class="hljs-number">1</span>] != <span class="hljs-string">&#x27;(&#x27;</span> <span class="hljs-keyword">and</span> prec.get(ops[-<span class="hljs-number">1</span>], -<span class="hljs-number">1</span>) &gt;= prec.get(t, -<span class="hljs-number">1</span>):<br>                output.append(ops.pop())<br>            ops.append(t)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Unknown token in shunting-yard eval: &quot;</span>+<span class="hljs-built_in">str</span>(t))<br>    <span class="hljs-keyword">while</span> ops:<br>        <span class="hljs-keyword">if</span> ops[-<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;(&#x27;</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Mismatched parentheses at end&quot;</span>)<br>        output.append(ops.pop())<br>    stack = []<br>    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> output:<br>        <span class="hljs-keyword">if</span> t <span class="hljs-keyword">is</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">or</span> t <span class="hljs-keyword">is</span> <span class="hljs-literal">False</span>:<br>            stack.append(t)<br>        <span class="hljs-keyword">elif</span> t == <span class="hljs-string">&#x27;==&#x27;</span>:<br>            b = stack.pop(); a = stack.pop(); stack.append(a == b)<br>        <span class="hljs-keyword">elif</span> t == <span class="hljs-string">&#x27;and&#x27;</span>:<br>            b = stack.pop(); a = stack.pop(); stack.append(a <span class="hljs-keyword">and</span> b)<br>        <span class="hljs-keyword">elif</span> t == <span class="hljs-string">&#x27;or&#x27;</span>:<br>            b = stack.pop(); a = stack.pop(); stack.append(a <span class="hljs-keyword">or</span> b)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Unknown RPN op: &quot;</span>+<span class="hljs-built_in">str</span>(t))<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(stack) != <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;RPN ended with stack size !=1&quot;</span>)<br>    <span class="hljs-keyword">return</span> stack[<span class="hljs-number">0</span>]<br><br><span class="hljs-comment"># POW</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_pow_from_text</span>(<span class="hljs-params">text</span>):<br>    m = POW_RE.search(text)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> m:<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;POW not found&quot;</span>)<br>    suffix = m.group(<span class="hljs-number">1</span>); target = m.group(<span class="hljs-number">2</span>)<br>    log.info(<span class="hljs-string">&quot;POW found; trying numeric then alnum brute-force...&quot;</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10000</span>):<br>        cand = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;i:04&#125;</span>&quot;</span>.encode()<br>        <span class="hljs-keyword">if</span> hashlib.sha256(cand + suffix.encode()).hexdigest() == target:<br>            log.success(<span class="hljs-string">&quot;POW numeric found: &quot;</span> + cand.decode()); <span class="hljs-keyword">return</span> cand.decode()<br>    total = <span class="hljs-built_in">len</span>(ALPHANUM)**<span class="hljs-number">4</span>; tried = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> comb <span class="hljs-keyword">in</span> itertools.product(ALPHANUM, repeat=<span class="hljs-number">4</span>):<br>        tried += <span class="hljs-number">1</span><br>        cand = <span class="hljs-string">&#x27;&#x27;</span>.join(comb).encode()<br>        <span class="hljs-keyword">if</span> hashlib.sha256(cand + suffix.encode()).hexdigest() == target:<br>            log.success(<span class="hljs-string">&quot;POW found: &quot;</span> + cand.decode()); <span class="hljs-keyword">return</span> cand.decode()<br>        <span class="hljs-keyword">if</span> tried % <span class="hljs-number">2000000</span> == <span class="hljs-number">0</span>:<br>            log.info(<span class="hljs-string">f&quot;POW progress: tried <span class="hljs-subst">&#123;tried&#125;</span>/<span class="hljs-subst">&#123;total&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">&quot;POW not found&quot;</span>)<br><br><span class="hljs-comment"># parse response</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_prisoner_response</span>(<span class="hljs-params">text</span>):<br>    <span class="hljs-keyword">if</span> text <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Empty&quot;</span>)<br>    s = text.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; &quot;</span>).replace(<span class="hljs-string">&quot;!&quot;</span>,<span class="hljs-string">&quot; &quot;</span>).strip()<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;refuse to answer&quot;</span> <span class="hljs-keyword">in</span> s <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;I refuse to answer&quot;</span> <span class="hljs-keyword">in</span> s:<br>        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">&quot;Server refused phrasing: &quot;</span> + s)<br>    m = re.search(<span class="hljs-string">r&quot;Prisoner&#x27;s response:\s*([A-Za-z0-9]+)&quot;</span>, s, re.IGNORECASE)<br>    <span class="hljs-keyword">if</span> m:<br>        tok = m.group(<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">if</span> tok.lower() == <span class="hljs-string">&#x27;true&#x27;</span> <span class="hljs-keyword">or</span> tok == <span class="hljs-string">&#x27;1&#x27;</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">if</span> tok.lower() == <span class="hljs-string">&#x27;false&#x27;</span> <span class="hljs-keyword">or</span> tok == <span class="hljs-string">&#x27;0&#x27;</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    m2 = re.search(<span class="hljs-string">r&quot;\b(True|False|1|0)\b&quot;</span>, s, re.IGNORECASE)<br>    <span class="hljs-keyword">if</span> m2:<br>        tok = m2.group(<span class="hljs-number">1</span>).lower()<br>        <span class="hljs-keyword">return</span> tok == <span class="hljs-string">&#x27;true&#x27;</span> <span class="hljs-keyword">or</span> tok == <span class="hljs-string">&#x27;1&#x27;</span><br>    <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:<br>        <span class="hljs-keyword">if</span> ch == <span class="hljs-string">&#x27;1&#x27;</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">if</span> ch == <span class="hljs-string">&#x27;0&#x27;</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Cannot parse prisoner response: &quot;</span>+<span class="hljs-built_in">repr</span>(text))<br><br><span class="hljs-comment"># recovery</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">recover_from_observed</span>(<span class="hljs-params">observed</span>):<br>    n = <span class="hljs-number">17</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">encode</span>(<span class="hljs-params">msg_bits</span>):<br>        out = []<br>        <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> M:<br>            s = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">for</span> j,b <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(row):<br>                <span class="hljs-keyword">if</span> b <span class="hljs-keyword">and</span> msg_bits[j]:<br>                    s ^= <span class="hljs-number">1</span><br>            out.append(<span class="hljs-built_in">bool</span>(s))<br>        <span class="hljs-keyword">return</span> out<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>):<br>        <span class="hljs-keyword">for</span> flips <span class="hljs-keyword">in</span> itertools.combinations(<span class="hljs-built_in">range</span>(n), k):<br>            corr = observed[:]<br>            <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> flips:<br>                corr[idx] = <span class="hljs-keyword">not</span> corr[idx]<br>            <span class="hljs-keyword">for</span> mask <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>                msg = [<span class="hljs-built_in">bool</span>((mask&gt;&gt;i)&amp;<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>)]<br>                <span class="hljs-keyword">if</span> encode(msg) == corr:<br>                    <span class="hljs-keyword">return</span> [<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> x <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> msg]<br>    <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;No valid decoding under ≤2 flips assumption&quot;</span>)<br><br><span class="hljs-comment"># --- 关键：使用全局缓冲 leftover 来保存未消费的数据，避免吞掉下一轮提示 ---</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wait_for_round_prompt_with_leftover</span>(<span class="hljs-params">r, leftover, timeout=<span class="hljs-number">30</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    leftover: a string that may already contain previously-read-but-unprocessed data.</span><br><span class="hljs-string">    Returns (accumulated_text, updated_leftover) where accumulated_text contains at least</span><br><span class="hljs-string">    the prompt (&#x27;Ask your question:&#x27; or &#x27;Now reveal the true secrets&#x27;) or server end messages.</span><br><span class="hljs-string">    updated_leftover contains any extra text beyond what caller needs to process now (so we don&#x27;t lose it).</span><br><span class="hljs-string">    If timeout and no data -&gt; returns (None, leftover).</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    acc = leftover <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&quot;</span><br>    start = time.time()<br>    <span class="hljs-comment"># if acc already contains prompt or end message, return immediately without consuming more</span><br>    <span class="hljs-keyword">if</span> acc <span class="hljs-keyword">and</span> (<span class="hljs-string">&#x27;Ask your question:&#x27;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;Now reveal the true secrets&#x27;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;fell for my deception&#x27;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;you win&#x27;</span> <span class="hljs-keyword">in</span> acc.lower() <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;confesses all his secrets&#x27;</span> <span class="hljs-keyword">in</span> acc.lower()):<br>        <span class="hljs-keyword">return</span> acc, <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-keyword">try</span>:<br>            chunk = r.recv(timeout=<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">except</span> Exception:<br>            chunk = <span class="hljs-string">b&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> chunk:<br>            <span class="hljs-keyword">try</span>:<br>                s = chunk.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>            <span class="hljs-keyword">except</span>:<br>                s = <span class="hljs-built_in">str</span>(chunk)<br>            acc += s<br>            <span class="hljs-comment"># if we&#x27;ve got interesting markers, return but keep no leftover (we&#x27;ll return whole acc and empty leftover)</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;Ask your question:&#x27;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;Now reveal the true secrets&#x27;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;fell for my deception&#x27;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;you win&#x27;</span> <span class="hljs-keyword">in</span> acc.lower() <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;confesses all his secrets&#x27;</span> <span class="hljs-keyword">in</span> acc.lower():<br>                <span class="hljs-comment"># we may have extra data beyond the first occurrence; but caller expects full acc to search in it</span><br>                <span class="hljs-keyword">return</span> acc, <span class="hljs-string">&quot;&quot;</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment"># no chunk read this iteration</span><br>            <span class="hljs-keyword">if</span> time.time() - start &gt; timeout:<br>                <span class="hljs-comment"># timeout: if acc non-empty return it, else return None to indicate no data</span><br>                <span class="hljs-keyword">if</span> acc:<br>                    <span class="hljs-keyword">return</span> acc, <span class="hljs-string">&quot;&quot;</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>, leftover<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">recv_until_prompt_or_collect</span>(<span class="hljs-params">r, leftover, timeout=<span class="hljs-number">8</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    Read from socket (appended to leftover) until we can parse a prisoner response or timeout.</span><br><span class="hljs-string">    Returns (collected_text, updated_leftover). collected_text may contain the response and possibly extra.</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    acc = leftover <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&quot;</span><br>    start = time.time()<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-comment"># try to parse current acc for prisoner response</span><br>        <span class="hljs-keyword">try</span>:<br>            <span class="hljs-comment"># if we can parse, return acc and empty leftover</span><br>            _ = parse_prisoner_response(acc)<br>            <span class="hljs-keyword">return</span> acc, <span class="hljs-string">&quot;&quot;</span><br>        <span class="hljs-keyword">except</span> Exception:<br>            <span class="hljs-keyword">pass</span><br>        <span class="hljs-keyword">try</span>:<br>            chunk = r.recv(timeout=<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">except</span> Exception:<br>            chunk = <span class="hljs-string">b&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> chunk:<br>            <span class="hljs-keyword">try</span>:<br>                s = chunk.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>            <span class="hljs-keyword">except</span>:<br>                s = <span class="hljs-built_in">str</span>(chunk)<br>            acc += s<br>            <span class="hljs-comment"># detect refusal immediate</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;The prisoner smirks&quot;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;I refuse to answer&quot;</span> <span class="hljs-keyword">in</span> acc:<br>                <span class="hljs-keyword">return</span> acc, <span class="hljs-string">&quot;&quot;</span><br>            <span class="hljs-comment"># try parse again in next loop</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">if</span> time.time() - start &gt; timeout:<br>                <span class="hljs-comment"># timeout: return whatever we&#x27;ve got (maybe empty)</span><br>                <span class="hljs-keyword">return</span> acc, <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-comment"># unreachable</span><br><br><span class="hljs-comment"># main run with leftover buffer</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">run</span>():<br>    r = remote(host, port, timeout=<span class="hljs-number">10</span>)<br>    log.info(<span class="hljs-string">f&quot;Connected to <span class="hljs-subst">&#123;host&#125;</span>:<span class="hljs-subst">&#123;port&#125;</span>&quot;</span>)<br>    data = <span class="hljs-string">b&quot;&quot;</span>; pow_line = <span class="hljs-literal">None</span>; t0 = time.time()<br>    <span class="hljs-keyword">while</span> time.time() - t0 &lt; <span class="hljs-number">5</span>:<br>        <span class="hljs-keyword">try</span>:<br>            chunk = r.recv(timeout=<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">except</span> Exception:<br>            chunk = <span class="hljs-string">b&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> chunk:<br>            data += chunk<br>            txt = data.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;sha256(&#x27;</span> <span class="hljs-keyword">in</span> txt:<br>                m = POW_RE.search(txt)<br>                <span class="hljs-keyword">if</span> m:<br>                    pow_line = m.group(<span class="hljs-number">0</span>); <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> pow_line:<br>        <span class="hljs-keyword">try</span>:<br>            more = r.recvrepeat(timeout=<span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">if</span> more:<br>                data += more<br>                txt = data.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>                m = POW_RE.search(txt)<br>                <span class="hljs-keyword">if</span> m:<br>                    pow_line = m.group(<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">except</span> Exception:<br>            <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> pow_line:<br>        log.failure(<span class="hljs-string">&quot;POW not found; server banner:\n&quot;</span> + data.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>))<br>        r.close(); <span class="hljs-keyword">return</span><br>    log.info(<span class="hljs-string">&quot;POW challenge: &quot;</span> + pow_line)<br>    <span class="hljs-keyword">try</span>:<br>        prefix = solve_pow_from_text(pow_line)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        log.failure(<span class="hljs-string">&quot;POW failed: &quot;</span> + <span class="hljs-built_in">str</span>(e)); r.close(); <span class="hljs-keyword">return</span><br>    r.sendline(prefix)<br>    log.info(<span class="hljs-string">&quot;Sent POW solution&quot;</span>)<br><br>    rounds = <span class="hljs-number">0</span><br>    leftover = <span class="hljs-string">&quot;&quot;</span>  <span class="hljs-comment"># IMPORTANT: persist unconsumed server text across rounds</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            txt, leftover = wait_for_round_prompt_with_leftover(r, leftover, timeout=<span class="hljs-number">30</span>)<br>            <span class="hljs-keyword">if</span> txt <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                log.info(<span class="hljs-string">&quot;No prompt received and no data; assuming connection closed.&quot;</span>)<br>                <span class="hljs-keyword">break</span><br>            log.debug(<span class="hljs-string">&quot;Pre-round text (accumulated): &quot;</span> + (txt.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; | &quot;</span>)[:<span class="hljs-number">1000</span>]))<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;fell for my deception&#x27;</span> <span class="hljs-keyword">in</span> txt <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;laughs triumphantly&#x27;</span> <span class="hljs-keyword">in</span> txt:<br>                log.failure(<span class="hljs-string">&quot;Server indicated failure: &quot;</span> + txt.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; | &quot;</span>))<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;you win&#x27;</span> <span class="hljs-keyword">in</span> txt.lower() <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;confesses all his secrets&#x27;</span> <span class="hljs-keyword">in</span> txt.lower():<br>                log.success(<span class="hljs-string">&quot;Server indicates success/flag: &quot;</span> + txt.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; | &quot;</span>))<br>                <span class="hljs-comment"># continue to try to read next round if server continues</span><br><br>            observed = []<br>            queries_texts = []<br><br>            <span class="hljs-keyword">for</span> qi, row <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(M):<br>                indices = [i <span class="hljs-keyword">for</span> i,b <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(row) <span class="hljs-keyword">if</span> b]<br>                toklist = xor_subset_tokens(indices)<br>                qstr = tokens_to_query(toklist)<br>                queries_texts.append(qstr)<br>                <span class="hljs-comment"># wait for per-question prompt using leftover if any</span><br>                <span class="hljs-comment"># if leftover contains the prompt, consume it</span><br>                <span class="hljs-keyword">if</span> leftover <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;Ask your question:&#x27;</span> <span class="hljs-keyword">in</span> leftover:<br>                    <span class="hljs-comment"># consume up to the prompt (we simply drop it from leftover; the send will follow)</span><br>                    <span class="hljs-comment"># (leftover already includes the prompt text)</span><br>                    <span class="hljs-comment"># clear leftover because we&#x27;ve used it</span><br>                    leftover = <span class="hljs-string">&quot;&quot;</span>  <span class="hljs-comment"># safe: we keep any extra in leftover management later</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">try</span>:<br>                        r.recvuntil(<span class="hljs-string">b&quot;Ask your question:&quot;</span>, timeout=<span class="hljs-number">6</span>)<br>                    <span class="hljs-keyword">except</span> Exception:<br>                        log.debug(<span class="hljs-string">&quot;Did not see per-question prompt before sending; proceeding.&quot;</span>)<br>                log.info(<span class="hljs-string">f&quot;Sending query [<span class="hljs-subst">&#123;qi+<span class="hljs-number">1</span>&#125;</span>/17]: <span class="hljs-subst">&#123;qstr!r&#125;</span>&quot;</span>)<br>                r.sendline(qstr)<br><br>                <span class="hljs-comment"># read and accumulate until we can parse the prisoner&#x27;s response</span><br>                <span class="hljs-comment"># use recv_until style but keep any extra in leftover</span><br>                acc = <span class="hljs-string">&quot;&quot;</span><br>                got = <span class="hljs-literal">False</span><br>                t1 = time.time()<br>                <span class="hljs-keyword">while</span> time.time() - t1 &lt; <span class="hljs-number">8</span>:<br>                    <span class="hljs-keyword">try</span>:<br>                        chunk = r.recv(timeout=<span class="hljs-number">1</span>)<br>                    <span class="hljs-keyword">except</span> Exception:<br>                        chunk = <span class="hljs-string">b&quot;&quot;</span><br>                    <span class="hljs-keyword">if</span> chunk:<br>                        <span class="hljs-keyword">try</span>:<br>                            s = chunk.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>                        <span class="hljs-keyword">except</span>:<br>                            s = <span class="hljs-built_in">str</span>(chunk)<br>                        acc += s<br>                        <span class="hljs-comment"># detect refusal early</span><br>                        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;The prisoner smirks&quot;</span> <span class="hljs-keyword">in</span> acc <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;I refuse to answer&quot;</span> <span class="hljs-keyword">in</span> acc:<br>                            log.failure(<span class="hljs-string">&quot;Server refused phrasing: &quot;</span> + acc.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; | &quot;</span>))<br>                            r.close(); <span class="hljs-keyword">return</span><br>                        <span class="hljs-keyword">try</span>:<br>                            val = parse_prisoner_response(acc)<br>                            <span class="hljs-comment"># If there is extra trailing data after matched response, try to preserve it into leftover.</span><br>                            <span class="hljs-comment"># We cannot precisely split, but we can attempt: find first occurrence of &quot;Prisoner&#x27;s response:&quot;</span><br>                            <span class="hljs-comment"># and keep text after that line as leftover.</span><br>                            <span class="hljs-comment"># Find index of the match end by searching for the token (True/False/1/0) appearance.</span><br>                            <span class="hljs-comment"># Simpler: we will set leftover = &quot;&quot; and rely on wait_for_round_prompt_with_leftover to read further.</span><br>                            observed.append(val)<br>                            got = <span class="hljs-literal">True</span><br>                            <span class="hljs-keyword">break</span><br>                        <span class="hljs-keyword">except</span> RuntimeError <span class="hljs-keyword">as</span> rexc:<br>                            log.failure(<span class="hljs-built_in">str</span>(rexc)); r.close(); <span class="hljs-keyword">return</span><br>                        <span class="hljs-keyword">except</span> Exception:<br>                            <span class="hljs-keyword">pass</span><br>                    <span class="hljs-keyword">else</span>:<br>                        <span class="hljs-keyword">pass</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> got:<br>                    <span class="hljs-keyword">try</span>:<br>                        tail = r.recvrepeat(timeout=<span class="hljs-number">1</span>).decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>                        acc += tail<br>                        val = parse_prisoner_response(acc)<br>                        observed.append(val)<br>                    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                        log.failure(<span class="hljs-string">&quot;Failed to parse response for query %s collected=%r err=%s&quot;</span> % (qstr, acc, <span class="hljs-built_in">str</span>(e)))<br>                        r.close(); <span class="hljs-keyword">return</span><br>                log.info(<span class="hljs-string">f&quot;Got [<span class="hljs-subst">&#123;qi+<span class="hljs-number">1</span>&#125;</span>/17]: <span class="hljs-subst">&#123;observed[-<span class="hljs-number">1</span>]&#125;</span>&quot;</span>)<br>                time.sleep(<span class="hljs-number">0.02</span>)<br><br>            <span class="hljs-comment"># Wait for reveal prompt but avoid consuming next-round welcome into nowhere:</span><br>            <span class="hljs-comment"># Try to read until we see &#x27;Now reveal the true secrets&#x27; or small timeout; keep any extra into leftover.</span><br>            acc2 = <span class="hljs-string">&quot;&quot;</span><br>            t2 = time.time()<br>            <span class="hljs-keyword">while</span> time.time() - t2 &lt; <span class="hljs-number">4</span>:<br>                <span class="hljs-keyword">try</span>:<br>                    chunk = r.recv(timeout=<span class="hljs-number">1</span>)<br>                <span class="hljs-keyword">except</span> Exception:<br>                    chunk = <span class="hljs-string">b&quot;&quot;</span><br>                <span class="hljs-keyword">if</span> chunk:<br>                    <span class="hljs-keyword">try</span>:<br>                        s = chunk.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>                    <span class="hljs-keyword">except</span>:<br>                        s = <span class="hljs-built_in">str</span>(chunk)<br>                    acc2 += s<br>                    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;Now reveal the true secrets&#x27;</span> <span class="hljs-keyword">in</span> acc2:<br>                        <span class="hljs-comment"># keep acc2 appended to leftover for next loop (we consumed it here)</span><br>                        <span class="hljs-comment"># but we don&#x27;t want to lose anything after the phrase; we capture all into leftover</span><br>                        leftover = acc2.split(<span class="hljs-string">&#x27;Now reveal the true secrets&#x27;</span>,<span class="hljs-number">1</span>)[<span class="hljs-number">1</span>]<br>                        <span class="hljs-keyword">break</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-comment"># no more data right now</span><br>                    <span class="hljs-keyword">pass</span><br>            <span class="hljs-comment"># attempt recovery</span><br>            <span class="hljs-keyword">try</span>:<br>                recovered = recover_from_observed(observed)<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                log.exception(<span class="hljs-string">&quot;Recovery failed: &quot;</span> + <span class="hljs-built_in">str</span>(e))<br>                r.close(); <span class="hljs-keyword">return</span><br><br>            ans_line = <span class="hljs-string">&quot; &quot;</span>.join(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, recovered))<br>            log.success(<span class="hljs-string">&quot;Recovered secrets: &quot;</span> + ans_line)<br>            r.sendline(ans_line)<br><br>            <span class="hljs-comment"># After submission: read a bit but DO NOT discard data — store into leftover</span><br>            acc_after = <span class="hljs-string">&quot;&quot;</span><br>            t3 = time.time()<br>            <span class="hljs-keyword">while</span> time.time() - t3 &lt; <span class="hljs-number">4</span>:<br>                <span class="hljs-keyword">try</span>:<br>                    chunk = r.recv(timeout=<span class="hljs-number">0.8</span>)<br>                <span class="hljs-keyword">except</span> Exception:<br>                    chunk = <span class="hljs-string">b&quot;&quot;</span><br>                <span class="hljs-keyword">if</span> chunk:<br>                    <span class="hljs-keyword">try</span>:<br>                        s = chunk.decode(errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>                    <span class="hljs-keyword">except</span>:<br>                        s = <span class="hljs-built_in">str</span>(chunk)<br>                    acc_after += s<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-comment"># no chunk</span><br>                    <span class="hljs-keyword">pass</span><br>            <span class="hljs-comment"># Put everything we read into leftover for next round handling</span><br>            leftover = (leftover <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&quot;</span>) + acc_after<br>            log.info(<span class="hljs-string">&quot;Server after submission (buffered):\n&quot;</span> + (acc_after.strip()[:<span class="hljs-number">1000</span>] <span class="hljs-keyword">if</span> acc_after <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;&lt;none&gt;&quot;</span>))<br>            <span class="hljs-comment"># If server indicates failure explicitly, break</span><br>            <span class="hljs-keyword">if</span> acc_after <span class="hljs-keyword">and</span> (<span class="hljs-string">&#x27;fell for my deception&#x27;</span> <span class="hljs-keyword">in</span> acc_after <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;laughs triumphantly&#x27;</span> <span class="hljs-keyword">in</span> acc_after):<br>                log.failure(<span class="hljs-string">&quot;Server indicated round failure; stopping. &quot;</span> + acc_after.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; | &quot;</span>))<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">if</span> acc_after <span class="hljs-keyword">and</span> (<span class="hljs-string">&#x27;you win&#x27;</span> <span class="hljs-keyword">in</span> acc_after.lower() <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;confesses all his secrets&#x27;</span> <span class="hljs-keyword">in</span> acc_after.lower()):<br>                log.success(<span class="hljs-string">&quot;Server indicates success/flag: &quot;</span> + acc_after.replace(<span class="hljs-string">&quot;\n&quot;</span>,<span class="hljs-string">&quot; | &quot;</span>))<br>                <span class="hljs-comment"># continue; next loop will process leftover which may contain next-round welcome</span><br>            rounds += <span class="hljs-number">1</span><br>            log.info(<span class="hljs-string">&quot;Completed round #%d&quot;</span> % rounds)<br>            time.sleep(<span class="hljs-number">0.05</span>)<br><br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        log.exception(<span class="hljs-string">&quot;Exception: &quot;</span> + <span class="hljs-built_in">str</span>(e))<br>    <span class="hljs-keyword">finally</span>:<br>        <span class="hljs-keyword">try</span>: r.close()<br>        <span class="hljs-keyword">except</span>: <span class="hljs-keyword">pass</span><br>        log.info(<span class="hljs-string">&quot;Connection closed. Rounds: %d&quot;</span> % rounds)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    run()<br></code></pre></td></tr></table></figure>
+<p><img src="/2025/11/05/%E5%BC%BA%E7%BD%91%E6%9D%AF%202025%20%E7%BA%BF%E4%B8%8A%E8%B5%9B/file-20251018153839791.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="ezran"><a href="#ezran" class="headerlink" title="ezran"></a>ezran</h2><p>在网上找了类似题目的解题思路。<br>参考：<br><a target="_blank" rel="noopener" href="https://tangcuxiaojikuai.xyz/post/69eaef2e.html">2024-同济大学第二届网络安全新生赛CatCTF-wp-crypto | 糖醋小鸡块的blog</a><br><a target="_blank" rel="noopener" href="https://www.nssctf.cn/note/set/8981">文章 - 停电之后 暂时摆脱了 | NSSCTF</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3108</span>):<br>	x=(<span class="hljs-built_in">pow</span>(r1, <span class="hljs-number">2</span>*i, <span class="hljs-number">257</span>) &amp; <span class="hljs-number">0xff</span>) ^ r2<br></code></pre></td></tr></table></figure>
+<p>根据分析，我们知道，并上 <code>0xff</code> 说明只有 8 位会对 r2 造成影响，所以 r2 的高 8 位我们是可用直接得到的。<br>根据对鸡块师傅思路的学习，我们知道了对 257 这个素数进行费马小定理，有：<br>$$<br>a ^{256} &#x3D; 1 \mod 257<br>$$<br>由二次剩余的欧拉准则能进一步推导：<br>$$<br>a^{128} &#x3D; 1 \mod 257<br>$$<br>$$<br>a^{128} &#x3D; -1 \mod 257<br>$$<br>此时前者结果是1，后者结果是0。而如果a&#x3D;0，那么结果是0。也就是说，当i为 64 的整数倍时，本轮的计算结果只能是 0 或 1，也就是说明 r2 &#x3D; getrandbits(16) 的高 15 位就是密文的高 15 位。<br>虽然明显比特数是足够的，但为了更好的约束，还是要把能取的都取上。<br>这样我们就能选取 19968 个来组成向量 b 解线性方程，而获取 T 的思路便与原题一致。<br>有了 T,b 之后我们就可以解出 state，然后我们就能运行一遍gift，变成与题中 shuffle 前相同的状态，之后我们就能根据之前的 shuffle 操作来恢复 flag。<br>exp.sage</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> *<br><br>gift = ...<br>c = <span class="hljs-string">&#x27;)9Lsu_4s_eb__otEli_nhe_tes5gii5sT@omamkn__ari&#123;efm0__rmu_nt(0Eu3_En_og5rfoh&#125;nkeoToy_bthguuEh7___u&#x27;</span><br><br>gift_bytes = long_to_bytes(gift)<br>RNG = Random()<br>NUM_ITERATIONS = <span class="hljs-number">3108</span><br>MT_STATE_BITS = <span class="hljs-number">19968</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">construct_a_row</span>(<span class="hljs-params">RNG</span>):<br>    row = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(NUM_ITERATIONS):<br>        RNG.getrandbits(<span class="hljs-number">8</span>)<br>        r2_val = RNG.getrandbits(<span class="hljs-number">16</span>)<br>        <br>        r2_high_byte = r2_val &gt;&gt; <span class="hljs-number">8</span><br>        row += <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, (<span class="hljs-built_in">bin</span>(r2_high_byte)[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">8</span>))))<br>        <br>        <span class="hljs-comment">#当 i 为 64 的倍数时，取高 15 位</span><br>        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">64</span> == <span class="hljs-number">0</span>):<br>            r2_low_byte = r2_val &amp; <span class="hljs-number">0xff</span><br>            r2_low_bits_7 = r2_low_byte &gt;&gt; <span class="hljs-number">1</span><br>            row += <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, (<span class="hljs-built_in">bin</span>(r2_low_bits_7)[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">7</span>))))<br>    <span class="hljs-keyword">return</span> row<br><br>L = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> trange(MT_STATE_BITS):<br>    state = [<span class="hljs-number">0</span>] * <span class="hljs-number">624</span><br>    temp = <span class="hljs-string">&quot;0&quot;</span> * i + <span class="hljs-string">&quot;1&quot;</span> + <span class="hljs-string">&quot;0&quot;</span> * (MT_STATE_BITS - <span class="hljs-number">1</span> - i)<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">624</span>):<br>        state[j] = <span class="hljs-built_in">int</span>(temp[<span class="hljs-number">32</span>*j : <span class="hljs-number">32</span>*j+<span class="hljs-number">32</span>], <span class="hljs-number">2</span>)<br>    <br>    RNG.setstate((<span class="hljs-number">3</span>, <span class="hljs-built_in">tuple</span>(state + [<span class="hljs-number">624</span>]), <span class="hljs-literal">None</span>))<br>    L.append(construct_a_row(RNG))<br><br>L = Matrix(GF(<span class="hljs-number">2</span>), L)<br><br>R = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(NUM_ITERATIONS):<br>    x_high_byte = gift_bytes[<span class="hljs-number">2</span>*i]<br>    R += <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, (<span class="hljs-built_in">bin</span>(x_high_byte)[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">8</span>))))<br>    <br>    <span class="hljs-keyword">if</span> (i % <span class="hljs-number">64</span> == <span class="hljs-number">0</span>):<br>        x_low_byte = gift_bytes[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>]<br>        x_low_bits_7 = x_low_byte &gt;&gt; <span class="hljs-number">1</span><br>        R += <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, (<span class="hljs-built_in">bin</span>(x_low_bits_7)[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">7</span>))))<br><br>R = vector(GF(<span class="hljs-number">2</span>), R)<br><br>s_particular = L.solve_left(R)<br><br>kernel_basis = L.left_kernel().basis()<br>k_dim = <span class="hljs-built_in">len</span>(kernel_basis)<br>num_solutions = <span class="hljs-number">2</span>**k_dim<br><br><br><span class="hljs-keyword">if</span> num_solutions &gt; <span class="hljs-number">1024</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解空间太大 (<span class="hljs-subst">&#123;num_solutions&#125;</span>)，脚本将只尝试前 1024 个解。&quot;</span>)<br>    num_solutions = <span class="hljs-number">1024</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;开始爆破 <span class="hljs-subst">&#123;num_solutions&#125;</span> 个可能的解...&quot;</span>)<br><br><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> trange(num_solutions):<br>    s_kernel_part = vector(GF(<span class="hljs-number">2</span>), [<span class="hljs-number">0</span>] * MT_STATE_BITS)<br>    bin_j = <span class="hljs-built_in">bin</span>(j)[<span class="hljs-number">2</span>:].zfill(k_dim)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k_dim):<br>        <span class="hljs-keyword">if</span> bin_j[i] == <span class="hljs-string">&#x27;1&#x27;</span>:<br>            s_kernel_part += kernel_basis[i]<br>            <br>    current_s = s_particular + s_kernel_part<br>    <br>    init_bits = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, current_s)))<br>    state = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">624</span>):<br>        state.append(<span class="hljs-built_in">int</span>(init_bits[<span class="hljs-number">32</span>*i : <span class="hljs-number">32</span>*i+<span class="hljs-number">32</span>], <span class="hljs-number">2</span>))<br><br>    recovered_state = (<span class="hljs-number">3</span>, <span class="hljs-built_in">tuple</span>(state + [<span class="hljs-number">624</span>]), <span class="hljs-literal">None</span>)<br><br>    RNG1 = Random()<br>    RNG1.setstate(recovered_state)<br><br>    <span class="hljs-comment">#重新运行 gift 生成循环中的所有 PRNG 调用以同步状态</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(NUM_ITERATIONS):<br>        RNG1.getrandbits(<span class="hljs-number">8</span>) <br>        RNG1.getrandbits(<span class="hljs-number">16</span>) <br><br>    x = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(c))]<br>    SHUFFLE_COUNT = <span class="hljs-number">2025</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(SHUFFLE_COUNT):<br>        RNG1.shuffle(x)<br><br>    flag = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(c)):<br>        flag += c[x.index(i)]<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;flag&quot;</span> <span class="hljs-keyword">in</span> flag:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span> + <span class="hljs-string">&quot;=&quot;</span>*<span class="hljs-number">30</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;找到flag !(解 <span class="hljs-subst">&#123;j&#125;</span>):&quot;</span>)<br>        <span class="hljs-built_in">print</span>(flag)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=&quot;</span>*<span class="hljs-number">30</span>)<br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Study/" class="category-chain-item">Study</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>强网杯 2025 线上赛</div>
+      <div>http://ramoor.github.io/2025/11/05/强网杯 2025 线上赛/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ramoor</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年11月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/10/16/%E5%BC%BA%E7%BD%91%E6%9D%AF%202022%20%E5%A4%8D%E7%8E%B0/" title="强网杯 2022 复现">
+                        <span class="hidden-mobile">强网杯 2022 复现</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+<script>  
+MathJax = {  
+	tex: {  
+		inlineMath: [['$', '$'], ['\(', '\)']]  
+	}  
+};  
+</script>  
+<script id="MathJax-script" async  
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  
+</script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
