@@ -27,7 +27,7 @@
 <meta property="og:description" content="在团队的共同努力下，我们 DAWN 战队也是成功挤进了前十 σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ，记录一下有趣的题目，更新ing CryptoLW3比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。题目： 12345678910111213141516from random import choice, samplefrom Crypto.Cipher import AESfrom hashli">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-22T06:28:16.000Z">
-<meta property="article:modified_time" content="2025-11-21T03:12:22.865Z">
+<meta property="article:modified_time" content="2025-11-21T03:17:04.889Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -332,11 +332,12 @@
 <p>$$<br>E’ &#x3D; kE + t(1,1,1) \mod p<br>$$</p>
 <p>具体可以造格来求</p>
 <span>
-$$
-(k,t,r_1,r_2,r_3)
 
-<h1 id="begin-pmatrix-E-1-E-2-E-3-1-1-1-p-0-0-0-p-0-0-0-p-end-pmatrix"><a href="#begin-pmatrix-E-1-E-2-E-3-1-1-1-p-0-0-0-p-0-0-0-p-end-pmatrix" class="headerlink" title="\begin{pmatrix}E_1 &amp; E_2 &amp; E_3 \1   &amp; 1   &amp; 1   \p   &amp; 0   &amp; 0   \0   &amp; p   &amp; 0   \0   &amp; 0   &amp; p\end{pmatrix}"></a>\begin{pmatrix}<br>E_1 &amp; E_2 &amp; E_3 \<br>1   &amp; 1   &amp; 1   \<br>p   &amp; 0   &amp; 0   \<br>0   &amp; p   &amp; 0   \<br>0   &amp; 0   &amp; p<br>\end{pmatrix}</h1><p>(E_1’,E_2’,E_3’)</p>
-<p>$$<br></p></span><p></p>
+<p>$$<br>(k,t,r_1,r_2,r_3)</p>
+<p>\begin{pmatrix}<br>E_1 &amp; E_2 &amp; E_3 \<br>1   &amp; 1   &amp; 1   \<br>p   &amp; 0   &amp; 0   \<br>0   &amp; p   &amp; 0   \<br>0   &amp; 0   &amp; p<br>\end{pmatrix}<br>\<br>&#x3D;(E_1’,E_2’,E_3’)<br>$$</p>
+</span>
+
+
 <p>然鹅通过这种方法算出的 E’ 并不是很小，实测出来的 E’ 为<code>[-298,582,-285]</code>，这就导致仿射之后的 error’ 其实还是很大，我们还是不能直接求解这个 LWE 问题。<br>在比赛时的思路就到这儿了，当时也跟队友讨论过 k,t 是不是找的不好，导致 E’ 并不能很小，但是也没找到更好地仿射方法。比赛时也想过是否跟仿射子空间相关，毕竟之前在复现 LilCTF 2025 时鸡块师傅就出过 Space Travel 这类跟仿射子空间相关的题目，但是思路好像并不是很明了，也加上对仿射子空间的理解还不是很深，因此并没有深究，就这样无为到了比赛结束。。<br>赛后看了鸡块师傅的 wp 之后才明白过来，利用 LeetSpe4k 这道题的思路不论是多大的 E 都能映射到多个 01 组成的向量中，在本题中就有：<br>$$<br>e_i &#x3D; (x_i,y_i,z_i)E_{3\times 1}<br>$$<br>其中，$x_i,y_i,z_i\in {0,1}$<br>这样也就可以将 $e_i$ 映射为三个 01 向量上，这三个向量分别为 $(1,0,0),(0,1,0),(0,0,1)$，明显存在仿射子空间。<br>即<br>$$<br>e_i &#x3D; E_1+(x_i,y_i)<br>\begin{pmatrix}<br>E_2-E_1 \newline<br>E_3-E_1<br>\end{pmatrix}<br>$$<br>其中，$x_i,y_i\in {0,1}$,分别为 $(0,0),(1,0),(0,1)$<br>$$<br>b_{m\times1} &#x3D; A_{m\times n}s_{n\times 1}+e_{m\times 1} \mod p<br>$$<br>后续就是造格了，具体代码暂时没写，有需要可以直接查看鸡块师傅的代码。</p>
 
                 
