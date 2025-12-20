@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>Crypto总结</title>
+    <link href="/2025/12/20/Crypto%E6%80%BB%E7%BB%93/"/>
+    <url>/2025/12/20/Crypto%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CTF 大杂烩</title>
+    <link href="/2025/12/20/CTF%20%E5%A4%A7%E6%9D%82%E7%83%A9/"/>
+    <url>/2025/12/20/CTF%20%E5%A4%A7%E6%9D%82%E7%83%A9/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Crypro"><a href="#Crypro" class="headerlink" title="Crypro"></a>Crypro</h2><p>跳转：[[Crypto总结]]</p><h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><p>跳转：</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于TPM模拟器对文件进行加解密和Hash验证</title>
     <link href="/2025/12/09/%E5%9F%BA%E4%BA%8ETPM%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AF%B9%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%92%8CHash%E9%AA%8C%E8%AF%81/"/>
     <url>/2025/12/09/%E5%9F%BA%E4%BA%8ETPM%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AF%B9%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%92%8CHash%E9%AA%8C%E8%AF%81/</url>
@@ -720,9 +770,9 @@
       
       <tag>CTF</tag>
       
-      <tag>misc</tag>
-      
       <tag>压缩包</tag>
+      
+      <tag>misc</tag>
       
     </tags>
     
