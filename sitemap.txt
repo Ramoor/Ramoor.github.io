@@ -67,8 +67,8 @@ http://ramoor.github.io/tags/Crypto/
 http://ramoor.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/
 http://ramoor.github.io/tags/blog/
 http://ramoor.github.io/tags/latex/
-http://ramoor.github.io/tags/%E5%AF%86%E7%A0%81/
 http://ramoor.github.io/tags/Java/
+http://ramoor.github.io/tags/%E5%AF%86%E7%A0%81/
 http://ramoor.github.io/tags/L3HCTF/
 http://ramoor.github.io/tags/XCTF/
 http://ramoor.github.io/tags/%E5%8E%8B%E7%BC%A9%E5%8C%85/
