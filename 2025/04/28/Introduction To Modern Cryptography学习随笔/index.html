@@ -1,328 +1,170 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
-  <link rel="icon" href="/img/2.jpg">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Ramoor">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="在老师的推荐下，我学习了《Introduction To Modern Cryptography》一书的部分内容，本文用来记录阅读过程中的一些随笔，可能会有些潦草，如果往后有了更深的认识，会回来继续完善。 这是我第一次大篇幅阅读英文书籍，刚开始读确实比较难以接受，因为要频繁地搜索一些单词含义，有时候一些地方中文翻译之后与原文含义相差甚远，因此还是硬着头皮大概过了一下原文。读的过程中我发现本书会花费">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Introduction To Modern Cryptography学习随笔 | Ramoor</title><meta name="author" content="Ramoor"><meta name="copyright" content="Ramoor"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在老师的推荐下，我学习了《Introduction To Modern Cryptography》一书的部分内容，本文用来记录阅读过程中的一些随笔，可能会有些潦草，如果往后有了更深的认识，会回来继续完善。 这是我第一次大篇幅阅读英文书籍，刚开始读确实比较难以接受，因为要频繁地搜索一些单词含义，有时候一些地方中文翻译之后与原文含义相差甚远，因此还是硬着头皮大概过了一下原文。读的过程中我发现本书会花费">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introduction To Modern Cryptography学习随笔">
 <meta property="og:url" content="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/index.html">
 <meta property="og:site_name" content="Ramoor">
 <meta property="og:description" content="在老师的推荐下，我学习了《Introduction To Modern Cryptography》一书的部分内容，本文用来记录阅读过程中的一些随笔，可能会有些潦草，如果往后有了更深的认识，会回来继续完善。 这是我第一次大篇幅阅读英文书籍，刚开始读确实比较难以接受，因为要频繁地搜索一些单词含义，有时候一些地方中文翻译之后与原文含义相差甚远，因此还是硬着头皮大概过了一下原文。读的过程中我发现本书会花费">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250422161507480.png">
-<meta property="og:image" content="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250425203749171.png">
+<meta property="og:image" content="http://ramoor.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-04-28T11:55:19.000Z">
 <meta property="article:modified_time" content="2025-05-08T04:49:38.267Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="Crypto">
 <meta property="article:tag" content="密码">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250422161507480.png">
-  
-  
-  
-  <title>Introduction To Modern Cryptography学习随笔 - Ramoor</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-  
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ramoor.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Introduction To Modern Cryptography学习随笔",
+  "url": "http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/",
+  "image": "http://ramoor.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-04-28T11:55:19.000Z",
+  "dateModified": "2025-05-08T04:49:38.267Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Ramoor",
+      "url": "http://Ramoor.github.io"
     }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-  
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-  
-
-  
-
-  
+      const theme = saveToLocal.get('theme')
     
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-
-
-  
-<!-- hexo injector head_end start -->
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Introduction To Modern Cryptography学习随笔',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Ramoor</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="Introduction To Modern Cryptography学习随笔"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-28 19:55" pubdate>
-          2025年4月28日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          15k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          126 分钟
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="leancloud-page-views"></span>次
-        </span>
-        
-      
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">Introduction To Modern Cryptography学习随笔</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <p>在老师的推荐下，我学习了《Introduction To Modern Cryptography》一书的部分内容，本文用来记录阅读过程中的一些随笔，可能会有些潦草，如果往后有了更深的认识，会回来继续完善。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Ramoor</span></a><a class="nav-page-title" href="/"><span class="site-name">Introduction To Modern Cryptography学习随笔</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Introduction To Modern Cryptography学习随笔</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-28T11:55:19.000Z" title="发表于 2025-04-28 19:55:19">2025-04-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-08T04:49:38.267Z" title="更新于 2025-05-08 12:49:38">2025-05-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Study/">Study</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>在老师的推荐下，我学习了《Introduction To Modern Cryptography》一书的部分内容，本文用来记录阅读过程中的一些随笔，可能会有些潦草，如果往后有了更深的认识，会回来继续完善。</p>
 <p>这是我第一次大篇幅阅读英文书籍，刚开始读确实比较难以接受，因为要频繁地搜索一些单词含义，有时候一些地方中文翻译之后与原文含义相差甚远，因此还是硬着头皮大概过了一下原文。<br>读的过程中我发现本书会花费大量的篇幅去论述一个定义，很适合初学者去接触理解每个定义的深层次含义。</p>
 <h1 id="3-私钥密码"><a href="#3-私钥密码" class="headerlink" title="3.私钥密码"></a>3.私钥密码</h1><h2 id="3-1-计算安全性"><a href="#3-1-计算安全性" class="headerlink" title="3.1 计算安全性"></a>3.1 计算安全性</h2><p><strong>计算安全相对于信息论安全（完美安全）包含两个放松</strong></p>
 <ul>
@@ -560,7 +402,7 @@
 <blockquote>
 <p>原像抗性基本上意味着$H^s$的单向性。</p>
 </blockquote>
-<h2 id="6-2The-Merkle-Damgard-Transform"><a href="#6-2The-Merkle-Damgard-Transform" class="headerlink" title="6.2The Merkle-Damgard Transform"></a>6.2The Merkle-Damgard Transform</h2><p><strong>简要：</strong> $Merkle-Damgard$变换，即MD变换，是一种将定长哈希函数转换成全功能（可变长度）哈希函数的技术。<br><strong>定长哈希</strong>：MD5、SHA-256等。<br><img src="/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250422161507480.png" srcset="/img/loading.gif" lazyload><br><strong>变换步骤</strong>：</p>
+<h2 id="6-2The-Merkle-Damgard-Transform"><a href="#6-2The-Merkle-Damgard-Transform" class="headerlink" title="6.2The Merkle-Damgard Transform"></a>6.2The Merkle-Damgard Transform</h2><p><strong>简要：</strong> $Merkle-Damgard$变换，即MD变换，是一种将定长哈希函数转换成全功能（可变长度）哈希函数的技术。<br><strong>定长哈希</strong>：MD5、SHA-256等。<br><img src="/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250422161507480.png"><br><strong>变换步骤</strong>：</p>
 <ul>
 <li>将数据分割成多个固定大小的块，每个块大小通常等于定长哈希函数的长度</li>
 <li>设置$IV$</li>
@@ -607,7 +449,7 @@
 <li>若找到，则找到了碰撞，返回$x_j$和$x_j’$</li>
 <li>否则，令$x_j&#x3D;H(x_j)$和$x_j’&#x3D;H(x_j’)$<br><strong>代码实现:</strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">import</span> random<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">random_binary_string</span>(<span class="hljs-params">length = <span class="hljs-number">16</span></span>):<br>	<span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(random.choice(<span class="hljs-string">&#x27;01&#x27;</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(length))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">H</span>(<span class="hljs-params">x</span>):<br>	<span class="hljs-keyword">return</span> hashlib.sha256(x.encode()).hexdigest()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">SmallSpaceBirthdayAttack</span>():<br>	x_0 = random_binary_string()<br>	x = x_0<br>	x_1 = x_0<br>	i = <span class="hljs-number">0</span><br><br>	<span class="hljs-comment">#寻找碰撞</span><br>	<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span> :<br>		x = H(x)<br>		x_1 = H(H(x_1))<br><br>		<span class="hljs-keyword">if</span> x == x_1:<br>			<span class="hljs-keyword">break</span><br>		<span class="hljs-keyword">else</span>:<br>			i += <span class="hljs-number">1</span><br><br>	<span class="hljs-comment">#回溯，寻找具体碰撞点</span><br>	x = x_0<br>	x_1 = x_0<br><br>	<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i):<br>		<span class="hljs-keyword">if</span> H(x) == H(x_1):<br>			<span class="hljs-keyword">return</span> (x,x_1)<br>		<span class="hljs-keyword">else</span>:<br>			x = H(x)<br>			x_1 = H(x_1)<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>ans = SmallSpaceBirthdayAttack()<br><span class="hljs-keyword">if</span> ans:<br>	<span class="hljs-built_in">print</span>(ans)<br><span class="hljs-keyword">else</span>:<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;NO！！！&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">random_binary_string</span>(<span class="params">length = <span class="number">16</span></span>):</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(random.choice(<span class="string">&#x27;01&#x27;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(length))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">H</span>(<span class="params">x</span>):</span><br><span class="line">	<span class="keyword">return</span> hashlib.sha256(x.encode()).hexdigest()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SmallSpaceBirthdayAttack</span>():</span><br><span class="line">	x_0 = random_binary_string()</span><br><span class="line">	x = x_0</span><br><span class="line">	x_1 = x_0</span><br><span class="line">	i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">#寻找碰撞</span></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span> :</span><br><span class="line">		x = H(x)</span><br><span class="line">		x_1 = H(H(x_1))</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> x == x_1:</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">#回溯，寻找具体碰撞点</span></span><br><span class="line">	x = x_0</span><br><span class="line">	x_1 = x_0</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		<span class="keyword">if</span> H(x) == H(x_1):</span><br><span class="line">			<span class="keyword">return</span> (x,x_1)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			x = H(x)</span><br><span class="line">			x_1 = H(x_1)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">ans = SmallSpaceBirthdayAttack()</span><br><span class="line"><span class="keyword">if</span> ans:</span><br><span class="line">	<span class="built_in">print</span>(ans)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;NO！！！&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <h4 id="有意义碰撞"><a href="#有意义碰撞" class="headerlink" title="有意义碰撞"></a>有意义碰撞</h4><p><strong>实现思想：</strong> 将两个类型不同的可选择句子映射为二进制，便可以使用上边的算法<br><strong>映射方法：</strong> 例如找两个语义相反的句子，<br>$type 0: Alice is a good&#x2F;great and honest&#x2F;trustworthy worker&#x2F;employee.$<br>$type 1: Alice is a bad&#x2F;lousy and annoying&#x2F;irritating worker&#x2F;employee.$<br>将类型0&#x2F;1映射到二进制的首数字，剩下的按照每个类型中的每个可选单词是选的第一个还是第二个来映射，如<br>$g(0000) &#x3D; Alice is a good and honest worker.$<br>$g(1101) &#x3D; Alice is a lousy and annoying employee.$</p>
 <h3 id="6-4-3-时空折中攻击（Hellman’s-time-space-tradeoff-）"><a href="#6-4-3-时空折中攻击（Hellman’s-time-space-tradeoff-）" class="headerlink" title="6.4.3 时空折中攻击（Hellman’s time&#x2F;space tradeoff.）"></a>6.4.3 时空折中攻击（Hellman’s time&#x2F;space tradeoff.）</h3><p><strong>时间&#x2F;空间折中</strong>：通过预处理和存储，可以在存储空间和计算时间之间进行权衡，从而在合理的时间和空间复杂度内找到哈希函数的预像。</p>
@@ -703,7 +545,7 @@
 <li>对KDC的成功攻击会导致系统完全崩溃。</li>
 <li>KDC是一个单点故障，如果宕机，安全通信将暂时无法实现，负载较高。（一种解决方法是复制更多的KDC）</li>
 </ul>
-<h3 id="使用KDC进行密钥分发的协议"><a href="#使用KDC进行密钥分发的协议" class="headerlink" title="使用KDC进行密钥分发的协议"></a>使用KDC进行密钥分发的协议</h3><p>Needham-Schroeder 协议，它是 Kerberos 的核心，Kerberos 是一种重要且广泛使用的用于执行身份验证和支持安全通信的服务<br><img src="/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250425203749171.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="使用KDC进行密钥分发的协议"><a href="#使用KDC进行密钥分发的协议" class="headerlink" title="使用KDC进行密钥分发的协议"></a>使用KDC进行密钥分发的协议</h3><p>Needham-Schroeder 协议，它是 Kerberos 的核心，Kerberos 是一种重要且广泛使用的用于执行身份验证和支持安全通信的服务<br><img src="/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/file-20250425203749171.png"></p>
 <h2 id="11-3密钥交换和Diffie-Hellman协议"><a href="#11-3密钥交换和Diffie-Hellman协议" class="headerlink" title="11.3密钥交换和Diffie-Hellman协议"></a>11.3密钥交换和Diffie-Hellman协议</h2><p>KDC协议在实践中仍然不能解决密钥分发问题</p>
 <p>Diffie-Hellman密钥交换协议允许两个当事人，Alice和Bob，在事先没有交换任何秘密信息的情况下达成一个秘密密钥，该方法基于循环群。</p>
 <h3 id="安全的设定和定义"><a href="#安全的设定和定义" class="headerlink" title="安全的设定和定义"></a>安全的设定和定义</h3><h3 id="Diffie-Hellman密钥交换协议"><a href="#Diffie-Hellman密钥交换协议" class="headerlink" title="Diffie-Hellman密钥交换协议"></a>Diffie-Hellman密钥交换协议</h3><p>该协议本身基于群$Z_p^*$，其中$p$是大素数。在Diffie-Hellman（DH）密钥交换中可以使用的素数是标准化的—也就是说素数$p$必须是安全素数，即$p&#x3D;2q+1$，其中$q$也是素数。</p>
@@ -1096,457 +938,78 @@
 <li>计算$I&#x3D;g^{H(m)⋅s^{−1}}⋅y^{r⋅s^{−1}}$。    </li>
 <li>检查是否$r&#x3D;F(I)$。</li>
 </ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Ramoor.github.io">Ramoor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/">http://ramoor.github.io/2025/04/28/Introduction%20To%20Modern%20Cryptography%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Ramoor.github.io" target="_blank">Ramoor</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Crypto/">Crypto</a><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81/">密码</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/04/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-MT19937/" title="Crypto基础篇-MT19937"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Crypto基础篇-MT19937</div></div><div class="info-2"><div class="info-item-1">简介梅森旋转（Mersenne Twister）是一个PRNG（伪随机数发生器），基于有限二进制字段上的矩阵线性递归，可快速产生高质量的伪随机数，周期为$2^{19937}-1$，也就是19937bits。python中的random库使用的便是这种算法。 实现步骤： 获得基础的梅森旋转链 对于旋转链进行旋转算法 对旋转算法所得结果进行处理  涉及变量： $w:$ 加密长度，以bit为单位，$w$位整数 $n:$ 递归长度 $m:$ 周期参数，用于第三阶段的偏移量 $a:$ 旋转矩阵的参数 $r:$ 低位掩码，即低位要提取的位数 $f:$ 初始化旋转链所需参数 $b,c:$ TGFSR的掩码 $s,t:$ TGFSR的位移量 $u,d,l:$ 额外的梅森旋转所需要的掩码和位移量  加密方法1.初始化将传入的seed赋值给$MT_0$作为初始值，并且递推得到旋转链递推式： $MT_I&#x3D;f\times [(MT_{i-1})\oplus((MT_{i-1})&gt;&gt;(w-2))]+i$ 2.旋转算法连接$MT_i$的高$w-r$位和$MT_{i+1}$的低$r$位，...</div></div></div></a><a class="pagination-related" href="/2025/04/16/XYCTF%202025%20Writeup/" title="XYCTF 2025 Writeup"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">XYCTF 2025 Writeup</div></div><div class="info-2"><div class="info-item-1">XYCTF 2025赛题复现 CryptoComplex_signin题目： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071from Crypto.Util.number import *from Crypto.Cipher import ChaCha20import hashlibfrom secret import flagclass Complex:    def __init__(self, re, im):        self.re = re        self.im = im    def __mul__(self, c):        re_ = self.re * c.re - self.im * c.im        im_ = self.re * c.im + self.im * c.re        return Complex...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/04/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-MT19937/" title="Crypto基础篇-MT19937"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-29</div><div class="info-item-2">Crypto基础篇-MT19937</div></div><div class="info-2"><div class="info-item-1">简介梅森旋转（Mersenne Twister）是一个PRNG（伪随机数发生器），基于有限二进制字段上的矩阵线性递归，可快速产生高质量的伪随机数，周期为$2^{19937}-1$，也就是19937bits。python中的random库使用的便是这种算法。 实现步骤： 获得基础的梅森旋转链 对于旋转链进行旋转算法 对旋转算法所得结果进行处理  涉及变量： $w:$ 加密长度，以bit为单位，$w$位整数 $n:$ 递归长度 $m:$ 周期参数，用于第三阶段的偏移量 $a:$ 旋转矩阵的参数 $r:$ 低位掩码，即低位要提取的位数 $f:$ 初始化旋转链所需参数 $b,c:$ TGFSR的掩码 $s,t:$ TGFSR的位移量 $u,d,l:$ 额外的梅森旋转所需要的掩码和位移量  加密方法1.初始化将传入的seed赋值给$MT_0$作为初始值，并且递推得到旋转链递推式： $MT_I&#x3D;f\times [(MT_{i-1})\oplus((MT_{i-1})&gt;&gt;(w-2))]+i$ 2.旋转算法连接$MT_i$的高$w-r$位和$MT_{i+1}$的低$r$位，...</div></div></div></a><a class="pagination-related" href="/2025/04/14/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" title="Crypto基础篇-古典密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-14</div><div class="info-item-2">Crypto基础篇-古典密码</div></div><div class="info-2"><div class="info-item-1">caesar密码（凯撒密码）介绍： 将字母表循环移n位。代码： 12345678910111213#凯撒爆破cipher=&quot;AFFPGS&#123;pbatenghyngvbaf!!!&#125;&quot;for i in range(1,26):    ans=&quot;&quot;    for j in cipher:        if j.isalpha():            if j.islower():                ans += chr((ord(j)-ord(&#x27;a&#x27;)+i)%26 + ord(&#x27;a&#x27;))            elif j.isupper():                ans += chr((ord(j)-ord(&#x27;A&#x27;)+i)%26 + ord(&#x27;A&#x27;))        else:            ans +=j    print(f&quot;shitf&#123;i&#125;:&quot; +ans)  八卦介绍...</div></div></div></a><a class="pagination-related" href="/2025/05/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86/" title="Crypto基础篇-同态加密"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-29</div><div class="info-item-2">Crypto基础篇-同态加密</div></div><div class="info-2"><div class="info-item-1">Paillier同态加密密钥生成：  随机选择两个大素数$p,q$，满足$gcd(pq,(p-1)(q-1))&#x3D;1$ 计算$n &#x3D; pq$，$\lambda &#x3D;lcm(p-1,q-1)$ 选择随机整数$g（g\in Z^*_{n^2}）$，定义$L(x)&#x3D; \frac{x-1}{n}$，满足$gcd(L(g^\lambda \mod n^2),n)&#x3D;1$ 计算$\mu &#x3D; (L(g^\lambda \mod n^2))^{-1}\mod n$ 公钥为$(n,g)$，私钥为$(\lambda,\mu)$   二项定理：$(1+kn)^m\equiv knm+1 \mod n^2$此时有$g^\lambda\equiv 1\mod n$，$g^{n\lambda}\equiv 1 \mod n^2$  简化版：  $g&#x3D;n+1$ $\lambda&#x3D;\phi(n)&#x3D;(p-1)(q-1)$ $\mu &#x3D; \phi(n)^{-1}\mod n$加密： 明文$m（0\leq m &lt; n）...</div></div></div></a><a class="pagination-related" href="/2025/09/22/WMCTF%202025%20%E5%A4%8D%E7%8E%B0/" title="WMCTF 2025 复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-22</div><div class="info-item-2">WMCTF 2025 复现</div></div><div class="info-2"><div class="info-item-1">在团队的共同努力下，我们 DAWN 战队也是成功挤进了前十 σ ﾟ∀ ﾟ) ﾟ∀ﾟ)σ，记录一下有趣的题目，更新ing CryptoLW3比赛时没有做出来，看了鸡块和 MNGA 的 wp 才开始复现。题目： 12345678910111213141516from random import choice, samplefrom Crypto.Cipher import AESfrom hashlib import md5from secret import flagm, n = 90, 64p = 1048583E = sample(range(1, p), 3)s = random_vector(Zmod(p), n)A = random_matrix(Zmod(p), m, n)e = vector(Zmod(p), [choice(E) for i in range(m)])b = A*s + eprint(&quot;🎁 :&quot;, E + A.list() + b.list())print(&quot;🚩 :&quot;, AES.new(key=md5((s...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Ramoor</div><div class="author-info-description">Ramoor Blog</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%A7%81%E9%92%A5%E5%AF%86%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">3.私钥密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E8%AE%A1%E7%AE%97%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">3.1 计算安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E5%85%B7%E4%BD%93%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">3.1.1 具体方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E6%B8%90%E8%BF%91%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">3.1.2 渐近方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%90%E8%BF%91%E6%B3%95%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">渐近法详细说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BA%E6%B8%90%E8%BF%91%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%9A%E4%B9%89%E9%80%89%E6%8B%A9"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">论渐近安全的定义选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%BD%E6%9D%BE%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">宽松的必要性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%AE%9A%E4%B9%89%E8%AE%A1%E7%AE%97%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86"><span class="toc-number">1.2.</span> <span class="toc-text">3.2 定义计算安全加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E5%AE%9A%E4%B9%89%EF%BC%88EAV%E5%AE%89%E5%85%A8%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">3.2.1 基本安全定义（EAV安全）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%AD%E7%A4%BA%E6%98%8E%E6%96%87%E9%95%BF%E5%BA%A6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">揭示明文长度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E8%AF%AD%E4%B9%89%E5%AE%89%E5%85%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">3.2.2 语义安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%9E%84%E5%BB%BAEAV%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">3.3 构建EAV安全加密方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88PRG%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.3.1 伪随机生成器（PRG）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E8%A7%84%E7%BA%A6%E8%AF%81%E6%98%8E"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.3.2 规约证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84EAV%E5%AE%89%E5%85%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3.3 伪随机数生成器的EAV安全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">加密方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%84%E7%BA%A6-%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">规约-讨论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">具体安全性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E6%9B%B4%E5%BC%BA%E7%9A%84%E5%AE%89%E5%85%A8%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.</span> <span class="toc-text">3.4 更强的安全概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-%E5%A4%9A%E6%AC%A1%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.4.1 多次加密的安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%8A%A0%E5%AF%86%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">概率加密的必要性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8%E5%A4%9A%E6%AC%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">流密码安全多次加密方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB%E5%92%8CCPA%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.4.2 选择明文攻击和CPA安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPA%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">CPA安全性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-CPA%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%A4%9A%E6%B6%88%E6%81%AF%E5%8A%A0%E5%AF%86"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.4.3 CPA安全性和多消息加密</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AACPA%E5%AE%89%E5%85%A8%E7%9A%84%E5%8A%A0%E5%AF%86%E6%96%B9%E6%A1%88"><span class="toc-number">1.5.</span> <span class="toc-text">3.5 构建一个CPA安全的加密方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-1-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0%EF%BC%88PRFs%EF%BC%89%E5%92%8C%E7%BD%AE%E6%8D%A2"><span class="toc-number">1.5.1.</span> <span class="toc-text">3.5.1 伪随机函数（PRFs）和置换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E7%BD%AE%E6%8D%A2"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">伪随机置换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-2-%E5%9F%BA%E4%BA%8E%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0%E7%9A%84CPA%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">3.5.2 基于伪随机函数的CPA安全</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81%EF%BC%88MAC%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">4.消息认证码（MAC）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%B6%88%E6%81%AF%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">4.1 消息完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E5%AE%89%E5%85%A8%E6%80%A7vs%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">2.1.1.</span> <span class="toc-text">4.1.1 安全性vs完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E5%8A%A0%E5%AF%86%E4%B8%8E%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81"><span class="toc-number">2.1.2.</span> <span class="toc-text">4.1.2 加密与消息认证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-MAC%E5%AE%9A%E4%B9%89"><span class="toc-number">2.2.</span> <span class="toc-text">4.2 MAC定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">消息认证码的语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MAC%E5%AE%89%E5%85%A8"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">MAC安全</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%80%89%E6%8B%A9%E5%AF%86%E6%96%87%E6%94%BB%E5%87%BB-CCA-%E5%AE%89%E5%85%A8%E5%92%8C%E8%AE%A4%E8%AF%81%E5%8A%A0%E5%AF%86"><span class="toc-number">3.</span> <span class="toc-text">5.选择密文攻击(CCA)安全和认证加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2Padding-Oracle-Attacks%EF%BC%88%E5%A1%AB%E5%85%85%E6%8F%90%E7%A4%BA%E6%94%BB%E5%87%BB%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">5.2Padding-Oracle Attacks（填充提示攻击）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95%EF%BC%9A-CBC%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text">攻击方法：(CBC模式)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%81%E6%94%BB%E5%87%BB"><span class="toc-number">3.1.2.</span> <span class="toc-text">验证码攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCA%E5%AE%89%E5%85%A8%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.3.</span> <span class="toc-text">CCA安全性定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E8%AE%A4%E8%AF%81%E5%8A%A0%E5%AF%86%EF%BC%88AE%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">5.2认证加密（AE）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">6.哈希函数和应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2The-Merkle-Damgard-Transform"><span class="toc-number">4.1.</span> <span class="toc-text">6.2The Merkle-Damgard Transform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-Hash-and-MAC%E5%92%8CHMAC"><span class="toc-number">4.2.</span> <span class="toc-text">6.3 Hash-and-MAC和HMAC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-1-Hash-and-MAC"><span class="toc-number">4.2.1.</span> <span class="toc-text">6.3.1 Hash-and-MAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-2-HMAC"><span class="toc-number">4.2.2.</span> <span class="toc-text">6.3.2 HMAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-1-%E7%94%9F%E6%97%A5%E6%94%BB%E5%87%BB"><span class="toc-number">4.2.3.</span> <span class="toc-text">6.4.1 生日攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E6%84%8F%E4%B9%89%E7%A2%B0%E6%92%9E%EF%BC%9A"><span class="toc-number">4.2.3.1.</span> <span class="toc-text">有意义碰撞：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-2-%E5%B0%8F%E7%A9%BA%E9%97%B4%E7%94%9F%E6%97%A5%E6%94%BB%E5%87%BB"><span class="toc-number">4.2.4.</span> <span class="toc-text">6.4.2 小空间生日攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E6%84%8F%E4%B9%89%E7%A2%B0%E6%92%9E"><span class="toc-number">4.2.4.1.</span> <span class="toc-text">有意义碰撞</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-3-%E6%97%B6%E7%A9%BA%E6%8A%98%E4%B8%AD%E6%94%BB%E5%87%BB%EF%BC%88Hellman%E2%80%99s-time-space-tradeoff-%EF%BC%89"><span class="toc-number">4.2.5.</span> <span class="toc-text">6.4.3 时空折中攻击（Hellman’s time&#x2F;space tradeoff.）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hellman-%E7%9A%84%E6%97%B6%E9%97%B4-%E7%A9%BA%E9%97%B4%E6%8A%98%E4%B8%AD"><span class="toc-number">4.2.5.1.</span> <span class="toc-text">Hellman 的时间&#x2F;空间折中</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E6%95%B0%E8%AE%BA%E4%B8%8E%E5%AF%86%E7%A0%81%E5%9B%B0%E9%9A%BE%E5%81%87%E8%AE%BE"><span class="toc-number">5.</span> <span class="toc-text">9.数论与密码困难假设</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-1%E8%B4%A8%E6%95%B0%E5%92%8C%E5%8F%AF%E9%99%A4%E6%80%A7"><span class="toc-number">5.0.1.</span> <span class="toc-text">9.1.1质数和可除性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-2%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="toc-number">5.0.2.</span> <span class="toc-text">9.1.2模运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-3%E7%BE%A4"><span class="toc-number">5.0.3.</span> <span class="toc-text">9.1.3群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-4-%E4%B9%98%E6%B3%95%E7%BE%A4%EF%BC%9A%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="toc-number">5.0.4.</span> <span class="toc-text">9.1.4 乘法群：欧拉函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-5%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86%EF%BC%88CRT%EF%BC%89"><span class="toc-number">5.0.5.</span> <span class="toc-text">9.1.5中国剩余定理（CRT）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E7%B4%A0%E6%95%B0%E3%80%81%E5%88%86%E8%A7%A3%E3%80%81RSA"><span class="toc-number">5.1.</span> <span class="toc-text">9.2 素数、分解、RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-1-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E7%B4%A0%E6%95%B0"><span class="toc-number">5.1.1.</span> <span class="toc-text">9.2.1 生成随机素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-2-%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-number">5.1.2.</span> <span class="toc-text">9.2.2 素性测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Miller-Rabin-%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">Miller-Rabin 素性测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-3-%E5%88%86%E8%A7%A3%E5%81%87%E8%AE%BE"><span class="toc-number">5.1.3.</span> <span class="toc-text">9.2.3 分解假设</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-4-RSA%E5%81%87%E8%AE%BE"><span class="toc-number">5.1.4.</span> <span class="toc-text">9.2.4 RSA假设</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3%E5%BE%AA%E7%8E%AF%E7%BE%A4%E4%B8%AD%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">5.2.</span> <span class="toc-text">9.3循环群中的密码学假设</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-1%E5%BE%AA%E7%8E%AF%E7%BE%A4%E5%92%8C%E7%94%9F%E6%88%90%E5%85%83"><span class="toc-number">5.2.1.</span> <span class="toc-text">9.3.1循环群和生成元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-2%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0-Diffie-Hellman%E5%81%87%E8%AE%BE"><span class="toc-number">5.2.2.</span> <span class="toc-text">9.3.2离散对数&#x2F;Diffie-Hellman假设</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A0%E6%95%B0%E9%98%B6%E7%BE%A4"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">使用素数阶群</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-3-Z-p-%E7%9A%84%E5%AD%90%E7%BE%A4"><span class="toc-number">5.2.3.</span> <span class="toc-text">9.3.3 $Z_p^*$的子群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-4%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF"><span class="toc-number">5.2.4.</span> <span class="toc-text">9.3.4椭圆曲线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Montgomery%E8%A1%A8%E7%A4%BA"><span class="toc-number">5.2.4.1.</span> <span class="toc-text">Montgomery表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%88Twisted-Edwards%E8%A1%A8%E7%A4%BA"><span class="toc-number">5.2.4.2.</span> <span class="toc-text">（Twisted) Edwards表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%BE%A4"><span class="toc-number">5.2.4.3.</span> <span class="toc-text">选择椭圆曲线群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98"><span class="toc-number">5.2.4.4.</span> <span class="toc-text">实际问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%82%B9%E5%8E%8B%E7%BC%A9"><span class="toc-number">5.2.4.4.1.</span> <span class="toc-text">1.点压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%B0%84%E5%BD%B1%E5%9D%90%E6%A0%87"><span class="toc-number">5.2.4.4.2.</span> <span class="toc-text">2.射影坐标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%B8%B8%E7%94%A8%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF"><span class="toc-number">5.2.4.4.3.</span> <span class="toc-text">3.常用椭圆曲线</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E5%92%8C%E5%85%AC%E9%92%A5%E9%9D%A9%E5%91%BD"><span class="toc-number">6.</span> <span class="toc-text">11.密钥管理和公钥革命</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1%E5%AF%86%E9%92%A5%E5%88%86%E9%85%8D%E5%92%8C%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">11.1密钥分配和密钥管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2%E9%83%A8%E5%88%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%AF%86%E9%92%A5%E5%88%86%E9%85%8D%E4%B8%AD%E5%BF%83%EF%BC%88KDC%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">11.2部分解决方案：密钥分配中心（KDC）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8KDC%E8%BF%9B%E8%A1%8C%E5%AF%86%E9%92%A5%E5%88%86%E5%8F%91%E7%9A%84%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.2.1.</span> <span class="toc-text">使用KDC进行密钥分发的协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%92%8CDiffie-Hellman%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.3.</span> <span class="toc-text">11.3密钥交换和Diffie-Hellman协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="toc-number">6.3.1.</span> <span class="toc-text">安全的设定和定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Diffie-Hellman%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.3.2.</span> <span class="toc-text">Diffie-Hellman密钥交换协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BB%E8%B7%83%E5%AF%B9%E6%89%8B"><span class="toc-number">6.3.3.</span> <span class="toc-text">活跃对手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4%E5%85%AC%E9%92%A5%E9%9D%A9%E5%91%BD"><span class="toc-number">6.4.</span> <span class="toc-text">11.4公钥革命</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%A0%94%E7%A9%B6%E7%A7%81%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%9F"><span class="toc-number">6.4.1.</span> <span class="toc-text">为什么要研究私钥密码学？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86"><span class="toc-number">7.</span> <span class="toc-text">12.公钥加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1%E6%A6%82%E8%BF%B0"><span class="toc-number">7.1.</span> <span class="toc-text">12.1概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E7%A7%81%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">7.1.1.</span> <span class="toc-text">与私钥加密的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E5%AF%86%E9%92%A5%E7%9A%84%E5%AE%89%E5%85%A8%E5%88%86%E5%8F%91"><span class="toc-number">7.1.2.</span> <span class="toc-text">公共密钥的安全分发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E5%AE%9A%E4%B9%89"><span class="toc-number">7.2.</span> <span class="toc-text">12.2 定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-1-%E9%92%88%E5%AF%B9%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">7.2.1.</span> <span class="toc-text">12.2.1 针对选择明文攻击的安全性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E7%9A%84%E4%B8%8D%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">7.2.1.1.</span> <span class="toc-text">公钥的不安全性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-2-%E5%A4%9A%E6%B6%88%E6%81%AF%E5%8A%A0%E5%AF%86"><span class="toc-number">7.2.2.</span> <span class="toc-text">12.2.2 多消息加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E4%BB%BB%E6%84%8F%E9%95%BF%E5%BA%A6%E6%B6%88%E6%81%AF"><span class="toc-number">7.2.2.1.</span> <span class="toc-text">加密任意长度消息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-3-%E9%92%88%E5%AF%B9%E9%80%89%E6%8B%A9%E5%AF%86%E6%96%87%E6%94%BB%E5%87%BB%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">7.2.3.</span> <span class="toc-text">12.2.3 针对选择密文攻击的安全性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3%E6%B7%B7%E5%90%88%E5%8A%A0%E5%AF%86%E5%92%8CKEM-DEM%E8%8C%83%E4%BE%8B"><span class="toc-number">7.3.</span> <span class="toc-text">12.3混合加密和KEM&#x2F;DEM范例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-1-CPA%E5%AE%89%E5%85%A8"><span class="toc-number">7.3.1.</span> <span class="toc-text">12.3.1 CPA安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-2-CCA%E5%AE%89%E5%85%A8"><span class="toc-number">7.3.2.</span> <span class="toc-text">12.3.2 CCA安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4-%E5%9F%BA%E4%BA%8ECDH-DDH%E7%9A%84%E5%8A%A0%E5%AF%86"><span class="toc-number">7.4.</span> <span class="toc-text">12.4 基于CDH&#x2F;DDH的加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-1-El-Gamal%E5%8A%A0%E5%AF%86"><span class="toc-number">7.4.1.</span> <span class="toc-text">12.4.1 El Gamal加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%96%BD%E9%97%AE%E9%A2%98"><span class="toc-number">7.4.2.</span> <span class="toc-text">实施问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-2-%E5%9F%BA%E4%BA%8EDDH%E7%9A%84%E5%AF%86%E9%92%A5%E5%B0%81%E8%A3%85"><span class="toc-number">7.4.3.</span> <span class="toc-text">12.4.2 基于DDH的密钥封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-3-%E5%9F%BA%E4%BA%8ECDH%E7%9A%84%E9%9A%8F%E6%9C%BA%E9%A2%84%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84KEM"><span class="toc-number">7.4.4.</span> <span class="toc-text">12.4.3 基于CDH的随机预言模型中的KEM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-4-%E9%80%89%E6%8B%A9%E5%AF%86%E6%96%87%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8CDHIES-ECIES"><span class="toc-number">7.4.5.</span> <span class="toc-text">12.4.4 选择密文安全性和DHIES&#x2F;ECIES</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-5%E5%9F%BA%E4%BA%8ERSA%E7%9A%84%E5%8A%A0%E5%AF%86"><span class="toc-number">7.5.</span> <span class="toc-text">12.5基于RSA的加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-1-%E6%99%AE%E9%80%9ARSA%E5%8A%A0%E5%AF%86"><span class="toc-number">7.5.1.</span> <span class="toc-text">12.5.1 普通RSA加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9ARSA%E4%B8%AD%E7%9A%84%E6%9B%B4%E5%A4%9A%E6%94%BB%E5%87%BB"><span class="toc-number">7.5.1.1.</span> <span class="toc-text">普通RSA中的更多攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-2-Padded-RSA-%E5%92%8C-PKCS-1-v1-5"><span class="toc-number">7.5.2.</span> <span class="toc-text">12.5.2 Padded RSA 和 PKCS#1 v1.5</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-PKCS-1-v1-5"><span class="toc-number">7.5.2.1.</span> <span class="toc-text">RSA  PKCS#1 v1.5</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-3-%E6%97%A0%E9%9A%8F%E6%9C%BA%E9%A2%84%E8%A8%80%E7%9A%84CPA%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86"><span class="toc-number">7.5.3.</span> <span class="toc-text">12.5.3 无随机预言的CPA安全加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA%E9%97%AE%E9%A2%98%E7%9A%84%E7%A1%AC%E6%A0%B8%E8%B0%93%E8%AF%8D"><span class="toc-number">7.5.3.1.</span> <span class="toc-text">RSA问题的硬核谓词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E5%BB%BAKEM"><span class="toc-number">7.5.3.2.</span> <span class="toc-text">构建KEM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E7%8E%87"><span class="toc-number">7.5.3.3.</span> <span class="toc-text">效率</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-4-OAEP-and-PKCS-1-v2"><span class="toc-number">7.5.4.</span> <span class="toc-text">12.5.4 OAEP and PKCS #1 v2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9ARSA%E5%8A%A0%E5%AF%86"><span class="toc-number">7.5.4.1.</span> <span class="toc-text">普通RSA加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-PKCS-1-v1-5-1"><span class="toc-number">7.5.4.2.</span> <span class="toc-text">RSA PKCS #1 v1.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-OAEP%E6%9E%84%E5%BB%BA"><span class="toc-number">7.5.4.3.</span> <span class="toc-text">RSA-OAEP构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Manger%E2%80%99s-CPA-on-PKCS-1-v2-0"><span class="toc-number">7.5.4.4.</span> <span class="toc-text">Manger’s CPA on PKCS #1 v2.0.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-5-%E9%9A%8F%E6%9C%BA%E9%A2%84%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%B8%ADCCA%E5%AE%89%E5%85%A8%E7%9A%84KEM"><span class="toc-number">7.5.5.</span> <span class="toc-text">12.5.5 随机预言模型中CCA安全的KEM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-6-RSA%E7%9A%84%E5%AE%9E%E7%8E%B0%E9%97%AE%E9%A2%98%E5%92%8C%E9%99%B7%E9%98%B1"><span class="toc-number">7.5.6.</span> <span class="toc-text">12.5.6 RSA的实现问题和陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8CRT%E6%97%B6%E7%9A%84%E6%95%85%E9%9A%9C%E6%94%BB%E5%87%BB"><span class="toc-number">7.5.6.1.</span> <span class="toc-text">使用CRT时的故障攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%85%AC%E9%92%A5I"><span class="toc-number">7.5.6.2.</span> <span class="toc-text">依赖公钥I</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%85%AC%E9%92%A5II"><span class="toc-number">7.5.6.3.</span> <span class="toc-text">依赖公钥II</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-%E6%95%B0%E6%8D%AE%E7%AD%BE%E5%90%8D%E6%96%B9%E6%A1%88"><span class="toc-number">8.</span> <span class="toc-text">13.数据签名方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-%E6%A6%82%E8%BF%B0"><span class="toc-number">8.1.</span> <span class="toc-text">13.1 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8EMAC%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">8.1.1.</span> <span class="toc-text">与MAC的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">8.1.2.</span> <span class="toc-text">与公钥加密的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2%E5%AE%9A%E4%B9%89"><span class="toc-number">8.2.</span> <span class="toc-text">13.2定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%90%8D%E6%96%B9%E6%A1%88%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">8.2.1.</span> <span class="toc-text">签名方案的安全性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-3-hash%E7%AD%BE%E5%90%8D%E6%96%B9%E6%A1%88"><span class="toc-number">8.3.</span> <span class="toc-text">13.3 hash签名方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-4-%E5%9F%BA%E4%BA%8ERSA%E7%9A%84%E7%AD%BE%E5%90%8D"><span class="toc-number">8.4.</span> <span class="toc-text">13.4 基于RSA的签名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-1%E6%99%AE%E9%80%9ARSA%E7%AD%BE%E5%90%8D"><span class="toc-number">8.4.1.</span> <span class="toc-text">13.4.1普通RSA签名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E6%B6%88%E6%81%AF%E6%94%BB%E5%87%BB"><span class="toc-number">8.4.1.1.</span> <span class="toc-text">无消息攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E6%B6%88%E6%81%AF%E4%B8%8A%E7%9A%84%E7%AD%BE%E5%90%8D"><span class="toc-number">8.4.1.2.</span> <span class="toc-text">任意消息上的签名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-2-RSA-FDH-%E5%92%8CPKCS-1%E6%A0%87%E5%87%86"><span class="toc-number">8.4.2.</span> <span class="toc-text">13.4.2 RSA-FDH 和PKCS #1标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-PKCS-1%E6%A0%87%E5%87%86"><span class="toc-number">8.4.2.1.</span> <span class="toc-text">RSA PKCS #1标准</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-5%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0%E9%97%AE%E9%A2%98%E7%9A%84%E7%AD%BE%E5%90%8D"><span class="toc-number">8.5.</span> <span class="toc-text">13.5离散对数问题的签名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-1%E6%A0%87%E8%AF%86%E6%96%B9%E6%A1%88%E5%92%8C%E7%AD%BE%E5%90%8D"><span class="toc-number">8.5.1.</span> <span class="toc-text">13.5.1标识方案和签名</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E6%96%B9%E6%A1%88"><span class="toc-number">8.5.1.1.</span> <span class="toc-text">识别方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E8%AF%86%E5%88%AB%E6%96%B9%E6%A1%88%E5%88%B0%E7%AD%BE%E5%90%8D"><span class="toc-number">8.5.1.2.</span> <span class="toc-text">从识别方案到签名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-2-Schnorr-%E8%BA%AB%E4%BB%BD%E8%AF%86%E5%88%AB-%E7%AD%BE%E5%90%8D%E6%96%B9%E6%A1%88"><span class="toc-number">8.5.2.</span> <span class="toc-text">13.5.2 Schnorr 身份识别&#x2F;签名方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-3-DSA%E5%92%8CECDSA"><span class="toc-number">8.5.3.</span> <span class="toc-text">13.5.3 DSA和ECDSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DSA%E6%9E%84%E9%80%A0"><span class="toc-number">8.5.3.1.</span> <span class="toc-text">DSA构造</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ECDSA%E6%9E%84%E9%80%A0"><span class="toc-number">8.5.3.2.</span> <span class="toc-text">ECDSA构造</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/Crypto%E8%BF%9B%E9%98%B6%E7%AF%87-ECC/" title="Crypto进阶篇-ECC">Crypto进阶篇-ECC</a><time datetime="2025-12-27T05:57:50.000Z" title="发表于 2025-12-27 13:57:50">2025-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/25/CISCN%20%E5%BE%80%E5%B9%B4%E9%A2%98%E7%BB%83%E4%B9%A0/" title="CISCN 往年题练习">CISCN 往年题练习</a><time datetime="2025-12-24T17:26:46.000Z" title="发表于 2025-12-25 01:26:46">2025-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-RC4/" title="Crypto基础篇-RC4">Crypto基础篇-RC4</a><time datetime="2025-12-23T16:14:12.000Z" title="发表于 2025-12-24 00:14:12">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C%E7%BB%B4%E7%A0%81/" title="MISC基础篇-二维码">MISC基础篇-二维码</a><time datetime="2025-12-23T16:00:22.000Z" title="发表于 2025-12-24 00:00:22">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E6%80%BB%E7%BB%93/" title="MISC总结">MISC总结</a><time datetime="2025-12-23T16:00:13.000Z" title="发表于 2025-12-24 00:00:13">2025-12-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Ramoor</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Study/" class="category-chain-item">Study</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Crypto/" class="print-no-link">#Crypto</a>
-      
-        <a href="/tags/%E5%AF%86%E7%A0%81/" class="print-no-link">#密码</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Introduction To Modern Cryptography学习随笔</div>
-      <div>http://ramoor.github.io/2025/04/28/Introduction To Modern Cryptography学习随笔/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>Ramoor</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2025年4月28日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2025/04/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-MT19937/" title="Crypto基础篇-MT19937">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Crypto基础篇-MT19937</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2025/04/16/XYCTF%202025%20Writeup/" title="XYCTF 2025 Writeup">
-                        <span class="hidden-mobile">XYCTF 2025 Writeup</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  
-  
-    <article id="comments" lazyload>
-      
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
           }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-    </article>
-  
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-    </div>
-  
-  
-    <div class="statistics">
-  
-  
-
-  
-    
-      <span id="leancloud-site-pv-container" style="display: none">
-        总访问量 
-        <span id="leancloud-site-pv"></span>
-         次
-      </span>
-    
-    
-      <span id="leancloud-site-uv-container" style="display: none">
-        总访客数 
-        <span id="leancloud-site-uv"></span>
-         次
-      </span>
-    
-    
-
-  
-
-</div>
-
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
         }
       }
-    });
-  });
-</script>
 
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
     }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
+  }
 
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script defer src="/js/leancloud.js" ></script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-  
-<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-<!-- hexo injector body_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-        delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-            //{left: '\(', right: '\)', display: false},
-            //{left: '\[', right: '\]', display: true}
-        ],
-          // • rendering keys, e.g.:
-        throwOnError : false
-        });
-    });
-</script>
-<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
-</html>
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

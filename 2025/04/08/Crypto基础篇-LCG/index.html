@@ -1,325 +1,170 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/2.jpg">
-  <link rel="icon" href="/img/2.jpg">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Ramoor">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="简介LCG： 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$该问题总结来说的常见考点：  求$X_0(seed)$ 求$b$ 求$a$ 求$m$ 非连续 $X_n$高位泄露我们接下来逐个分析求解，  求$X_0(seed)$条件： 已知$a,b,m,X_n$分析：$\because X_{n}\equiv aX_{n-1}+b \mod m$$\therefore">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Crypto基础篇-LCG | Ramoor</title><meta name="author" content="Ramoor"><meta name="copyright" content="Ramoor"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介LCG： 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$该问题总结来说的常见考点：  求$X_0(seed)$ 求$b$ 求$a$ 求$m$ 非连续 $X_n$高位泄露我们接下来逐个分析求解，  求$X_0(seed)$条件： 已知$a,b,m,X_n$分析：$\because X_{n}\equiv aX_{n-1}+b \mod m$$\therefore">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Crypto基础篇-LCG">
 <meta property="og:url" content="http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/index.html">
 <meta property="og:site_name" content="Ramoor">
 <meta property="og:description" content="简介LCG： 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$该问题总结来说的常见考点：  求$X_0(seed)$ 求$b$ 求$a$ 求$m$ 非连续 $X_n$高位泄露我们接下来逐个分析求解，  求$X_0(seed)$条件： 已知$a,b,m,X_n$分析：$\because X_{n}\equiv aX_{n-1}+b \mod m$$\therefore">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ramoor.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2025-04-08T05:43:33.000Z">
-<meta property="article:modified_time" content="2025-04-08T09:39:25.403Z">
+<meta property="article:modified_time" content="2026-04-04T08:05:50.569Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="LCG">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Crypto基础篇-LCG - Ramoor</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-  
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ramoor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","app_key":"DpXRDnV0ErOnqjSiWrfRvGWm","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ramoor.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Crypto基础篇-LCG",
+  "url": "http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/",
+  "image": "http://ramoor.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-04-08T05:43:33.000Z",
+  "dateModified": "2026-04-04T08:05:50.569Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Ramoor",
+      "url": "http://Ramoor.github.io"
     }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-  
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-  
-
-  
-
-  
+      const theme = saveToLocal.get('theme')
     
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-
-
-
-  
-<!-- hexo injector head_end start -->
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Crypto基础篇-LCG',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Ramoor</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/6.jpg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="Crypto基础篇-LCG"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-08 13:43" pubdate>
-          2025年4月8日 下午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          930 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          8 分钟
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="leancloud-page-views"></span>次
-        </span>
-        
-      
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">Crypto基础篇-LCG</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>LCG：</strong> 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$<br>该问题总结来说的常见考点：</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Ramoor</span></a><a class="nav-page-title" href="/"><span class="site-name">Crypto基础篇-LCG</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Crypto基础篇-LCG</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-08T05:43:33.000Z" title="发表于 2025-04-08 13:43:33">2025-04-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-04T08:05:50.569Z" title="更新于 2026-04-04 16:05:50">2026-04-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Study/">Study</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>LCG：</strong> 即线性同余生成器，形式为$X_{n+1}\equiv aX_n+b\mod m$<br>该问题总结来说的常见考点：</p>
 <ul>
 <li>求$X_0(seed)$</li>
 <li>求$b$</li>
@@ -329,497 +174,103 @@
 <li>$X_n$高位泄露<br>我们接下来逐个分析求解，</li>
 </ul>
 <h2 id="求-X-0-seed"><a href="#求-X-0-seed" class="headerlink" title="求$X_0(seed)$"></a>求$X_0(seed)$</h2><p><strong>条件：</strong> 已知$a,b,m,X_n$<br><strong>分析：</strong><br>$\because X_{n}\equiv aX_{n-1}+b \mod m$<br>$\therefore aX_{n-1}\equiv X_n-b\mod m$<br>$\therefore X_{n-1}\equiv a^{-1}(X_n-b) \mod m$<br>依次类推，便可以求得$X_0$<br><strong>代码实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>a=<br>b=<br>m=<br>X_n=<br><br>inv_a=inverse(a,m)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>	X_n=inv_a*(X_n-b) %m<br>seed=X_n<br><span class="hljs-built_in">print</span>(seed)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">a=</span><br><span class="line">b=</span><br><span class="line">m=</span><br><span class="line">X_n=</span><br><span class="line"></span><br><span class="line">inv_a=inverse(a,m)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">	X_n=inv_a*(X_n-b) %m</span><br><span class="line">seed=X_n</span><br><span class="line"><span class="built_in">print</span>(seed)</span><br></pre></td></tr></table></figure>
 
 <h2 id="求b"><a href="#求b" class="headerlink" title="求b"></a>求b</h2><p><strong>条件：</strong> 已知$a,m,X_n,X_{n+1}$<br><strong>分析：</strong><br>$\because X_{n+1}\equiv aX_n+b \mod m$<br>$\therefore b\equiv X_{n+1}-aX_n \mod m$<br><strong>代码实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>a=<br>m=<br>X_n=<br>X_n_plus=<br><br>b=X_n_plus-a*X_n %m<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">a=</span><br><span class="line">m=</span><br><span class="line">X_n=</span><br><span class="line">X_n_plus=</span><br><span class="line"></span><br><span class="line">b=X_n_plus-a*X_n %m</span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
 
 <h2 id="求a"><a href="#求a" class="headerlink" title="求a"></a>求a</h2><p><strong>条件：</strong> 已知$m,X_n,X_{n+1},X_{n+2}$<br><strong>分析：</strong><br>$\because已知$<br>$X_{n+2}\equiv aX_{n+1}+b \mod m$<br>$X_{n+1}\equiv aX_n+b \mod m$<br>$\therefore X_{n+2}-X_{n+1}\equiv a(X_{n+1}-X_n) \mod m$<br>$\therefore a\equiv(X_{n+1}-X_n)^{-1}(X_{n+2}-X_{n+1})\mod m$<br><strong>代码实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>m=<br>X_n=<br>X_np1=<br>X_np2=<br><br>a=inverse(X_np1-X_n,m)*(X_np2-X_np1) %m<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">m=</span><br><span class="line">X_n=</span><br><span class="line">X_np1=</span><br><span class="line">X_np2=</span><br><span class="line"></span><br><span class="line">a=inverse(X_np1-X_n,m)*(X_np2-X_np1) %m</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
 
 <h2 id="求m"><a href="#求m" class="headerlink" title="求m"></a>求m</h2><p><strong>条件：</strong> 已知至少两组四个连续的序列值，即最少五个连续值$X_{n-1},X_n,X_{n+1},X_{n+2},X_{n+3}$<br><strong>分析：</strong><br>$\because X_n\equiv aX_{n-1}+b \mod m$<br>令$t_n&#x3D;X_{n+1}-X_n$<br>则$t_{n-1}&#x3D;X_n-X_{n-1}$<br>易得$t_n\equiv at_{n-1} \mod m$<br>同理$t_{n+1}\equiv at_n \mod m$<br>相除消去$a$，再移项得$t_{n+1}t_{n-1}\equiv t_n^2 \mod m$<br>$\therefore t_{n+1}t_{n-1} - t_n^2 &#x3D; k_1m$<br>同理有$t_{n+2}t_{n} - t_{n+1}^2 &#x3D; k_2m$<br>$\therefore m&#x3D;gcd(t_{n+1}t_{n-1} - t_n^2,t_{n+2}t_{n} - t_{n+1}^2 )$</p>
 <p><strong>代码实现：</strong><br>由于实际情况中公因数可能会带有小因子，因此若序列足够多可多试几组。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>X_seq=[]<br><br>t=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(X_seq)-<span class="hljs-number">1</span>):<br>	t.append(X_seq[i+<span class="hljs-number">1</span>]-X_seq[i])<br><br>T=[]  <span class="hljs-comment">#T_i=T_ip2 * T_i - T_ip1**2 </span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(t)-<span class="hljs-number">2</span>):<br>	T.append(t[i+<span class="hljs-number">2</span>]*t[i]-t[i+<span class="hljs-number">1</span>]**<span class="hljs-number">2</span>)<br><br>m=GCD(T[<span class="hljs-number">0</span>],T[<span class="hljs-number">1</span>]) <span class="hljs-comment">#m的候选值</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,<span class="hljs-built_in">len</span>(T)):<br>    m=GCD(m,T[i])<br><br><span class="hljs-built_in">print</span>(m)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">X_seq=[]</span><br><span class="line"></span><br><span class="line">t=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(X_seq)-<span class="number">1</span>):</span><br><span class="line">	t.append(X_seq[i+<span class="number">1</span>]-X_seq[i])</span><br><span class="line"></span><br><span class="line">T=[]  <span class="comment">#T_i=T_ip2 * T_i - T_ip1**2 </span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(t)-<span class="number">2</span>):</span><br><span class="line">	T.append(t[i+<span class="number">2</span>]*t[i]-t[i+<span class="number">1</span>]**<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">m=GCD(T[<span class="number">0</span>],T[<span class="number">1</span>]) <span class="comment">#m的候选值</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="built_in">len</span>(T)):</span><br><span class="line">    m=GCD(m,T[i])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
 
 <h2 id="非连续"><a href="#非连续" class="headerlink" title="非连续"></a>非连续</h2><p><strong>条件：</strong> 已知$X_n,X_{n+2}$等序列<br><strong>分析：</strong><br>$\because X_{n+2}\equiv a(aX_n+b)+b \mod m$<br>$\therefore X_{n+2} \equiv a^2X_n+(a+1)b \mod m$<br>令$a_1&#x3D;a^2,b_1&#x3D;(a+1)b$<br>$\therefore X_{n+2}\equiv a_1X_n+b_1 \mod m$<br>之后按正常LCG步骤便可以解答即可</p>
 <h2 id="X-n-高位-低位泄露"><a href="#X-n-高位-低位泄露" class="headerlink" title="$X_n$高位&#x2F;低位泄露"></a>$X_n$高位&#x2F;低位泄露</h2><p><strong>条件：</strong> 已知$X_n$高位$H_1,H_2,…,H_n（与原bit位相同的高位）,a,b,m$，求$L_1$<br><strong>分析：</strong><br>$\because H_2+L_2\equiv a(H_1+L_1)+b \mod m$<br>$\therefore L_2\equiv aL_1+(aH_1-H_2+b) \mod m$<br>$\therefore L_3\equiv a^2L_1+(a(aH_1-H_2+b)-H_3+b) \mod m$<br>令$A_i&#x3D;a^i\mod m,B_i&#x3D;aB_{i-1}-H_{i+1}+aH_i+b\mod m$，其中$B_1&#x3D;(aH_1-H_2+b)\mod m$<br>因此，得到<br>$L_{i+1}\equiv A_iL_1+B_i \mod m$<br>下一步，构造格</p>
-<span>
-$$
-(k_1,k_2,...,k_n,L_1,1)
-\begin{pmatrix}
-m & 0 & \cdots & 0 & 0 & 0 \\
-0 & m & \cdots & 0 & 0 & 0 \\
-\vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
-0 & 0 & \cdots & m & 0 & 0 \\
-A_1 & A_2 & \cdots & A_n & 1 & 0 \\
-B_1 & B_2 & \cdots & B_n & 0 & K 
-\end{pmatrix} \\
-=(L_2,L_3,...,L_{n+1},L_1,K)
-$$
-
-</span>
-
+<p>$$<br>(k_1,k_2,…,k_n,L_1,1)<br>\begin{pmatrix}<br>m &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \<br>0 &amp; m &amp; \cdots &amp; 0 &amp; 0 &amp; 0 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots \<br>0 &amp; 0 &amp; \cdots &amp; m &amp; 0 &amp; 0 \<br>A_1 &amp; A_2 &amp; \cdots &amp; A_n &amp; 1 &amp; 0 \<br>B_1 &amp; B_2 &amp; \cdots &amp; B_n &amp; 0 &amp; K<br>\end{pmatrix} \<br>&#x3D;(L_2,L_3,…,L_{n+1},L_1,K)<br>$$</p>
 <p>求出$L_1$之后便可以反向求出$seed$，这里的$K$与$L$的bit位相同。</p>
 <blockquote>
 <p>到这里你可能也已经发现了，已知$X_n$的<strong>高位</strong>或者<strong>低位</strong>，其求法本质是一样的，因为在我们的分析中$H$和$L$几乎是完全等效的。</p>
 </blockquote>
 <p><strong>代码实现：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>a=<br>b=<br>m=<br>h=[]<br>kbits=<br><br>H=[<span class="hljs-number">0</span>]+h<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> H:<br>	i &lt;&lt;= kbits<br><br>A=[<span class="hljs-number">1</span>]<br>B=[<span class="hljs-number">0</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(h)-<span class="hljs-number">1</span>):  <br>	A.append(a*A[i-<span class="hljs-number">1</span>] % m)  <br>	B.append((a*B[i-<span class="hljs-number">1</span>]+a*h[i]+b-h[i+<span class="hljs-number">1</span>]) % m)  <br>  <br>A = A[<span class="hljs-number">1</span>:]  <br>B = B[<span class="hljs-number">1</span>:]<br><br>G = Matrix(ZZ,<span class="hljs-built_in">len</span>(H),<span class="hljs-built_in">len</span>(H))<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>[A]):<br>	G[i,i] = m<br>	G[-<span class="hljs-number">2</span>,i] = A[i]<br>	G[-<span class="hljs-number">1.</span>i] = B[i]<br><br>G[-<span class="hljs-number">2</span>,-<span class="hljs-number">2</span>] = <span class="hljs-number">1</span><br>G[-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>] = <span class="hljs-number">2</span>^kbits<br>L=G.LLL()[<span class="hljs-number">0</span>]<br>L1=L[-<span class="hljs-number">2</span>]<br><span class="hljs-built_in">print</span>(L1)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sage</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">a=</span><br><span class="line">b=</span><br><span class="line">m=</span><br><span class="line">h=[]</span><br><span class="line">kbits=</span><br><span class="line"></span><br><span class="line">H=[<span class="number">0</span>]+h</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> H:</span><br><span class="line">	i &lt;&lt;= kbits</span><br><span class="line"></span><br><span class="line">A=[<span class="number">1</span>]</span><br><span class="line">B=[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(h)-<span class="number">1</span>):  </span><br><span class="line">	A.append(a*A[i-<span class="number">1</span>] % m)  </span><br><span class="line">	B.append((a*B[i-<span class="number">1</span>]+a*h[i]+b-h[i+<span class="number">1</span>]) % m)  </span><br><span class="line">  </span><br><span class="line">A = A[<span class="number">1</span>:]  </span><br><span class="line">B = B[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">G = Matrix(ZZ,<span class="built_in">len</span>(H),<span class="built_in">len</span>(H))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>[A]):</span><br><span class="line">	G[i,i] = m</span><br><span class="line">	G[-<span class="number">2</span>,i] = A[i]</span><br><span class="line">	G[-<span class="number">1.</span>i] = B[i]</span><br><span class="line"></span><br><span class="line">G[-<span class="number">2</span>,-<span class="number">2</span>] = <span class="number">1</span></span><br><span class="line">G[-<span class="number">1</span>,-<span class="number">1</span>] = <span class="number">2</span>^kbits</span><br><span class="line">L=G.LLL()[<span class="number">0</span>]</span><br><span class="line">L1=L[-<span class="number">2</span>]</span><br><span class="line"><span class="built_in">print</span>(L1)</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>LCG也是让新手头疼的一部分，希望你看完我的文章之后能有新的收获，如果有问题的话欢迎指出，本人作为一名ctfer菜鸟，难免会有些小错误哒(๑´ڡ ‘๑)&#x2F;。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://dexterjie.github.io/2024/07/16/%E6%B5%81%E5%AF%86%E7%A0%81/%E6%B5%81%E5%AF%86%E7%A0%81-LCG/?highlight=lcg">LCG | DexterJie’Blog</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Ramoor.github.io">Ramoor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/">http://ramoor.github.io/2025/04/08/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-LCG/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Ramoor.github.io" target="_blank">Ramoor</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a><a class="post-meta__tags" href="/tags/LCG/">LCG</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/04/08/Miniconda%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="MIniconda安装记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">MIniconda安装记录</div></div><div class="info-2"><div class="info-item-1">最近做题的时候经常遇见Python不同版本中库的冲突调整，这里记录一下miniconda的安装过程。 介绍Miniconda是一款轻量级的只包含python和conda的软件包管理系统，适合需要灵活管理包和环境的用户。它能够快速的在不同的python版本之间切换。 安装环境我这里只记录我本人安装的环境  Kali Linux x86_64架构  安装步骤 下载安装脚本  1wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh  运行脚本  1bash miniconda.sh Enter查看协议，一直Enter下翻，之后输入yes接收协议。下一步Enter接收默认安装路径~/miniconda3，也可以自己输入自定义路径。下一步询问初始化，输入yes，同意初始化。  重启电脑  1reboot  验证安装是否成功  1conda --version 显示版本信息即为安装成功。 简单使用 创建新环境  1conda create -n myenv pyth...</div></div></div></a><a class="pagination-related" href="/2025/04/07/RSA%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/" title="RSA题型汇总"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">RSA题型汇总</div></div><div class="info-2"><div class="info-item-1">RSA是每个新手都要跨越的第一道坎，相信你也经常遇见奇奇怪怪的RSA题型，这里记录了我遇见的各种题型，难度不分先后，随时更新。 dp泄露(dp&#x3D;d mod p-1)分析：$\because dp\equiv d \mod p-1$$\therefore edp\equiv ed\mod p-1$$\because ed \equiv 1 \mod (p-1)(q-1)$$\therefore edp+k_1(p-1) &#x3D; 1+k_2(p-1)(q-1)$$\therefore edp&#x3D;(p-1)[k_1+k_2(q-1)]+1$$\because dp&lt;p-1$$\therefore 令A&#x3D;k_1+k_2(q-1)，有e&gt;A$$\therefore A\in (0,e)$$\because 转换得p&#x3D;\frac{edp-1}{A}+1$$\therefore 遍历A（此时A不等于0）\in(1,e)，找到能整除的A，进而计算出p$代码实现： 12345678910111213141516171819202122from...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/04/02/%E6%96%87%E4%BB%B6%E5%A4%B4/" title="文件头"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-02</div><div class="info-item-2">文件头</div></div><div class="info-2"><div class="info-item-1">常见文件头png(apng): 89 50 4E 47 (‰PNG)jpg: FF D8 FF E0 00 10 4A 46 49 46 (ÿØÿà..JFIF)gif:47 49 46 (GIF)bmp: 42 4D (BM)bpg: 42 50 47 (BPG)tiff: 49 49 2A 00zip: 50 4B 03 04 (PK..)7z: 37 7A BC AF 27 1C (7z¼¯&#39;.)rar: 52 61 72 21 (Rar!)doc: D0 CF 11 E0docx: 50 4B 03 04 (本质是xml文件压缩包)wav: 52 49 46 46 (RIFF)xml: 3C 3F 78 6D 6C (&lt;?xml)html: 68 74 6D 6C 3E (html&gt;) </div></div></div></a><a class="pagination-related" href="/2025/08/05/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" title="MISC基础篇-流量分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-05</div><div class="info-item-2">MISC基础篇-流量分析</div></div><div class="info-2"><div class="info-item-1">本文用来记录我的流量分析学习之路，主要包括自己遇到的一些题目和学习大佬博客学到的一些东西，之前的流量分析一直都是零零碎碎的学的，这次准备做一个整合，以后也会在遇见新题型时实时更新(●⁰౪⁰●)参考：Misc-Network Traffic Analysis - ⚡Lunatic BLOG⚡ USB流量分析键盘流量分析在键盘流量分析中，最重要的就是8字节的usbhid数据，我们的目的就是提取出这些hid数据，然后我们便可以还原出按键记录。需要注意的是，有些题目会用&lt;DEL&gt;按键，如果忽略该按键就会不知道出题人删除了哪些数据。 Webshell流量分析冰蝎流量分析冰蝎的默认密钥：e45e329feb5d925b（该密钥为默认连接密码rebeyond32位md5值的前16位）在流量包中寻找木马时，可以使用下面语句进行过滤： 1http.request.method==&quot;POST&quot; 找到最可疑的流量，然后右键追踪流，大概率能够看见加密代码我们通过加密代码可疑确定，该木马进行了AES128+BASE64的加密，因此我们可以使用密码对数据包进行解密，一般是AE...</div></div></div></a><a class="pagination-related" href="/2025/04/29/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-MT19937/" title="Crypto基础篇-MT19937"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-29</div><div class="info-item-2">Crypto基础篇-MT19937</div></div><div class="info-2"><div class="info-item-1">简介梅森旋转（Mersenne Twister）是一个PRNG（伪随机数发生器），基于有限二进制字段上的矩阵线性递归，可快速产生高质量的伪随机数，周期为$2^{19937}-1$，也就是19937bits。python中的random库使用的便是这种算法。 实现步骤： 获得基础的梅森旋转链 对于旋转链进行旋转算法 对旋转算法所得结果进行处理  涉及变量： $w:$ 加密长度，以bit为单位，$w$位整数 $n:$ 递归长度 $m:$ 周期参数，用于第三阶段的偏移量 $a:$ 旋转矩阵的参数 $r:$ 低位掩码，即低位要提取的位数 $f:$ 初始化旋转链所需参数 $b,c:$ TGFSR的掩码 $s,t:$ TGFSR的位移量 $u,d,l:$ 额外的梅森旋转所需要的掩码和位移量  加密方法1.初始化将传入的seed赋值给$MT_0$作为初始值，并且递推得到旋转链递推式： $MT_I&#x3D;f\times [(MT_{i-1})\oplus((MT_{i-1})&gt;&gt;(w-2))]+i$ 2.旋转算法连接$MT_i$的高$w-r$位和$MT_{i+1}$的低$r$位，...</div></div></div></a><a class="pagination-related" href="/2025/04/10/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/" title="MISC基础篇-图片隐写"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-10</div><div class="info-item-2">MISC基础篇-图片隐写</div></div><div class="info-2"><div class="info-item-1">前言本文主要对misc中图片隐写中的常考点以及经典解题思路进行总结。 考点 文件类型判断 exif隐写 文件提取 图片宽高 JPEG隐写 PNG隐写 LSB隐写 盲水印 GIF隐写  分析1.文件类型判断 010editor 分析文件头尾（可再另一篇博客查看文件头总结） Linux中使用file xxx命令查看文件类型 Windows中使用TrlDNET工具查看文件类型  2.exif隐写 右键属性查看（信息有限） exiftool查看：exiftool xxx(文件名)  3.文件提取找到隐藏文件 010Editor： 如果熟悉各种文件类型特点，可直接查看字符串来查找隐藏文件。 压缩工具： 直接用如 Bandzip、7Z等打开图片，可直接查看隐藏文件。 Binwalk： 使用binwalk xxx直接查看隐藏文件  分离隐藏文件 复制数据： 如果在010Editor或其他地方找到隐藏文件，并确定了头、尾，可以通过保存数据为新文件来分离出隐藏文件。 解压工具： 解压工具能够直接解压缩图片中的隐藏文件。 Foremost： 使用foremost xxx来分离隐藏文件，不太推荐使用b...</div></div></div></a><a class="pagination-related" href="/2025/03/31/WHUCTF%202025-WP/" title="WHUCTF2025 WP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-31</div><div class="info-item-2">WHUCTF2025 WP</div></div><div class="info-2"><div class="info-item-1">WPMISC[签到]益智游戏1.数独 数独还没做完，直接爆破就出了。  得到WHUCTF&#123;Little_games_reall 2.数织 队友很强，直接手搓了。  得到y_train_your_brain_&amp;_play 3.鬼脚图 直接白给了。。。 得到_more_in_cn.puzzle_website&#125; 哪里有文档附件是一个docx文档，而且直接给出了part1。 part2：ctrl+A一下，发现在文章最后，改一下字体颜色就看到了。 part3：ctrl+F一下，搜索part，发现一个非常隐秘的文本框，放大一下，找到part3part4： 由于docx文档本质是压缩包，可以解压出一个文件夹，在docprops文件夹下边的custom文件中发现part4.part5： 在word文件夹下边的vbaProject.bin文件中发现非疑似part5的字符串，后来试了一下还真是。解密器： 在文档页脚的地方发现有东西，换一下字体颜色便发现，by Abracadabra encoder，上网搜索之后发现是魔曰。 解密步骤： 将5段part拼接后进行base6...</div></div></div></a><a class="pagination-related" href="/2025/05/03/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E9%95%BF%E5%AE%89%E6%9D%AF2021%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="电子取证-长安杯2021 学习记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-03</div><div class="info-item-2">电子取证-长安杯2021 学习记录</div></div><div class="info-2"><div class="info-item-1">题目题目描述2021年4月25日，上午8点左右，警方接到被害人金某报案，声称自己被敲诈数万元；经询问，昨日金某被嫌疑人诱导裸聊，下载了某“裸聊”软件，导致自己的通讯录和裸聊视频被嫌疑人获取，对其进行敲诈，最终金某不堪重负，选择了报警；警方从金某提供的本人手机中，定向采集到了该“裸聊”软件的安装包–zhibo.apk（检材一），请各位回答下列问题：（题目 中需要通过分析出来的答案对检材二三四五解压，解压密码为IP的情况，需要在密码后增加-CAB2021，例192.168.110.110-CAB2021） 检材使用VeraCrypt挂载，挂载密码为 12021第三届CAB-changancup.com  第一题请计算检材一Apk的SHA256值使用HashCalc计算检材一-zhibo.apk的SHA256的hash值 13fece1e93be4f422c8446b77b6863eb6a39f19d8fa71ff0250aac10f8bdde73a  第二题该APK的应用包名为使用jadx反编译，查看AndroidManifest.xml中的package便是应用包名plus.H5B...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Ramoor</div><div class="author-info-description">Ramoor Blog</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82-X-0-seed"><span class="toc-number">2.</span> <span class="toc-text">求$X_0(seed)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82b"><span class="toc-number">3.</span> <span class="toc-text">求b</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82a"><span class="toc-number">4.</span> <span class="toc-text">求a</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82m"><span class="toc-number">5.</span> <span class="toc-text">求m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E8%BF%9E%E7%BB%AD"><span class="toc-number">6.</span> <span class="toc-text">非连续</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#X-n-%E9%AB%98%E4%BD%8D-%E4%BD%8E%E4%BD%8D%E6%B3%84%E9%9C%B2"><span class="toc-number">7.</span> <span class="toc-text">$X_n$高位&#x2F;低位泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">8.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/Crypto%E8%BF%9B%E9%98%B6%E7%AF%87-ECC/" title="Crypto进阶篇-ECC">Crypto进阶篇-ECC</a><time datetime="2025-12-27T05:57:50.000Z" title="发表于 2025-12-27 13:57:50">2025-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/25/CISCN%20%E5%BE%80%E5%B9%B4%E9%A2%98%E7%BB%83%E4%B9%A0/" title="CISCN 往年题练习">CISCN 往年题练习</a><time datetime="2025-12-24T17:26:46.000Z" title="发表于 2025-12-25 01:26:46">2025-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-RC4/" title="Crypto基础篇-RC4">Crypto基础篇-RC4</a><time datetime="2025-12-23T16:14:12.000Z" title="发表于 2025-12-24 00:14:12">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C%E7%BB%B4%E7%A0%81/" title="MISC基础篇-二维码">MISC基础篇-二维码</a><time datetime="2025-12-23T16:00:22.000Z" title="发表于 2025-12-24 00:00:22">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E6%80%BB%E7%BB%93/" title="MISC总结">MISC总结</a><time datetime="2025-12-23T16:00:13.000Z" title="发表于 2025-12-24 00:00:13">2025-12-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Ramoor</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Study/" class="category-chain-item">Study</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
-      
-        <a href="/tags/LCG/" class="print-no-link">#LCG</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Crypto基础篇-LCG</div>
-      <div>http://ramoor.github.io/2025/04/08/Crypto基础篇-LCG/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>Ramoor</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2025年4月8日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2025/04/08/Miniconda%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="MIniconda安装记录">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MIniconda安装记录</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2025/04/07/RSA%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/" title="RSA题型汇总">
-                        <span class="hidden-mobile">RSA题型汇总</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  
-  
-    <article id="comments" lazyload>
-      
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"lPTos9qTFk57xeK53vE7I61e-MdYXbMMI","appKey":"DpXRDnV0ErOnqjSiWrfRvGWm","path":"window.location.pathname","placeholder":"`快来评论啊`","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://lptos9qt.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
           }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-    </article>
-  
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <!-- 小破站存活时长 --> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-    </div>
-  
-  
-    <div class="statistics">
-  
-  
-
-  
-    
-      <span id="leancloud-site-pv-container" style="display: none">
-        总访问量 
-        <span id="leancloud-site-pv"></span>
-         次
-      </span>
-    
-    
-      <span id="leancloud-site-uv-container" style="display: none">
-        总访客数 
-        <span id="leancloud-site-uv"></span>
-         次
-      </span>
-    
-    
-
-  
-
-</div>
-
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
         }
       }
-    });
-  });
-</script>
 
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
     }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
+  }
 
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script defer src="/js/leancloud.js" ></script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-  
-<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-<!-- hexo injector body_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-        delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-            //{left: '\(', right: '\)', display: false},
-            //{left: '\[', right: '\]', display: true}
-        ],
-          // • rendering keys, e.g.:
-        throwOnError : false
-        });
-    });
-</script>
-<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
-</html>
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
