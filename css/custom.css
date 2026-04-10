@@ -1,0 +1,83 @@
+
+
+/* 顶部透明 */
+#page-header {
+  background: transparent !important;
+}
+
+/* 去掉顶部遮罩 */
+#page-header::before {
+  background: transparent !important;
+}
+
+/* 底部透明 */
+#footer {
+  background: transparent !important;
+}
+
+#footer::before {
+  background: transparent !important;
+}
+
+
+
+/* 每个文章卡片本体 */
+#recent-posts .recent-post-item {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* hover 动效（更高级） */
+#recent-posts .recent-post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* 侧边栏卡片 */
+
+.card-widget {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* 文章页卡片（只改文章，不影响布局） */
+
+.layout > div:first-child:not(.recent-posts) {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* 深色模式适配 */
+[data-theme="dark"] #recent-posts .recent-post-item,
+[data-theme="dark"] .card-widget,
+[data-theme="dark"] .layout > div:first-child:not(.recent-posts) {
+  background: rgba(0, 0, 0, 0.7) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+
+/* 提高深色模式文字对比度 */
+[data-theme="dark"] {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 深色模式背景透明度适配 */
+[data-theme="dark"] #web_bg {
+  filter: brightness(0.6) !important;
+}
+[data-theme="dark"] #web_bg::before {
+  background: transparent !important;
+}
+
+
+/* 底部设置按钮位置 */
