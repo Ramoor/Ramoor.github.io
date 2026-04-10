@@ -5,19 +5,19 @@
 <meta property="og:site_name" content="Ramoor">
 <meta property="og:description" content="前言最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。 遇见的问题首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了hexo-renderer-markdown">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://ramoor.github.io/img/butterfly-icon.png">
+<meta property="og:image" content="http://ramoor.github.io/img/logo.jpg">
 <meta property="article:published_time" content="2025-04-02T08:15:57.000Z">
 <meta property="article:modified_time" content="2025-08-30T20:24:36.894Z">
 <meta property="article:author" content="Ramoor">
 <meta property="article:tag" content="blog">
 <meta property="article:tag" content="latex">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://ramoor.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+<meta name="twitter:image" content="http://ramoor.github.io/img/logo.jpg"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Hexo+Fulid主题中的Latex渲染问题",
   "url": "http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/",
-  "image": "http://ramoor.github.io/img/butterfly-icon.png",
+  "image": "http://ramoor.github.io/img/logo.jpg",
   "datePublished": "2025-04-02T08:15:57.000Z",
   "dateModified": "2025-08-30T20:24:36.894Z",
   "author": [
@@ -27,7 +27,7 @@
       "url": "http://Ramoor.github.io"
     }
   ]
-}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+}</script><link rel="shortcut icon" href="/img/logo.jpg"><link rel="canonical" href="http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -120,9 +120,9 @@
   </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
     error: '复制失败',
@@ -132,7 +132,7 @@
     homepage: false,
     post: false
   },
-  runtime: '',
+  runtime: '天',
   dateSuffix: {
     just: '刚刚',
     min: '分钟前',
@@ -164,7 +164,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Ramoor</span></a><a class="nav-page-title" href="/"><span class="site-name">Hexo+Fulid主题中的Latex渲染问题</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Hexo+Fulid主题中的Latex渲染问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-02T08:15:57.000Z" title="发表于 2025-04-02 16:15:57">2025-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-30T20:24:36.894Z" title="更新于 2025-08-31 04:24:36">2025-08-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/blog/">blog</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/bg.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo"><span class="site-name">Ramoor</span></a><a class="nav-page-title" href="/"><span class="site-name">Hexo+Fulid主题中的Latex渲染问题</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Hexo+Fulid主题中的Latex渲染问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-02T08:15:57.000Z" title="发表于 2025-04-02 16:15:57">2025-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-30T20:24:36.894Z" title="更新于 2025-08-31 04:24:36">2025-08-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/blog/">blog</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近写ctf密码学博客时遇见了许多问题，Latex渲染错位&#x2F;不渲染，导致博客无法正常观看，于是我在网上找了许多教程，也找了大佬咨询，但人与人的悲欢并不相同，最后找了一种比较原始的方法，才解决了我的问题，如果有人跟我有相同的困扰，可以参考参考。</p>
 <h2 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h2><p>首先记录一下我遇见的问题，开始默认的latex渲染器不能完全渲染，后来照着网上教程使用了<code>hexo-renderer-markdown-it-plus</code>+<code>katex</code> 然鹅并没有解决我的问题。<br>后来在大佬的指点下使用了更为稳定的<code>hexo-renderer-kramed</code>+<code>mathjax</code>，但是不知道是CDN的问题问题还是怎样，在本地部署时能好好的，但是在部署到远端服务器之后，网页还是渲染失败，查看了一下控制台， 发现CDN默认访问<code>http</code>，由于<code>https</code>和<code>http</code>不能混用，一般浏览器默认会拒绝访问，若你在浏览器左上角<strong>小锁</strong>的<strong>此网站权限</strong>中将<strong>不安全内容</strong>设为开启，便能渲染成功。（我暂时没找到这个方案的解决办法，有解决办法的师傅可以评论区告诉我。。。）</p>
 <h2 id="引入脚本解决Latex渲染问题"><a href="#引入脚本解决Latex渲染问题" class="headerlink" title="引入脚本解决Latex渲染问题"></a>引入脚本解决Latex渲染问题</h2><p>最后，我使用了引入<code>javascript</code>脚本的方法解决了这个问题，下面介绍具体实现方法。</p>
 <ul>
@@ -208,7 +208,7 @@ $$
 <p>其实这里也可以用<code>\newline</code>来换行，这样就不存在<code>\\</code>的转义问题了：<br>$$<br> \begin{bmatrix}<br>2 &amp; 0 &amp; 0 &amp; \cdots &amp; m_1\newline<br>0 &amp; 2 &amp; 0 &amp; \cdots &amp; m_2\newline<br>0 &amp; 0 &amp; 2 &amp; \cdots &amp; m_3\newline<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\newline<br>1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1\newline<br>\end{bmatrix}<br>$$<br>但是同时创建多个矩阵时可能会出问题，最稳妥的方法还是打上 <code>&lt;span&gt;&lt;/span&gt;</code>标签。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这确实是个挺原始的方法，虽然写矩阵时有点小麻烦，但确实挺好用，如果你有什么更好的方法，可用告诉我，有什么问题也欢迎提出。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.kevinchu.top/2023/09/12/hexo-supports-latex/">Hexo支持LaTeX数学公式渲染 - KEVIN’S BLOG (kevinchu.top)</a></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Ramoor.github.io">Ramoor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/">http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Ramoor.github.io" target="_blank">Ramoor</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/blog/">blog</a><a class="post-meta__tags" href="/tags/latex/">latex</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/04/02/MISC%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" title="MISC流量分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">MISC流量分析</div></div><div class="info-2"><div class="info-item-1">概括 协议分析  HTTP  HTTPS  FTP  DNS  WIFI  USB  VOIP  电子邮件协议（SMTP、POP、IMAP、MIME）    数据提取  字符串提取  文件提取    流量包修复   做题步骤 总体把握  协议分级  端点统计    过滤筛选  过滤语法  Host，Protocol，contains，特征值    发现异常  特殊字符串  协议某字段  flag位于服务器中    数据提取  字符串提取  文件提取     协议分析 概述：计算机网络中进行数据交换而建立的规则、标准或约定的集合。  协议分级，WireShark提供了此功能。     会话，能够显示特定端点IP之间的所有流量。  端点，WireShark能列出所有统计的端点信息。  HTTP（超文本传输协议）  概念：用于分布式、协作式和超媒体信息系统的应用层协议。   HTTPS（&#x3D; HTTP + SSL &#x2F; TLS）  FTP（文件传输协议）  是TCP&#x2F;IP协议组中的协议之一。  一、FTP服务器：存储文件  二、FTP客户端：用户可使用客户端通...</div></div></div></a><a class="pagination-related" href="/2025/04/02/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Java学习记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Java学习记录</div></div><div class="info-2"><div class="info-item-1">1.概述名字由来： 印度尼西亚一个盛产咖啡的岛名。特点： Java是一种简单的、面向对象的、分布式的、强壮的、安全的、体系结构中立的、可移植的、高性能的、多线程的和动态的语言。下载：  JDK 编辑器JDK环境工具： 编译器-javac： 将源程序（.java文件）编译成字节码（.class文件）。调用格式为javac [选项] 源文件名表 语言解释器-java： 解释执行Java字节码，格式为java [选项]&lt;类名&gt;[参数表] 交互式命令行-jshell  具有输入功能的程序123456789101112import java.io.*;public class SayHelloToYou &#123;    public static void main(String[] args) throws IOException    &#123;        InputStreamReader reader = new InputStreamReader(System.in);        BufferedReader input = new BufferedRe...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Ramoor</div><div class="author-info-description">Ramoor Blog</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">遇见的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E8%84%9A%E6%9C%AC%E8%A7%A3%E5%86%B3Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">引入脚本解决Latex渲染问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/Crypto%E8%BF%9B%E9%98%B6%E7%AF%87-ECC/" title="Crypto进阶篇-ECC">Crypto进阶篇-ECC</a><time datetime="2025-12-27T05:57:50.000Z" title="发表于 2025-12-27 13:57:50">2025-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/25/CISCN%20%E5%BE%80%E5%B9%B4%E9%A2%98%E7%BB%83%E4%B9%A0/" title="CISCN 往年题练习">CISCN 往年题练习</a><time datetime="2025-12-24T17:26:46.000Z" title="发表于 2025-12-25 01:26:46">2025-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-RC4/" title="Crypto基础篇-RC4">Crypto基础篇-RC4</a><time datetime="2025-12-23T16:14:12.000Z" title="发表于 2025-12-24 00:14:12">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C%E7%BB%B4%E7%A0%81/" title="MISC基础篇-二维码">MISC基础篇-二维码</a><time datetime="2025-12-23T16:00:22.000Z" title="发表于 2025-12-24 00:00:22">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E6%80%BB%E7%BB%93/" title="MISC总结">MISC总结</a><time datetime="2025-12-23T16:00:13.000Z" title="发表于 2025-12-24 00:00:13">2025-12-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Ramoor</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"><script>(() => {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://Ramoor.github.io">Ramoor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/">http://ramoor.github.io/2025/04/02/Hexo+Fulid%E4%B8%BB%E9%A2%98%E4%B8%AD%E7%9A%84Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://Ramoor.github.io" target="_blank">Ramoor</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/blog/">blog</a><a class="post-meta__tags" href="/tags/latex/">latex</a></div><div class="post-share"><div class="social-share" data-image="/img/logo.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/04/02/MISC%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" title="MISC流量分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">MISC流量分析</div></div><div class="info-2"><div class="info-item-1">概括 协议分析  HTTP  HTTPS  FTP  DNS  WIFI  USB  VOIP  电子邮件协议（SMTP、POP、IMAP、MIME）    数据提取  字符串提取  文件提取    流量包修复   做题步骤 总体把握  协议分级  端点统计    过滤筛选  过滤语法  Host，Protocol，contains，特征值    发现异常  特殊字符串  协议某字段  flag位于服务器中    数据提取  字符串提取  文件提取     协议分析 概述：计算机网络中进行数据交换而建立的规则、标准或约定的集合。  协议分级，WireShark提供了此功能。     会话，能够显示特定端点IP之间的所有流量。  端点，WireShark能列出所有统计的端点信息。  HTTP（超文本传输协议）  概念：用于分布式、协作式和超媒体信息系统的应用层协议。   HTTPS（&#x3D; HTTP + SSL &#x2F; TLS）  FTP（文件传输协议）  是TCP&#x2F;IP协议组中的协议之一。  一、FTP服务器：存储文件  二、FTP客户端：用户可使用客户端通...</div></div></div></a><a class="pagination-related" href="/2025/04/02/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Java学习记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Java学习记录</div></div><div class="info-2"><div class="info-item-1">1.概述名字由来： 印度尼西亚一个盛产咖啡的岛名。特点： Java是一种简单的、面向对象的、分布式的、强壮的、安全的、体系结构中立的、可移植的、高性能的、多线程的和动态的语言。下载：  JDK 编辑器JDK环境工具： 编译器-javac： 将源程序（.java文件）编译成字节码（.class文件）。调用格式为javac [选项] 源文件名表 语言解释器-java： 解释执行Java字节码，格式为java [选项]&lt;类名&gt;[参数表] 交互式命令行-jshell  具有输入功能的程序123456789101112import java.io.*;public class SayHelloToYou &#123;    public static void main(String[] args) throws IOException    &#123;        InputStreamReader reader = new InputStreamReader(System.in);        BufferedReader input = new BufferedRe...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Valine</span><span id="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Ramoor</div><div class="author-info-description">This is Ramoor</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Ramoor"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog about CTF</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">遇见的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E8%84%9A%E6%9C%AC%E8%A7%A3%E5%86%B3Latex%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">引入脚本解决Latex渲染问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/Crypto%E8%BF%9B%E9%98%B6%E7%AF%87-ECC/" title="Crypto进阶篇-ECC">Crypto进阶篇-ECC</a><time datetime="2025-12-27T05:57:50.000Z" title="发表于 2025-12-27 13:57:50">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/25/CISCN%20%E5%BE%80%E5%B9%B4%E9%A2%98%E7%BB%83%E4%B9%A0/" title="CISCN 往年题练习"><img src="/img/posts/CISCN%20%E5%BE%80%E5%B9%B4%E9%A2%98%E7%BB%83%E4%B9%A0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CISCN 往年题练习"/></a><div class="content"><a class="title" href="/2025/12/25/CISCN%20%E5%BE%80%E5%B9%B4%E9%A2%98%E7%BB%83%E4%B9%A0/" title="CISCN 往年题练习">CISCN 往年题练习</a><time datetime="2025-12-24T17:26:46.000Z" title="发表于 2025-12-25 01:26:46">2025-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/Crypto%E5%9F%BA%E7%A1%80%E7%AF%87-RC4/" title="Crypto基础篇-RC4">Crypto基础篇-RC4</a><time datetime="2025-12-23T16:14:12.000Z" title="发表于 2025-12-24 00:14:12">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C%E7%BB%B4%E7%A0%81/" title="MISC基础篇-二维码">MISC基础篇-二维码</a><time datetime="2025-12-23T16:00:22.000Z" title="发表于 2025-12-24 00:00:22">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/MISC%E6%80%BB%E7%BB%93/" title="MISC总结">MISC总结</a><time datetime="2025-12-23T16:00:13.000Z" title="发表于 2025-12-24 00:00:13">2025-12-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2024 - 2026 By Ramoor</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5-b1"></script><script src="/js/main.js?v=5.5.5-b1"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
@@ -282,4 +282,112 @@ $$
 
   btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
   window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
-})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: [''],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || 'c4008301f7b6e89cb1111ffe363301db'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Valine' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.5-b1"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
