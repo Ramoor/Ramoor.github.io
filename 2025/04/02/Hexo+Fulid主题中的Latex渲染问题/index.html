@@ -188,20 +188,20 @@
 <ul>
 <li>注意，在使用矩阵时，外部可用<code>&lt;sapn&gt;&lt;/sapn&gt;</code> 或<code>&lt;div&gt;&lt;/div&gt;</code>包裹，以解决<code>\\</code>的转义问题。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;</span><br><span class="line">$$</span><br><span class="line"> \begin&#123;bmatrix&#125;</span><br><span class="line">2 &amp; 0 &amp; 0 &amp; \cdots &amp; m\_1\\</span><br><span class="line">0 &amp; 2 &amp; 0 &amp; \cdots &amp; m\_2\\</span><br><span class="line">0 &amp; 0 &amp; 2 &amp; \cdots &amp; m\_3\\</span><br><span class="line">\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\</span><br><span class="line">1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1\\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">$$</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;</span><br><span class="line">$$</span><br><span class="line"> \begin&#123;bmatrix&#125;</span><br><span class="line">2 &amp; 0 &amp; 0 &amp; \cdots &amp; m_1\\</span><br><span class="line">0 &amp; 2 &amp; 0 &amp; \cdots &amp; m_2\\</span><br><span class="line">0 &amp; 0 &amp; 2 &amp; \cdots &amp; m_3\\</span><br><span class="line">\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\</span><br><span class="line">1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1\\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">$$</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure>
 
 <p>未加<code>&lt;span&gt;&lt;/span&gt;</code>:</p>
 <p>$$<br>\begin{bmatrix}<br>2 &amp; 0 &amp; 0 &amp; \cdots &amp; m_1\<br>0 &amp; 2 &amp; 0 &amp; \cdots &amp; m_2\<br>0 &amp; 0 &amp; 2 &amp; \cdots &amp; m_3\<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1\<br>\end{bmatrix}<br>$$</p>
 <p>加了<code>&lt;span&gt;&lt;/span&gt;</code>:</p>
 <span>
 $$
- \begin\{bmatrix\}
-2 & 0 & 0 & \cdots & m\_1\\
-0 & 2 & 0 & \cdots & m\_2\\
-0 & 0 & 2 & \cdots & m\_3\\
+ \begin{bmatrix}
+2 & 0 & 0 & \cdots & m_1\\
+0 & 2 & 0 & \cdots & m_2\\
+0 & 0 & 2 & \cdots & m_3\\
 \vdots & \vdots & \vdots & \ddots & \vdots\\
 1 & 1 & 1 & \cdots & 1\\
-\end\{bmatrix\}
+\end{bmatrix}
 $$
 </span>
 

@@ -3,8 +3,8 @@
   const appKey = 'DpXRDnV0ErOnqjSiWrfRvGWm';
   const serverUrl = `https://${appId.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
 
-  const siteUvEl = document.getElementById('busuanzi_value_site_uv');
-  const sitePvEl = document.getElementById('busuanzi_value_site_pv');
+  const siteUvEl = document.getElementById('leancloud_site_uv');
+  const sitePvEl = document.getElementById('leancloud_site_pv');
   const pageViewEl = document.querySelector('.leancloud-visitors-count');
 
   if (!siteUvEl && !sitePvEl && !pageViewEl) return;
