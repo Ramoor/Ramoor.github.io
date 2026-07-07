@@ -440,10 +440,10 @@
 <p><strong>步骤：</strong> </p>
 <ul>
 <li>首先选择一个随机的消息$x_0$，赋值$x:&#x3D;x_0,x’:&#x3D;x_0$</li>
-<li>在第$i$次迭代时比较$x_i&#x3D;H(x_{i-1})和x_i’&#x3D;H(H(x_{i-1}’))$的值</li>
+<li>在第$i$次迭代时比较$x_i&#x3D;H(x_{i-1})和x_i’&#x3D;H(H(x_{i-1}‘))$的值</li>
 <li>如果$x_i &#x3D; x_i’$，说明发生了冲突。</li>
-<li>（直接碰撞）且如果$x_{i-1}\neq H(x_{i-1}’)$，则冲突对为$x_{i-1}\neq H(x_{i-1}’)$</li>
-<li>（间接碰撞）而如果$x_{i-1} &#x3D; H(x_{i-1}’)$，则说明碰撞可能发生在更早的步骤中。但由于hash值没有被记录，因此还需要再次迭代</li>
+<li>（直接碰撞）且如果$x_{i-1}\neq H(x_{i-1}‘)$，则冲突对为$x_{i-1}\neq H(x_{i-1}‘)$</li>
+<li>（间接碰撞）而如果$x_{i-1} &#x3D; H(x_{i-1}‘)$，则说明碰撞可能发生在更早的步骤中。但由于hash值没有被记录，因此还需要再次迭代</li>
 <li>存储找到的编号$i$，并将$x&#x3D;x_0,x’&#x3D;x_0$，重置初始值为$x_0$</li>
 <li>迭代到$i$,在每一步$j$中，检查$H(x_j)&#x3D;H(x_j’)$</li>
 <li>若找到，则找到了碰撞，返回$x_j$和$x_j’$</li>
@@ -458,7 +458,7 @@
 <ol>
 <li><p><strong>选择参数</strong>：选择参数$s$和$t$。</p>
 </li>
-<li><p><strong>生成表</strong>：选择$s$个均匀随机的起始点$SP_1​,…,SP_s​∈{0,1}^ℓ$。对于每个起始点$SP_i$​，计算对应的终点$EPi​:&#x3D;H^{(t)}(SP_i​)（即H的t次迭代）$。</p>
+<li><p><strong>生成表</strong>：选择$s$个均匀随机的起始点$SP_1​,…,SP_s​∈\{0,1\}^ℓ$。对于每个起始点$SP_i$​，计算对应的终点$EPi​:&#x3D;H^{(t)}(SP_i​)（即H的t次迭代）$。</p>
 </li>
 <li><p><strong>存储</strong>：将所有对$(SP_i​,EP_i​)$存储在表中，按终点排序。</p>
 </li>
@@ -475,7 +475,7 @@
 <li><strong>结合性：</strong> $(g_1\circ g_2)\circ g_3 &#x3D; g_1 \circ (g_2 \circ g_3)$<br>阶：若元素数有限，称群为有限群，用|G|表示群的阶。<br><strong>Abelian群：</strong> 具有<strong>交换性</strong>，即满足$g\circ h &#x3D; h\circ g$的群。<br><strong>子群：</strong> 如果群$H\subseteq G$ ，且H与G运算相同，则H是G的子群。<br><strong>平凡子群：</strong> G或{1}（类比平凡因子）</li>
 </ul>
 <p><strong>定理：</strong> 已知$N&#x3D;\Pi_ip_i^{e_i}，其中e_i\geq 1$，则有$\phi(N)&#x3D;\Pi_ip_i^{e_i-1}(p_i-1)$</p>
-<h3 id="9-1-4-乘法群：欧拉函数"><a href="#9-1-4-乘法群：欧拉函数" class="headerlink" title="9.1.4 乘法群：欧拉函数"></a>9.1.4 乘法群：欧拉函数</h3><p><strong>定理：</strong> 设$N&gt;1$是一个整数。那么$Z^*_N$是关于模$N$的乘法运算的一个阿贝尔群。<br><strong>定理：</strong> 设$N&#x3D;\Pi _ip_i^{e_i}$，其中${p_i}$是不同的素数，$e_i\geq 1$。那么$\Phi(N)&#x3D;\Pi _ip_i^{e_i-1}(p_i-1)$</p>
+<h3 id="9-1-4-乘法群：欧拉函数"><a href="#9-1-4-乘法群：欧拉函数" class="headerlink" title="9.1.4 乘法群：欧拉函数"></a>9.1.4 乘法群：欧拉函数</h3><p><strong>定理：</strong> 设$N&gt;1$是一个整数。那么$Z^*_N$是关于模$N$的乘法运算的一个阿贝尔群。<br><strong>定理：</strong> 设$N&#x3D;\Pi _ip_i^{e_i}$，其中$\{p_i\}$是不同的素数，$e_i\geq 1$。那么$\Phi(N)&#x3D;\Pi _ip_i^{e_i-1}(p_i-1)$</p>
 <p><strong>推论：</strong> 取任意整数$N&gt;1$和$a\in Z^*_N$。则$a^{\Phi(N)}&#x3D;1 \mod N$</p>
 <h3 id="9-1-5中国剩余定理（CRT）"><a href="#9-1-5中国剩余定理（CRT）" class="headerlink" title="9.1.5中国剩余定理（CRT）"></a>9.1.5中国剩余定理（CRT）</h3><p>已知N&#x3D;pq，求$x\mod m$，令$m_1m_2&#x3D;M$<br>$x\equiv a \mod m_1$<br>$x\equiv b \mod m_2$<br><strong>求解过程：</strong> </p>
 <ul>
@@ -510,7 +510,7 @@
 <li>决策Diffie-Hellman问题（DDH）：给定$h_1&#x3D;g^{x_1}和h_2&#x3D;g^{x_2}和h_0$和，判断$h_0和g^{x_1x_2}是否相等$</li>
 </ul>
 <h4 id="使用素数阶群"><a href="#使用素数阶群" class="headerlink" title="使用素数阶群"></a>使用素数阶群</h4><p><strong>原因：</strong> 离散对数问题在这种群中最为困难</p>
-<h3 id="9-3-3-Z-p-的子群"><a href="#9-3-3-Z-p-的子群" class="headerlink" title="9.3.3 $Z_p^*$的子群"></a>9.3.3 $Z_p^*$的子群</h3><p><strong>定理9.66：</strong> 令p&#x3D;rq+1，其中p，q为素数。则有<br>$$ G&#x3D;{[h^r\mod p]h\in Z_p^*} $$</p>
+<h3 id="9-3-3-Z-p-的子群"><a href="#9-3-3-Z-p-的子群" class="headerlink" title="9.3.3 $Z_p^*$的子群"></a>9.3.3 $Z_p^*$的子群</h3><p><strong>定理9.66：</strong> 令p&#x3D;rq+1，其中p，q为素数。则有<br>$$ G&#x3D;\{[h^r\mod p]h\in Z_p^*\} $$</p>
 <p>是一个$Z_p^*$的q阶子群。</p>
 <h3 id="9-3-4椭圆曲线"><a href="#9-3-4椭圆曲线" class="headerlink" title="9.3.4椭圆曲线"></a>9.3.4椭圆曲线</h3><p><strong>常规表示（Weierstrass表示）：</strong></p>
 <p>$$ y^2&#x3D;x^3+Ax+B \mod p $$</p>
@@ -693,7 +693,7 @@
 <ul>
 <li>输入安全参数$1^n$，运行群生成算法$G(1^n)$，得到群$G、阶q和生成元g$。</li>
 <li>随机选择一个私钥$x∈Z_q$​，计算公钥$h&#x3D;g^x$。     </li>
-<li>定义一个函数$H:G→{0,1}^ℓ$，其中$ℓ$是某个函数的值。</li>
+<li>定义一个函数$H:G→\{0,1\}^ℓ$，其中$ℓ$是某个函数的值。</li>
 <li>公钥为$(G,q,g,h,H)$，私钥为$(G,q,g,x)$。</li>
 </ul>
 <p><strong>Encaps（封装）</strong>：   </p>
@@ -723,14 +723,14 @@
 <ul>
 <li>输入安全参数$1^n$，允许群生成算法$G(1^n)$，得到群$G$、阶$q$和生成元$g$</li>
 <li>随机选择$x\in Z_q$，计算$h&#x3D;g^x$</li>
-<li>定义一个函数$H：G\to {0,1}^{2n}$</li>
-<li>公钥${G,q,g,h,H}$，私钥为$x$</li>
+<li>定义一个函数$H：G\to \{0,1\}^{2n}$</li>
+<li>公钥$\{G,q,g,h,H\}$，私钥为$x$</li>
 </ul>
 <p><strong>Enc：</strong></p>
 <ul>
 <li>输入公钥$pk&#x3D;(G,q,g,h,H)$和消息$m$</li>
 <li>随机选择$y\in Z_q$，计算$k_E||k_M&#x3D;H(h^y)$，其中$k_E$是对称加密密钥，$k_M$是MAC密钥</li>
-<li>使用对称加密方案$\Pi <em>E$加密消息$m$，得到$c_0&#x3D;Enc</em>{k_E}(m)$</li>
+<li>使用对称加密方案$\Pi _E$加密消息$m$，得到$c_0&#x3D;Enc_{k_E}(m)$</li>
 <li>计算MAC值$t&#x3D;Mac_{k_M}(c_0)$</li>
 <li>输出密文$(g^y,c_0,t)$</li>
 </ul>
@@ -783,9 +783,9 @@
 </ul>
 <p><strong>Enc：</strong></p>
 <ul>
-<li>输入公钥$pk&#x3D;(N,e)$和消息$m\in {0,1}^l$</li>
+<li>输入公钥$pk&#x3D;(N,e)$和消息$m\in \{0,1\}^l$</li>
 <li>设置$m_0:&#x3D;m||0^k$（即在$m$后加$k$个0）</li>
-<li>随机选择$r\in {0,1}^k$</li>
+<li>随机选择$r\in \{0,1\}^k$</li>
 <li>计算$t:&#x3D;m_0 \oplus G(r)$和$s:&#x3D;r\oplus H(t)$</li>
 <li>设置$m_1:&#x3D;s||t$</li>
 <li>输出密文$c:&#x3D;[m_1^e \mod N]$</li>
@@ -805,7 +805,7 @@
 <ul>
 <li>输入安全参数$1^n$。</li>
 <li>运行RSA密钥生成算法$GenRSA(1^n)$，得到公钥$(N,e)$和私钥$(N,d)$。</li>
-<li>定义一个函数$H:Z_N^∗​→{0,1}^n$，该函数在分析中被建模为随机预言。</li>
+<li>定义一个函数$H:Z_N^∗​→\{0,1\}^n$，该函数在分析中被建模为随机预言。</li>
 </ul>
 <p><strong>Encaps</strong></p>
 <ul>
@@ -876,11 +876,11 @@
 <li>输入安全参数$1^n$。    </li>
 <li>运行$GenRSA(1^n)$生成模数$N$和整数$e,d$，满足$ed&#x3D;1modϕ(N)$。 </li>
 <li>公钥为$pk&#x3D;(N,e)$，私钥为$sk&#x3D;(N,d)$。</li>
-<li>定义一个函数$H:{0,1}∗→Z_N^∗​$</li>
+<li>定义一个函数$H:\{0,1\}∗→Z_N^∗​$</li>
 </ul>
 <p><strong>Sign</strong>：</p>
 <ul>
-<li>输入私钥$sk&#x3D;(N,d)$和消息$m∈{0,1}^∗$。    </li>
+<li>输入私钥$sk&#x3D;(N,d)$和消息$m∈\{0,1\}^∗$。    </li>
 <li>计算签名$σ:&#x3D;[H(m)^d\mod N]$。</li>
 </ul>
 <p><strong>Vrfy</strong>：</p>
